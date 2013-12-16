@@ -1,1 +1,64 @@
 ﻿
+.main-screen
+{
+    width: 100%;
+    background: yellow;
+    font-family: sans-serif;
+    overflow: hidden;
+}
+
+.header div
+{
+    display: inline;
+    margin-right: 5%;
+}
+
+li
+{
+    display: inline;
+    margin-right: 5%;
+}
+
+.r-pic
+{
+    margin-right: 2%;
+}
+
+.header
+{
+    background: blue;
+    width: 98.5%;
+    position: absolute;
+}
+
+.right-picture
+{
+    margin-top: 7%;
+    width: 65%;
+    padding-bottom: auto;
+    background: red;
+    float: right;
+}
+
+.left-pictures
+{
+    margin-top: 7%;
+    width: 30%;
+    float: left;
+    background: green;
+}
+
+.left-pictures img
+{
+        margin-bottom: 5%;
+}
+
+form
+{
+    display: inline;
+}
+
+.search_input
+{
+    margin-left: -7px;
+}
