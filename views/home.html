@@ -1,45 +1,54 @@
-﻿<html dir="rtl">
-	<body>
-		<div class="main-screen">
-			<div class="header">
-				<div><a href="#"><img src="img/logo.png"></a></div>
-				<div>bbb</div>
-				<div>
-					<form method="get" action="#"> 
-						<input type="submit" value="חפש" />
-						<input type="text" class="search_input" name="s" id="s" placeholder="מה תרצו לשופס?" />
-					</form>
+﻿<div class="promotions">
+    <div class="main-promotion">
+        <ul class="promotionList">
+            <li>מצלמות במבצע</li>
+            <li>מסעדות ב 50% הנחה</li>
+            <li>קולקצית חורף 2013</li>
+        </ul>
+        <img ng-src="{{ main_promotion.promotion}}" alt="{{main_promotion.name}}" />
+    </div>
 
-				</div>
-				<div>ccc</div>
-				<div>ddd</div>
-				<div><a href="#"><img src="img/cart.png"></a></div>
-			</div>
+    <div class="seasonal">
+        <img ng-src="{{ left_up.promotion}}" alt="{{ left_up.name }}" />
+        <img ng-src="{{ left_down.promotion}}" alt="{{ left_down.name }}" />
 
-			<div class="right-picture">
-				<ul class="r-pic">
-					<li>מצלמות במבצע</li>
-					<li>מסעדות ב 50% הנחה</li>
-					<li>קולקצית חורף 2013</li>	
-				</ul>
-				<img src="img/pic1.png">
-			</div>
-
-			<aside class="left-pictures">
-				<img src="img/pic3.png">
-				<img src="img/pic3.png">
-			</aside>
-			
-		
-			<footer class="products-list">
-				<h1>bla</h1>
-			</footer>
-			
-		</div>
-
-	</body>
-</html>
+    </div>
+</div>
 
 
-<img ng-src="{{ product.promotion}}"/>
-{{ product.name }}! 
+
+<div class="products-list-container">
+    <h4>לאיזה מכירות כדאי לשים לב</h4>
+
+    <div class="products-list clear">
+        <div class="product" ng-repeat="product in products">
+            <div class="productInfo">
+                <img class="productImg" ng-src="{{ product.imageUrl}}" />
+                <div class="icons">
+                    <div class="iconImg" ng-repeat="icon in product.icons">
+                        <img ng-src="{{ icon.url }}" />
+                    </div>    
+                </div>
+                
+                
+                <h3>{{ product.title }}</h3>
+                <p>{{ product.subtitle}}</p>
+                <p>{{ product.rating}}</p>
+                <p>{{ product.price}}</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="navigation">
+        <div class="navigationPoints">
+            <div class="point"></div>
+            <div class="selectedPoint"></div>    
+        </div>
+        <div class="leftArrow"></div>
+        <div class="rightArrow"></div>
+    </div>
+
+
+
+</div>

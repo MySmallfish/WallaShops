@@ -1,15 +1,9 @@
-﻿
-.main-screen
-{
-    width: 100%;
-    background: yellow;
-    font-family: sans-serif;
-    overflow: hidden;
+﻿body {
+    direction: rtl;
 }
-
-.header div
+header div
 {
-    display: inline;
+    display: inline-block;
     margin-right: 5%;
 }
 
@@ -19,46 +13,160 @@ li
     margin-right: 5%;
 }
 
-.r-pic
+.promotionList
 {
     margin-right: 2%;
 }
 
-.header
+header
 {
     background: blue;
-    width: 98.5%;
     position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 64px;
 }
-
-.right-picture
+.content {
+    top: 64px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: auto;
+ 
+}
+.main-promotion
 {
-    margin-top: 7%;
     width: 65%;
-    padding-bottom: auto;
     background: red;
-    float: right;
+    margin-left: 270px;
 }
 
-.left-pictures
+.seasonal
 {
-    margin-top: 7%;
     width: 30%;
-    float: left;
+    position: absolute;
+    left: 10px;
+    top: 0;
     background: green;
 }
 
-.left-pictures img
+.promotions {
+    margin-top: 2%;
+    position: relative;
+    margin-bottom: 10%;
+}
+
+.seasonal img
 {
-        margin-bottom: 5%;
+    margin-bottom: 5%;
 }
 
 form
 {
-    display: inline;
+    display: inline-block;
 }
 
 .search_input
 {
     margin-left: -7px;
+}
+
+.products-list-container {
+    position: relative;
+}
+
+.products-list {
+    width: 98%;
+    position: relative;
+    right:1%;
+    top: 20px;
+    background: magenta;
+}
+
+.product {
+    background-color:white;
+    float: right;
+    height: 250px;
+    width: 25%;
+}
+
+.productInfo {
+    border: solid 1px #333;
+    height: 248px;
+    padding-right: 25px;
+    position: relative;   
+}
+
+.icons {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+}
+
+.navigation {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+}
+
+.rightArrow , .leftArrow {
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+    border: solid 1px grey;
+    position: absolute; 
+    top: 50%;
+    background-color: white;   
+    
+}
+
+.rightArrow {
+    right: 0;
+    
+}
+
+.leftArrow{
+    left: 0; 
+}
+
+.navigationPoints {
+    position: absolute;
+    left: 1%;
+}
+
+.point {
+    position: relative;
+    height: 15px;
+    width: 15px;
+    border-radius: 7.5px;
+    bottom: 3px;
+}
+
+.selectedPoint {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;   
+}
+
+.point, .selectedPoint {
+    border: solid 1px grey;
+    background-color: grey;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.clear:before,
+.clear:after {
+    content: " ";
+    display: table;
+}
+
+.clear:after {
+    clear: both;
 }
