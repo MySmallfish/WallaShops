@@ -28,10 +28,11 @@
         };
 
         $scope.products = [
-            { id: 1, title: "מכונת גילוח", subtitle: "לגבר המטרוסקסואלי", rating: "123456", icons: [{ url: "app/img/icon.png" }, { url: "app/img/icon.png" }], imageUrl: "app/img/product.png", price: "1000" },
-            { id: 2, title: "מכונת גילוח", subtitle: "לגבר המטרוסקסואלי", rating: "123456", icons: [{ url: "app/img/icon.png" }], imageUrl: "app/img/product.png", price: "1000" },
-            { id: 3, title: "מכונת גילוח", subtitle: "לגבר המטרוסקסואלי", rating: "123456", icons: [{ url: "app/img/icon.png" }], imageUrl: "app/img/product.png", price: "1000" },
-            { id: 4, title: "מכונת גילוח", subtitle: "לגבר המטרוסקסואלי", rating: "123456", icons: [{ url: "app/img/icon.png" }], imageUrl: "app/img/product.png", price: "1000" },
+            { id: 1, title: "מכונת גילוח", subtitle: "לגבר המטרוסקסואלי", rating: "123456", icons: [{ url: "app/img/icon.png" }, { url: "app/img/icon.png" }], imageUrl: "app/img/product.png", price: "1000 שח", details:"לפרטים"},
+            { id: 2, title: "מכונת גילוח", subtitle: "לגבר המטרוסקסואלי", rating: "123456", icons: [{ url: "app/img/icon.png" }, { url: "app/img/icon.png" }], imageUrl: "app/img/product.png", price: "1000 שח", details: "לפרטים" },
+            { id: 3, title: "מכונת גילוח", subtitle: "לגבר המטרוסקסואלי", rating: "123456", icons: [{ url: "app/img/icon.png" }, { url: "app/img/icon.png" }], imageUrl: "app/img/product.png", price: "1000 שח", details: "לפרטים" },
+            { id: 4, title: "מכונת גילוח", subtitle: "לגבר המטרוסקסואלי", rating: "123456", icons: [{ url: "app/img/icon.png" }, { url: "app/img/icon.png" }], imageUrl: "app/img/product.png", price: "1000 שח", details: "לפרטים" },
+
         ];
 
     };
