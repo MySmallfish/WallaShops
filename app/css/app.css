@@ -2,6 +2,10 @@
     direction: rtl;
 }
 
+button, input[type=submit] {
+    -webkit-appearance: none;
+}
+
 header  {
     background: blue;
     position: absolute;
