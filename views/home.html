@@ -1,9 +1,9 @@
 ﻿<div class="promotions">
     <div class="main-promotion">
         <ul class="promotionList">
-            <li>מצלמות במבצע</li>
-            <li>מסעדות ב 50% הנחה</li>
-            <li>קולקצית חורף 2013</li>
+            <li><b>מצלמות במבצע</b></li>
+            <li><b>מסעדות ב50% הנחה</b></li>
+            <li><b>קולקצית חורף 2012</b></li>
         </ul>
         <img ng-src="{{ main_promotion.promotion}}" alt="{{main_promotion.name}}" />
     </div>
@@ -22,7 +22,7 @@
 
     <div class="products-list clear">
         <div class="product" ng-repeat="product in products">
-            <div class="productInfo">
+            <div class="product_info">
                 <img class="productImg" ng-src="{{ product.imageUrl}}" />
                 <div class="icons">
                     <div class="iconImg" ng-repeat="icon in product.icons">
@@ -35,9 +35,8 @@
                 <p class="subtitle">{{ product.subtitle}}</p>
                 <p class="rating">{{ product.rating}}</p>
                 <p class="price">{{ product.price}}</p>
-                <p class="details">{{ product.details}}</p>
-                <form class="details_arrow" method="get" action="#"> 
-                    <input type="submit" value=">" />
+                <form method="get" action="#"> 
+                    <input class="details_button" type="submit" value="לפרטים >" />
                 </form>
                 
                 
@@ -52,8 +51,8 @@
             <div class="point"></div>
             <div class="selectedPoint"></div>    
         </div>
-        <div class="leftArrow"></div>
-        <div class="rightArrow"></div>
+        <div class="left-arrow"><i class="fa fa-caret-left"></i></div>
+        <div class="right-arrow"><i class="fa fa-caret-right"></i></div>
     </div>
 
 
