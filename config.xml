@@ -2,14 +2,14 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "il.co.wallashops"
-        version   = "1.0.0">
+        version   = "1.0.1">
   <name>Walla! שופס</name>
 
   <description>
     Walla! שופס
   </description>
 
-  <author href="http://wwww.ylm.co.il" email="y@ylm.co.il">
+  <author href="http://wwww.wallashops.co.il" email="w@lla.shops">
     Walla! שופס
   </author>
 
