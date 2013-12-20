@@ -1,5 +1,60 @@
-﻿<h1>Home</h1>
+﻿<div class="promotions">
+    <div class="main-promotion">
+        <ul class="promotionList">
+            <li><b>מצלמות במבצע</b></li>
+            <li><b>מסעדות ב50% הנחה</b></li>
+            <li><b>קולקצית חורף 2012</b></li>
+        </ul>
+        <img ng-src="{{ main_promotion.promotion}}" alt="{{main_promotion.name}}" />
+    </div>
+
+    <div class="seasonal">
+        <img ng-src="{{ left_up.promotion}}" alt="{{ left_up.name }}" />
+        <img ng-src="{{ left_down.promotion}}" alt="{{ left_down.name }}" />
+
+    </div>
+</div>
 
 
-<img ng-src="{{ product.promotion}}"/>
-{{ product.name }}!
+
+<div class="products-list-container">
+    <h4>לאיזה מכירות כדאי לשים לב</h4>
+
+    <div class="products-list clear">
+        <div class="product" ng-repeat="product in products">
+            <div class="product_info">
+                <img class="productImg" ng-src="{{ product.imageUrl}}" />
+                <div class="icons">
+                    <div class="iconImg" ng-repeat="icon in product.icons">
+                        <img ng-src="{{ icon.url }}" />
+                    </div>    
+                </div>
+                
+                
+                <h3 class="title">{{ product.title }}</h3>
+                <p class="subtitle">{{ product.subtitle}}</p>
+                <p class="rating">{{ product.rating}}</p>
+                <p class="price">{{ product.price}}</p>
+                <form method="get" action="#"> 
+                    <input class="details_button" type="submit" value="לפרטים >" />
+                </form>
+                
+                
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="navigation">
+        <div class="navigationPoints">
+            <div class="point"></div>
+            <div class="selectedPoint"></div>    
+        </div>
+        <div class="left-arrow"><i class="fa fa-caret-left"></i></div>
+        <div class="right-arrow"><i class="fa fa-caret-right"></i></div>
+    </div>
+
+
+
+</div>
