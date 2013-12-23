@@ -5,6 +5,7 @@
             <li><b>מסעדות ב50% הנחה</b></li>
             <li><b>קולקצית חורף 2012</b></li>
         </ul>
+        <div class="up-arrow"><i class="fa fa-caret-up"></i></div>
         <img ng-src="{{ main_promotion.promotion}}" alt="{{main_promotion.name}}" />
     </div>
 
@@ -12,12 +13,13 @@
         <img ng-src="{{ seasonal_img1.promotion}}" alt="{{ seasonal_img1.name }}" />
         <img ng-src="{{ seasonal_img2.promotion}}" alt="{{ seasonal_img2.name }}" />
 
+
     </div>
 </div>
 
 <div class="products-list-container" ng-repeat="category in categories">
-   
+
     <products-list category="category"></products-list>
-    
+
 </div>
 

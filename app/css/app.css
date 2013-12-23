@@ -127,6 +127,12 @@ input[type=text].search_input
     margin-bottom: 4px;
 }
 
+.up-arrow {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: -7px;
+}
+
 .content
 {
     top: 64px;
@@ -287,8 +293,6 @@ input[type=text].search_input
 }
 
 .chevron-up, .chevron-down {
-    text-align: center;
-    width: 98%;
     position: relative;
     font-size: 20px;
     font-family: sans-serif;
@@ -297,18 +301,14 @@ input[type=text].search_input
     
 }
 
-.chevron-up {
-   
-}
-
 .fa-chevron-right {
     position: absolute;
-    right: 0;
+    right: 15px;
 }
 
 .fa-chevron-left {
     position: absolute;
-    left: 0;
+    left: 15px;
 }
 
 .clear:before,
