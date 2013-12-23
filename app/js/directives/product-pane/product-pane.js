@@ -1,9 +1,11 @@
 ﻿(function (S, WS) {
 
-    WS.AppHeaderDirective = {
+    WS.ProductPaneDirective = {
         restrict: 'E',
-        templateUrl: 'app/js/directives/app-header/app-header.html',
-        scope: true,
+        templateUrl: 'app/js/directives/product-pane/product-pane.html',
+        scope: {
+            product: "="
+        },
         link: function (scope, element, attributes, ctrl) {
             // bind clicks...            
             

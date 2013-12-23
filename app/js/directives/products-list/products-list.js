@@ -1,12 +1,14 @@
 ﻿(function (S, WS) {
 
-    WS.AppHeaderDirective = {
+    WS.ProductsListDirective = {
         restrict: 'E',
-        templateUrl: 'app/js/directives/app-header/app-header.html',
-        scope: true,
+        templateUrl: 'app/js/directives/products-list/products-list.html',
+        scope: {
+            category: "="
+        },
         link: function (scope, element, attributes, ctrl) {
             // bind clicks...            
-            
+
         }
     };
 
