@@ -322,3 +322,27 @@ input[type=text].search_input
 {
     clear: both;
 }
+
+.popover-title {
+    background-color: transparent;
+}
+
+
+.popover, .tab-content {
+    display: block;
+}
+
+.tab-pane p {
+    display: inline-block;
+}
+
+.tab-pane {
+    position: relative;
+}
+
+.tab-pane .fa {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+

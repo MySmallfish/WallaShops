@@ -28,7 +28,7 @@
             name: "xyz"
         };
         
-        $scope.categories = [{
+        $scope.promotionsCategories = [{
                 name: "לאן ללכת?",
                 products: [
                     { id: 1, title: "א. מכונה", subtitle: "לגבר המטרוסקסואלי", rating: "123456", icons: [{ url: "app/img/icon.png" }, { url: "app/img/icon.png" }], imageUrl: "app/img/product.png", price: "1000 שח", details: "לפרטים" },
@@ -48,6 +48,7 @@
                 ],
                 id: 2
             }];
+ 
 
 
     };

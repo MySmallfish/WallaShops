@@ -4,10 +4,12 @@
             <img src="app/img/logo.png"></a>
     </div>
     <div class="buffer"></div>
+
     <div class="category">
         <span><a href="#"><b>לפי קטגוריה</b></a></span>
         <i class="fa fa-caret-down"></i>
     </div>
+
     <div class="buffer"></div>
     <div class="search">
         <form method="get" action="#">
@@ -28,3 +30,24 @@
     </div>
 </header>
 
+<div class="popover bottom">
+    <div class="arrow"></div>
+    <h3 class="popover-title"></h3>
+
+    <div class="popover-content">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs">
+            <li><a href="#home" data-toggle="tab">קטגוריות</a></li>
+            <li><a href="#profile" data-toggle="tab">סינון</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane active" id="Div1" ng-repeat="category in categories">
+                <p><i class="fa fa-caret-left"></i></p>
+                <p>{{category.title}}</p>
+                
+            </div>
+            <div class="tab-pane" id="Div2">bbb</div>
+        </div>
+    </div>
+</div>

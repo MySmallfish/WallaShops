@@ -11,22 +11,22 @@
     <script type="text/javascript" src="phonegap.js"></script>
 
 </head>
-<body class="rtl">
+<body class="rtl" ng-controller="AppCtrl">
 
     <app-header></app-header>
-    
-    
     
     <div class="content">
         <div class="container-fluid">
             <ng-view></ng-view>
         </div>
     </div>
+ 
+
 
     <script src="lib/underscore/underscore.js"></script>
     <script src="lib/jquery/jquery-2.0.3.min.js"></script>
 
-    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular/angular.js"></script>
     <script src="lib/angular/angular-route.min.js"></script>
     <script src="lib/angular/angular-touch.min.js"></script>
 
@@ -73,6 +73,7 @@
     <script src="app/js/directives/products-list-navigation/products-list-navigation.js"></script>
     <script src="app/js/directives/products-list-items/products-list-items.js"></script>
     <!-- Controllers -->
+    <script src="app/js/controllers/app.js"></script>
     <script src="app/js/controllers/home.js"></script>
     <script src="app/js/controllers/search.js"></script>
     <script src="app/js/controllers/comparison.js"></script>
