@@ -322,27 +322,20 @@ input[type=text].search_input
 {
     clear: both;
 }
-
-.popover-title {
-    background-color: transparent;
+.popover {
+     display: block;
+}
+.category-children {
+    float: left;
 }
 
-
-.popover, .tab-content {
-    display: block;
+.categories-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
-.tab-pane p {
-    display: inline-block;
+.categories-menu li {
+    padding-right: 24px;
+    cursor: pointer;
 }
-
-.tab-pane {
-    position: relative;
-}
-
-.tab-pane .fa {
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-

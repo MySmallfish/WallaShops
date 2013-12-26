@@ -1,13 +1,11 @@
 ﻿(function (_, S, WS) {
 
     WS.HomeController = function ($scope) {
-        $scope.name = "Yair";
-        
         $scope.main_promotion = {
             promotion: "app/img/pic1.png",
             name: "xyz"
         };
-
+        
         $scope.seasonal_img1 = {
             promotion: "app/img/pic3.png",
             name: "xyz"

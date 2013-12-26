@@ -21,6 +21,7 @@
     
 
     app.controller("HomeCtrl", WS.HomeController);
+    app.controller("CatMenuCtrl", WS.CategoriesMenuController);
     app.controller("SearchCtrl", WS.SearchController);
     app.controller("ComparisonCtrl", WS.ComparisonController);
     app.controller("AppCtrl", WS.AppController);

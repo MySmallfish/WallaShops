@@ -1,0 +1,30 @@
+﻿<ul class="nav nav-tabs">
+    <li><a href="#categories" data-toggle="tab">קטגוריות</a></li>
+    <li><a href="#filter" data-toggle="tab">סינון</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="categories">
+        <ul class="categories-menu">
+            <li ng-click="clearSelectedCategory()">
+                כל הקטגוריות
+            </li>
+            <li ng-repeat="category in categories" ng-click="selectCategory(category)">
+                <div class="category-title">
+                    {{category.title}}
+                </div>
+                <i class="fa fa-caret-left category-children" ng-show="category.categories.length"></i>
+                <ul ng-show="category.categories.length && category == selectedCategory">
+                    <li ng-repeat="childCategory in category.categories" >
+                        <a ng-href="{{childCategory.externalLink.url}}" target="{{cihldCategory.target}}" ng-click="selectCategory(childCategory)">
+                            {{childCategory.title}}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+
+
+    </div>
+    <div class="tab-pane" id="filter">bbb</div>
+</div>
