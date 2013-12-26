@@ -1,6 +1,8 @@
 ﻿(function (_, S, WS) {
 
     var app = angular.module("WallaShops", ["ngRoute", "ngTouch", "Simple"]);
+
+    app.service("categoryService", WS.CategoryService);
     
     app.directive("appHeader", function () {
         return WS.AppHeaderDirective;
@@ -17,9 +19,15 @@
     app.directive("productsListItems", function () {
         return WS.ProductsListItemsDirective;
     });
-    
-    
+    app.directive("categorieMenu", function () {
+        return WS.CategoriesMenuController;
+        ;
+    });
 
+    
+    
+   
+    
     app.controller("HomeCtrl", WS.HomeController);
     app.controller("CatMenuCtrl", WS.CategoriesMenuController);
     app.controller("SearchCtrl", WS.SearchController);

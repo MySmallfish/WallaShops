@@ -1,23 +1,32 @@
 ﻿<ul class="nav nav-tabs">
     <li><a href="#categories" data-toggle="tab">קטגוריות</a></li>
-    <li><a href="#filter" data-toggle="tab">סינון</a></li>
+    <li class="filte"><a class="filtering" href="#filter" data-toggle="tab">סינון</a></li>
 </ul>
 <div class="tab-content">
-    <div class="tab-pane active" id="categories">
+    <div class="tab-pane active" id="categories" ng-class="{'somethingSelected': isAnythingSelected()}">
         <ul class="categories-menu">
-            <li ng-click="clearSelectedCategory()">
-                כל הקטגוריות
+
+            <li class="category-container" ng-click="clearSelectedCategory()">
+                <div class="category-name">כל הקטגוריות</div>
             </li>
+
             <li ng-repeat="category in categories" ng-click="selectCategory(category)">
-                <div class="category-title">
-                    {{category.title}}
+
+                <div class="category-container"   ng-class="{'selected': isSelected(category) }">
+                    <div class="category-dot">
+                        <i class="fa fa-circle"></i>
+                    </div>
+                    <div class="category-name">
+                        {{category.title}}
+                    </div>
+
+                    <div class="category-arrow" ng-if="category.categories.length">
+                        <i class="fa" ng-class="{ 'fa-caret-left': !isSelected(category), 'fa-caret-down': isSelected(category)}"></i>
+                    </div>
                 </div>
-                <i class="fa fa-caret-left category-children" ng-show="category.categories.length"></i>
-                <ul ng-show="category.categories.length && category == selectedCategory">
-                    <li ng-repeat="childCategory in category.categories" >
-                        <a ng-href="{{childCategory.externalLink.url}}" target="{{cihldCategory.target}}" ng-click="selectCategory(childCategory)">
-                            {{childCategory.title}}
-                        </a>
+
+                <ul ng-show="category.categories.length && isSelected(category)">
+                    <li class="level1" ng-repeat="childCategory in category.categories" ng-click="selectCategory(childCategory)">{{childCategory.title}}
                     </li>
                 </ul>
             </li>
@@ -28,3 +37,4 @@
     </div>
     <div class="tab-pane" id="filter">bbb</div>
 </div>
+

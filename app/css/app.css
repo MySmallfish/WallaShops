@@ -1,6 +1,12 @@
 ﻿body
 {
     direction: rtl;
+    font-size: 15px;
+}
+
+ul li
+{
+    list-style: none;
 }
 
 button, input[type=submit]
@@ -79,11 +85,6 @@ header
     margin-right: 1%;
 }
 
-.category
-{
-    font-size: 15px;
-}
-
 .search
 {
     position: relative;
@@ -127,7 +128,8 @@ input[type=text].search_input
     margin-bottom: 4px;
 }
 
-.up-arrow {
+.up-arrow
+{
     text-align: center;
     font-size: 20px;
     margin-bottom: -7px;
@@ -164,7 +166,7 @@ input[type=text].search_input
     margin-bottom: 10%;
 }
 
-.seasonal img
+.seasonal image
 {
     margin-bottom: 5%;
 }
@@ -292,24 +294,120 @@ input[type=text].search_input
     display: inline-block;
 }
 
-.chevron-up, .chevron-down {
+.chevron-up, .chevron-down
+{
     position: relative;
     font-size: 20px;
     font-family: sans-serif;
-    color: blue;
+    color: deepskyblue;
     height: 20px;
-    
 }
 
-.fa-chevron-right {
+.fa-chevron-right
+{
     position: absolute;
     right: 15px;
 }
 
-.fa-chevron-left {
+.fa-chevron-left
+{
     position: absolute;
     left: 15px;
 }
+
+.popover
+{
+    display: block;
+    background-color: red;
+}
+
+.filtering
+{
+    float: left;
+    position: absolute;
+}
+
+.categories-menu
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.category-container
+{
+    position: relative;
+    line-height: 40px;
+    border-bottom: solid 1px #BBB;
+}
+
+.somethingSelected .category-container {
+    background-color: #dddddd;
+}
+
+.categories-menu ul {
+    margin-right: 0;
+}
+
+.level1 {
+    padding-right: 30px;
+    line-height: 35px;
+    border-bottom: solid 1px #aaa;      
+}
+
+
+.category-dot
+{
+    position: absolute;
+    right: 10px;
+    top: 0;
+    width: 24px;
+    z-index: 1;
+    color: deepskyblue;
+    font-size: 10px;
+    display: none;
+}
+
+.category-container.selected .category-dot{
+    display: block;
+}
+.category-name, .nav li
+{
+    font-weight: bold;
+}
+
+.categories-menu
+{
+    cursor: pointer;
+}
+
+.category-name
+{
+    margin-left: 30px;
+    margin-right: 10px;
+}
+
+.category-container.selected .category-name
+{
+    margin-right: 30px;
+}
+
+.category-arrow
+{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 24px;
+    z-index: 1;
+    font-size: 20px;
+    color: grey;
+}
+
+.category-container.selected .category-arrow
+{
+    color: black;
+}
+
 
 .clear:before,
 .clear:after
@@ -322,20 +420,4 @@ input[type=text].search_input
 {
     clear: both;
 }
-.popover {
-     display: block;
-}
-.category-children {
-    float: left;
-}
 
-.categories-menu {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-.categories-menu li {
-    padding-right: 24px;
-    cursor: pointer;
-}
