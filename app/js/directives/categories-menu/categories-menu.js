@@ -2,14 +2,23 @@
     
     WS.CategoriesMenuController = ["$scope", "categoryService", function ($scope, categoryService) {
         var categories = null;
+        var filters = null;
+        
         categoryService.getCategories().then(function(items) {
             categories = items;
-
+            
             loadCategories();
         }, function(e) {
             console.log("Error", e);
         });
         
+        categoryService.getFilters().then(function (items) {
+            filters = items;
+
+            loadFilters();
+        }, function (e) {
+            console.log("Error", e);
+        });
         
         $scope.selectedCategory = null;
 
@@ -22,6 +31,17 @@
                 $scope.categories = categories;
             }
         }
+        
+        function loadFilters(lastSelected) {
+            if ($scope.selectedCategory) {
+                if (lastSelected && lastSelected.level == 0 && $scope.selectedCategory.level == 1) {
+                    $scope.filters = lastSelected.filters;
+                }
+            } else {
+                $scope.filters = filters;
+            }
+        }
+
         function publish(name, args) {
             $scope.$root.$broadcast(name, args);
         }
@@ -55,6 +75,7 @@
                 $scope.selectedCategory = category;
 
                 loadCategories(lastSelected);
+                loadFilters(lastSelected); /////////////////////////////////////////////////////////////
 
                 publishCategorySelectedEvent(lastSelected);
             }

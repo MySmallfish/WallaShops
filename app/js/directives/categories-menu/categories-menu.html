@@ -2,8 +2,9 @@
     <li><a href="#categories" data-toggle="tab">קטגוריות</a></li>
     <li class="filte"><a class="filtering" href="#filter" data-toggle="tab">סינון</a></li>
 </ul>
+
 <div class="tab-content">
-    <div class="tab-pane active" id="categories" ng-class="{'somethingSelected': isAnythingSelected()}">
+    <div class="tab-pane " id="categories" ng-class="{'somethingSelected': isAnythingSelected()}">
         <ul class="categories-menu">
 
             <li class="category-container" ng-click="clearSelectedCategory()">
@@ -32,9 +33,32 @@
             </li>
         </ul>
 
-
-
     </div>
-    <div class="tab-pane" id="filter">bbb</div>
+
+    <div class="tab-pane active" id="filter" ng-class="{'somethingSelected': isAnythingSelected()}">
+        <ul class="categories-menu">
+
+            <li ng-repeat="category in filters" ng-click="selectCategory(category)">
+
+                <div class="category-container"   ng-class="{'selected': isSelected(category) }">
+                    <div class="category-dot">
+                        <i class="fa fa-circle"></i>
+                    </div>
+                    <div class="category-name">
+                        {{category.title}}
+                    </div>
+
+                    <div class="category-arrow" ng-if="category.categories.length">
+                        <i class="fa" ng-class="{ 'fa-caret-left': !isSelected(category), 'fa-caret-down': isSelected(category)}"></i>
+                    </div>
+                </div>
+
+                <ul ng-show="category.categories.length && isSelected(category)">
+                    <li class="level1" ng-repeat="childCategory in category.categories" ng-click="selectCategory(childCategory)">{{childCategory.title}}
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 </div>
 
