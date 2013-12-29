@@ -113,7 +113,7 @@
                     id: 1,
                     title: "פילטר 1",
                     level: 1,
-                    categories: [
+                    values: [
                         { id: 11, title: "פילטר משנה 11", level: 2 },
                         { id: 12, title: "פילטר משנה 12", level: 2 },
                         { id: 13, title: "פילטר משנה 13", level: 2 },
@@ -125,7 +125,7 @@
                     id: 2,
                     title: "פילטר 2",
                     level: 1,
-                    categories: [
+                    values: [
                         { id: 21, title: "פילטר משנה 21", level: 2 },
                         { id: 22, title: "פילטר משנה 22", level: 2 },
                         { id: 23, title: "פילטר משנה 23", level: 2 },
@@ -137,7 +137,7 @@
                     id: 3,
                     title: "פילטר 3",
                     level: 1,
-                    categories: [
+                    values: [
                         { id: 31, title: "פילטר משנה 31", level: 2 },
                         { id: 32, title: "פילטר משנה 32", level: 2 },
                         { id: 33, title: "פילטר משנה 33", level: 2 },
@@ -149,7 +149,8 @@
                     id: 4,
                     title: "פילטר 4",
                     level: 1,
-                    categories: [
+                    
+                    values: [
                         { id: 41, title: "פילטר משנה 41", level: 2 },
                         { id: 42, title: "פילטר משנה 42", level: 2 },
                         { id: 43, title: "פילטר משנה 43", level: 2 },

@@ -19,10 +19,7 @@
     app.directive("productsListItems", function () {
         return WS.ProductsListItemsDirective;
     });
-    app.directive("categorieMenu", function () {
-        return WS.CategoriesMenuController;
-        ;
-    });
+    app.directive("wsCategoriesMenu", WS.CategoriesMenuDirective);
 
     
     
