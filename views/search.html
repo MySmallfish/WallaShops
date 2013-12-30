@@ -4,8 +4,11 @@
 </div>
 
 <div class="products-list-container clear">
-    <products-list-items products="products | limitTo:products.length/2"></products-list-items>
-    <products-list-items products="products | skip:products.length/2"></products-list-items>
+    <div class="products-list-content" ng-style="{'width': (256*productsLine1.length) + 'px'}">
+    <products-list-items products="productsLine1"></products-list-items>
+        <products-list-items products="productsLine2"></products-list-items>
+        </div>
+
 </div>
 
 <div class="chevron-down">

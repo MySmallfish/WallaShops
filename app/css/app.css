@@ -19,19 +19,19 @@ a
     color: black;
 }
 
-.buffer
+.right-buffer, .left-buffer
 {
+    position: absolute;
     background-color: grey;
     top: 0;
     width: 2px;
     height: 100%;
-    margin-right: 4px;
-    margin-left: 4px;
     font-size: 1px;
     opacity: .75;
+   
 }
 
-.buffer
+.right-buffer, .left-buffer
 {
     background: #b0b7c1; /* Old browsers */
     background: -moz-linear-gradient(top, #b0b7c1 0%, #c6cdd7 51%, #e6eef9 86%, #f7f7f7 100%); /* FF3.6+ */
@@ -42,6 +42,7 @@ a
     background: linear-gradient(to bottom, #b0b7c1 0%,#c6cdd7 51%,#e6eef9 86%,#f7f7f7 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b0b7c1', endColorstr='#f7f7f7',GradientType=0 ); /* IE6-9 */
 }
+
 
 header
 {
@@ -68,58 +69,129 @@ header
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ecf1f7', endColorstr='#dbe6fa',GradientType=0 ); /* IE6-9 */
 }
 
-    header div
-    {
-        float: right;
-        text-align: center;
-    }
+.header-left-side {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200px;
+    
 
-
-.category, .search, .hello_user
-{
-    margin-left: 7%;
 }
 
-.logo
-{
-    text-align: right;
-    margin-right: 1%;
+.header-right-side {
+    position: absolute;
+    right: 0;
+    width: 300px;
 }
+
+.logo {
+    position: relative;
+    width: 170px;
+}
+
+.header-category {
+    position: absolute;
+    top: 0;
+    left: 20px;
+}
+
+.category {
+    background-color: transparent;
+    border: none;
+    font-size: 12pt;
+    outline: none;
+}
+
+.right-buffer {
+    
+    left: 0;
+}
+
+.left-buffer {
+    left:60px;
+}
+
+.hello_user {
+    width: 100px;
+}
+
 
 .search
 {
     position: relative;
-    display: inline-block;
+    display: block;
+    margin-left: 200px;
+    margin-right: 300px;
+    height: 100%;
+     padding-top: 8px;
 }
 
-.search_button
+.search-inner {
+     position: relative;
+    border: solid 1px #333;
+    border-radius: 4px;
+    line-height: 24px;
+    background-color: white;
+    margin-left: 24px;
+    margin-right: 24px;
+    height: 28px;
+   
+}
+
+form {
+    margin: 0;
+    padding: 0;
+}
+
+.search-button input[type=submit]
 {
-    height: 30px;
-    width: 60px;
-    border-radius: 5px 0 0 5px;
-    letter-spacing: 1px;
     color: white;
-    border: solid 1px black;
-    background-color: black;
-    z-index: 1;
+    background-color: #333;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 4px 0 0 4px;
 }
 
-input[type=text].search_input
+.search-input {
+    margin-left: 60px;
+}
+.search-button {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 60px;
+    height: 100%;
+    
+}
+.search-input input[type=text]
 {
-    height: 20px;
-    width: 150px;
-    margin-top: 9px;
-    margin-left: -5px;
-    border: solid 1px grey;
-    border-radius: 0 5px 5px 0;
+    height: 100%;
+    width: 100%;
     letter-spacing: 1px;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+    font-size: 15pt;
+    line-height: 20pt;
+    text-indent: .2em;
+
 }
 
 .cart
 {
-    float: left;
+    position: absolute;
+    left: 5px;
+    top: 0;
     margin-left: 4px;
     margin-right: 4px;
+    width: 100px;
+    text-align: center;
+}
+.cart a {
+    position: absolute;
+    left: 0;
 }
 
 .promotion-list li
@@ -175,6 +247,8 @@ input[type=text].search_input
 .products-list-container
 {
     position: relative;
+    overflow: auto;
+    overflow-y: hidden;
 }
 
 .products-list
@@ -190,7 +264,7 @@ input[type=text].search_input
     background-color: white;
     float: right;
     height: 250px;
-    width: 25%;
+    width: 236px;
     margin-bottom: 50px;
 }
 
@@ -251,6 +325,7 @@ input[type=text].search_input
     background-color: white;
     font-size: 30px;
     text-align: center;
+   
 }
 
 .right-arrow

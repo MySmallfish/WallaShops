@@ -43,7 +43,7 @@
         function publishCategorySelectedEvent(lastSelected) {
             publish("WallaShops.CategorySelected", {
                 previous: lastSelected,
-                catgory: $scope.selectCategory
+                category: $scope.selectedCategory
             });
 
         }

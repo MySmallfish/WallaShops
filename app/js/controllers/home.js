@@ -8,12 +8,12 @@
         
         $scope.seasonal_image1 = {
             promotion: "app/img/pic3.png",
-            name: "xyz"
+            name: "1"
         };
 
-        $scope.seasonal_image12 = {
+        $scope.seasonal_image2 = {
             promotion: "app/img/pic3.png",
-            name: "xyz"
+            name: "2"
         };
 
         $scope.product = {

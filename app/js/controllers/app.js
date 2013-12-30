@@ -1,9 +1,18 @@
 ﻿(function (_, S, WS) {
 
-    WS.AppController = ["$scope", "categoryService",function ($scope, categoryService) {
+    WS.AppController = [
+        "$scope",
+        "$location",
+        "categoryService",
+        function ($scope, $location, categoryService) {
 
         $scope.$on("WallaShops.CategorySelected", function (eventInfo, args) {
-            console.log("CATEGORY!!!! ", args);
+            console.log(args.category);
+            if (args.category) {
+                $location.path("/Search");
+            } else {
+                $location.path("/");
+            }
         });
 
         $scope.$on("WallaShops.FilterValueSelected", function (eventInfo, args) {
