@@ -10,11 +10,21 @@
             console.log(args);
         });
 
-        $scope.loadCategories = function() {
+        //$scope.categoriesPopOver = {
+        //    content: "categories-menu.html",
+        //    placement: "bottom",
+        //    trigger:"click"
+        //};
+        $scope.loadCategories = function () {
+            
             return categoryService.getCategories();
+        };
+
+        $scope.loadFilters = function () {
+            return categoryService.getFilters();
         };        
 
-
+        
     }];
 
 })(_, Simple, WallaShops);

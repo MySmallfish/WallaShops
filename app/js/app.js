@@ -1,6 +1,6 @@
 ﻿(function (_, S, WS) {
 
-    var app = angular.module("WallaShops", ["ngRoute", "ngTouch", "Simple"]);
+    var app = angular.module("WallaShops", ["ngRoute", "ngTouch", "$strap", "Simple"]);
 
     app.service("categoryService", WS.CategoryService);
     
@@ -20,7 +20,10 @@
         return WS.ProductsListItemsDirective;
     });
     app.directive("wsCategoriesMenu", WS.CategoriesMenuDirective);
-
+    app.directive("wsCategoriesMenuTrigger", WS.CategoriesMenuTriggerDirective);
+    app.directive("wsCategories", WS.CategoriesDirective);
+    app.directive("wsFilter", WS.FilterDirective);
+    
     
     
    

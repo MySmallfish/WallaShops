@@ -49,6 +49,7 @@ header
     left: 0;
     right: 0;
     height: 48px;
+    z-index: 1000;
     overflow: hidden;
     line-height: 48px;
 }
@@ -315,18 +316,6 @@ input[type=text].search_input
     left: 15px;
 }
 
-.popover
-{
-    display: block;
-    background-color: red;
-}
-
-.filtering
-{
-    float: left;
-    position: absolute;
-}
-
 .categories-menu, .filters-menu
 {
     cursor: pointer;
@@ -428,4 +417,3 @@ input[type=text].search_input
 {
     clear: both;
 }
-

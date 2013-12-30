@@ -1,83 +1,29 @@
 ﻿<div class="categories-menu-container">
-<ul class="nav nav-tabs">
-    <li><a href="#categories" data-toggle="tab">קטגוריות</a></li>
-    <li class="filte"><a class="filtering" href="#filter" data-toggle="tab">סינון</a></li>
-</ul>
+    <ul class="nav nav-tabs" >
+        <li class="active">
+            <a href="#categories" data-toggle="tab">קטגוריות</a>
+        </li>
+        <li class="filter">
+            <a class="filtering" href="#filter" data-toggle="tab">סינון</a>
+        </li>
+    </ul>
 
-<div class="tab-content">
-    <div class="tab-pane active " id="categories" ng-class="{'somethingSelected': isAnythingSelected()}">
-        <ul class="categories-menu">
-
-            <li class="category-container" ng-click="clearSelectedCategory()">
-                <div class="category-name">כל הקטגוריות</div>
-            </li>
-
-            <li ng-repeat="category in categories" ng-click="selectCategory(category)">
-
-                <div class="category-container" ng-class="{'selected': isSelected(category) }">
-                    <div class="category-dot">
-                        <i class="fa fa-circle"></i>
-                    </div>
-                    <div class="category-name">
-                        {{category.title}}
-                    </div>
-
-                    <div class="category-arrow" ng-if="category.categories.length">
-                        <i class="fa" ng-class="{ 'fa-caret-left': !isSelected(category), 'fa-caret-down': isSelected(category)}"></i>
-                    </div>
-                </div>
-
-                <ul ng-show="category.categories.length && isSelected(category)">
-                    <li class="level1" ng-repeat="childCategory in category.categories" ng-click="selectCategory(childCategory)">{{childCategory.title}}
-                    </li>
-                </ul>
-            </li>
-        </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="categories">
+            <ws-categories load="loadCategories()"></ws-categories>
+        </div>
+        <div class="tab-pane" id="filter">
+            <ws-filter load="loadFilters()"></ws-filter>
+        </div>
 
     </div>
 
-    <div class="tab-pane" id="filter" ng-class="{'somethingSelected': isAnyFilterSelected()}">
-        <ul class="filters-menu">
-            
-            <li class="category-container" ng-click="clearSelectedFilterValues()">
-                <div class="clear-filter"  >נקה סינון</div>
-                <div class="category-name">שם הקטגוריה</div>
-            </li>
+    <!--    <div class="popover bottom">
+        <div class="popover-title">ABC</div>
+        <div class="popover-content">
+           
+        </div>
+    </div>-->
 
-            <li ng-repeat="filter in filters|limitTo: 4" ng-click="selectFilter(filter)">
-
-                <div class="category-container" ng-class="{'selected': isFilterSelected(filter) }">
-                    <div class="category-dot">
-                        <i class="fa fa-circle"></i>
-                    </div>
-                    <div class="category-name">
-                        {{filter.title}}
-                    </div>
-
-                    <div class="category-arrow" ng-if="filter.values.length">
-                        <i class="fa" ng-class="{ 'fa-caret-left': !isFilterSelected(filter), 'fa-caret-down': isFilterSelected(filter)}"></i>
-                    </div>
-                </div>
-
-                <ul ng-show="filter.values.length && isFilterSelected(filter)">
-                    <li class="level1" ng-repeat="filterValue in filter.values" ng-click="selectFilterValue(filter, filterValue)">
-                        <div class="filter-container" ng-class="{'selected': isFilterValueSelected(filter, filterValue) }">
-                            
-                            <div class="filter-check">
-                                <i class="fa fa-check"></i>
-                            </div>
-                            <div class="category-name">
-                                {{filterValue.title}}
-                            </div>
-
-                        </div>
-
-
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-</div>
 </div>
 
