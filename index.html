@@ -11,17 +11,28 @@
     <script type="text/javascript" src="phonegap.js"></script>
 
 </head>
-<body class="rtl" ng-controller="AppCtrl">
+<body class="rtl" ng-controller="AppCtrl" ng-init="name='Shir'; age=20">
+    
+    <div >
+        <sample name="name" age="age">
+        </sample>
+    </div>
+    
+    <h2>{{name}}, {{age}}</h2>
+
+
 
     <app-header></app-header>
     
     <div class="content">
         <div class="container-fluid">
             <ng-view></ng-view>
+            <button class="category">CLICK ON ME!!!!</button>
         </div>
     </div>
- 
-
+    
+    
+    
 
     <script src="lib/underscore/underscore.js"></script>
     <script src="lib/jquery/jquery-2.0.3.min.js"></script>

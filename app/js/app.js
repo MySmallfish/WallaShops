@@ -21,12 +21,7 @@
     });
     app.directive("categorieMenu", function () {
         return WS.CategoriesMenuController;
-        ;
     });
-
-    
-    
-   
     
     app.controller("HomeCtrl", WS.HomeController);
     app.controller("CatMenuCtrl", WS.CategoriesMenuController);

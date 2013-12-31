@@ -61,4 +61,6 @@
         };
     }];
 
+
+
 })(_, Simple, WallaShops);
