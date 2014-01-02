@@ -217,7 +217,6 @@ form {
     bottom: 0;
     left: 0;
     right: 0;
-    overflow: auto;
 
     overflow: scroll;
     -webkit-overflow-scrolling: touch;
@@ -252,7 +251,6 @@ form {
 .products-list-container
 {
     position: relative;
-    overflow: auto;
     overflow-y: hidden;
     margin: auto;
 }
@@ -264,6 +262,10 @@ form {
     right: 1%;
     top: 20px;
     margin: auto;
+}
+
+.products-list-content .products-list {
+    margin: 0;
 }
 
 .product
