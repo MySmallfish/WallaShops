@@ -5,8 +5,8 @@
 
 <div class="products-list-container clear">
     <div class="products-list-content" ng-style="{'width': (256*productsLine1.length) + 'px'}">
-    <products-list-items products="productsLine1"></products-list-items>
-        <products-list-items products="productsLine2"></products-list-items>
+    <products-list-items products="productsLine1" show-product="showProduct(product)"></products-list-items>
+        <products-list-items products="productsLine2" show-product="showProduct(product)"></products-list-items>
         </div>
 </div>
 

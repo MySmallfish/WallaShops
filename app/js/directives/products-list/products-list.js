@@ -4,11 +4,12 @@
         restrict: 'E',
         templateUrl: 'app/js/directives/products-list/products-list.html',
         scope: {
-            category: "="
+            category: "=", 
+            showProduct: "&"
         },
-        link: function (scope, element, attributes, ctrl) {
-            // bind clicks...            
-
+        link: function(scope, element, attributes, ctrl) {
+            // bind clicks...          
+            
         }
     };
 

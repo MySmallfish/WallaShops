@@ -1,8 +1,7 @@
-﻿<div class="navigation">
-    <div class="navigationPoints">
+﻿    <div class="navigationPoints">
         <div class="point"></div>
         <div class="selectedPoint"></div>
     </div>
-    <div class="left-arrow"><i class="fa fa-caret-left"></i></div>
-    <div class="right-arrow"><i class="fa fa-caret-right"></i></div>
-</div>
+    <div class="left-arrow" ><i class="fa fa-caret-left" ng-click="canNavigateNext()? navigateNext():null"></i></div>
+    <div class="right-arrow" ><i class="fa fa-caret-right" ng-click="canNavigateBack()?navigateBack():null"></i></div>
+

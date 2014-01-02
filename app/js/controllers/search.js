@@ -22,6 +22,11 @@
         ];
         $scope.productsLine1 = $filter("limitTo")(products, products.length/2);
         $scope.productsLine2 = $filter("skip")(products, products.length / 2);
+
+       
+
     };
     
+    
+
 })(_, Simple, WallaShops);

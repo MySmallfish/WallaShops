@@ -4,7 +4,8 @@
         restrict: 'E',
         templateUrl: 'app/js/directives/products-list-items/products-list-items.html',
         scope: {
-            products: "="
+            products: "=",
+            showProduct: "&"
         },
         link: function (scope, element, attributes, ctrl) {
             // bind clicks...            

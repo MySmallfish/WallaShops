@@ -1,18 +1,21 @@
-﻿<div class="product_info">
-    <img class="productImg" ng-src="{{ product.imageUrl }}" />
-    <div class="icons">
-        <div class="iconImg" ng-repeat="icon in product.icons">
-            <img ng-src="{{ icon.url }}" />
+﻿<div class="product-border">
+
+    <div class="product-info">
+        <img class="productImg" ng-src="{{ product.imageUrl }}" />
+        <div class="icons">
+            <div class="iconImg" ng-repeat="icon in product.icons">
+                <img ng-src="{{ icon.url }}" />
+            </div>
         </div>
+
+        <h3 class="title">{{ product.title }}</h3>
+        <p class="subtitle">{{ product.subtitle}}</p>
+        <p class="rating">{{ product.rating}}</p>
+        <p class="price">{{ product.price}}</p>
+        <form method="get" action="#">
+            <input class="details_button" type="submit" value="לפרטים >" />
+        </form>
+
     </div>
-
-    <h3 class="title">{{ product.title }}</h3>
-    <p class="subtitle">{{ product.subtitle}}</p>
-    <p class="rating">{{ product.rating}}</p>
-    <p class="price">{{ product.price}}</p>
-    <form method="get" action="#">
-        <input class="details_button" type="submit" value="לפרטים >" />
-    </form>
-
 
 </div>
