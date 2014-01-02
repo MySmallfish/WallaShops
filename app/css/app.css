@@ -1,7 +1,7 @@
 ﻿body
 {
     direction: rtl;
-    font-size: 15px;
+    font-size: 12pt;
 }
 
 ul li
@@ -93,6 +93,7 @@ header
     position: absolute;
     top: 0;
     left: 20px;
+    text-align: center;
 }
 
 .category {
@@ -104,7 +105,7 @@ header
 
 .right-buffer {
     
-    left: 0;
+    left: 10px;
 }
 
 .left-buffer {
@@ -113,6 +114,7 @@ header
 
 .hello_user {
     width: 100px;
+    text-align: center;
 }
 
 
@@ -204,7 +206,7 @@ form {
 .up-arrow
 {
     text-align: center;
-    font-size: 20px;
+    font-size: 15pt;
     margin-bottom: -7px;
 }
 
@@ -239,7 +241,7 @@ form {
     margin-bottom: 10%;
 }
 
-.seasonal image
+.seasonal img
 {
     margin-bottom: 5%;
 }
@@ -249,6 +251,7 @@ form {
     position: relative;
     overflow: auto;
     overflow-y: hidden;
+    margin: auto;
 }
 
 .products-list
@@ -278,7 +281,7 @@ form {
 
 .subtitle, .rating, .price
 {
-    font-size: 16px;
+    font-size: 12pt;
 }
 
 .price, .details_button
@@ -292,7 +295,7 @@ form {
 {
     height: 30px;
     width: 30px;
-    border-radius: 5px;
+    border-radius: 10px;
     border: solid 1px;
     left: 15px;
 }
@@ -306,6 +309,7 @@ form {
 
 .navigation
 {
+    margin: auto;
     position: absolute;
     z-index: 1;
     left: 0;
@@ -321,10 +325,11 @@ form {
     border-radius: 20px;
     border: solid 1px grey;
     position: absolute;
-    top: 50%;
+    top: 45%;
     background-color: white;
-    font-size: 30px;
+    font-size: 22pt;
     text-align: center;
+    line-height: 30px;
    
 }
 
@@ -344,7 +349,7 @@ form {
     left: 1%;
     height: 48px;
     line-height: 48px;
-    font-size: 1px;
+    font-size: 1pt;
 }
 
 .point
@@ -373,22 +378,22 @@ form {
 .chevron-up, .chevron-down
 {
     position: relative;
-    font-size: 20px;
+    font-size: 15pt;
     font-family: sans-serif;
     color: deepskyblue;
     height: 20px;
 }
 
-.fa-chevron-right
+.search-right-arrow
 {
     position: absolute;
-    right: 15px;
+    right: 0;
 }
 
-.fa-chevron-left
+.search-left-arrow
 {
     position: absolute;
-    left: 15px;
+    left: 0;
 }
 
 .categories-menu, .filters-menu
@@ -440,7 +445,7 @@ form {
     width: 24px;
     z-index: 1;
     color: deepskyblue;
-    font-size: 10px;
+    font-size: 7pt;
     display: none;
 }
 
@@ -472,7 +477,7 @@ form {
     bottom: 0;
     width: 24px;
     z-index: 1;
-    font-size: 20px;
+    font-size: 15pt;
     color: grey;
 }
 
