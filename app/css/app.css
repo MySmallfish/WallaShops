@@ -218,6 +218,9 @@ form {
     left: 0;
     right: 0;
     overflow: auto;
+
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 
 .main-promotion
@@ -335,18 +338,18 @@ form {
 
 .right-arrow
 {
-    right: 0;
+    right: 10px;
 }
 
 .left-arrow
 {
-    left: 0;
+    left: 10px;
 }
 
 .navigationPoints
 {
     position: absolute;
-    left: 5px;
+    left: 20px;
     height: 48px;
     line-height: 48px;
     font-size: 1pt;
