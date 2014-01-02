@@ -260,6 +260,7 @@ form {
     position: relative;
     right: 1%;
     top: 20px;
+    margin: auto;
 }
 
 .product
@@ -320,17 +321,16 @@ form {
 
 .right-arrow, .left-arrow
 {
+    position: absolute;
     height: 30px;
     width: 30px;
     border-radius: 20px;
     border: solid 1px grey;
-    position: absolute;
     top: 45%;
     background-color: white;
     font-size: 22pt;
     text-align: center;
-    line-height: 30px;
-   
+    line-height: 30px;  
 }
 
 .right-arrow
@@ -346,7 +346,7 @@ form {
 .navigationPoints
 {
     position: absolute;
-    left: 1%;
+    left: 5px;
     height: 48px;
     line-height: 48px;
     font-size: 1pt;
@@ -358,6 +358,8 @@ form {
     width: 15px;
     border-radius: 15px;
     margin: 2.5px 0 2.5px 0;
+    border: solid 1px lightgrey;
+    background-color: lightgrey;
 }
 
 .selectedPoint
@@ -365,14 +367,18 @@ form {
     height: 20px;
     width: 20px;
     border-radius: 30px;
+    border: solid 1px darkgrey;
+    background-color: darkgrey;
 }
 
 .point, .selectedPoint
 {
-    border: solid 1px grey;
-    background-color: grey;
     margin-right: 5px;
     display: inline-block;
+}
+
+.products-list-name {
+    margin-right: 20px;
 }
 
 .chevron-up, .chevron-down
