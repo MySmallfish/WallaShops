@@ -7,6 +7,7 @@
             category: "=", 
             showProduct: "&"
         },
+        replace: true,
         link: function(scope, element, attributes, ctrl) {
             // bind clicks...          
             

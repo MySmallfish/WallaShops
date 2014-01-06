@@ -28,7 +28,6 @@ a
     height: 100%;
     font-size: 1px;
     opacity: .75;
-   
 }
 
 .right-buffer, .left-buffer
@@ -69,50 +68,55 @@ header
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ecf1f7', endColorstr='#dbe6fa',GradientType=0 ); /* IE6-9 */
 }
 
-.header-left-side {
+.header-left-side
+{
     position: absolute;
     left: 0;
     top: 0;
     width: 200px;
-    
-
 }
 
-.header-right-side {
+.header-right-side
+{
     position: absolute;
     right: 0;
     width: 300px;
 }
 
-.logo {
+.logo
+{
     position: relative;
     width: 170px;
 }
 
-.header-category {
+.header-category
+{
     position: absolute;
     top: 0;
     left: 20px;
     text-align: center;
 }
 
-.category {
+.category
+{
     background-color: transparent;
     border: none;
     font-size: 12pt;
     outline: none;
 }
 
-.right-buffer {
-    
+.right-buffer
+{
     left: 10px;
 }
 
-.left-buffer {
-    left:60px;
+.left-buffer
+{
+    left: 60px;
 }
 
-.hello_user {
+.hello_user
+{
     width: 100px;
     text-align: center;
 }
@@ -125,11 +129,11 @@ header
     margin-left: 200px;
     margin-right: 300px;
     height: 100%;
-     padding-top: 8px;
-     
+    padding-top: 8px;
 }
 
-.search-inner {
+.search-inner
+{
     position: relative;
     box-shadow: inset -2px 2px 1px silver;
     background-color: white;
@@ -138,11 +142,10 @@ header
     margin-left: 24px;
     margin-right: 24px;
     height: 28px;
-    
-   
 }
 
-form {
+form
+{
     margin: 0;
     padding: 0;
 }
@@ -157,18 +160,20 @@ form {
     border-radius: 4px 0 0 4px;
 }
 
-.search-input {
+.search-input
+{
     margin-left: 60px;
-   
 }
-.search-button {
+
+.search-button
+{
     position: absolute;
     left: 0;
     top: 0;
     width: 60px;
     height: 100%;
-    
 }
+
 .search-input input[type=text]
 {
     height: 100%;
@@ -178,11 +183,10 @@ form {
     box-shadow: none;
     margin: 0;
     padding: 0;
-    font-size: 15pt;
+    font-size: 14pt;
     line-height: 20pt;
     text-indent: .2em;
-    background-color: transparent; 
-
+    background-color: transparent;
 }
 
 .cart
@@ -195,10 +199,12 @@ form {
     width: 100px;
     text-align: center;
 }
-.cart a {
-    position: absolute;
-    left: 0;
-}
+
+    .cart a
+    {
+        position: absolute;
+        left: 0;
+    }
 
 .promotion-list li
 {
@@ -221,7 +227,6 @@ form {
     bottom: 0;
     left: 0;
     right: 0;
-
     overflow: scroll;
     -webkit-overflow-scrolling: touch;
 }
@@ -266,11 +271,14 @@ form {
     right: 1%;
     top: 20px;
     margin: auto;
+   
 }
 
-.products-list-content .products-list {
+.products-list-content .products-list
+{
     margin: 0;
 }
+
 
 .product
 {
@@ -280,19 +288,40 @@ form {
     height: 248px;
     width: 230px;
     margin-bottom: 50px;
+    
 }
 
-
-
-.product-border {
-    background-color: blue;
-    margin: 2px 2px 2px 2px;
+.product{
+background: #eaeaea; /* Old browsers */
+background: -moz-linear-gradient(top, #eaeaea 0%, #ffffff 3%, #ffffff 97%, #f2f2f2 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eaeaea), color-stop(3%,#ffffff), color-stop(97%,#ffffff), color-stop(100%,#f2f2f2)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #eaeaea 0%,#ffffff 3%,#ffffff 97%,#f2f2f2 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #eaeaea 0%,#ffffff 3%,#ffffff 97%,#f2f2f2 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #eaeaea 0%,#ffffff 3%,#ffffff 97%,#f2f2f2 100%); /* IE10+ */
+background: linear-gradient(to bottom, #eaeaea 0%,#ffffff 3%,#ffffff 97%,#f2f2f2 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eaeaea', endColorstr='#f2f2f2',GradientType=0 ); /* IE6-9 */
 }
 
+div,i{
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.product-border
+{
+    margin: 6px 2px 6px 2px;
+    background-color: white;
+}
+.product:last-child {
+    border-left: solid 3px #ccc;
+}
+
+.product:first-child {
+    border-right: solid 3px #ccc;
+}
 .product-info
 {
-    
-    height: 244px;
+    height: 235px;
     padding-right: 25px;
     position: relative;
 }
@@ -347,22 +376,26 @@ form {
     background-color: white;
     font-size: 22pt;
     text-align: center;
-    line-height: 30px;  
+    line-height: 30px;
+    
 }
 
 .right-arrow
 {
-    right: 10px;
+    right: 3px;
+    box-shadow:  -1px 1px 1px 5px #eee
 }
 
 .left-arrow
 {
-    left: 10px;
+    left: 3px;
+    box-shadow:  1px 1px 1px 5px #eee
 }
 
 .navigationPoints
 {
     position: absolute;
+    top: 0;
     left: 20px;
     height: 48px;
     line-height: 48px;
@@ -394,7 +427,8 @@ form {
     display: inline-block;
 }
 
-.products-list-name {
+.products-list-name
+{
     margin-right: 20px;
 }
 
@@ -434,29 +468,34 @@ form {
     border-bottom: solid 1px #BBB;
 }
 
-.filter-container {
+.filter-container
+{
     position: relative;
     border-bottom: none;
 }
 
-.clear-filter {
+.clear-filter
+{
     position: absolute;
     left: 10px;
     text-decoration: underline;
 }
 
-.somethingSelected .category-container {
+.somethingSelected .category-container
+{
     background-color: #dddddd;
 }
 
-.categories-menu ul , .filters-menu ul{
+.categories-menu ul, .filters-menu ul
+{
     margin-right: 0;
 }
 
-.level1 {
+.level1
+{
     padding-right: 30px;
     line-height: 35px;
-    border-bottom: solid 1px #aaa;      
+    border-bottom: solid 1px #aaa;
 }
 
 
@@ -477,6 +516,7 @@ form {
 {
     display: block;
 }
+
 .category-name, .nav li
 {
     font-weight: bold;
