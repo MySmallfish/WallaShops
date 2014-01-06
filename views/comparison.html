@@ -1,1 +1,21 @@
-﻿<h1>Compare</h1>
+﻿<div class="comparison-page">
+
+
+    <table class="compare-table">
+        <thead>
+            <tr>
+                <th ng-repeat="feature in category.features">{{feature.header}}</th>
+            </tr>
+        </thead>
+
+        <tr ng-repeat="product in products">
+            <td ng-repeat="feature in category.features">
+                    {{product[feature.name]}}    
+            </td>
+        </tr>
+
+
+    </table>
+
+    <div class="add-product-to-compare"><i class="fa fa-plus-circle"></i></div>
+</div>
