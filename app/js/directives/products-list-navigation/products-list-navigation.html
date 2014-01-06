@@ -1,9 +1,9 @@
 ﻿<div>
-    <div class="navigationPoints">
-        <div class="point"></div>
-        <div class="selectedPoint"></div>
+    <div class="navigationPoints" >
+        <div class="point" ng-repeat="point in points" ng-class="{'selectedPoint': point.selected }" ></div>
     </div>
-    <div class="left-arrow"><i class="fa fa-caret-left" ng-click="navigateNext()"></i></div>
-    <div class="right-arrow"><i class="fa fa-caret-right" ng-click="navigateBack()"></i></div>
+    
+    <div class="left-arrow" ng-class="{'disabled': !canNavigateNext()}"><i class="fa fa-caret-left" ng-click="navigateNext()"></i></div>
+    <div class="right-arrow" ng-class="{'disabled': !canNavigateBack()}"><i class="fa fa-caret-right" ng-click="navigateBack()"></i></div>
 
 </div>

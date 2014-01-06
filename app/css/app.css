@@ -331,20 +331,20 @@ div,i{
     font-size: 12pt;
 }
 
-.price, .details_button
+.price, .details
 {
     position: absolute;
     margin-bottom: 0;
     bottom: 7px;
 }
 
-.details_button
+.details
 {
-    height: 30px;
-    width: 30px;
-    border-radius: 10px;
-    border: solid 1px;
     left: 15px;
+}
+
+.details i {
+    font-size: 8pt;
 }
 
 .icons
@@ -392,33 +392,36 @@ div,i{
     box-shadow:  1px 1px 1px 5px #eee
 }
 
+.disabled {
+    color: #bbb;   
+}
+
 .navigationPoints
 {
     position: absolute;
     top: 0;
     left: 20px;
     height: 48px;
-    line-height: 48px;
     font-size: 1pt;
 }
 
 .point
 {
-    height: 15px;
-    width: 15px;
-    border-radius: 15px;
-    margin: 2.5px 0 2.5px 0;
-    border: solid 1px lightgrey;
-    background-color: lightgrey;
+    height: 13px;
+    width: 13px;
+    border-radius: 20px;
+    background-color: #ddd;
+    margin-bottom: 2px;
+    
 }
 
 .selectedPoint
 {
-    height: 20px;
-    width: 20px;
-    border-radius: 30px;
-    border: solid 1px darkgrey;
-    background-color: darkgrey;
+    height: 17px;
+    width: 17px;
+    border-radius: 10px; 
+    background-color: #aaa;
+    margin-bottom: 0;
 }
 
 .point, .selectedPoint
@@ -560,3 +563,5 @@ div,i{
 {
     clear: both;
 }
+
+

@@ -1,5 +1,5 @@
-﻿<div>
-    <h4 class="products-list-name">{{category.name}}</h4>
+﻿<div ng-show="category.products.length" ng-swipe-right="navigateNext()" ng-swipe-left="navigateBack()">
+     <h4 class="products-list-name">{{category.name}}</h4>
     <products-list-items products="category.currentProductsPage" show-product="showProduct(products)"></products-list-items>
     <products-list-navigation></products-list-navigation>
 

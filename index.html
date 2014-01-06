@@ -12,15 +12,18 @@
 
 </head>
 <body class="rtl" ng-controller="AppCtrl">
-    <div class="content-container">
-    <app-header></app-header>
-    
-    <div class="content">
-        <div class="container-fluid">
-            <ng-view></ng-view>
+
+    <div class="content-container" >
+        <app-header></app-header>
+
+        <div class="content">
+            <div class="container-fluid">
+                <ng-view></ng-view>
+            </div>
         </div>
     </div>
- </div>
+
+
 
     <script src="lib/underscore/underscore.js"></script>
     <script src="lib/jquery/jquery-2.0.3.min.js"></script>
@@ -28,7 +31,7 @@
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular/angular-route.min.js"></script>
     <script src="lib/angular/angular-touch.min.js"></script>
-    
+
     <script src="lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="lib/angular-strap/angular-strap.js"></script>
 
@@ -66,7 +69,7 @@
     <script src="app/js/wallashops.js"></script>
     <!-- Services -->
     <script src="app/js/services/category-service.js"></script>
-    
+
     <!-- Filters -->
     <!-- Directives -->
     <script src="app/js/directives/app-header/app-header.js"></script>
