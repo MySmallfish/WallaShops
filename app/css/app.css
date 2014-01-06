@@ -381,19 +381,22 @@ div, i
     background-color: white;
     font-size: 28pt;
     text-align: center;
+    color: #333;
+    
+    
    
 }
 
 .right-arrow
 {
     right: 3px;
-    box-shadow: -2px 1px 1px 5px #ccc;
+    box-shadow: -2px 1px 1px 5px #eee;
 }
 
 .left-arrow
 {
     left: 3px;
-    box-shadow: 2px 1px 1px 5px #ccc;
+    box-shadow: 2px 1px 1px 5px #eee;
 }
 
 .disabled
