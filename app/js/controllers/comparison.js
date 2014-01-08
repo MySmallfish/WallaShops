@@ -1,6 +1,25 @@
 ﻿(function (_, S, WS) {
 
     WS.ComparisonController = ["$scope", function ($scope) {
+        var productCount = 0;
+        var maxProducts = 4;
+
+        $scope.isNotEmpty = function () {
+            var result = false;
+            if (productCount > 0) {
+                result = true;
+            }
+
+            return result;
+        };
+
+        $scope.addPruduct = function () {
+            if (productCount < maxProducts) {
+                productCount++;
+                ///////////////////////////////////////////////////////////////////////////////add product!!!!      
+            }
+        };
+
         $scope.category = {};
         $scope.category.features = [
             { header: "מוצר", name: "id" },
@@ -9,9 +28,10 @@
             { header: "מחיר", name: "type" },
             { header: "סגירה", name: "price" },
             { header: "תאריך", name: "delivery" },
-            { header: "אספקה", name: "closing" }
-        ];
-        
+            { header: "אספקה", name: "closing" },
+            { header: "יבואן", name: "importer" }
+    ];
+
 
 
         $scope.products = [
@@ -60,9 +80,9 @@
                 supply: 7
             }
         ];
-    
 
 
-}];
+
+    }];
 
 })(_, Simple, WallaShops);

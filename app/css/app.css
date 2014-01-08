@@ -227,7 +227,7 @@ form
     bottom: 0;
     left: 0;
     right: 0;
-    overflow: scroll;
+    overflow: auto;
     -webkit-overflow-scrolling: touch;
 }
 
@@ -269,7 +269,6 @@ form
     width: 98%;
     position: relative;
     right: 2%;
-    top: 20px;
     margin: auto;
 }
 
@@ -382,9 +381,6 @@ div, i
     font-size: 28pt;
     text-align: center;
     color: #333;
-    
-    
-   
 }
 
 .right-arrow
@@ -399,7 +395,7 @@ div, i
     box-shadow: 2px 1px 1px 5px #eee;
 }
 
-.disabled
+.left-arrow.disabled, .right-arrow.disabled
 {
     color: #bbb;
 }
@@ -440,6 +436,7 @@ div, i
 .products-list-name
 {
     margin-right: 20px;
+    margin-bottom: 20px;
 }
 
 .chevron-up, .chevron-down
@@ -508,7 +505,6 @@ div, i
     border-bottom: solid 1px #aaa;
 }
 
-
 .category-dot, .filter-check
 {
     position: absolute;
@@ -520,7 +516,6 @@ div, i
     font-size: 7pt;
     display: none;
 }
-
 
 .category-container.selected .category-dot, .filter-container.selected .filter-check
 {
@@ -571,50 +566,78 @@ div, i
     clear: both;
 }
 
-.compare-table {  
-    background-color: #eee;  
-    margin-top: 2%;
-    margin-bottom: 2%;
+.compare-table, .table-head
+{
     width: 100%;
     border-spacing: 10px;
     border-collapse: separate;
 }
 
-.compare-table thead {
-    background-color: #ddd;
-}
-.compare-table td {
-
-}
-.compare-table td .inner {
+.compare-table td .inner
+{
     margin: 5px;
     height: 100px;
     overflow: auto;
     vertical-align: middle;
+}
+
+.compare-table, .add-product-to-compare, .table-head
+{
     text-align: center;
-    border-left: solid 1px #333;
-}
-/*
-.compare-table td , .add-product-to-compare {
-    width: 110px;
-    height: 120px;
-    text-align: center;  
 }
 
-.compare-table td {
-    border-left: solid 1px #ccc;
-}*/
+    .compare-table td, .table-head th
+    {
+        width: 110px;
+    }
 
-.table-space  {
-    height: 20px;  
-}
+    .compare-table td
+    {
+        height: 130px;
+        border-right: solid 1px #ccc;
+    }
 
-.add-product-to-compare {
+.add-product-to-compare
+{
     border: solid 1px #ccc;
     background-color: #ddd;
     color: #ccc;
     font-size: 30pt;
     box-shadow: 0 1px 1px 2px #ddd;
     line-height: 100px;
+    width: 110px;
+}
+
+.comparison-products {
+    position: absolute;
+    width: 150px;
+    top: 50px;
     
 }
+
+.comparison-products .product-info {
+    height: 130px; 
+    padding: 1px;
+    margin: 0 0 10px 0;
+}
+
+.comparison-products .product-border {
+    margin: 0;
+}
+
+
+.table-container {
+    margin-right: 150px;
+    overflow: auto;
+}
+
+.remove-product {
+    height: 0;
+    width: 0;
+   
+    border-top: 20px solid red;
+    border-right: 20px solid red;
+    border-bottom: 20px solid transparent;
+    border-left:20px solid transparent;
+}
+

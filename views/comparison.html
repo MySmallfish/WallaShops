@@ -1,21 +1,32 @@
 ﻿<div class="comparison-page">
+    <div class="comparison-products" ng-show="isNotEmpty()">
+        <product-pane product="product" ng-repeat="product in products"></product-pane>
+    </div>
+
+    <div class="table-container">
+        <div class="table-wrapper" ng-style="{'width': (150*category.features.length) + 'px'}">
+            <table class="table-head">
+
+                <thead>
+                    <tr>
+                        <th ng-repeat="feature in category.features">{{feature.header}}</th>
+                    </tr>
+                </thead>
+            </table>
 
 
-    <table class="compare-table">
-        <thead>
-            <tr>
-                <th ng-repeat="feature in category.features">{{feature.header}}</th>
-            </tr>
-        </thead>
-
-        <tr ng-repeat="product in products">
-            <td ng-repeat="feature in category.features">
-                    {{product[feature.name]}}    
-            </td>
-        </tr>
+            <table class="compare-table">
 
 
-    </table>
+                <tr ng-repeat="product in products" ng-show="isNotEmpty()">
 
-    <div class="add-product-to-compare"><i class="fa fa-plus-circle"></i></div>
+                    <td ng-repeat="feature in category.features">{{product[feature.name]}}    
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="add-product-to-compare" ng-click="addPruduct()" ng-show="!isNotEmpty()"><i class="fa fa-plus-circle"></i></div>
+    <div class="remove-product"></div>
 </div>
