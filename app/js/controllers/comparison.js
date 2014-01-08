@@ -22,13 +22,12 @@
 
         $scope.category = {};
         $scope.category.features = [
-            { header: "מוצר", name: "id" },
             { header: "שם", name: "name" },
-            { header: "סוג", name: "imageUrl", type: "image" },
-            { header: "מחיר", name: "type" },
-            { header: "סגירה", name: "price" },
-            { header: "תאריך", name: "delivery" },
-            { header: "אספקה", name: "closing" },
+            { header: "סוג", name: "type" },
+            { header: "מחיר", name: "price" },
+            { header: "משלוח", name: "delivery" },
+            { header: "זמן אספקה", name: "supply" },
+            { header: "סגירה", name: "closing" },
             { header: "יבואן", name: "importer" }
     ];
 
@@ -37,47 +36,43 @@
         $scope.products = [
             {
                 id: 1,
-                name: "שם1",
-                imageUrl: "img",
+                title: "שם1",
+                imageUrl: "app/img/product.png",
                 type: 2,
-                price: 3,
-                delivery: 4,
-                closing: 5,
-                date: 6,
-                supply: 7
+                price: "1000 ₪",
+                delivery: "40 ₪",
+                closing: "1.1.14",
+                supply: "שבוע"
             },
             {
                 id: 2,
-                imageUrl: "img",
-                name: "שם2",
+                title: "שם2",
+                imageUrl: "app/img/product.png",
                 type: 2,
-                price: 3,
-                delivery: 4,
-                closing: 5,
-                date: 6,
-                supply: 7
+                price: "1000 ₪",
+                delivery: "40 ₪",
+                closing: "1.1.14",
+                supply: "שבוע"
             },
             {
                 id: 3,
-                imageUrl: "img",
-                name: "שם3",
+                title: "שם3",
+                imageUrl: "app/img/product.png",
                 type: 2,
-                price: 3,
-                delivery: 4,
-                closing: 5,
-                date: 6,
-                supply: 7
+                price: "1000 ₪",
+                delivery: "40 ₪",
+                closing: "1.1.14",
+                supply: "שבוע"
             },
             {
                 id: 4,
-                imageUrl: "img",
-                name: "שם4",
+                title: "שם4",
+                imageUrl: "app/img/product.png",
                 type: 2,
-                price: 3,
-                delivery: 4,
-                closing: 5,
-                date: 6,
-                supply: 7
+                price: "1000 ₪",
+                delivery: "40 ₪",
+                closing: "1.1.14",
+                supply: "שבוע"
             }
         ];
 
