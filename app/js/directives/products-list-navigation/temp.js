@@ -3,18 +3,17 @@
     WS.ProductsListNavigationDirective = {
         restrict: 'E',
         templateUrl: 'app/js/directives/products-list-navigation/products-list-navigation.html',
-        scope: {
-            step: "@",
-            productsListLength: "@",
-            navigationInfo: "="
-        },
+        scope: false,
         replace: true,
-        controller: ["$scope", function ($scope) {
+        controller: ["$scope", "$filter", function ($scope, $filter) {
 
-            var startIndex = 0;
+            var startIndex = 0, step = 4;
+            function productsCount() {
+                return $scope.category.products.length;
+            };
 
             function calculatePage() {
-                var pages = _.map(_.range($scope.productsListLength / step()), function (item) {
+                var pages = _.map(_.range(productsCount() / step), function (item) {
                     return { index: item, selected: isCurrent(item) };
                 });
                 return pages;
@@ -23,34 +22,30 @@
             $scope.productsPage = [];
 
             function isCurrent(pointIndex) {
-                return pointIndex == startIndex / $scope.step;
+                return pointIndex == startIndex / step;
             };
 
             function canNavigateNext() {
                 var result = false;
-                if ($scope.productsListLength > 0 && startIndex + step() < $scope.productsListLength) {
-                    result = true;
+                if ($scope.category.products) {
+                    result = startIndex + step < productsCount();
                 }
                 return result;
             }
+
 
             function canNavigateBack() {
                 var result = false;
-                if ($scope.productsListLength > 0 && startIndex > 0) {
-                    result = true;
+                if ($scope.category.products) {
+                    result = startIndex > 0;
                 }
                 return result;
             }
-            
-            function step() {
-                return parseInt($scope.step,10);
-            }
 
             function updateProductPage() {
-                if ($scope.productsListLength > 0) {
-                    $scope.navigationInfo = {
-                        startIndex: startIndex
-                    };
+                if ($scope.category.products) {
+                    var visibleProducts = $filter("skip")($scope.category.products, startIndex);
+                    $scope.category.currentProductsPage = $filter("limitTo")(visibleProducts, step);
                     $scope.points = calculatePage();
                 }
             };
@@ -60,7 +55,8 @@
 
             $scope.navigateNext = function () {
                 if (canNavigateNext()) {
-                    startIndex += step();
+                    startIndex += step;
+                    console.log(startIndex);
                     updateProductPage();
 
                 }
@@ -68,13 +64,15 @@
 
             $scope.navigateBack = function () {
                 if (canNavigateBack()) {
-                    startIndex -= step();
+                    startIndex -= step;
+                    console.log(startIndex);
                     updateProductPage();
 
                 }
             };
 
-            
+
+
             updateProductPage();
 
         }],

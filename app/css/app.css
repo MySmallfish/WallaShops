@@ -257,11 +257,19 @@ form
     margin-bottom: 5%;
 }
 
+.search-page .products-list-container{
+    top: 80px;
+}
+.search-page .right-arrow, .search-page .left-arrow {
+    top: 337px;
+}
+
 .products-list-container
 {
     position: relative;
     overflow-y: hidden;
     margin: auto;
+   
 }
 
 .products-list
@@ -386,13 +394,13 @@ div, i
 .right-arrow
 {
     right: 3px;
-    box-shadow: -2px 1px 1px 5px #eee;
+    box-shadow: -2px 0 1px 3px #eee;
 }
 
 .left-arrow
 {
     left: 3px;
-    box-shadow: 2px 1px 1px 5px #eee;
+    box-shadow: 2px 0 1px 3px #eee;
 }
 
 .left-arrow.disabled, .right-arrow.disabled
@@ -439,14 +447,6 @@ div, i
     margin-bottom: 20px;
 }
 
-.chevron-up, .chevron-down
-{
-    position: relative;
-    font-size: 15pt;
-    font-family: sans-serif;
-    color: deepskyblue;
-    height: 20px;
-}
 
 .search-right-arrow
 {
