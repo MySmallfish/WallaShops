@@ -15,8 +15,6 @@
 
     WS.CategoriesController = ["$scope",  function ($scope) {
 
-        
-
         function loadCategories(lastSelected) {
             if ($scope.selectedCategory) {
                 if (lastSelected && lastSelected.level == 0 && $scope.selectedCategory.level == 1) {

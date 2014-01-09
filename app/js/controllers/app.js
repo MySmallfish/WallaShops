@@ -5,9 +5,7 @@
         "$location",
         "categoryService",
         function ($scope, $location, categoryService) {
-            
-            $scope.showProduct = function (product) {
-                
+            $scope.showProduct = function (product) {    
                 window.open("http://www.google.com/?q=" + product.id);
             };
 
@@ -24,13 +22,7 @@
                 console.log(args);
             });
 
-            //$scope.categoriesPopOver = {
-            //    content: "categories-menu.html",
-            //    placement: "bottom",
-            //    trigger:"click"
-            //};
             $scope.loadCategories = function () {
-
                 return categoryService.getCategories();
             };
 

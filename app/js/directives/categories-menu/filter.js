@@ -5,13 +5,13 @@
             restrict: 'E',
             templateUrl: 'app/js/directives/categories-menu/filter.html',
             scope: {
+                
                 load:"&"
             },
             controller: WS.FilterController,
             replace: true
         };
     }];
-
 
     WS.FilterController = ["$scope", function ($scope) {
 
@@ -20,6 +20,7 @@
             if (result && result.then) {
                 result.then(function (items) {
                     $scope.filters = items;
+
                 });
             } else {
                 throw new Error("You must provide load method that returns promise");

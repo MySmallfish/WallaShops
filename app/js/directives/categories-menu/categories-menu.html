@@ -1,21 +1,20 @@
 ﻿<div>
     <ul class="nav nav-tabs" >
-        <li class="active">
+        <li ng-class="{'active': !hasFilter}">
             <a href="#categories" data-toggle="tab">קטגוריות</a>
         </li>
-        <li>
+        <li ng-class="{'active': hasFilter}">
             <a href="#filter" data-toggle="tab">סינון</a>
         </li>
     </ul>
 
     <div class="tab-content">
-        <div class="tab-pane active" id="categories">
+        <div class="tab-pane" ng-class="{'active': !hasFilter}" id="categories">
             <ws-categories load="loadCategories()"></ws-categories>
         </div>
-        <div class="tab-pane" id="filter">
+        <div class="tab-pane" ng-class="{'active': hasFilter}" id="filter">
             <ws-filter load="loadFilters()"></ws-filter>
         </div>
-
     </div>
 
     <!--    <div class="popover bottom">

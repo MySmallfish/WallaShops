@@ -257,10 +257,13 @@ form
     margin-bottom: 5%;
 }
 
-.search-page .products-list-container{
+.search-page .products-list-container
+{
     top: 80px;
 }
-.search-page .right-arrow, .search-page .left-arrow {
+
+.search-page .right-arrow, .search-page .left-arrow
+{
     top: 337px;
 }
 
@@ -269,7 +272,6 @@ form
     position: relative;
     overflow-y: hidden;
     margin: auto;
-   
 }
 
 .products-list
@@ -284,7 +286,6 @@ form
 {
     margin: 0;
 }
-
 
 .product
 {
@@ -403,18 +404,28 @@ div, i
     box-shadow: 2px 0 1px 3px #eee;
 }
 
-.left-arrow.disabled, .right-arrow.disabled
-{
-    color: #bbb;
-}
+    .left-arrow.disabled, .right-arrow.disabled
+    {
+        color: #bbb;
+    }
 
-.navigationPoints
+.navigation-points
 {
     position: absolute;
-    top: 0;
-    left: 20px;
     height: 48px;
     font-size: 1pt;
+}
+
+.home-page .navigation-points
+{
+    top: 0;
+    left: 20px;
+}
+
+.search-page .navigation-points
+{
+    top: 35px;
+    left: 40px;
 }
 
 .point
@@ -554,6 +565,11 @@ div, i
     color: black;
 }
 
+.filtered
+{
+    background-color: #ccc;
+}
+
 .clear:before,
 .clear:after
 {
@@ -573,13 +589,13 @@ div, i
     border-collapse: separate;
 }
 
-.compare-table td .inner
-{
-    margin: 5px;
-    height: 100px;
-    overflow: auto;
-    vertical-align: middle;
-}
+    .compare-table td .inner
+    {
+        margin: 5px;
+        height: 100px;
+        overflow: auto;
+        vertical-align: middle;
+    }
 
 .compare-table, .add-product-to-compare, .table-head
 {
@@ -608,36 +624,42 @@ div, i
     width: 110px;
 }
 
-.comparison-products {
+.comparison-products
+{
     position: absolute;
     width: 150px;
     top: 50px;
-    
 }
 
-.comparison-products .product-info {
-    height: 130px; 
-    padding: 1px;
-    margin: 0 0 10px 0;
-}
+    .comparison-products .product-info
+    {
+        height: 130px;
+        padding: 1px;
+        margin: 0 0 10px 0;
+    }
 
-.comparison-products .product-border {
-    margin: 0;
-}
+    .comparison-products .product-border
+    {
+        margin: 0;
+    }
 
-
-.table-container {
+.table-container
+{
     margin-right: 150px;
     overflow: auto;
 }
 
-.remove-product {
+.remove-product
+{
     height: 0;
     width: 0;
-   
     border-top: 20px solid red;
     border-right: 20px solid red;
     border-bottom: 20px solid transparent;
-    border-left:20px solid transparent;
+    border-left: 20px solid transparent;
 }
 
+
+.main-promotion .nav-tabs {
+    border: none;
+}

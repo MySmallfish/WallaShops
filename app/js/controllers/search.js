@@ -18,8 +18,6 @@
             updateProductPage(newValue);
         });
 
-
-
         var products = [
             { id: 1, title: "א. 1", subtitle: "לגבר המטרוסקסואלי", rating: "123456", icons: [{ url: "app/img/icon.png" }, { url: "app/img/icon.png" }], imageUrl: "app/img/product.png", price: "1000 שח", details: "לפרטים" },
             { id: 2, title: "ג. 2", subtitle: "לגבר המטרוסקסואלי", rating: "123456", icons: [{ url: "app/img/icon.png" }, { url: "app/img/icon.png" }], imageUrl: "app/img/product.png", price: "1000 שח", details: "לפרטים" },
@@ -39,13 +37,8 @@
             { id: 4, title: "מכונת 16", subtitle: "לגבר המטרוסקסואלי", rating: "123456", icons: [{ url: "app/img/icon.png" }, { url: "app/img/icon.png" }], imageUrl: "app/img/product.png", price: "1000 שח", details: "לפרטים" }
         ];
 
-
         $scope.productsLine1 = _.filter(products, function(product, index) { return index % 2 == 0; });
         $scope.productsLine2 = _.filter(products, function (product, index) { return index % 2 != 0; });
-        
-
-
-
     };
 
 

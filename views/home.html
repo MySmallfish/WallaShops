@@ -1,25 +1,37 @@
-﻿<div class="promotions">
-    <div class="main-promotion">
-        <ul class="promotion-list">
-            <li><b ng-click="changeImage()">מצלמות במבצע</b></li>
-            <li><b>מסעדות ב50% הנחה</b></li>
-            <li><b>קולקצית חורף 2012</b></li>
-        </ul>
-        <div class="up-arrow"><i class="fa fa-caret-up"></i></div>
-        <img ng-src="{{ main_promotion.promotion}}" alt="{{main_promotion.name}}" />
+﻿<div class="home-page">
+    <div class="promotions">
+        <div class="main-promotion">
+            <div>
+                <ul class="nav nav-tabs">
+                    <li ng-repeat="promotion in main_promotions" ng-class="{'active': isSelected(promotion)}" ng-click="select(promotion)">
+                        <a ng-href="#{{promotion.name}}" data-toggle="tab">{{promotion.name}}</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane" ng-repeat="promotion in main_promotions" ng-class="{'active': isSelected(promotion)}" id="{{promotion.name}}">
+                        <img ng-src="{{promotion.promotion}}" alt="{{promotion.name}}" />
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="seasonal">
+            <img ng-src="{{ seasonal_image1.promotion}}" alt="{{ seasonal_image1.name }}" />
+            <img ng-src="{{ seasonal_image2.promotion}}" alt="{{ seasonal_image2.name }}" />
+
+
+        </div>
     </div>
 
-    <div class="seasonal">
-        <img ng-src="{{ seasonal_image1.promotion}}" alt="{{ seasonal_image1.name }}" />
-        <img ng-src="{{ seasonal_image2.promotion}}" alt="{{ seasonal_image2.name }}" />
+    <div class="products-list-container" ng-repeat="category in promotionsCategories">
 
+        <products-list category="category" show-product="showProduct(product)"></products-list>
 
     </div>
-</div>
-
-<div class="products-list-container" ng-repeat="category in promotionsCategories">
-
-    <products-list category="category" show-product="showProduct(product)"></products-list>
 
 </div>
+
 

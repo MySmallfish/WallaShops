@@ -1,45 +1,42 @@
 ﻿(function (_, S, WS) {
 
     WS.HomeController = ["$scope", function ($scope) {
-
-        function changeImage() {
-            
-            if ($scope.main_promotion.name == "small") {
-                $scope.main_promotion = $scope.large_promotion;
-            } else {
-                $scope.main_promotion = $scope.small_promotion;
-            }
-        };
-
         
-
+        function isSelected(promotion) {
+            return $scope.selectedPromotion === promotion;
+        }
+        
+        function select(promotion) {
+            $scope.selectedPromotion = promotion;
+        }
+        
         _.extend($scope, {
-            changeImage: changeImage
-
+            select: select,
+            isSelected: isSelected
         });
 
-        $scope.main_promotion = {
-            promotion: "app/img/pic1.png",
-            name: "small"
-        };
-
-        $scope.small_promotion = {
-            promotion: "app/img/pic1.png",
-            name: "small"
-        };
-
-        $scope.large_promotion = {
-            promotion: "app/img/pic2.png",
-            name: "large"
-        };
+        $scope.main_promotions = [
+            {
+                promotion: "app/img/pic1.png",
+                name: "promotion1"
+            },
+            {
+                promotion: "app/img/pic2.png",
+                name: "promotion2"
+            },
+            {
+                promotion: "app/img/pic3.png",
+                name: "promotion3"
+            }
+        ];
 
         $scope.seasonal_image1 = {
-            promotion: "app/img/pic3.png",
+            promotion: "app/img/pic4.png",
             name: "1"
         };
 
         $scope.seasonal_image2 = {
-            promotion: "app/img/pic3.png",
+            promotion: "app/img/pic4.png",
             name: "2"
         };
 
@@ -89,7 +86,7 @@
                 id: 2
             }];
 
-
+        $scope.selectedPromotion = $scope.main_promotions[0];
 
     }];
 
