@@ -6,7 +6,7 @@
         "categoryService",
         function ($scope, $location, categoryService) {
             $scope.showProduct = function (product) {    
-                window.open("http://www.google.com/?q=" + product.id);
+                window.open("http://www.google.com/?q=" + product.id, "_blank");
             };
 
             $scope.$on("WallaShops.CategorySelected", function (eventInfo, args) {

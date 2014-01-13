@@ -199,10 +199,12 @@ form
     line-height: 25px;
     font-weight: bold;
 }
-.phone-number {
+
+.phone-number , .phone-number:hover{
     color: #c20340;
     font-size: 15pt;
-    text-align: center;  
+    text-align: center;
+    text-decoration: none;
 }
 
 .cart
