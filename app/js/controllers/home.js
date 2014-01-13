@@ -1,6 +1,6 @@
 ﻿(function (_, S, WS) {
 
-    WS.HomeController = ["$scope", function ($scope) {
+    WS.HomeController = ["$scope", "promotionsService", function ($scope, promotionsService) {
 
         function isSelected(promotion) {
             return $scope.selectedPromotion === promotion;
@@ -9,11 +9,35 @@
         function select(promotion) {
             $scope.selectedPromotion = promotion;
         }
+        
+        function getRandom(max) {
+            return Math.floor((Math.random() * max));
+        }
+        
 
         _.extend($scope, {
             select: select,
             isSelected: isSelected
         });
+
+        $scope.firstPromotion = null;
+        $scope.secondPromotion = null;
+
+        function loadSeasonalPromotions(promotions) {
+            if (promotions.length) {
+                var randomIndex = getRandom(promotions.length);
+                $scope.firstPromotion = promotions[randomIndex];
+                if (promotions.length > 1) {
+                    var randomIndex2 = getRandom(promotions.length);
+                    while (randomIndex2 === randomIndex) {
+                        randomIndex2 = getRandom(promotions.length);
+                    } 
+                    $scope.secondPromotion = promotions[randomIndex2];
+                }
+            }
+        }
+        
+        promotionsService.getSeasonalImages().then(loadSeasonalPromotions);
 
         $scope.main_promotions = [
             {
@@ -29,16 +53,6 @@
                 name: "promotion3"
             }
         ];
-
-        $scope.seasonal_image1 = {
-            promotion: "app/img/pic4.png",
-            name: "1"
-        };
-
-        $scope.seasonal_image2 = {
-            promotion: "app/img/pic4.png",
-            name: "2"
-        };
 
         $scope.product = {
             promotion: "app/img/product.png",
@@ -87,7 +101,7 @@
             }];
 
         $scope.selectedPromotion = $scope.main_promotions[0];
-
+        
     }];
 
 })(_, Simple, WallaShops);
