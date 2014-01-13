@@ -3,6 +3,7 @@
     var app = angular.module("WallaShops", ["ngRoute", "ngTouch", "$strap", "Simple"]);
 
     app.service("categoryService", WS.CategoryService);
+    app.service("promotionsService", WS.PromotionsService);
     
     app.directive("appHeader", function () {
         return WS.AppHeaderDirective;

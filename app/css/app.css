@@ -189,7 +189,8 @@ form
     background-color: transparent;
 }
 
-.call-center {
+.call-center
+{
     position: absolute;
     padding-top: 10px;
     left: 5px;
@@ -200,7 +201,8 @@ form
     font-weight: bold;
 }
 
-.phone-number , .phone-number:hover{
+.phone-number, .phone-number:hover
+{
     color: #c20340;
     font-size: 15pt;
     text-align: center;
@@ -354,11 +356,38 @@ div, i
     height: 235px;
     padding-right: 25px;
     position: relative;
+    font-size: 10pt;
 }
 
-.subtitle, .rating, .price
+    .product-info p, .rating
+    {
+        margin: 5px 0 0 0;
+    }
+
+.title
 {
     font-size: 12pt;
+    margin-top: 10px;
+}
+
+
+.rating
+{
+    position: relative;
+}
+
+    .rating .fa
+    {
+        font-size: 15pt;
+        letter-spacing: 1px;
+        color: deepskyblue;
+    }
+
+.raters-number
+{
+    position: absolute;
+    left: 70px;
+    color: #aaa;
 }
 
 .price, .details
@@ -370,13 +399,18 @@ div, i
 
 .details
 {
-    left: 15px;
+    background-image: url('../img/button.png');
+    left: 5px;
+    bottom: 0;
+    width: 25px;
+    height: 25px;
 }
 
-    .details i
-    {
-        font-size: 8pt;
-    }
+.details-text {
+    position: absolute;
+    left: 40px;
+    bottom: 5px;
+}
 
 .icons
 {
@@ -519,7 +553,7 @@ div, i
 
 .somethingSelected .category-container
 {
-    background-color: #dddddd;
+    background-color: #eee;
 }
 
 .categories-menu ul, .filters-menu ul
@@ -677,28 +711,47 @@ div, i
     border-left: 20px solid transparent;
 }
 
-.main-promotion .nav-tabs,.main-promotion .nav-tabs .active a ,.main-promotion .nav-tabs .active a:hover, .main-promotion .nav-tabs li a{
+.main-promotion .nav-tabs, .main-promotion .nav-tabs .active a, .main-promotion .nav-tabs .active a:hover, .main-promotion .nav-tabs li a
+{
     border: none;
 }
 
-.main-promotion .nav-tabs a:hover {
-    background: none;
-}
+    .main-promotion .nav-tabs a:hover
+    {
+        background: none;
+    }
 
-.main-promotion .nav-tabs a:hover, .main-promotion .nav-tabs .active a:hover {
-    color: #555555;
-}
+    .main-promotion .nav-tabs a:hover, .main-promotion .nav-tabs .active a:hover
+    {
+        color: #555555;
+    }
 
-.main-promotion .nav-tabs {
+.main-promotion .nav-tabs
+{
     margin: 0;
 }
 
-.main-promotion .nav-tabs li a {
-    padding-bottom: 0;
+    .main-promotion .nav-tabs li a
+    {
+        padding-bottom: 0;
+    }
+
+.filter-tab
+{
+    background-color: #ccc;
+    border-top-left-radius: 4px;
 }
 
-.promotion-arrow {
+.menu .nav-tabs li a
+{
+    margin: -1px;
+    border-radius: 4px 4px 0 0;
+    border-color: #ddd;
+    border-bottom-color: transparent;
+}
+
+.promotion-arrow
+{
     text-align: center;
     font-size: 15pt;
 }
-

@@ -8,15 +8,19 @@
             </div>
         </div>
 
-        <h3 class="title">{{ product.title }}</h3>
+        <p class="title"><b>{{ product.title }}</b></p>
         <p class="subtitle">{{ product.subtitle}}</p>
-        <p class="rating">{{ product.rating}}</p>
-        <p class="price">{{ product.price}}</p>
+        <p>{{ product.subtitle2}}</p>
+        <div class="rating">
+            <div class="raters-number">({{product.ratersNumber}})</div>
+            <i class="fa" ng-repeat="star in stars" ng-class="{'fa-star': $index<=product.rating, 'fa-star-o':$index>product.rating, 'fa-star-half-o' : $index==asInt(product.rating) && isDecimal(product.rating) }"></i>
+            
+        </div>
+        <p class="price"><b>{{ product.price}}</b></p>
         
-        <b class="details"> לפרטים 
-            <i class="fa fa-chevron-left"></i>
-        </b>
-        
+        <span class="details-text">{{ product.details}}</span>
+        <p class="details"></p>
+
 
     </div>
 
