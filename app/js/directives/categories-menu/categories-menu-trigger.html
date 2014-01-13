@@ -1,11 +1,13 @@
 ﻿<div>
     <script type="text/ng-template" id="categories-menu.html">
         <ws-categories-menu load-categories="loadCategories()" load-filters="loadFilters()"></ws-categories-menu>
-</script>
-    <button class="category"  bs-popover="'categories-menu.html'" data-trigger="manual" ng-click="showPopover()" data-placement="bottom">
-        <b>לפי קטגוריה</b>
-        <!--<i class="fa fa-filter"></i>-->
-        <i class="fa fa-caret-down"></i>
-    </button>
+    </script>
+    <div ng-class="{'filtered':isFiltered()}">
+        <button class="category" bs-popover="'categories-menu.html'" data-trigger="manual" ng-click="showPopover()" data-placement="bottom">
+            <b>לפי קטגוריה</b>
+            <i class="fa fa-filter" ng-show="isFiltered()"></i>
+            <i class="fa fa-caret-down" ng-show="!isFiltered()"></i>
+        </button>
+    </div>
 </div>
 

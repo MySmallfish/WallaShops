@@ -16,6 +16,10 @@
                 $(".content-container").click(function () {
                     $(".category", element).popover("hide");
                 });
+
+                scope.isFiltered = function() {
+                    return false;
+                };
             }
         };
     }];

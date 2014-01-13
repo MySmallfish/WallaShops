@@ -105,6 +105,18 @@ header
     outline: none;
 }
 
+.filtered
+{
+    background-color: #666;
+    border-radius: 4px 4px 0 0;
+    margin-top: 10px;
+    line-height: 50px;
+}
+
+.filtered .category {
+    color: white;
+}
+
 .right-buffer
 {
     left: 10px;
@@ -406,7 +418,8 @@ div, i
     height: 25px;
 }
 
-.details-text {
+.details-text
+{
     position: absolute;
     left: 40px;
     bottom: 5px;
@@ -615,11 +628,6 @@ div, i
 .category-container.selected .category-arrow
 {
     color: black;
-}
-
-.filtered
-{
-    background-color: #ccc;
 }
 
 .clear:before,
