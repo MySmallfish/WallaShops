@@ -3,9 +3,12 @@
         <div class="main-promotion">
             <div>
                 <ul class="nav nav-tabs">
+                    
                     <li ng-repeat="promotion in main_promotions" ng-class="{'active': isSelected(promotion)}" ng-click="select(promotion)">
                         <a ng-href="#{{promotion.name}}" data-toggle="tab">{{promotion.name}}</a>
+                        <div class="promotion-arrow" ng-show="isSelected(promotion)"><i class="fa fa-caret-up"></i></div>
                     </li>
+
                 </ul>
 
                 <div class="tab-content">

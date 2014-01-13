@@ -61,7 +61,7 @@
         function selectCategory(category) {
 
             if (category && category.extarnalLink) {
-                window.open(category.extarnalLink.url);
+                window.open(category.extarnalLink.url, _blank);
             } else {
                 var lastSelected = $scope.selectedCategory;
                 $scope.selectedCategory = category;

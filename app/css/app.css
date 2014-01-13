@@ -110,7 +110,7 @@ header
     left: 10px;
 }
 
-.left-buffer
+.hello_user .left-buffer
 {
     left: 60px;
 }
@@ -187,6 +187,22 @@ form
     line-height: 27pt;
     text-indent: .2em;
     background-color: transparent;
+}
+
+.call-center {
+    position: absolute;
+    padding-top: 10px;
+    left: 5px;
+    width: 150px;
+    height: 64px;
+    text-align: center;
+    line-height: 25px;
+    font-weight: bold;
+}
+.phone-number {
+    color: #c20340;
+    font-size: 15pt;
+    text-align: center;  
 }
 
 .cart
@@ -659,7 +675,28 @@ div, i
     border-left: 20px solid transparent;
 }
 
-
-.main-promotion .nav-tabs {
+.main-promotion .nav-tabs,.main-promotion .nav-tabs .active a ,.main-promotion .nav-tabs .active a:hover, .main-promotion .nav-tabs li a{
     border: none;
 }
+
+.main-promotion .nav-tabs a:hover {
+    background: none;
+}
+
+.main-promotion .nav-tabs a:hover, .main-promotion .nav-tabs .active a:hover {
+    color: #555555;
+}
+
+.main-promotion .nav-tabs {
+    margin: 0;
+}
+
+.main-promotion .nav-tabs li a {
+    padding-bottom: 0;
+}
+
+.promotion-arrow {
+    text-align: center;
+    font-size: 15pt;
+}
+

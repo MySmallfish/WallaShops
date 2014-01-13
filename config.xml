@@ -20,6 +20,7 @@
   <preference name="fullscreen"       value="false" />
   <preference name="webviewbounce" value="false" />
   <preference name="detect-data-types" value="false" />
+  <preference name="orientation" value="landscape"/>
   <access origin="*" />
   <!--<icon src="img/ios/mobile.png" />
   --><!--<icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />
