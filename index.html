@@ -94,16 +94,15 @@
     <script>
         document.addEventListener("deviceready", function() {
 
-            var ref = window.open("http://google.com", "_blank");
+            var ref = window.open("http://billme.azurewebsites.net/api/values", "_blank");
             //ref.addEventListener("loadstop", function () {
             //    navigator.notification.alert("LOAD STOP!");
             //});
             ref.addEventListener("loadstart", function () {
-                //navigator.notification.alert("LOAD Start!");
-                ref.executeScript({
-                    code: "alert(document.getElementsByTagName('input').length);"
-                });
+                //navigator.noti{
+                    code: "alert(document.innerHTML + ' - ' + document.body.innerHTML);"
             });
+            
             //ref.addEventListener("exit", function () {
             //    navigator.notification.alert("BYE!");
             //});
