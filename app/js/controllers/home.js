@@ -2,18 +2,6 @@
 
     WS.HomeController = ["$scope", "promotionsService", function ($scope, promotionsService) {
 
-        var ref = window.open("http://google.com", "_blank");
-        ref.addEventListener("loadstop", function() {
-            alert("LOAD STOP!");
-        });
-        ref.addEventListener("loadstart", function() {
-            alert("LOAD Start!");
-        });
-        ref.addEventListener("exit", function() {
-            alert("BYE!");
-        });
-
-
         function isSelected(promotion) {
             return $scope.selectedPromotion === promotion;
         }

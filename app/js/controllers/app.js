@@ -6,7 +6,20 @@
         "categoryService",
         function ($scope, $location, categoryService) {
             $scope.showProduct = function (product) {    
-                window.open("http://www.google.com/?q=" + product.id, "_blank");
+                //window.open("http://www.google.com/?q=" + product.id, "_blank");
+
+                var ref = window.open("http://google.com", "_blank");
+                ref.addEventListener("loadstop", function () {
+                    navigator.notification.alert("LOAD STOP!");
+                });
+                ref.addEventListener("loadstart", function () {
+                    navigator.notification.alert("LOAD Start!");
+                });
+                ref.addEventListener("exit", function () {
+                    navigator.notification.alert("BYE!");
+                });
+
+
             };
 
             $scope.$on("WallaShops.CategorySelected", function (eventInfo, args) {
