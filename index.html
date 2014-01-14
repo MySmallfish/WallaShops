@@ -94,13 +94,12 @@
     <script>
         document.addEventListener("deviceready", function() {
 
-            var ref = window.open("http://billme.azurewebsites.net/api/values", "_blank");
-            //ref.addEventListener("loadstop", function () {
-            //    navigator.notification.alert("LOAD STOP!");
-            //});
+            var ref = window.open("http://billme.azurewebsites.net/api/values", "_blank", "location=no");
             ref.addEventListener("loadstart", function () {
-                //navigator.noti{
-                    code: "alert(document.innerHTML + ' - ' + document.body.innerHTML);"
+                code: "alert('HTML' + document.innerHTML );"
+            });
+            ref.addEventListener("loadstop", function () {
+                    code: "alert('STOP - HTML' + document.innerHTML );"
             });
             
             //ref.addEventListener("exit", function () {
