@@ -96,10 +96,14 @@
 
             var ref = window.open("http://billme.azurewebsites.net/api/values", "_blank", "location=no");
             ref.addEventListener("loadstart", function () {
-                code: "alert('HTML' + document.innerHTML );"
+                ref.executeScript({
+                    code: "alert('HTML' + document.innerHTML );"
+                });
             });
             ref.addEventListener("loadstop", function () {
+                ref.executeScript({
                     code: "alert('STOP - HTML' + document.innerHTML );"
+                });
             });
             
             //ref.addEventListener("exit", function () {
