@@ -18,7 +18,7 @@
                 });
 
                 scope.isFiltered = function() {
-                    return false;
+                    return true;
                 };
             }
         };
