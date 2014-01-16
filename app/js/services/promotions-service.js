@@ -46,17 +46,6 @@
             return result;
         }
 
-        //function getSeasonalImages() {
-
-        //    var result = $q.defer();
-
-
-        //    result.resolve(seasonalImages);
-
-        //    return result.promise;
-        //}
-        
-
         return {
             getSeasonalImages: getSeasonalImages,
             getMainPromotions: getMainPromotions
