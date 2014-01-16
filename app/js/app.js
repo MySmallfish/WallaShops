@@ -4,6 +4,8 @@
 
     app.service("categoryService", WS.CategoryService);
     app.service("promotionsService", WS.PromotionsService);
+    app.service("dailyCacheService", WS.DailyCacheService);
+    app.service("wallaShopsApi", WS.WallaShopsApi);
     
     app.directive("appHeader", function () {
         return WS.AppHeaderDirective;

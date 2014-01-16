@@ -2,7 +2,7 @@
 
     WS.PromotionsService = ["$q", function ($q) {
 
-        var seasonal_images = [
+        var seasonalImages = [
             {
                 promotion: "app/img/pic4.png",
                 name: "1"
@@ -31,7 +31,7 @@
             var result = $q.defer();
 
 
-            result.resolve(seasonal_images);
+            result.resolve(seasonalImages);
 
             return result.promise;
         }

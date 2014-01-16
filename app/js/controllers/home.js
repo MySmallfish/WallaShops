@@ -1,6 +1,11 @@
 ﻿(function (_, S, WS) {
 
-    WS.HomeController = ["$scope", "promotionsService", function ($scope, promotionsService) {
+    WS.HomeController = ["$scope", "promotionsService", "$http", function ($scope, promotionsService, $http) {
+        //$http.get("http://test.wallashops.co.il/Promotions/4/11/8255_weekend_shops231013_250x250_2.swf?tgt=PromotionFlashClick(%27(8255)P%27%2c%27http%3a%2f%2ftest.wallashops.co.il%2f%27)%3b").then(function(items) {
+        //    console.log("ITEMS", items);
+        //}, function (error) {
+        //    console.error("ERROR", error);
+        //});
 
         function isSelected(promotion) {
             return $scope.selectedPromotion === promotion;

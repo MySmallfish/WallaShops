@@ -113,9 +113,10 @@ header
     line-height: 50px;
 }
 
-.filtered .category {
-    color: white;
-}
+    .filtered .category
+    {
+        color: white;
+    }
 
 .right-buffer
 {
@@ -521,6 +522,7 @@ div, i
 {
     margin-right: 20px;
     margin-bottom: 20px;
+    color: rgb(33, 141, 202);
 }
 
 
@@ -729,7 +731,7 @@ div, i
         background: none;
     }
 
-    .main-promotion .nav-tabs a:hover, .main-promotion .nav-tabs .active a:hover
+    .main-promotion .nav-tabs a:hover
     {
         color: #555555;
     }
@@ -758,8 +760,63 @@ div, i
     border-bottom-color: transparent;
 }
 
+.main-promotion .nav-tabs .active a
+{
+    color: rgb(6, 181, 240);
+}
+
 .promotion-arrow
 {
     text-align: center;
     font-size: 15pt;
+}
+
+.popover-title
+{
+    padding: 1px;
+    background-color: #666;
+    border-bottom: 1px solid #666;
+}
+
+.popover-inner
+{
+    padding: 0;
+    border: solid 1px #666;
+}
+
+.popover.bottom .arrow
+{
+    border: none;
+}
+
+.popover-content
+{
+    padding: 10px 0;
+}
+
+.menu .nav-tabs, .menu .nav-tabs .active a, .menu .nav-tabs .active a:hover, .menu .nav-tabs li a
+{
+    border: none;
+}
+
+.category-tab, .filter-tab
+{
+    dposition: absolute;
+}
+
+.category-tab
+{
+    right: 0;
+}
+
+.filter-tab
+{
+    left: 0;
+}
+
+.menu .tab-content
+{
+    position: relative;
+    top: 20px;
+    margin-bottom: 10px;
 }
