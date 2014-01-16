@@ -752,14 +752,6 @@ div, i
     border-top-left-radius: 4px;
 }
 
-.menu .nav-tabs li a
-{
-    margin: -1px;
-    border-radius: 4px 4px 0 0;
-    border-color: #ddd;
-    border-bottom-color: transparent;
-}
-
 .main-promotion .nav-tabs .active a
 {
     color: rgb(6, 181, 240);
@@ -792,16 +784,33 @@ div, i
 .popover-content
 {
     padding: 10px 0;
+    position: relative;
 }
 
 .menu .nav-tabs, .menu .nav-tabs .active a, .menu .nav-tabs .active a:hover, .menu .nav-tabs li a
 {
     border: none;
+    width: 140px;
+}
+
+    .menu .nav-tabs li a
+    {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 0;
+        text-align: center;
+    }
+
+.nav li a:hover
+{
+    background-color: transparent;
 }
 
 .category-tab, .filter-tab
 {
-    dposition: absolute;
+    position: absolute;
+    top: 0;
+    border: none;
 }
 
 .category-tab
@@ -817,6 +826,6 @@ div, i
 .menu .tab-content
 {
     position: relative;
-    top: 20px;
-    margin-bottom: 10px;
+    top: 25px;
+    margin-bottom: 15px;
 }
