@@ -1,45 +1,65 @@
 ﻿(function (_, S, WS) {
 
-    WS.PromotionsService = ["$q", function ($q) {
+    WS.PromotionsService = ["$q", "dailyCacheService", "wallaShopsApi", function ($q, dailyCacheService, wallaShopsApi) {
 
-        var seasonalImages = [
-            {
-                promotion: "app/img/pic4.png",
-                name: "1"
-            },
-            {
-                promotion: "app/img/pic4-1.png",
-                name: "2"
-            },
-            {
-                promotion: "app/img/pic4-2.png",
-                name: "3"
-            },
-            {
-                promotion: "app/img/pic4-3.png",
-                name: "4"
-            },
-            {
-                promotion: "app/img/pic4-4.png",
-                name: "5"
-            }
-        ];
         
+
+        
+        
+        function getMainPromotions() {
+
+            var mainPromotions = dailyCacheService.get("mainPromotions");
+            var result;
+            if (mainPromotions) {
+                result = $q.when(mainPromotions);
+            } else {
+
+                var apiMainPromotions = wallaShopsApi.getMainPromotions();
+
+                result = $q.when(apiMainPromotions).then(function (items) {
+                    dailyCacheService.store("mainPromotions", items);
+
+                    return items;
+                });
+            }
+
+            return result;
+        }
 
         function getSeasonalImages() {
 
-            var result = $q.defer();
+            var seasonalImages = dailyCacheService.get("seasonalImages");
+            var result;
+            if (seasonalImages) {
+                result = $q.when(seasonalImages);
+            } else {
 
+                var apiSeasonalImages = wallaShopsApi.getSeasonalImages();
 
-            result.resolve(seasonalImages);
+                result = $q.when(apiSeasonalImages).then(function (items) {
+                    dailyCacheService.store("seasonalImages", items);
 
-            return result.promise;
+                    return items;
+                });
+            }
+
+            return result;
         }
 
-      
+        //function getSeasonalImages() {
+
+        //    var result = $q.defer();
+
+
+        //    result.resolve(seasonalImages);
+
+        //    return result.promise;
+        //}
+        
 
         return {
-            getSeasonalImages: getSeasonalImages
+            getSeasonalImages: getSeasonalImages,
+            getMainPromotions: getMainPromotions
         };
 
     }];

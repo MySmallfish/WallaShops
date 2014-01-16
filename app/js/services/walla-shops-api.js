@@ -149,11 +149,87 @@
     }
 
         ];
+        
+        var mainPromotions = [
+            {
+                promotion: "app/img/pic1.png",
+                name: "promotion1"
+            },
+            {
+                promotion: "app/img/pic2.png",
+                name: "promotion2"
+            },
+            {
+                promotion: "app/img/pic3.png",
+                name: "promotion3"
+            }
+        ];
+
+        var seasonalImages = [
+            {
+                promotion: "app/img/pic4.png",
+                name: "1"
+            },
+            {
+                promotion: "app/img/pic4-1.png",
+                name: "2"
+            },
+            {
+                promotion: "app/img/pic4-2.png",
+                name: "3"
+            },
+            {
+                promotion: "app/img/pic4-3.png",
+                name: "4"
+            },
+            {
+                promotion: "app/img/pic4-4.png",
+                name: "5"
+            }
+        ];
+
+        function getCategories() {
+
+            var result = $q.defer();
+            
+            result.resolve(categories);
+
+            return result.promise;
+        }
+
+        function getFilters() {
+
+            var result = $q.defer();
+
+            result.resolve(filters);
+
+            return result.promise;
+        }
+
+        function getMainPromotions() {
+
+            var result = $q.defer();
+
+            result.resolve(mainPromotions);
+
+            return result.promise;
+        }
+
+        function getSeasonalImages() {
+
+            var result = $q.defer();
+
+            result.resolve(seasonalImages);
+
+            return result.promise;
+        }
 
 
         return {
-            categories: categories,
-            filters: filters
+            getCategories: getCategories,
+            getFilters: getFilters,
+            getMainPromotions: getMainPromotions,
+            getSeasonalImages: getSeasonalImages
         };
 
     }];

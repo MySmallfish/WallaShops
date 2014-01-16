@@ -44,30 +44,6 @@
         
         promotionsService.getSeasonalImages().then(loadSeasonalPromotions);
 
-        $scope.main_promotions = [
-            {
-                promotion: "app/img/pic1.png",
-                name: "promotion1"
-            },
-            {
-                promotion: "app/img/pic2.png",
-                name: "promotion2"
-            },
-            {
-                promotion: "app/img/pic3.png",
-                name: "promotion3"
-            }
-        ];
-
-        $scope.product = {
-            promotion: "app/img/product.png",
-            name: "xyz"
-        };
-
-        $scope.icon = {
-            promotion: "app/img/icon.png",
-            name: "xyz"
-        };
 
         $scope.promotionsCategories = [{
             name: "לאן ללכת?",
@@ -105,7 +81,16 @@
                 id: 2
             }];
 
-        $scope.selectedPromotion = $scope.main_promotions[0];
+        $scope.main_promotions = null;
+        
+        promotionsService.getMainPromotions().then(function (items) {
+            $scope.main_promotions = items;
+            $scope.selectedPromotion = $scope.main_promotions[0];
+        });
+        
+            
+                
+        
         
     }];
 

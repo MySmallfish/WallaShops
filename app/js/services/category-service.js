@@ -8,12 +8,10 @@
             var categories = dailyCacheService.get("categories");
             var result;
             if (categories) {
-                result = $q.when(categories).then(function (items) {
-                    return items;
-                });
+                result = $q.when(categories);
             } else {
                 
-                var apiCategories = wallaShopsApi.categories;
+                var apiCategories = wallaShopsApi.getCategories();
                 
                 result = $q.when(apiCategories).then(function (items) {
                     dailyCacheService.store("categories", items);
@@ -35,8 +33,8 @@
                 });
             } else {
                 
-                var apiFilters = wallaShopsApi.filters;
-
+                var apiFilters = wallaShopsApi.getFilters();
+                
                 result = $q.when(apiFilters).then(function (items) {
                     dailyCacheService.store("filters", items);
 
