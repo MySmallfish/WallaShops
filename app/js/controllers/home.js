@@ -1,16 +1,17 @@
 ﻿(function (_, S, WS) {
 
     WS.HomeController = ["$scope", "promotionsService", "productService", "$http", function ($scope, promotionsService, productService, $http) {
-        //$http({
-        //    url: "http://test.wallashops.co.il/Promotions/4/11/8255_weekend_shops231013_250x250_2.swf?tgt=PromotionFlashClick(%27(8255)P%27%2c%27http%3a%2f%2ftest.wallashops.co.il%2f%27)%3b",
-        //    headers: {
-        //        'X-WallaShops-App': "Tablet"
-        //    }
-        //}).then(function (items) {
-        //    console.log("ITEMS", items);
-        //}, function (error) {
-        //    console.error("ERROR", error);
-        //});
+        $http({
+            url: "http://test.wallashops.co.il/Promotions/4/11/8255_weekend_shops231013_250x250_2.swf?tgt=PromotionFlashClick(%27(8255)P%27%2c%27http%3a%2f%2ftest.wallashops.co.il%2f%27)%3b",
+            headers: {
+                'X-WallaShops-App': "Tablet"
+            }
+        }).then(function (items) {
+            navigator.notification.alert("HERE! " + items.length);
+            console.log("ITEMS", items);
+        }, function (error) {
+            console.error("ERROR", error);
+        });
 
         function isSelected(promotion) {
             return $scope.selectedPromotion === promotion;
