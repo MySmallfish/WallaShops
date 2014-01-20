@@ -26,6 +26,7 @@
         function getFilters() {
 
             var filters = dailyCacheService.get("filters");
+            console.log("FILTERS", filters);
             var result;
             if (filters) {
                 result = $q.when(filters).then(function (items) {

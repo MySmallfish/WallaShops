@@ -22,7 +22,7 @@
   <preference name="detect-data-types" value="false" />
   <preference name="orientation" value="landscape"/>
   <access origin="*" />
-  <icon src="img/icon.png" />
+  <icon src="app/img/icon.png" />
   <!--<icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />
   <icon src="res/icon/android/icon-48-mdpi.png"   gap:platform="android"    gap:density="mdpi" />
   <icon src="res/icon/android/icon-72-hdpi.png"   gap:platform="android"    gap:density="hdpi" />
@@ -37,12 +37,12 @@
   --><!--
   <gap:plugin name="com.phonegap.plugins.barcodescanner" />-->
 
-  <gap:splash src="img/splash.png"  gap:platform="android" gap:density="ldpi" />
-  <gap:splash src="img/splash.png"  gap:platform="android" gap:density="mdpi" />
-  <gap:splash src="img/splash.png"  gap:platform="android" gap:density="hdpi" />
-  <gap:splash src="img/splash.png" gap:platform="android" gap:density="xhdpi" />
+  <gap:splash src="app/img/splash.png"  gap:platform="android" gap:density="ldpi" />
+  <gap:splash src="app/img/splash.png"  gap:platform="android" gap:density="mdpi" />
+  <gap:splash src="app/img/splash.png"  gap:platform="android" gap:density="hdpi" />
+  <gap:splash src="app/img/splash.png" gap:platform="android" gap:density="xhdpi" />
 
-  <gap:splash src="img/splash.png"    gap:platform="ios"     width="1024" height="768" />
+  <gap:splash src="app/img/splash.png"    gap:platform="ios"     width="1024" height="768" />
 
   <gap:platform name="ios" />
   <gap:platform name="android" />

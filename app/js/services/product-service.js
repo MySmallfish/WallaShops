@@ -22,9 +22,13 @@
             return result;
         }
 
+        function getProductsByCategory(categoryId) {
+            // get from api by categoryid
+        }
+
         return {
             getPromotionsCategories: getPromotionsCategories,
-            
+            getProductsByCategory: getProductsByCategory
         };
 
     }];

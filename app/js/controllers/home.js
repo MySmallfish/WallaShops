@@ -1,17 +1,17 @@
 ﻿(function (_, S, WS) {
 
     WS.HomeController = ["$scope", "promotionsService", "productService", "$http", function ($scope, promotionsService, productService, $http) {
-        $http({
-            url: "http://test.wallashops.co.il/api/menu/GetMenus?menuType=2",
-            headers: {
-                'X-WallaShops-App': "Tablet"
-            }
-        }).then(function (items) {
-            navigator.notification.alert("HERE! " + items.length);
-            console.log("ITEMS", items);
-        }, function (error) {
-            console.error("ERROR", error);
-        });
+        //$http({
+        //    url: "http://test.wallashops.co.il/api/menu/GetMenus?menuType=2",
+        //    headers: {
+        //        'X-WallaShops-App': "Tablet"
+        //    }
+        //}).then(function (items) {
+        //    navigator.notification.alert("HERE! " + items.length);
+        //    console.log("ITEMS", items);
+        //}, function (error) {
+        //    console.error("ERROR", error);
+        //});
 
         function isSelected(promotion) {
             return $scope.selectedPromotion === promotion;

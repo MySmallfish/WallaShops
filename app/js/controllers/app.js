@@ -13,16 +13,15 @@
             };
 
             $scope.$on("WallaShops.CategorySelected", function (eventInfo, args) {
-                console.log(args.category);
                 if (args.category) {
-                    $location.path("/Search");
+                    $location.path("/Search").search({categoryId: args.category.id});
                 } else {
                     $location.path("/");
                 }
             });
 
             $scope.$on("WallaShops.FilterValueSelected", function (eventInfo, args) {
-                console.log(args);
+                $scope.$root.selectedFilterValues = args;
             });
 
             $scope.loadCategories = function () {

@@ -66,7 +66,6 @@
         };
 
         function selectFilter(filter) {
-
             $scope.selectedFilter = filter;
         };
 
