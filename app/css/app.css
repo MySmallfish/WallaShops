@@ -107,7 +107,7 @@ header
 
 .filtered
 {
-    background-color: #666;
+    background-color: #444;
     border-radius: 4px 4px 0 0;
     margin-top: 10px;
     line-height: 50px;
@@ -550,7 +550,7 @@ div, i
 {
     position: relative;
     line-height: 40px;
-    border-bottom: solid 1px #BBB;
+    border-bottom: solid 1px #DDD;
 }
 
 .filter-container
@@ -580,7 +580,7 @@ div, i
 {
     padding-right: 30px;
     line-height: 35px;
-    border-bottom: solid 1px #aaa;
+    border-bottom: solid 1px #DDD;
 }
 
 .category-dot, .filter-check
@@ -629,7 +629,7 @@ div, i
 
 .category-container.selected .category-arrow
 {
-    color: black;
+    color: #333;
 }
 
 .clear:before,
@@ -766,14 +766,14 @@ div, i
 .popover-title
 {
     padding: 1px;
-    background-color: #666;
-    border-bottom: 1px solid #666;
+    background-color: #444;
+    border-bottom: 1px solid #444;
 }
 
 .popover-inner
 {
     padding: 0;
-    border: solid 1px #666;
+    border: solid 1px #444;
 }
 
 .popover.bottom .arrow
@@ -799,6 +799,7 @@ div, i
         padding-right: 0;
         margin-left: 0;
         text-align: center;
+        border-radius: 0;
     }
 
 .nav li a:hover
@@ -811,10 +812,12 @@ div, i
     position: absolute;
     top: 0;
     border: none;
+    border-radius: 0;
 }
 
 .category-tab
 {
+    background-color: #ccc;
     right: 0;
 }
 
@@ -826,6 +829,6 @@ div, i
 .menu .tab-content
 {
     position: relative;
-    top: 25px;
-    margin-bottom: 15px;
+    top: 24px;
+    margin-bottom: 13px;
 }

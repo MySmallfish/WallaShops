@@ -1,7 +1,9 @@
 ﻿(function (_, S, WS) {
 
     WS.SearchController = ["$scope", "$filter", "$routeParams", function ($scope, $filter, $routeParams) {
-        console.log("CATID", $routeParams.categoryId);
+        console.log("CAT", $routeParams.categoryId);
+        console.log("CAT", $routeParams.categoryName);
+        console.log("CAT", $routeParams.path);
 
         $scope.step = 4;
 

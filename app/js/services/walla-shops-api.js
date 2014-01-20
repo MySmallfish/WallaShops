@@ -225,23 +225,62 @@
            }];
 
 
+        //function mapCategory(category, parent) {
+        //    var mappedCategory = {
+        //        id: category.ID,
+        //        title: category.MenuName,
+        //        menuType: category.MenuType,   /*1-title only 2-external link 3-category*/
+        //        mainCategoryID: category.MainCategoryID,
+        //        subCategoryID: category.SubCategoryID,
+        //        icon: category.MenuIconPath,
+        //        isNewWindow: category.IsNewWindow,
+        //        link: category.MenuLink,
+        //        parent: parent
+        //    };
+
+        //    var ex = _.clone(mappedCategory);
+        //    mappedCategory.categories = _.map(category.Menus, function (subCategory) {
+        //        return mapCategory(subCategory, ex);
+        //    });
+        //    return mappedCategory;
+        //}
+
+        //function getCategories() {
+
+        //    var result = $q.defer();
+
+        //    var categories = _.map(apiCategories, mapCategory);
+        //    result.resolve(categories);
+
+        //    return result.promise;
+        //}
+
+
         function mapMenuCategory(category, parent) {
-                return {
-                    id: category.ID,
-                    title: category.MenuName,
-                    icon: category.MenuIconPath,
-                    parentId: parent ? parent.ID : null,
-                    categories: _.map(category.Menus, function(subCategory) {
-                        return mapMenuCategory(subCategory, category);
-                    })
-                };
+            var mappedCategory = {
+                id: category.ID,
+                title: category.MenuName,
+                menuType: category.MenuType,   /*1-title only 2-external link 3-category*/
+                mainCategoryID: category.MainCategoryID,
+                subCategoryID: category.SubCategoryID,
+                icon: category.MenuIconPath,
+                isNewWindow: category.IsNewWindow,
+                link: category.MenuLink,
+                parent: parent
+            };
+
+            var ex = _.clone(mappedCategory);
+            mappedCategory.categories = _.map(category.Menus, function (subCategory) {
+                return mapMenuCategory(subCategory, ex);
+            });
+            return mappedCategory;
         }
 
-        function getCategories() {
+        function getMenuCategories() {
 
             var result = $q.defer();
             
-            var categories = _.map(apiCategories, mapMenuCategory);
+            var categories = _.map(apiMenuCategories, mapMenuCategory);
             result.resolve(categories);
 
             return result.promise;
@@ -250,7 +289,7 @@
         function getFilters() {
 
             var result = $q.defer();
-
+    
             result.resolve(filters);
 
             return result.promise;
@@ -285,7 +324,8 @@
 
 
         return {
-            getCategories: getCategories,
+            //getCategories: getCategories,
+            getMenuCategories: getMenuCategories,
             getFilters: getFilters,
             getMainPromotions: getMainPromotions,
             getSeasonalImages: getSeasonalImages,

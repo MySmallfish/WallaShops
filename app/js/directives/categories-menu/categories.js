@@ -59,7 +59,7 @@
         };
 
         function selectCategory(category) {
-
+            event.stopPropagation();
             if (category && category.extarnalLink) {
                 window.open(category.extarnalLink.url,"_blank");
             } else {
