@@ -3,7 +3,7 @@
         <div class="point" ng-repeat="point in points" ng-class="{'selectedPoint': point.selected }" ></div>
     </div>
     
-    <div class="left-arrow" ng-class="{'disabled': !canNavigateNext()}"><i class="fa fa-caret-left" ng-click="navigateNext()"></i></div>
-    <div class="right-arrow" ng-class="{'disabled': !canNavigateBack()}"><i class="fa fa-caret-right" ng-click="navigateBack()"></i></div>
+    <div class="left-arrow" ng-class="{'disabled': !canNavigateNext()}" ng-click="navigateNext()"></div>
+    <div class="right-arrow" ng-class="{'disabled': !canNavigateBack()}" ng-click="navigateBack()"></div>
 
 </div>

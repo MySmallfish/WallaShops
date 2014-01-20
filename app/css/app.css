@@ -446,33 +446,33 @@ div, i
 
 .right-arrow, .left-arrow
 {
+    
     position: absolute;
-    height: 35px;
-    width: 35px;
+    height: 30px;
+    width: 30px;
     border-radius: 25px;
-    border: solid 1px lightgrey;
-    top: 45%;
-    background-color: white;
-    font-size: 28pt;
-    text-align: center;
-    color: #333;
+    top: 43%;
+  
 }
 
 .right-arrow
 {
-    right: 3px;
-    box-shadow: -2px 0 1px 3px #eee;
+    background-image: url('../img/right-arrow-button.png');
+    background-position-y: 137px; 
+    right: 3px;  
 }
 
 .left-arrow
 {
+    background-image: url('../img/left-arrow-button.png');
+    background-position-y: 127px;
+    background-position-x: 2px; 
     left: 3px;
-    box-shadow: 2px 0 1px 3px #eee;
 }
 
     .left-arrow.disabled, .right-arrow.disabled
     {
-        color: #bbb;
+        
     }
 
 .navigation-points
