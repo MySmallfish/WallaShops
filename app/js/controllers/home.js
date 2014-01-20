@@ -2,7 +2,7 @@
 
     WS.HomeController = ["$scope", "promotionsService", "productService", "$http", function ($scope, promotionsService, productService, $http) {
         $http({
-            url: "http://test.wallashops.co.il/Promotions/4/11/8255_weekend_shops231013_250x250_2.swf?tgt=PromotionFlashClick(%27(8255)P%27%2c%27http%3a%2f%2ftest.wallashops.co.il%2f%27)%3b",
+            url: "http://test.wallashops.co.il/api/menu/GetMenus?menuType=2",
             headers: {
                 'X-WallaShops-App': "Tablet"
             }
