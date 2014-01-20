@@ -2,7 +2,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "il.co.wallashops"
-        version   = "1.0.1">
+        version   = "1.0.2">
   <name>Walla! שופס</name>
 
   <description>
@@ -22,8 +22,8 @@
   <preference name="detect-data-types" value="false" />
   <preference name="orientation" value="landscape"/>
   <access origin="*" />
-  <!--<icon src="img/ios/mobile.png" />
-  --><!--<icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />
+  <icon src="img/icon.png" />
+  <!--<icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />
   <icon src="res/icon/android/icon-48-mdpi.png"   gap:platform="android"    gap:density="mdpi" />
   <icon src="res/icon/android/icon-72-hdpi.png"   gap:platform="android"    gap:density="hdpi" />
   <icon src="res/icon/android/icon-96-xhdpi.png"  gap:platform="android"    gap:density="xhdpi" />
@@ -35,14 +35,14 @@
 
 
   --><!--
-  <gap:splash src="res/screen/android/screen-ldpi-portrait.png"  gap:platform="android" gap:density="ldpi" />
-  <gap:splash src="res/screen/android/screen-mdpi-portrait.png"  gap:platform="android" gap:density="mdpi" />
-  <gap:splash src="res/screen/android/screen-hdpi-portrait.png"  gap:platform="android" gap:density="hdpi" />
-  <gap:splash src="res/screen/android/screen-xhdpi-portrait.png" gap:platform="android" gap:density="xhdpi" />
-  --><!--
-
-  <gap:splash src="img/ios/tablet.png"    gap:platform="ios"     width="320" height="480" />
   <gap:plugin name="com.phonegap.plugins.barcodescanner" />-->
+
+  <gap:splash src="img/splash.png"  gap:platform="android" gap:density="ldpi" />
+  <gap:splash src="img/splash.png"  gap:platform="android" gap:density="mdpi" />
+  <gap:splash src="img/splash.png"  gap:platform="android" gap:density="hdpi" />
+  <gap:splash src="img/splash.png" gap:platform="android" gap:density="xhdpi" />
+
+  <gap:splash src="img/splash.png"    gap:platform="ios"     width="1024" height="768" />
 
   <gap:platform name="ios" />
   <gap:platform name="android" />
