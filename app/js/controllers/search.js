@@ -1,9 +1,10 @@
 ﻿(function (_, S, WS) {
 
     WS.SearchController = ["$scope", "$filter", "$routeParams", function ($scope, $filter, $routeParams) {
-        console.log("CAT", $routeParams.categoryId);
-        console.log("CAT", $routeParams.categoryName);
-        console.log("CAT", $routeParams.path);
+        console.log("CAT ID", $routeParams.categoryId);
+        console.log("CAT NAME", $routeParams.categoryName);
+        console.log("CAT PATH", $routeParams.path);
+        console.log("SELECTED CATEGORY LEVEL", $routeParams.level);
 
         $scope.step = 4;
 
@@ -20,6 +21,7 @@
         $scope.$watch("navigationInfo", function (newValue) {
             updateProductPage(newValue);
         });
+        
         // get products from products service, by category id
         
         var products = [

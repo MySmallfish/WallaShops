@@ -1,6 +1,6 @@
 ﻿<div>
     <script type="text/ng-template" id="categories-menu.html">
-        <ws-categories-menu load-categories="loadCategories()" load-filters="loadFilters()"></ws-categories-menu>
+        <ws-categories-menu load-categories="loadCategories()" load-filters="loadFilters()" selected-category="currentCategory"></ws-categories-menu>
     </script>
     <div ng-class="{'filtered':isFiltered()}">
         <button class="category" bs-popover="'categories-menu.html'" data-trigger="manual" ng-click="showPopover()" data-placement="bottom">

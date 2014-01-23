@@ -595,7 +595,9 @@ div, i
     display: none;
 }
 
-.category-container.selected .category-dot, .filter-container.selected .filter-check
+.category-container.selected .category-dot, 
+.category-container.expanded .category-dot, 
+.filter-container.selected .filter-check
 {
     display: block;
 }
@@ -611,9 +613,16 @@ div, i
     margin-right: 10px;
 }
 
-.category-container.selected .category-name, .filter-container.selected .category-name
+.category-container.selected .category-name, 
+.category-container.expanded .category-name, 
+.filter-container.selected .category-name
 {
     margin-right: 30px;
+}
+
+.level1.selected {
+    color: deepskyblue;
+    font-weight: bold;
 }
 
 .category-arrow
