@@ -37,118 +37,34 @@
      //        }
      //    ]
      //},
-     //{
-     //    id: 2,
-     //    title: "עוד קטגוריה",
-     //    level: 0,
-     //    categories: [
-     //        {
-     //            parentId: 2,
-     //            id: 11,
-     //            title: "קטגורית משנה 2",
-     //            level: 1,
-     //            categories: [
-     //                { id: 12, title: "קטגוריית משנה 2", level: 2 },
-     //                { id: 13, title: "קטגוריית משנה 3", level: 2 },
-     //                { id: 14, title: "קטגוריית משנה 4", level: 2 },
-     //                { id: 15, title: "קטגוריית משנה 5", level: 2 },
-     //                { id: 16, title: "קטגוריית משנה 6", level: 2 }
-     //            ]
-     //        },
-     //        {
-     //            parentId: 2,
-     //            id: 9,
-     //            title: "קטגורית משנה 2",
-     //            level: 1,
-     //            categories: [
-     //                { id: 17, title: "קטגוריית משנה 2", level: 2 }
-     //            ]
-     //        }
-     //    ]
-     //},
-     //{
-     //    id: 3,
-     //    title: "קטגוריה שלישת",
-     //    level: 0,
-     //    categories: [
-     //        {
-     //            id: 24,
-     //            parentId: 3,
-     //            title: "קטגורית משנה 3",
-     //            level: 1,
-     //            categories: [
-     //                { id: 18, title: "קטגוריית משנה 2", level: 2 },
-     //                { id: 19, title: "קטגוריית משנה 3", level: 2 },
-     //                { id: 20, title: "קטגוריית משנה 4", level: 2 },
-     //                { id: 21, title: "קטגוריית משנה 5", level: 2 },
-     //                { id: 22, title: "קטגוריית משנה 6", level: 2 }
-     //            ]
-     //        },
-     //        {
-     //            id: 25,
-     //            parentId: 3,
-     //            title: "3",
-     //            level: 1,
-     //            categories: [
-     //                { id: 23, title: "קטגוריית משנה 2", level: 2 }
-     //            ]
-     //        }
-     //    ]
-     //}
      //   ];
 
-        var filters = [
-    {
-        id: 1,
-        title: "פילטר 1",
-        level: 1,
-        values: [
-            { id: 11, title: "פילטר משנה 11", level: 2 },
-            { id: 12, title: "פילטר משנה 12", level: 2 },
-            { id: 13, title: "פילטר משנה 13", level: 2 },
-            { id: 14, title: "פילטר משנה 14", level: 2 },
-            { id: 15, title: "פילטר משנה 15", level: 2 }
-        ]
-    },
-    {
-        id: 2,
-        title: "פילטר 2",
-        level: 1,
-        values: [
-            { id: 21, title: "פילטר משנה 21", level: 2 },
-            { id: 22, title: "פילטר משנה 22", level: 2 },
-            { id: 23, title: "פילטר משנה 23", level: 2 },
-            { id: 24, title: "פילטר משנה 24", level: 2 },
-            { id: 25, title: "פילטר משנה 25", level: 2 }
-        ]
-    },
-    {
-        id: 3,
-        title: "פילטר 3",
-        level: 1,
-        values: [
-            { id: 31, title: "פילטר משנה 31", level: 2 },
-            { id: 32, title: "פילטר משנה 32", level: 2 },
-            { id: 33, title: "פילטר משנה 33", level: 2 },
-            { id: 34, title: "פילטר משנה 34", level: 2 },
-            { id: 35, title: "פילטר משנה 35", level: 2 }
-        ]
-    },
-    {
-        id: 4,
-        title: "פילטר 4",
-        level: 1,
-
-        values: [
-            { id: 41, title: "פילטר משנה 41", level: 2 },
-            { id: 42, title: "פילטר משנה 42", level: 2 },
-            { id: 43, title: "פילטר משנה 43", level: 2 },
-            { id: 44, title: "פילטר משנה 44", level: 2 },
-            { id: 45, title: "פילטר משנה 45", level: 2 }
-        ]
-    }
-
-        ];
+    //    var filters = [
+    //{
+    //    id: 1,
+    //    title: "פילטר 1",
+    //    level: 1,
+    //    values: [
+    //        { id: 11, title: "פילטר משנה 11", level: 2 },
+    //        { id: 12, title: "פילטר משנה 12", level: 2 },
+    //        { id: 13, title: "פילטר משנה 13", level: 2 },
+    //        { id: 14, title: "פילטר משנה 14", level: 2 },
+    //        { id: 15, title: "פילטר משנה 15", level: 2 }
+    //    ]
+    //},
+    //{
+    //    id: 2,
+    //    title: "פילטר 2",
+    //    level: 1,
+    //    values: [
+    //        { id: 21, title: "פילטר משנה 21", level: 2 },
+    //        { id: 22, title: "פילטר משנה 22", level: 2 },
+    //        { id: 23, title: "פילטר משנה 23", level: 2 },
+    //        { id: 24, title: "פילטר משנה 24", level: 2 },
+    //        { id: 25, title: "פילטר משנה 25", level: 2 }
+    //    ]
+    //},
+    //    ];
 
         var mainPromotions = [
             {
@@ -225,71 +141,64 @@
            }];
 
 
-        //function mapCategory(category, parent) {
-        //    var mappedCategory = {
-        //        id: category.ID,
-        //        title: category.MenuName,
-        //        menuType: category.MenuType,   /*1-title only 2-external link 3-category*/
-        //        mainCategoryID: category.MainCategoryID,
-        //        subCategoryID: category.SubCategoryID,
-        //        icon: category.MenuIconPath,
-        //        isNewWindow: category.IsNewWindow,
-        //        link: category.MenuLink,
-        //        parent: parent
-        //    };
-
-        //    var ex = _.clone(mappedCategory);
-        //    mappedCategory.categories = _.map(category.Menus, function (subCategory) {
-        //        return mapCategory(subCategory, ex);
-        //    });
-        //    return mappedCategory;
-        //}
-
-        //function getCategories() {
-
-        //    var result = $q.defer();
-
-        //    var categories = _.map(apiCategories, mapCategory);
-        //    result.resolve(categories);
-
-        //    return result.promise;
-        //}
-
 
         function mapMenuCategory(category, parent) {
-            var mappedCategory = {
-                id: category.ID,
-                title: category.MenuName,
-                menuType: category.MenuType,   /*1-title only 2-external link 3-category*/
-                mainCategoryID: category.MainCategoryID,
-                subCategoryID: category.SubCategoryID,
-                icon: category.MenuIconPath,
-                isNewWindow: category.IsNewWindow,
-                link: category.MenuLink,
-                parent: parent
-            };
-
-            var ex = _.clone(mappedCategory);
-            mappedCategory.categories = _.map(category.Menus, function (subCategory) {
-                return mapMenuCategory(subCategory, ex);
-            });
-            return mappedCategory;
-        }
+                var mappedCategory = {
+                    id: category.ID,
+                    title: category.MenuName,
+                    menuType: category.MenuType,   /*1-title only 2-external link 3-category*/
+                    mainCategoryID: category.MainCategoryID,
+                    subCategoryID: category.SubCategoryID,
+                    icon: category.MenuIconPath,
+                    isNewWindow: category.IsNewWindow,
+                    link: category.MenuLink,
+                    level: parent ? parent.level+1 : 0,
+                    parent: parent
+                };
+            
+                var ex = _.clone(mappedCategory);
+                mappedCategory.categories = _.map(category.Menus, function (subCategory) {
+                    return mapMenuCategory(subCategory, ex);
+                });
+                return mappedCategory;
+            }
 
         function getMenuCategories() {
 
             var result = $q.defer();
             
             var categories = _.map(apiMenuCategories, mapMenuCategory);
+            console.log(categories);
             result.resolve(categories);
 
             return result.promise;
+        }
+
+        function mapFilter(filter) {
+            var mappedFilter = {
+                name: filter.GroupName,
+                filterItems: _.map(filter.FilterItem, mapFilterItem)
+            };
+
+            return mappedFilter;
+        }
+
+        function mapFilterItem(filterItem) {
+            var mappedFilterItem = {
+                id: filterItem.FilterId,
+                name: filterItem.FilterName,
+                image: filterItem.Media
+            };
+
+            return mappedFilterItem;
         }
 
         function getFilters() {
 
             var result = $q.defer();
     
+            var filters = _.map(apiCategories, mapFilter);
+            console.log(filters);
             result.resolve(filters);
 
             return result.promise;

@@ -4,26 +4,28 @@
         "$scope",
         "$location",
         "categoryService",
-        function ($scope, $location, categoryService) {
+        "textResource",
+        function ($scope, $location, categoryService, textResource) {
             $scope.showProduct = function (product) {
                 window.open("http://www.google.com/?q=" + product.id, "_blank");
-
-
-
             };
-
+            $scope.$watch("currentCategory", function (newValue) {
+                console.log("CATs", newValue);
+            });
             $scope.$on("WallaShops.CategorySelected", function (eventInfo, args) {
+                $scope.currentCategory = args.category;
+
                 if (args.category) {
                     if (args.category.isNewWindow) {
                         window.open(args.category.link + args.category.id, "_blank");
                     } else {
                         var path = null;
                         if (args.category.parent) {
-                            path = "ראשי > "+ args.category.parent.title + " > " + args.category.title;
+                            path = textResource.get("MainBreadCramb") + args.category.parent.title + " > " + args.category.title;
                         } else {
-                            path = "ראשי > " + args.category.title;
+                            path = textResource.get("MainBreadCramb") + args.category.title;
                         }
-                        $location.path("/Search").search({ categoryId: args.category.id, categoryName: args.category.title, path: path });
+                        $location.path("/Search").search({ categoryId: args.category.id, categoryName: args.category.title, path: path, level: args.category.level });
                     }
                 } else {
                     $location.path("/");
@@ -39,7 +41,7 @@
             };
 
             $scope.loadFilters = function () {
-                return categoryService.getFilters();
+                return categoryService.getFilters($scope.currentCategory);
             };
 
 

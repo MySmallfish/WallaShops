@@ -24,6 +24,7 @@
 
         function getProductsByCategory(categoryId) {
             // get from api by categoryid
+
         }
 
         return {

@@ -6,14 +6,15 @@
             templateUrl: 'app/js/directives/categories-menu/categories-menu.html',
             scope: {
                 loadFilters: "&",
-                loadCategories: "&"
+                loadCategories: "&",
+                selectedCategory: "="
             },
             replace: true,
             controller: ["$scope", function ($scope) {
                 
                 $scope.hasFilter = false;
                 
-                console.log("HAS?", $scope.hasFilter);
+                console.log("HAS FILTERS?", $scope.hasFilter);
                 $scope.$on("WallaShops.FilterValueSelected", function (e, args) {
                     
                     $scope.hasFilter = !!args.values; 

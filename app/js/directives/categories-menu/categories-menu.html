@@ -10,7 +10,7 @@
 
     <div class="tab-content">
         <div class="tab-pane" ng-class="{'active': !hasFilter}" id="categories">
-            <ws-categories load="loadCategories()"></ws-categories>
+            <ws-categories load="loadCategories()" selected-category="selectedCategory"></ws-categories>
         </div>
         <div class="tab-pane" ng-class="{'active': hasFilter}" id="filter">
             <ws-filter load="loadFilters()"></ws-filter>

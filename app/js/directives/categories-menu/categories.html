@@ -7,7 +7,7 @@
 
             <li ng-repeat="category in categories" ng-click="selectCategory(category)">
 
-                <div class="category-container" ng-class="{'selected': isSelected(category) }">
+                <div class="category-container" ng-class="{'selected': isSelected(category), 'expanded': isExpanded(category)  }">
                     <div class="category-dot">
                         <i class="fa fa-circle"></i>
                     </div>
@@ -20,8 +20,8 @@
                     </div>
                 </div>
 
-                <ul ng-show="category.categories.length && isSelected(category)">
-                    <li class="level1" ng-repeat="childCategory in category.categories" ng-click="selectCategory(childCategory)">{{childCategory.title}}
+                <ul ng-show="isExpanded(category)">
+                    <li class="level1" ng-class="{'selected': isSelected(childCategory) }" ng-repeat="childCategory in category.categories" ng-click="selectCategory(childCategory)">{{childCategory.title}}
                     </li>
                 </ul>
             </li>
