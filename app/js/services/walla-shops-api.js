@@ -1,6 +1,6 @@
 ﻿(function (_, S, WS) {
 
-    WS.WallaShopsApi = ["$q", function ($q) {
+    WS.WallaShopsApi = ["$http","$q", "config", function ($http, $q, config) {
 
      //   var categories = [
      //{
@@ -140,15 +140,25 @@
                id: 2
            }];
 
-
+        var baseUrl = config.baseUrl;
+        
+        function run(url, parameters) {
+            return $http({
+                url: [baseUrl, "api", url].join("/"),
+                method: "GET",
+                params: parameters
+            }).then(function(result) {
+                return result.data;
+            });
+        }
 
         function mapMenuCategory(category, parent) {
                 var mappedCategory = {
                     id: category.ID,
                     title: category.MenuName,
                     menuType: category.MenuType,   /*1-title only 2-external link 3-category*/
-                    mainCategoryID: category.MainCategoryID,
-                    subCategoryID: category.SubCategoryID,
+                    mainCategoryId: category.MainCategoryID,
+                    subCategoryId: category.SubCategoryID,
                     icon: category.MenuIconPath,
                     isNewWindow: category.IsNewWindow,
                     link: category.MenuLink,
@@ -163,21 +173,26 @@
                 return mappedCategory;
             }
 
-        function getMenuCategories() {
-
-            var result = $q.defer();
+        function mapMenuCategories(menuCategories) {
             
-            var categories = _.map(apiMenuCategories, mapMenuCategory);
-            console.log(categories);
-            result.resolve(categories);
+            return _.map(menuCategories, mapMenuCategory);
+        }
 
-            return result.promise;
+        function getCategoryDetails(mainCategoryId, subCategoryId) {
+            return run("categories/GetCategoryInfoById", { mainCategoryId: mainCategoryId, categoryId: subCategoryId });
+        }
+
+        function getMenuCategories() {
+            return run("menu/GetMenus", { menuType: 2 }).then(mapMenuCategories);
         }
 
         function mapFilter(filter) {
             var mappedFilter = {
-                name: filter.GroupName,
-                filterItems: _.map(filter.FilterItem, mapFilterItem)
+                title: filter.GroupName,
+                location: filter.FilterLocation,
+                type: filter.FilterType,
+                additionalName: filter.AdditionalGroupName,
+                values: _.map(filter.FilterItems, mapFilterItem)
             };
 
             return mappedFilter;
@@ -186,22 +201,21 @@
         function mapFilterItem(filterItem) {
             var mappedFilterItem = {
                 id: filterItem.FilterId,
-                name: filterItem.FilterName,
-                image: filterItem.Media
+                title: filterItem.FilterName,
+                image: filterItem.Media,
+                location: filterItem.Location,
+                nameForUrl: filterItem.FilterVirtualName,
+                parent: filterItem.ParentFilterKey,
+                link: filterItem.FilterLink 
             };
-
             return mappedFilterItem;
         }
 
-        function getFilters() {
+        function mapCategoryFilters(filters) {
+     
+            var mappedfilters = _.map(filters, mapFilter);
 
-            var result = $q.defer();
-    
-            var filters = _.map(apiCategories, mapFilter);
-            console.log(filters);
-            result.resolve(filters);
-
-            return result.promise;
+            return mappedfilters;
         }
 
         function getMainPromotions() {
@@ -233,12 +247,12 @@
 
 
         return {
-            //getCategories: getCategories,
             getMenuCategories: getMenuCategories,
-            getFilters: getFilters,
+            mapCategoryFilters: mapCategoryFilters,
             getMainPromotions: getMainPromotions,
             getSeasonalImages: getSeasonalImages,
-            getPromotionsCategories: getPromotionsCategories
+            getPromotionsCategories: getPromotionsCategories,
+            getCategoryDetails: getCategoryDetails
         };
 
     }];

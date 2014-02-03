@@ -11,6 +11,7 @@
                 $(".category", element).click(function (event) {
                     event.stopPropagation();
                     $(this).popover("toggle");
+                    
                 });
 
                 $(".content-container").click(function () {
@@ -18,7 +19,7 @@
                 });
 
                 scope.isFiltered = function() {
-                    return true;
+                    return false;
                 };
             }
         };

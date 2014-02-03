@@ -5,9 +5,9 @@
                 <div class="category-name">כל הקטגוריות</div>
             </li>
 
-            <li ng-repeat="category in categories" ng-click="selectCategory(category)">
+            <li ng-repeat="category in categories" >
 
-                <div class="category-container" ng-class="{'selected': isSelected(category), 'expanded': isExpanded(category)  }">
+                <div class="category-container" ng-class="{'selected': isSelected(category), 'expanded': isExpanded(category)  }" ng-click="selectCategory(category)">
                     <div class="category-dot">
                         <i class="fa fa-circle"></i>
                     </div>

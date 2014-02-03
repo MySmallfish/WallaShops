@@ -16,28 +16,40 @@
     WS.CategoriesController = ["$scope", "dailyCacheService", function ($scope, dailyCacheService) {
         var storage = dailyCacheService.get("CategoriesMenu-Cache");
 
-        if (!storage) {
-            storage = {};
-            dailyCacheService.store("CategoriesMenu-Cache", storage);
+        function resetStorage() {
+            if (!storage) {
+                storage = {};
+                dailyCacheService.store("CategoriesMenu-Cache", storage);
+            }
         }
+
+        resetStorage();
 
         function loadRootCategories() {
             var result = $scope.load();
             if (result && result.then) {
                 result.then(function (items) {
-                    $scope.categories = items;
+
+                    setStorageCategories(items);
+                    
                 });
             } else {
                 throw new Error("You must provide load method that returns promise");
             }
+        }
         
+        function setStorageCategories(categories) {
+            $scope.categories = storage.lastCategories = categories;
         }
 
         function loadCategories(lastSelected) {
-            console.log(storage, $scope.selectedCategory, lastSelected);
             if ($scope.selectedCategory) {
-                if (lastSelected && lastSelected.level == 0 && $scope.selectedCategory.level == 1) {
-                    $scope.categories = lastSelected.categories;
+                if (lastSelected){
+                    if (lastSelected.level == 0 && $scope.selectedCategory.level == 1) {
+                        setStorageCategories(lastSelected.categories);
+                    } else {
+                        setStorageCategories(storage.lastCategories);
+                    }
                 } else {
                     loadRootCategories();
                 }
@@ -59,11 +71,14 @@
         }
 
         function clearSelectedCategory() {
-            $scope.selectCategory(null);
+            $scope.selectedCategory = null;
+            storage = null;
+            resetStorage();
+            loadRootCategories();
         }
 
         function isSelected(category) {
-            return $scope.selectedCategory === category;
+            return category && $scope.selectedCategory === category;
         }
 
         function isAnythingSelected() {
@@ -75,40 +90,33 @@
         }
 
         function isExpanded(category) {
-            return category.categories.length && (isSelected(category) || isChildCategorySelected(category));
+            
+            return category.categories.length && (isSelected(category) || isChildCategorySelected(category) || isSelected(category.parent));
         }
 
         function selectCategory(category) {
-            event.stopPropagation();
+            //event.stopPropagation();
             if (category && category.extarnalLink) {
                 window.open(category.extarnalLink.url,"_blank");
             } else {
+                
                 var lastSelected = $scope.selectedCategory;
                 $scope.selectedCategory = category;
-
                 storage.selected = $scope.selectedCategory;
                 storage.lastSelected = lastSelected;
-
-                loadCategories(lastSelected);
+                if ($scope.selectedCategory.level < 2) {
+                    loadCategories(lastSelected);
+                }
 
                 publishCategorySelectedEvent(lastSelected);
             }
         };
-        
-        function isThirdLevel(category) {
-            var result = 0;
-            if (category.level === 3) {
-                result = 1;
-            }
-            return result;
-        }
         
         _.extend($scope, {
             clearSelectedCategory: clearSelectedCategory,
             isSelected: isSelected,
             isAnythingSelected: isAnythingSelected,
             selectCategory: selectCategory,
-            isThirdLevel: isThirdLevel,
             isExpanded: isExpanded
         });
         

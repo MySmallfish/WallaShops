@@ -1,10 +1,10 @@
 ﻿(function (_, S, WS) {
 
     WS.SearchController = ["$scope", "$filter", "$routeParams", function ($scope, $filter, $routeParams) {
-        console.log("CAT ID", $routeParams.categoryId);
-        console.log("CAT NAME", $routeParams.categoryName);
-        console.log("CAT PATH", $routeParams.path);
-        console.log("SELECTED CATEGORY LEVEL", $routeParams.level);
+        //console.log("CAT ID", $routeParams.categoryId);
+        //console.log("CAT NAME", $routeParams.categoryName);
+        //console.log("CAT PATH", $routeParams.path);
+        //console.log("SELECTED CATEGORY LEVEL", $routeParams.level);
 
         $scope.step = 4;
 

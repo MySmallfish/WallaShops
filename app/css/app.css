@@ -105,7 +105,9 @@ header
     outline: none;
 }
 
-.filtered
+ 
+
+.popover-click
 {
     background-color: #444;
     border-radius: 4px 4px 0 0;
@@ -387,6 +389,7 @@ div, i
 .rating
 {
     position: relative;
+    
 }
 
     .rating .fa
@@ -394,7 +397,11 @@ div, i
         font-size: 15pt;
         letter-spacing: 1px;
         color: deepskyblue;
+        -webkit-transform: scaleX(-1);
+        
     }
+
+    
 
 .raters-number
 {
@@ -772,17 +779,25 @@ div, i
     font-size: 15pt;
 }
 
+.popover {
+    padding-right: 182px;
+    margin-top: 4px;
+    
+}
+
 .popover-title
 {
     padding: 1px;
     background-color: #444;
     border-bottom: 1px solid #444;
+    
 }
 
 .popover-inner
 {
     padding: 0;
     border: solid 1px #444;
+    border-top-right-radius: 0;
 }
 
 .popover.bottom .arrow

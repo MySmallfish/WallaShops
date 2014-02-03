@@ -14,7 +14,6 @@
                 
                 $scope.hasFilter = false;
                 
-                console.log("HAS FILTERS?", $scope.hasFilter);
                 $scope.$on("WallaShops.FilterValueSelected", function (e, args) {
                     
                     $scope.hasFilter = !!args.values; 

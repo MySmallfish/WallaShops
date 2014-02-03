@@ -41,7 +41,10 @@
             };
 
             $scope.loadFilters = function () {
+                //correct currentCategory
+
                 return categoryService.getFilters($scope.currentCategory);
+
             };
 
 

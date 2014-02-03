@@ -16,9 +16,12 @@
     WS.FilterController = ["$scope", function ($scope) {
 
         function loadFilters() {
+            
             var result = $scope.load();
+            
             if (result && result.then) {
                 result.then(function (items) {
+                    
                     $scope.filters = items;
 
                 });
@@ -93,7 +96,9 @@
         
         $scope.selectedFilter = null;
 
-        loadFilters();
+        $scope.$on("WallaShops.CategorySelected", function(eventInfo, args) {
+            loadFilters(args.category);
+        });
 
     }];
 

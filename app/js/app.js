@@ -2,6 +2,7 @@
 
     var app = angular.module("WallaShops", ["ngRoute", "ngTouch", "$strap", "Simple"]);
 
+    app.service("config", WS.Configuration);
     app.service("categoryService", WS.CategoryService);
     app.service("promotionsService", WS.PromotionsService);
     app.service("productService", WS.ProductService);
