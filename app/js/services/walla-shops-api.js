@@ -218,6 +218,46 @@
             return mappedfilters;
         }
 
+        function mapProducts(product) {
+            var mappedProduct = {
+                id: product.ProductID,
+                title: product.TitleLine1,
+                subTitle: product.TitleLine2,
+                subtitle2:product.blabla,
+                imageUrl: product.SmallPicPath,
+                type: product.AuctionType,
+                rating: product.ReviewsScore,
+                ratersNumber: product.ReviewsCount,
+                price: product.Price,
+                coin: product.ProductCoin,
+                nameForUrl: product.VirtualUrl,
+                status: product.Status,
+                icon: _.map(product.SaleSquareIcons , mapIcons)
+            };
+            return mappedProduct;
+        }
+        
+        function mapIcons(icon) {
+            var mappedProduct = {
+                image: icon.ImagePath,
+                link: icon.ImageLink,
+                imageAlt: icon.ImageAlt
+            };
+            return mappedProduct;
+        }
+        
+        function mapSearchProducts(products) {
+
+            var mappedproducts = _.map(products, mapProducts);
+
+            return mappedproducts;
+        }
+
+        function getSearchProducts() {
+            return run("menu/GetMenus", { menuType: 2 }).then(mapSearchProducts);//////////////////////////////////////////////////////////
+        }
+
+
         function getMainPromotions() {
 
             var result = $q.defer();
@@ -252,7 +292,8 @@
             getMainPromotions: getMainPromotions,
             getSeasonalImages: getSeasonalImages,
             getPromotionsCategories: getPromotionsCategories,
-            getCategoryDetails: getCategoryDetails
+            getCategoryDetails: getCategoryDetails,
+            getSearchProducts: getSearchProducts
         };
 
     }];
