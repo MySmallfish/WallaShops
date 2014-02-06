@@ -1,10 +1,6 @@
 ﻿(function (_, S, WS) {
 
     WS.SearchController = ["$scope", "$filter", "$routeParams", function ($scope, $filter, $routeParams) {
-        //console.log("CAT ID", $routeParams.categoryId);
-        //console.log("CAT NAME", $routeParams.categoryName);
-        //console.log("CAT PATH", $routeParams.path);
-        //console.log("SELECTED CATEGORY LEVEL", $routeParams.level);
 
         $scope.step = 4;
 
@@ -22,6 +18,11 @@
             updateProductPage(newValue);
         });
         
+        function isFilterValueEmpty(filterValue) {
+            console.log("EMPTY?", filterValue);
+            return filterValue;
+        }
+
         // get products from products service, by category id
         
         var products = [
@@ -45,6 +46,11 @@
 
         $scope.productsLine1 = _.filter(products, function(product, index) { return index % 2 == 0; });
         $scope.productsLine2 = _.filter(products, function (product, index) { return index % 2 != 0; });
+        
+        _.extend($scope, {
+            isFilterValueEmpty: isFilterValueEmpty
+        });
+
     }];
 
 

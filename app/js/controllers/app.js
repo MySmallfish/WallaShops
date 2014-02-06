@@ -12,6 +12,7 @@
             $scope.$watch("currentCategory", function (newValue) {
                 console.log("CATs", newValue);
             });
+            
             $scope.$on("WallaShops.CategorySelected", function (eventInfo, args) {
                 $scope.currentCategory = args.category;
 
@@ -19,21 +20,36 @@
                     if (args.category.isNewWindow) {
                         window.open(args.category.link + args.category.id, "_blank");
                     } else {
-                        var path = null;
-                        if (args.category.parent) {
-                            path = textResource.get("MainBreadCramb") + args.category.parent.title + " > " + args.category.title;
+                        
+                        if (args.category.parent.parent) {
+                            
+                            $scope.fullPath.path = textResource.get("MainBreadCramb") + " > " + args.category.parent.parent.title + "  >  " + args.category.parent.title + " > ";
+                            $scope.fullPath.current = args.category.title;
+                            
+                        } else if (args.category.parent) {
+                            
+                            $scope.fullPath.path = textResource.get("MainBreadCramb") + " > " + args.category.parent.title + "  >  ";
+                            $scope.fullPath.current = args.category.title;
+                            
                         } else {
-                            path = textResource.get("MainBreadCramb") + args.category.title;
+                            $scope.fullPath.path = textResource.get("MainBreadCramb") + " >  ";
+                            $scope.fullPath.current = args.category.title;
                         }
-                        $location.path("/Search").search({ categoryId: args.category.id, categoryName: args.category.title, path: path, level: args.category.level });
+
+                        if (args.category.level > 0) {
+                            $location.path("/Search").search({ categoryId: args.category.id, categoryName: args.category.title, path: $scope.fullPath, level: args.category.level });
+                        }
+                        console.log("PATH:", $scope.path);
                     }
                 } else {
                     $location.path("/");
                 }
+
             });
 
             $scope.$on("WallaShops.FilterValueSelected", function (eventInfo, args) {
                 $scope.$root.selectedFilterValues = args;
+                console.log("FIFI:", $scope.$root.selectedFilterValues);
             });
 
             $scope.loadCategories = function () {
@@ -41,12 +57,11 @@
             };
 
             $scope.loadFilters = function () {
-                //correct currentCategory
-
                 return categoryService.getFilters($scope.currentCategory);
 
             };
-
+            
+            $scope.fullPath = {};
 
         }];
 

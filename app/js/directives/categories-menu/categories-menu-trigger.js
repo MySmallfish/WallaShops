@@ -7,42 +7,42 @@
             scope: false,
             replace: true,
             link: function (scope, element) {
-                
-                $(".category", element).click(function (event) {
-                    isMenuOpen();
+
+                function hide() {
+                    triggerElement.popover("hide");
+                    scope.isMenuOpen = false;
+                    scope.$apply();
+                }
+
+                function show() {
+                    triggerElement.popover("show");
+                    scope.isMenuOpen = true;
+                    scope.$apply();
+                }
+
+                var triggerElement = $(".category", element);
+                triggerElement.click(function (event) {
                     event.stopPropagation();
-                    $(this).popover("toggle");
+                    if (scope.isMenuOpen) {
+                        hide();
+                    } else {
+                        show();
+                    }
                     
                 });
 
                 $(".content-container").click(function () {
-                    isMenuOpen();
-                    $(".category", element).popover("hide");
+                    hide();
                 });
 
                 scope.$on("WallaShops.FilterValueSelected", function(e, args) {
-                    console.log("FilterValueSelected");
                     scope.isFiltered = true;
                 });
 
                 scope.$on(".WallaShops.publishCleared", function (e, args) {
-                    console.log("publishCleared");
                     scope.isFiltered = false;
                 });
 
-
-                var isMenuOpen = function () {
-                    if (scope.isMenuOpen) {
-                        scope.isMenuOpen = false;
-                    } else {
-                        scope.isMenuOpen = true;
-                    }
-                    console.log("OPEN??", scope.isMenuOpen);
-                };
-
-                //scope.isFiltered = function() {
-                //    return false;
-                //};
             }
         };
     }];

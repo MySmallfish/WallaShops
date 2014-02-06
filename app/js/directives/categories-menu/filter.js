@@ -64,12 +64,11 @@
         };
         
         function clearSelectedFilterValues() {
-            console.log("CLEAR???");
+            _.each($scope.filters, function (filter) {
+                filter.selectedValue = null;
+            });
             
             publishClearedEvent();
-            _.each($scope.filters, function (filter) {
-                $scope.selectFilterValue(filter, null);
-            });
         };
 
         function isAnyFilterSelected() {
