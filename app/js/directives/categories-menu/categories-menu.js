@@ -14,9 +14,13 @@
                 
                 $scope.hasFilter = false;
                 
-                $scope.$on("WallaShops.FilterValueSelected", function (e, args) {
+                $scope.$on("WallaShops.CategorySelected", function (e, args) {
                     
-                    $scope.hasFilter = !!args.values; 
+                    //$scope.hasFilter = true;
+                    //$scope.hasFilter = !!args.values;
+                    
+                    console.log("FILTER??");
+                    
                 });
 
             }],

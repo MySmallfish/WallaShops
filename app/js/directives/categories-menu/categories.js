@@ -31,20 +31,20 @@
                 result.then(function (items) {
 
                     setStorageCategories(items);
-                    
+
                 });
             } else {
                 throw new Error("You must provide load method that returns promise");
             }
         }
-        
+
         function setStorageCategories(categories) {
             $scope.categories = storage.lastCategories = categories;
         }
 
         function loadCategories(lastSelected) {
             if ($scope.selectedCategory) {
-                if (lastSelected){
+                if (lastSelected) {
                     if (lastSelected.level == 0 && $scope.selectedCategory.level == 1) {
                         setStorageCategories(lastSelected.categories);
                     } else {
@@ -90,16 +90,16 @@
         }
 
         function isExpanded(category) {
-            
+
             return category.categories.length && (isSelected(category) || isChildCategorySelected(category) || isSelected(category.parent));
         }
 
         function selectCategory(category) {
             //event.stopPropagation();
             if (category && category.extarnalLink) {
-                window.open(category.extarnalLink.url,"_blank");
+                window.open(category.extarnalLink.url, "_blank");
             } else {
-                
+
                 var lastSelected = $scope.selectedCategory;
                 $scope.selectedCategory = category;
                 storage.selected = $scope.selectedCategory;
@@ -108,10 +108,12 @@
                     loadCategories(lastSelected);
                 }
 
-                publishCategorySelectedEvent(lastSelected);
+                if (category.level > 0) {
+                    publishCategorySelectedEvent(lastSelected);
+                }
             }
         };
-        
+
         _.extend($scope, {
             clearSelectedCategory: clearSelectedCategory,
             isSelected: isSelected,
@@ -119,12 +121,12 @@
             selectCategory: selectCategory,
             isExpanded: isExpanded
         });
-        
+
         $scope.selectedCategory = storage.selected;
-        
+
         loadCategories(storage.lastSelected);
-        
-        
+
+
 
     }];
 })(_, Simple, WallaShops);

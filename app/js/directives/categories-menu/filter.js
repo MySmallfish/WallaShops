@@ -39,6 +39,11 @@
                 values: filterSelectedValue($scope.filters)
             });
         }
+        
+        function publishClearedEvent() {
+            console.log("publishCleared");
+            publish("WallaShops.publishCleared");
+        }
 
         function filterSelectedValue(filtersArr) {
             return _.map(filtersArr, function (filter) {
@@ -59,6 +64,9 @@
         };
         
         function clearSelectedFilterValues() {
+            console.log("CLEAR???");
+            
+            publishClearedEvent();
             _.each($scope.filters, function (filter) {
                 $scope.selectFilterValue(filter, null);
             });

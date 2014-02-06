@@ -105,20 +105,20 @@ header
     outline: none;
 }
 
- 
-
-.popover-click
+/*.popover-click*/
+.menu-is-open
 {
     background-color: #444;
+    border-color: #444;
     border-radius: 4px 4px 0 0;
     margin-top: 10px;
     line-height: 50px;
+    width: 106px;
 }
 
-    .filtered .category
-    {
-        color: white;
-    }
+.menu-is-open .category {
+    color: white;
+}
 
 .right-buffer
 {
@@ -780,7 +780,7 @@ div, i
 }
 
 .popover {
-    padding-right: 182px;
+    padding-right: 178px;
     margin-top: 4px;
     
 }
@@ -855,4 +855,8 @@ div, i
     position: relative;
     top: 24px;
     margin-bottom: 13px;
+}
+
+.filter-tab.active {
+    background-color: red; 
 }
