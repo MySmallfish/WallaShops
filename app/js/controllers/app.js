@@ -4,8 +4,9 @@
         "$scope",
         "$location",
         "categoryService",
+        "productService",
         "textResource",
-        function ($scope, $location, categoryService, textResource) {
+    function ($scope, $location, categoryService, productService, textResource) {
             $scope.showProduct = function (product) {
                 window.open("http://www.google.com/?q=" + product.id, "_blank");
             };
@@ -37,9 +38,16 @@
                         }
 
                         if (args.category.level > 0) {
-                            $location.path("/Search").search({ categoryId: args.category.id, categoryName: args.category.title, path: $scope.fullPath, level: args.category.level });
+                            $location.path("/Search").search({
+                                categoryId: args.category.id,
+                                categoryName: args.category.title,
+                                path: $scope.fullPath,
+                                level: args.category.level,
+                                mainCategoryId: args.category.mainCategoryId,
+                                subCategoryId: args.category.subCategoryId,
+                                parent: args.category.parent
+                            });
                         }
-                        console.log("PATH:", $scope.path);
                     }
                 } else {
                     $location.path("/");
@@ -49,7 +57,6 @@
 
             $scope.$on("WallaShops.FilterValueSelected", function (eventInfo, args) {
                 $scope.$root.selectedFilterValues = args;
-                console.log("FIFI:", $scope.$root.selectedFilterValues);
             });
 
             $scope.loadCategories = function () {
@@ -60,7 +67,17 @@
                 return categoryService.getFilters($scope.currentCategory);
 
             };
-            
+
+            $scope.searchText = function () {
+                console.log("SEARCH:", $scope.searchTerm);
+                $location.path("/Search").search({
+                    searchTerm: $scope.searchTerm
+                });
+            };
+
+
+
+
             $scope.fullPath = {};
 
         }];

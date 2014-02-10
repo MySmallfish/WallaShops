@@ -3,7 +3,7 @@
     WS.AppHeaderDirective = {
         restrict: 'E',
         templateUrl: 'app/js/directives/app-header/app-header.html',
-        scope: true,
+        scope: false,
         replace: true,
         link: function (scope, element, attributes, ctrl) {
             // bind clicks...            

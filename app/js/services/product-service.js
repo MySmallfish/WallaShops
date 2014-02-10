@@ -22,14 +22,51 @@
             return result;
         }
 
-        function getProductsByCategory(categoryId) {
-            // get from api by categoryid
+        //function getProductsByCategory(productParameters) {
 
+        //    var products = dailyCacheService.get("products");
+        //    var result;
+        //    if (products) {
+        //        result = $q.when(products);
+        //    } else {
+
+        //        var searchProducts = wallaShopsApi.getSearchProducts();
+
+        //        result = $q.when(searchProducts).then(function (items) {
+        //            dailyCacheService.store("products", items);
+
+        //            return items;
+        //        });
+        //    }
+
+        //    return result;
+        //}
+
+        function search(parameters) {
+            console.log("SEARCH-PRODUCT-SERVICE:", parameters);
+
+            var result = 0;
+
+            if (parameters.searchTerm) {
+                result = wallaShopsApi.getSearchProducts(parameters.searchTerm);
+            } else {
+                if (parameters.mainCategoryId) {
+                    result = wallaShopsApi.getMainCategoryProducts(parameters);
+                } else if (parameters.subCategoryId) {
+                    result = wallaShopsApi.getSubCategoryProducts(parameters);
+                } else if (parameters.subSubCategoryId) {
+                    result = wallaShopsApi.getSubSubCategoryProducts(parameters);
+                }
+            }
+
+
+            return result;
         }
 
         return {
             getPromotionsCategories: getPromotionsCategories,
-            getProductsByCategory: getProductsByCategory
+            
+            search: search
         };
 
     }];

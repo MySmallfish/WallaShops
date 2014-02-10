@@ -232,8 +232,9 @@
                 coin: product.ProductCoin,
                 nameForUrl: product.VirtualUrl,
                 status: product.Status,
-                icon: _.map(product.SaleSquareIcons , mapIcons)
+                icons: _.map(product.SaleSquareIcons , mapIcons)
             };
+
             return mappedProduct;
         }
         
@@ -249,12 +250,36 @@
         function mapSearchProducts(products) {
 
             var mappedproducts = _.map(products, mapProducts);
-
             return mappedproducts;
         }
 
-        function getSearchProducts() {
-            return run("menu/GetMenus", { menuType: 2 }).then(mapSearchProducts);//////////////////////////////////////////////////////////
+        function getMainCategoryProducts(parameters) {
+            console.log("getMainCategoryProducts");
+            return getSearchPageProducts("maincat", parameters.mainCategoryId);
+        }
+        
+        function getSubCategoryProducts(parameters) {
+            console.log("getSubCategoryProducts");
+            return getSearchPageProducts("cat", parameters.subCategoryId);
+        }
+        
+        function getSubSubCategoryProducts(parameters) {
+            console.log("getSubSubCategoryProducts");
+            return getSearchPageProducts("cat", parameters.subSubCategoryId);
+        }
+        
+        function getBrandProducts(parameters) {
+            return run("auctions/brand", { id: parameters.id }).then(mapSearchProducts);
+        }
+        
+        function getSearchProducts(searchTerm) {
+            console.log("getSearchProducts", searchTerm);
+            return run("auctions/search", { search: searchTerm }).then(mapSearchProducts);
+        }
+
+        function getSearchPageProducts(type, categoryId) {
+            console.log("getSearchPageProducts", type, categoryId, "auctions/", type, { catid: categoryId });
+            return run("auctions/"+type, { catid: categoryId }).then(mapSearchProducts);
         }
 
 
@@ -293,7 +318,12 @@
             getSeasonalImages: getSeasonalImages,
             getPromotionsCategories: getPromotionsCategories,
             getCategoryDetails: getCategoryDetails,
-            getSearchProducts: getSearchProducts
+            getSearchProducts: getSearchProducts,
+            getBrandProducts: getBrandProducts,
+            getSubSubCategoryProducts: getSubSubCategoryProducts,
+            getSubCategoryProducts: getSubCategoryProducts,
+            getMainCategoryProducts: getMainCategoryProducts
+            
         };
 
     }];

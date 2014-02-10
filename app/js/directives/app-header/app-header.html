@@ -15,12 +15,12 @@
     </div>
     <div class="search">
         <div class="search-inner">
-            <form method="get" action="#">
+            <form method="get" ng-submit="searchText()">
                 <div class="search-input">
-                    <input type="text" name="s" id="s" placeholder="מה תרצו לשופס?" />
+                    <input type="text" name="s" id="s" placeholder="מה תרצו לשופס?" ng-model="searchTerm" />
                 </div>
-                <div class="search-button">
-                    <input type="submit" value="חפש" />
+                <div >
+                    <input type="submit" class="search-button" value="חפש" />
                 </div>
             </form>
         </div>

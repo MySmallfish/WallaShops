@@ -69,7 +69,6 @@
         }
 
         function getFilters(category) {
-            //correct category
 
             var result = $q.when([]);
 
