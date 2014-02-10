@@ -32,7 +32,9 @@
 
 
         function buildSearchParameters(routeParameters) {
-            console.log("RP", routeParameters);
+            console.log("buildSearchParameters");
+            $scope.fullPath = routeParameters.path;
+            
             var productParameters = {
             };
             if (routeParameters.searchTerm) {
