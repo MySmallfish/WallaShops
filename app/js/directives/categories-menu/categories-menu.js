@@ -16,11 +16,10 @@
                 
                 $scope.$on("WallaShops.CategorySelected", function (e, args) {
                     
-                    //$scope.hasFilter = true;
-                    //$scope.hasFilter = !!args.values;
-                    
-                    console.log("FILTER??");
-                    
+                    if (args.category.subCategoryId >= 0) {
+                        $scope.hasFilter = true;
+                    }
+
                 });
 
             }],

@@ -18,32 +18,10 @@
                     return items;
                 });
             }
-
             return result;
         }
 
-        //function getProductsByCategory(productParameters) {
-
-        //    var products = dailyCacheService.get("products");
-        //    var result;
-        //    if (products) {
-        //        result = $q.when(products);
-        //    } else {
-
-        //        var searchProducts = wallaShopsApi.getSearchProducts();
-
-        //        result = $q.when(searchProducts).then(function (items) {
-        //            dailyCacheService.store("products", items);
-
-        //            return items;
-        //        });
-        //    }
-
-        //    return result;
-        //}
-
         function search(parameters) {
-            console.log("SEARCH-PRODUCT-SERVICE:", parameters);
 
             var result = 0;
 
@@ -58,7 +36,6 @@
                     result = wallaShopsApi.getSubSubCategoryProducts(parameters);
                 }
             }
-
 
             return result;
         }

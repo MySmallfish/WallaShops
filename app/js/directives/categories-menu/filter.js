@@ -5,7 +5,6 @@
             restrict: 'E',
             templateUrl: 'app/js/directives/categories-menu/filter.html',
             scope: {
-                
                 load:"&"
             },
             controller: WS.FilterController,
@@ -41,7 +40,6 @@
         }
         
         function publishClearedEvent() {
-            console.log("publishCleared");
             publish("WallaShops.publishCleared");
         }
 
@@ -106,6 +104,12 @@
         $scope.$on("WallaShops.CategorySelected", function(eventInfo, args) {
             loadFilters(args.category);
         });
+
+        $scope.$on("WallaShops.clearSelectedFilterValues", function () {
+            clearSelectedFilterValues();
+        });
+        
+
 
     }];
 

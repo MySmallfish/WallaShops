@@ -39,7 +39,7 @@
                     scope.isFiltered = true;
                 });
 
-                scope.$on(".WallaShops.publishCleared", function (e, args) {
+                scope.$on("WallaShops.publishCleared", function (e, args) {
                     scope.isFiltered = false;
                 });
 

@@ -254,17 +254,14 @@
         }
 
         function getMainCategoryProducts(parameters) {
-            console.log("getMainCategoryProducts");
             return getSearchPageProducts("maincat", parameters.mainCategoryId);
         }
         
         function getSubCategoryProducts(parameters) {
-            console.log("getSubCategoryProducts");
             return getSearchPageProducts("cat", parameters.subCategoryId);
         }
         
         function getSubSubCategoryProducts(parameters) {
-            console.log("getSubSubCategoryProducts");
             return getSearchPageProducts("cat", parameters.subSubCategoryId);
         }
         
@@ -273,12 +270,10 @@
         }
         
         function getSearchProducts(searchTerm) {
-            console.log("getSearchProducts", searchTerm);
             return run("auctions/search", { search: searchTerm }).then(mapSearchProducts);
         }
 
         function getSearchPageProducts(type, categoryId) {
-            console.log("getSearchPageProducts", type, categoryId, "auctions/", type, { catid: categoryId });
             return run("auctions/"+type, { catid: categoryId }).then(mapSearchProducts);
         }
 

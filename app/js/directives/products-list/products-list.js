@@ -4,8 +4,9 @@
         restrict: 'E',
         templateUrl: 'app/js/directives/products-list/products-list.html',
         scope: {
-            category: "=", 
-            showProduct: "&"
+            showProduct: "&",
+            category: "="
+            
         },
         replace: true,
         controller: ["$scope", "$filter", function ($scope, $filter) {
@@ -23,6 +24,7 @@
             $scope.$watch("navigationInfo", function(newValue) {
                 updateProductPage(newValue);
             });
+
 
 
         }],

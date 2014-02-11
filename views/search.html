@@ -1,19 +1,24 @@
 ﻿<div class="search-page">
 
-    <div class="full-path">
-        <div class="path">{{fullPath.path}}</div>
-        <div class="path-space"></div>
-        <div class="current-category">{{fullPath.current}}</div>
+    <ul class="full-path">
+        <li class="main-bread-cramb"><a href="#"> {{fullPath.mainBreadCramb}} </a></li>
+        <li class="ancestor" ng-click="pathCategorySelected()">{{fullPath.ancestor}}</li>
+        <li class="parent" ng-click="pathCategorySelected()">{{fullPath.parent}}</li>
+        <li class="current-category">{{fullPath.current}}</li>
         
-    </div>
-    <ul class="filter-path">
-        <li ng-repeat="filter in selectedFilterValues.values" ng-show="isFilterValueEmpty(filter.value)">| {{filter.value.title}} </li>
     </ul>
+
+    <ul class="filter-path">
+        <li class="filters-on-path" ng-repeat="filter in selectedFilterValues.values" ng-show="isFilterValueNotEmpty(filter.value)">
+            {{filter.value.title}} <span>|</span>
+        </li>
     
-    <div class="clear-filter-path" ng-show="isFilterValueEmpty(selectedFilterValues)">
+    
+    <li class="clear-filter-path" ng-show="isFilterValueNotEmpty(selectedFilterValues)">
         <div class="clear-filter" ng-click="clearSelectedFilterValues()">נקה סינון</div>
-    </div>
-    
+    </li>
+    </ul>
+
     <div class="products-list-container clear">
         <div class="products-list-content" ng-show="productsLine1.length">
             <products-list-items products="currentProductsPage1" show-product="showProduct(product)"></products-list-items>

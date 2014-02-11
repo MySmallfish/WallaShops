@@ -8,33 +8,36 @@
             if (navigationInfo && $scope.productsLine1) {
                 var visibleProducts1 = $filter("skip")($scope.productsLine1, navigationInfo.startIndex);
                 $scope.currentProductsPage1 = $filter("limitTo")(visibleProducts1, $scope.step);
-                console.log("currentProductsPage1", $scope.currentProductsPage1);
             }
             if (navigationInfo && $scope.productsLine2) {
                 var visibleProducts2 = $filter("skip")($scope.productsLine2, navigationInfo.startIndex);
                 $scope.currentProductsPage2 = $filter("limitTo")(visibleProducts2, $scope.step);
-                console.log("currentProductsPage2", $scope.currentProductsPage2);
             }
         };
-        
+
         $scope.$watch("navigationInfo", function (newValue) {
             updateProductPage(newValue);
         });
-        
+
         //$scope.$watch("searchTerm", function () {
         //    console.log("$watch", $scope.searchTerm);
         //    refresh();
         //});
 
-        function isFilterValueEmpty(filterValue) {
+        function pathCategorySelected() {
+            
+            $scope.$root.$broadcast("WallaShops.CategorySelected", {
+                category: $scope.selectedCategory
+            });
+        }
+
+        function isFilterValueNotEmpty(filterValue) {
             return filterValue;
         }
 
-
         function buildSearchParameters(routeParameters) {
-            console.log("buildSearchParameters");
             $scope.fullPath = routeParameters.path;
-            
+
             var productParameters = {
             };
             if (routeParameters.searchTerm) {
@@ -66,8 +69,8 @@
 
         function load(products) {
             if (products && products.length) {
-                $scope.productsLine1 = _.filter(products, function(product, index) { return index % 2 == 0; });
-                $scope.productsLine2 = _.filter(products, function(product, index) { return index % 2 != 0; });
+                $scope.productsLine1 = _.filter(products, function (product, index) { return index % 2 == 0; });
+                $scope.productsLine2 = _.filter(products, function (product, index) { return index % 2 != 0; });
             }
             return products;
         }
@@ -89,8 +92,16 @@
                 .then(resetNavigation)
                 .finally(stopProgress);
         }
-
+        
+        function clearSelectedFilterValues() {
+            $scope.$root.selectedFilterValues = null;
+            $scope.$root.$broadcast("WallaShops.clearSelectedFilterValues");
+            
+        }
+        
         refresh();
+
+
 
         //var products = [
         //    { id: 1, title: "א. 1", subtitle: "לגבר המטרוסקסואלי", rating: "123456", icons: [{ url: "app/img/icon.png" }, { url: "app/img/icon.png" }], imageUrl: "app/img/product.png", price: "1000 שח", details: "לפרטים" },
@@ -112,7 +123,9 @@
         //];
 
         _.extend($scope, {
-            isFilterValueEmpty: isFilterValueEmpty
+            isFilterValueNotEmpty: isFilterValueNotEmpty,
+            clearSelectedFilterValues: clearSelectedFilterValues,
+            pathCategorySelected: pathCategorySelected
         });
 
     }];

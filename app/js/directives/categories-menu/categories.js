@@ -61,7 +61,7 @@
         function publish(name, args) {
             $scope.$root.$broadcast(name, args);
         }
-
+        
         function publishCategorySelectedEvent(lastSelected) {
             publish("WallaShops.CategorySelected", {
                 previous: lastSelected,
