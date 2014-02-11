@@ -12,7 +12,20 @@
         };
     }];
 
-    WS.FilterController = ["$scope", function ($scope) {
+    WS.FilterController = ["$scope", "dailyCacheService", function ($scope, dailyCacheService) {
+        var storage = dailyCacheService.get("FiltersMenu-Cache");
+
+        function resetStorage() {
+            if (!storage) {
+                storage = {};
+                dailyCacheService.store("FiltersMenu-Cache", storage);
+            }
+        }
+
+        resetStorage();
+
+        
+
 
         function loadFilters() {
             

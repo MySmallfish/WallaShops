@@ -5,7 +5,8 @@
             restrict: 'E',
             templateUrl: 'app/js/directives/categories-menu/categories.html',
             scope: {
-                load: "&"
+                load: "&",
+                selectedCategory:"="
             },
             controller: WS.CategoriesController,
             replace: true
@@ -80,6 +81,7 @@
         function isSelected(category) {
             return category && $scope.selectedCategory === category;
         }
+        
 
         function isAnythingSelected() {
             return $scope.selectedCategory;
@@ -111,7 +113,8 @@
                 publishCategorySelectedEvent(lastSelected);
             }
         };
-        
+
+
         _.extend($scope, {
             clearSelectedCategory: clearSelectedCategory,
             isSelected: isSelected,
@@ -122,7 +125,7 @@
         
         $scope.selectedCategory = storage.selected;
         
-        loadCategories(storage.lastSelected);
+        loadCategories(storage.lastSelected);   
         
         
 

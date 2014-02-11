@@ -2,8 +2,8 @@
 
     <ul class="full-path">
         <li class="main-bread-cramb"><a href="#"> {{fullPath.mainBreadCramb}} </a></li>
-        <li class="ancestor" ng-click="pathCategorySelected()">{{fullPath.ancestor}}</li>
-        <li class="parent" ng-click="pathCategorySelected()">{{fullPath.parent}}</li>
+        <li class="ancestor" ng-click="selectCategoryByPath(fullPath.ancestor)">{{fullPath.ancestor}}</li>
+        <li class="parent" ng-click="selectCategoryByPath(fullPath.parent)">{{fullPath.parent}}</li>
         <li class="current-category">{{fullPath.current}}</li>
         
     </ul>
