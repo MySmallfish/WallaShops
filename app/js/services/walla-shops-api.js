@@ -5,38 +5,47 @@
         var mainPromotions = [
             {
                 promotion: "app/img/pic1.png",
-                name: "promotion1"
+                name: "promotion1",
+                url: "http://www.wallashops.co.il/LandingPage?uid=47d897cd-d951-44e4-9766-24450e6ab9ee"
             },
             {
                 promotion: "app/img/pic2.png",
-                name: "promotion2"
+                name: "promotion2",
+                url: "http://www.wallashops.co.il/%D7%94%D7%9C%D7%91%D7%A9%D7%94-%D7%94%D7%A0%D7%A2%D7%9C%D7%94/%D7%97%D7%96%D7%99%D7%95%D7%AA-%D7%AA%D7%97%D7%AA%D7%95%D7%A0%D7%99%D7%9D#m=s&p=1&f=110390"
+                
             },
             {
                 promotion: "app/img/pic3.png",
-                name: "promotion3"
+                name: "promotion3",
+                url: "http://www.wallashops.co.il/%D7%93%D7%99%D7%9C-%D7%99%D7%95%D7%9E%D7%99/%D7%97%D7%95%D7%A8%D7%A3-%D7%97%D7%9D/%D7%90%D7%95%D7%A4%D7%A0%D7%94-%D7%97%D7%95%D7%A8%D7%A4%D7%99%D7%AA"
             }
         ];
 
         var seasonalImages = [
             {
                 promotion: "app/img/pic4.png",
-                name: "1"
+                name: "1",
+                url:"http://www.wallashops.co.il/%D7%97%D7%91%D7%99%D7%9C%D7%AA-%D7%A0%D7%95%D7%A4%D7%A9-7-%D7%9C%D7%99%D7%9C%D7%95%D7%AA-%D7%9C%D7%A8%D7%95%D7%9E%D7%90-%D7%91%D7%90%D7%A4%D7%A8%D7%99%D7%9C/pi2SKuguyf"
             },
             {
                 promotion: "app/img/pic4-1.png",
-                name: "2"
+                name: "2",
+                url: "http://www.wallashops.co.il/mobile/MobileLandingPage.aspx"
             },
             {
                 promotion: "app/img/pic4-2.png",
-                name: "3"
+                name: "3",
+                url: "http://www.wallashops.co.il/%D7%A8%D7%A7-%E2%82%AA55-%D7%9C%D7%90%D7%9C%D7%91%D7%95%D7%9D-%D7%AA%D7%9E%D7%95%D7%A0%D7%95%D7%AA-%D7%92%D7%93%D7%95%D7%9C-%D7%91%D7%9B%D7%A8%D7%99%D7%9B%D7%94-%D7%A7%D7%A9%D7%94-32-%D7%A2%D7%9E%D7%95%D7%93%D7%99%D7%9D/pi2LBa4feb"
             },
             {
                 promotion: "app/img/pic4-3.png",
-                name: "4"
+                name: "4",
+                url: "http://www.wallashops.co.il/landingpage?uid=59d3f343-156d-40cb-ba7e-ee470504fab0"
             },
             {
                 promotion: "app/img/pic4-4.png",
-                name: "5"
+                name: "5",
+                url: "http://www.wallashops.co.il/%D7%A1%D7%9E%D7%90%D7%A8%D7%98%D7%A4%D7%95%D7%9F-%D7%92%D7%9C%D7%A7%D7%A1%D7%99-LTE-s3-9305/pi5IT1RDI9305"
             }
         ];
 

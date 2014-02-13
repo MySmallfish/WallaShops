@@ -12,7 +12,7 @@
                 </ul>
 
                 <div class="tab-content">
-                    <div class="tab-pane" ng-repeat="promotion in main_promotions" ng-class="{'active': isSelected(promotion)}" id="{{promotion.name}}">
+                    <div class="tab-pane" ng-repeat="promotion in main_promotions" ng-class="{'active': isSelected(promotion)}" id="{{promotion.name}}" ng-click="openPromotion(promotion.url)">
                         <img ng-src="{{promotion.promotion}}" alt="{{promotion.name}}" />
                     </div>
 
@@ -22,8 +22,8 @@
         </div>
 
         <div class="seasonal">
-            <img ng-src="{{ firstPromotion.promotion}}" alt="{{ firstPromotion.name }}" />
-            <img ng-src="{{ secondPromotion.promotion}}" alt="{{ secondPromotion.name }}" />
+            <img ng-src="{{ firstPromotion.promotion}}" alt="{{ firstPromotion.name }}" ng-click="openPromotion(firstPromotion.url)" />
+            <img ng-src="{{ secondPromotion.promotion}}" alt="{{ secondPromotion.name }}" ng-click="openPromotion(secondPromotion.url)" />
         </div>
     </div>
 

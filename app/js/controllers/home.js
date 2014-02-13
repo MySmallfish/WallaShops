@@ -13,6 +13,11 @@
         //    console.error("ERROR", error);
         //});
 
+        $scope.openPromotion = function (url) {
+            console.log("openPromotion", url);
+            promotionsService.openPromotion(url);
+        };
+         
         function isSelected(promotion) {
             return $scope.selectedPromotion === promotion;
         }

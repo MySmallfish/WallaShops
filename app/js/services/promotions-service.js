@@ -25,6 +25,12 @@
 
             return result;
         }
+        
+
+        function openPromotion(url) {
+            console.log("openPromotion");
+            window.open(url, "_blank");
+        }
 
         function getSeasonalImages() {
 
@@ -48,7 +54,8 @@
 
         return {
             getSeasonalImages: getSeasonalImages,
-            getMainPromotions: getMainPromotions
+            getMainPromotions: getMainPromotions,
+            openPromotion: openPromotion
         };
 
     }];

@@ -20,6 +20,7 @@
             }
             return result;
         }
+        
 
         function search(parameters) {
 
@@ -39,10 +40,12 @@
 
             return result;
         }
+        
+
+
 
         return {
             getPromotionsCategories: getPromotionsCategories,
-            
             search: search
         };
 
