@@ -726,13 +726,24 @@ div, i
 
 .remove-product
 {
+    position: absolute;
+    z-index: 1;
     height: 0;
     width: 0;
-    border-top: 20px solid red;
-    border-right: 20px solid red;
-    border-bottom: 20px solid transparent;
-    border-left: 20px solid transparent;
+    opacity: .5;
+    border-top: 25px solid red;
+    border-right: 25px solid red;
+    border-bottom: 25px solid transparent;
+    border-left: 25px solid transparent;
+
 }
+
+    .remove-product .x
+    {
+        margin: -18px -17px 0 0;
+        color: white;
+        font-weight: bolder;
+    }
 
 .main-promotion .nav-tabs, .main-promotion .nav-tabs .active a, .main-promotion .nav-tabs .active a:hover, .main-promotion .nav-tabs li a
 {
@@ -894,4 +905,65 @@ div, i
 {
     display: inline;
     position: inherit;
+}
+
+.product-info .comparison {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    opacity: .5;
+    background-color: #eee;
+    z-index: 1;
+}
+
+.product-info .check-box {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: 25%;
+    height: 50%;
+    width: 50%;
+    background-image: url('../img/checkbox_unchecked.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;
+    opacity: .7;
+}
+.product-info .check-box.checked {
+    background-image: url('../img/checkbox_checked.png');
+}
+
+.search-page .compare-link {
+    position: absolute;
+    left: 50px;
+    text-decoration: underline;
+}
+
+.productImg.compared {
+    width: 60%;
+    height: 60%;
+    margin-right: 18%;
+}
+
+.title.compared {
+    font-size: 11pt;
+    text-align: center;
+}
+
+.stars.compared {
+    position:absolute;
+    left: 0;
+}
+
+.stars.compared .fa {
+    font-size: 10pt;
+}
+
+.price.compared {
+    font-size: 15pt;
+    font-weight: bold;
 }

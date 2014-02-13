@@ -1,24 +1,35 @@
 ﻿(function (_, S, WS) {
 
-    WS.ComparisonController = ["$scope", function ($scope) {
-        var productCount = 0;
+    WS.ComparisonController = ["$scope", "$routeParams", function ($scope, $routeParams) {
+        
+        $scope.productsToCompare = $routeParams.productsToCompare;
+
+        
         var maxProducts = 4;
 
-        $scope.isNotEmpty = function () {
+        $scope.isFull = function() {
             var result = false;
-            if (productCount > 0) {
+            if ($scope.productsToCompare.length >= maxProducts) {
                 result = true;
             }
-
+            return result;
+        };
+        
+        $scope.isEmpty = function () {
+            var result = false;
+            if ($scope.productsToCompare.length == 0) {
+                result = true;
+            }
             return result;
         };
 
         $scope.addPruduct = function () {
-            if (productCount < maxProducts) {
-                productCount++;
+            if ($scope.productsToCompare.length < maxProducts) {
+                console.log("ADD PRODUCT TO COMPARE");
                 ///////////////////////////////////////////////////////////////////////////////add product!!!!      
             }
         };
+
 
         $scope.category = {};
         $scope.category.features = [
@@ -29,53 +40,17 @@
             { header: "זמן אספקה", name: "supply" },
             { header: "סגירה", name: "closing" },
             { header: "יבואן", name: "importer" }
-    ];
-
-
-
-        $scope.products = [
-            {
-                id: 1,
-                title: "שם1",
-                imageUrl: "app/img/product.png",
-                type: 2,
-                price: "1000 ₪",
-                delivery: "40 ₪",
-                closing: "1.1.14",
-                supply: "שבוע"
-            },
-            {
-                id: 2,
-                title: "שם2",
-                imageUrl: "app/img/product.png",
-                type: 2,
-                price: "1000 ₪",
-                delivery: "40 ₪",
-                closing: "1.1.14",
-                supply: "שבוע"
-            },
-            {
-                id: 3,
-                title: "שם3",
-                imageUrl: "app/img/product.png",
-                type: 2,
-                price: "1000 ₪",
-                delivery: "40 ₪",
-                closing: "1.1.14",
-                supply: "שבוע"
-            },
-            {
-                id: 4,
-                title: "שם4",
-                imageUrl: "app/img/product.png",
-                type: 2,
-                price: "1000 ₪",
-                delivery: "40 ₪",
-                closing: "1.1.14",
-                supply: "שבוע"
-            }
         ];
 
+        function onProductDelited(eventInfo, args) {
+            $scope.productsToCompare.splice($scope.productsToCompare.indexOf(args.product), 1);
+            
+        };
+
+
+        
+        
+        $scope.$on("WallaShops.ProductDelited", onProductDelited);
 
 
     }];

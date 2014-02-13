@@ -1,25 +1,35 @@
 ﻿<div class="product-border">
-
+    <div class="remove-product" ng-show="isCompared" ng-click="publishRemoveProduct()"><div class="x">X</div></div>
     <div class="product-info">
-        <img class="productImg" ng-src="{{ product.imageUrl }}" />
-        <div class="icons">
+        
+        <div class="comparison" ng-show="selectionMode"></div>
+        <div class="check-box" ng-show="selectionMode" ng-click="check($event)" ng-class="{'checked': checked }"></div>
+
+
+        <img class="productImg" ng-class="{'compared': isCompared}" ng-src="{{ product.imageUrl }}" />
+        <div class="icons" ng-show="!isCompared">
             <div class="iconImg" ng-repeat="icon in product.icons">
                 <img ng-src="{{ icon.url }}" />
             </div>
         </div>
 
-        <p class="title"><b>{{ product.title }}</b></p>
-        <p class="subtitle">{{ product.subtitle}}</p>
+        <p class="title" ng-class="{'compared': isCompared}"><b>{{ product.title }}</b></p>
+
+        <p class="subtitle" ng-class="{'compared': isCompared}">{{ product.subtitle}}</p>
+
         <p>{{ product.subtitle2}}</p>
-        <div class="rating">
-            <div class="raters-number">({{product.ratersNumber}})</div>
-            <i class="fa" ng-repeat="star in stars" ng-class="{'fa-star': $index<=product.rating, 'fa-star-o':$index>product.rating, 'fa-star-half-o' : $index==asInt(product.rating) && isDecimal(product.rating) }"></i>
-            
+
+        <div class="rating" >
+            <div class="raters-number" ng-show="!isCompared">({{product.ratersNumber}})</div>
+            <div class="stars" ng-class="{'compared': isCompared}">
+                <i class="fa" ng-repeat="star in stars" ng-class="{'fa-star': $index<product.rating, 'fa-star-o':$index>=product.rating, 'fa-star-half-o' : $index==asInt(product.rating) && isDecimal(product.rating) }"></i>
+            </div>
         </div>
-        <p class="price"><b>{{ product.price}}</b></p>
-        
-        <span class="details-text">{{ product.details}}</span>
-        <p class="details"></p>
+
+        <p class="price" ng-class="{'compared': isCompared}"><b>{{ product.price}}</b></p>
+
+        <span class="details-text" ng-show="!isCompared">{{ product.details}}</span>
+        <p class="details" ng-show="!isCompared"></p>
 
 
     </div>

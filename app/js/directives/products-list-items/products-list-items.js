@@ -5,7 +5,10 @@
         templateUrl: 'app/js/directives/products-list-items/products-list-items.html',
         scope: {
             products: "=",
-            showProduct: "&"
+            showProduct: "&",
+            selectionMode: "=",
+            selectedItems: "=",
+            maxSelection: "@"
         },
         replace: true,
         link: function (scope, element, attributes, ctrl) {

@@ -1,7 +1,6 @@
 ﻿<div class="products-list clear">
-
     <div class="product" ng-repeat="product in products" ng-click="showProduct({product:product})">
-        <product-pane product="product"></product-pane>
+        <product-pane product="product" is-compared="false" selection-mode="selectionMode" selected-items="selectedItems" max-selection="maxSelection"></product-pane>
     </div>
 
 </div>

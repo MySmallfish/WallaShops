@@ -1,6 +1,8 @@
 ﻿<div class="comparison-page">
-    <div class="comparison-products" ng-show="isNotEmpty()">
-        <product-pane product="product" ng-repeat="product in products"></product-pane>
+    
+    <div class="comparison-products" ng-show="!isEmpty()">
+        
+        <product-pane product="product" is-compared="true" ng-repeat="product in productsToCompare"></product-pane>
     </div>
 
     <div class="table-container">
@@ -18,7 +20,7 @@
             <table class="compare-table">
 
 
-                <tr ng-repeat="product in products" ng-show="isNotEmpty()">
+                <tr ng-repeat="product in productsToCompare" ng-show="isFull()">
 
                     <td ng-repeat="feature in category.features">{{product[feature.name]}}    
                     </td>
@@ -27,6 +29,6 @@
         </div>
     </div>
 
-    <div class="add-product-to-compare" ng-click="addPruduct()" ng-show="!isNotEmpty()"><i class="fa fa-plus-circle"></i></div>
-    <div class="remove-product"></div>
+    <div class="add-product-to-compare" ng-click="addPruduct()" ng-show="!isFull()"><i class="fa fa-plus-circle"></i></div>
+    
 </div>
