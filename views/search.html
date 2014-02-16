@@ -22,13 +22,15 @@
     </ul>
 
     <div class="products-list-container clear">
+        <div class="left-arrow"><i class="fa fa-chevron-left"></i></div>
         <div class="products-list-content" ng-show="productsLine1.length">
             <products-list-items products="currentProductsPage1" show-product="showProduct(product)" selection-mode="selectionMode" selected-items="productsToCompare" max-selection="maxSelection"></products-list-items>
             <products-list-items products="currentProductsPage2" show-product="showProduct(product)" selection-mode="selectionMode" selected-items="productsToCompare" max-selection="maxSelection"></products-list-items>
         </div>
+        <div class="left-arrow"><i class="fa fa-chevron-left"></i></div>
     </div>
     
-    <products-list-navigation step="{{step}}" products-list-length="{{productsLine1.length}}" navigation-info="navigationInfo"></products-list-navigation>
+    <!--<products-list-navigation step="{{step}}" products-list-length="{{productsLine1.length}}" navigation-info="navigationInfo"></products-list-navigation>-->
 
 </div>
 

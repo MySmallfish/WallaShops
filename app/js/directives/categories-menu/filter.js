@@ -5,7 +5,7 @@
             restrict: 'E',
             templateUrl: 'app/js/directives/categories-menu/filter.html',
             scope: {
-                load:"&"
+                load: "&"
             },
             controller: WS.FilterController,
             replace: true
@@ -24,16 +24,14 @@
 
         resetStorage();
 
-        
 
+        function loadRootFilters() {
 
-        function loadFilters() {
-            
             var result = $scope.load();
-            
+
             if (result && result.then) {
                 result.then(function (items) {
-                    
+
                     $scope.filters = items;
 
                 });
@@ -41,17 +39,37 @@
                 throw new Error("You must provide load method that returns promise");
             }
         }
+        
+        function setStorageFilters(filters) {
+            $scope.filters = storage.filters = filters;
+        }
+
+        function loadFilters() {
+            if ($scope.selectedFilter) {
+                setStorageFilters($scope.selectedFilter.values);
+
+            } else {
+                loadRootFilters();
+            }
+        }
 
         function publish(name, args) {
             $scope.$root.$broadcast(name, args);
         }
+
+        function publishFilterSelectedEvent() {
+            publish("WallaShops.FilterSelected", {
+                values: $scope.filters
+            });
+        }        
+    
 
         function publishFilterValueSelectedEvent() {
             publish("WallaShops.FilterValueSelected", {
                 values: filterSelectedValue($scope.filters)
             });
         }
-        
+
         function publishClearedEvent() {
             publish("WallaShops.publishCleared");
         }
@@ -69,16 +87,16 @@
         function isFilterSelected(filter) {
             return $scope.selectedFilter === filter;
         };
-        
+
         function clearSelectedFilter() {
             $scope.selectFilter(null);
         };
-        
+
         function clearSelectedFilterValues() {
             _.each($scope.filters, function (filter) {
                 filter.selectedValue = null;
             });
-            
+
             publishClearedEvent();
         };
 
@@ -88,11 +106,12 @@
 
         function selectFilter(filter) {
             $scope.selectedFilter = filter;
+            publishFilterSelectedEvent();
         };
 
         function selectFilterValue(filter, filterValue) {
             filter.selectedValue = filterValue;
-            
+            console.log("selectFilterValue", filter);
             publishFilterValueSelectedEvent();
         };
 
@@ -109,19 +128,19 @@
             selectFilter: selectFilter,
             selectFilterValue: selectFilterValue,
             isFilterValueSelected: isFilterValueSelected
-           
+
         });
-        
+
         $scope.selectedFilter = null;
 
-        $scope.$on("WallaShops.CategorySelected", function(eventInfo, args) {
+        $scope.$on("WallaShops.CategorySelected", function (eventInfo, args) {
             loadFilters(args.category);
         });
 
         $scope.$on("WallaShops.clearSelectedFilterValues", function () {
             clearSelectedFilterValues();
         });
-        
+
 
 
     }];

@@ -83,6 +83,7 @@
                     
                     if (mainCategoryId) {
                         result = getCategoryDetails(mainCategoryId, subCategoryId).then(function (fullApiCategory) {
+                            
                             category.filters = wallaShopsApi.mapCategoryFilters(fullApiCategory.Filters);
                             return category.filters;
                         });

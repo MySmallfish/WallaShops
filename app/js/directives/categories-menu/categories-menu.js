@@ -22,6 +22,12 @@
 
                 });
 
+                $scope.$on("WallaShops.FilterSelected", function (e, args) {
+                        $scope.hasFilter = true;
+                });
+                
+
+
             }],
             link: function(scope) {
  

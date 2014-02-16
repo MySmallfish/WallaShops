@@ -112,6 +112,7 @@
 
                 publishCategorySelectedEvent(lastSelected);
             }
+            console.log("selectCategory", $scope.selectedCategory);
         };
 
 
