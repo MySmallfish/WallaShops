@@ -34,7 +34,7 @@
 
         function get(key) {
 
-            var result = storage[key];
+            var result = storage.Storage[key];
 
             return result;
         }

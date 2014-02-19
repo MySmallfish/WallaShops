@@ -5,51 +5,25 @@
             restrict: 'E',
             templateUrl: 'app/js/directives/categories-menu/filter.html',
             scope: {
-                load: "&"
+                load: "&",
+                selectedCategory: "=",
+                hasFilter:"="
             },
             controller: WS.FilterController,
             replace: true
         };
     }];
 
-    WS.FilterController = ["$scope", "dailyCacheService", function ($scope, dailyCacheService) {
-        var storage = dailyCacheService.get("FiltersMenu-Cache");
-
-        function resetStorage() {
-            if (!storage) {
-                storage = {};
-                dailyCacheService.store("FiltersMenu-Cache", storage);
-            }
-        }
-
-        resetStorage();
-
-
-        function loadRootFilters() {
-
+    WS.FilterController = ["$scope", function ($scope) {
+        function loadFilters() {
             var result = $scope.load();
 
             if (result && result.then) {
                 result.then(function (items) {
-
                     $scope.filters = items;
-
                 });
             } else {
                 throw new Error("You must provide load method that returns promise");
-            }
-        }
-        
-        function setStorageFilters(filters) {
-            $scope.filters = storage.filters = filters;
-        }
-
-        function loadFilters() {
-            if ($scope.selectedFilter) {
-                setStorageFilters($scope.selectedFilter.values);
-
-            } else {
-                loadRootFilters();
             }
         }
 
@@ -111,7 +85,6 @@
 
         function selectFilterValue(filter, filterValue) {
             filter.selectedValue = filterValue;
-            console.log("selectFilterValue", filter);
             publishFilterValueSelectedEvent();
         };
 
@@ -132,11 +105,13 @@
         });
 
         $scope.selectedFilter = null;
-
-        $scope.$on("WallaShops.CategorySelected", function (eventInfo, args) {
-            loadFilters(args.category);
+        $scope.$watch("filters", function (newValue) {
+            $scope.hasFilter = !!newValue && !!newValue.length;
         });
-
+        $scope.$watch("selectedCategory", loadFilters);
+        if ($scope.selectedCategory) {
+            loadFilters();
+        }
         $scope.$on("WallaShops.clearSelectedFilterValues", function () {
             clearSelectedFilterValues();
         });

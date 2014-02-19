@@ -79,6 +79,7 @@
                 if (typeof category.filters !== "undefined") {
                     result = $q.when(category.filters);
                 } else {
+                    
                     var mainCategoryId = category.mainCategoryId, subCategoryId = category.subCategoryId;
                     
                     if (mainCategoryId) {

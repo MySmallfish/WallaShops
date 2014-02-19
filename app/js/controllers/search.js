@@ -114,12 +114,10 @@
         }
 
         function notifyProgress(context) {
-            console.log("P-S");
             return $q.when(context);
         }
 
         function stopProgress() {
-            console.log("P-E");
         }
 
         function refresh() {

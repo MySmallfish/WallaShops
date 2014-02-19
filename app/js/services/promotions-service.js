@@ -1,10 +1,6 @@
 ﻿(function (_, S, WS) {
 
     WS.PromotionsService = ["$q", "dailyCacheService", "wallaShopsApi", function ($q, dailyCacheService, wallaShopsApi) {
-
-        
-
-        
         
         function getMainPromotions() {
 

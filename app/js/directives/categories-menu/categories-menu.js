@@ -9,29 +9,7 @@
                 loadCategories: "&",
                 selectedCategory: "="
             },
-            replace: true,
-            controller: ["$scope", function ($scope) {
-                
-                $scope.hasFilter = false;
-                
-                $scope.$on("WallaShops.CategorySelected", function (e, args) {
-                    
-                    if (args.category.subCategoryId >= 0) {
-                        $scope.hasFilter = true;
-                    }
-
-                });
-
-                $scope.$on("WallaShops.FilterSelected", function (e, args) {
-                        $scope.hasFilter = true;
-                });
-                
-
-
-            }],
-            link: function(scope) {
- 
-            }
+            replace: true
         };
     }];
 
