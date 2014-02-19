@@ -1,11 +1,30 @@
 ﻿(function (_, S, WS) {
 
     WS.SearchController = ["$q", "$scope", "$filter", "$location", "productService", "dailyCacheService", "$routeParams", function ($q, $scope, $filter, $location, productService, dailyCacheService, $routeParams) {
+        var storage = dailyCacheService.get("ComparisonProduct-Cache");
+
+        function resetStorage() {
+            if (!storage) {
+                storage = {};
+                dailyCacheService.store("ComparisonProduct-Cache", storage);
+            }
+        }
+
+        resetStorage();
+
+        
+
         $scope.step = 4;
         $scope.maxSelection = 4;
         $scope.selectionMode = false;
-        $scope.productsToCompare = [];
 
+        function loadProductsToCompare() {
+            if ($routeParams.productsToCompare) {
+                $scope.productsToCompare = $routeParams.productsToCompare;
+            } else {
+                $scope.productsToCompare = [];
+            }
+        }
 
         function openCamperisonPage() {
             $location.path("/Comparison").search({
@@ -117,16 +136,15 @@
             return $q.when(context);
         }
 
-        function stopProgress() {
-        }
+        
 
         function refresh() {
             notifyProgress($routeParams)
                 .then(buildSearchParameters)
                 .then(fetch)
                 .then(load)
-                .then(resetNavigation)
-                .finally(stopProgress);
+                .then(resetNavigation);
+                
         }
 
         function clearSelectedFilterValues() {
@@ -136,6 +154,8 @@
         }
 
         refresh();
+        loadProductsToCompare();
+        load(storage.products);
 
         _.extend($scope, {
             isFilterValueNotEmpty: isFilterValueNotEmpty,

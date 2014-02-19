@@ -1,10 +1,8 @@
 ﻿(function (_, S, WS) {
 
-    WS.ComparisonController = ["$scope", "$routeParams", function ($scope, $routeParams) {
-        
+    WS.ComparisonController = ["$scope", "$location", "$routeParams", function ($scope, $location, $routeParams) {
         $scope.productsToCompare = $routeParams.productsToCompare;
 
-        
         var maxProducts = 4;
 
         $scope.isFull = function() {
@@ -26,14 +24,16 @@
         $scope.addPruduct = function () {
             if ($scope.productsToCompare.length < maxProducts) {
                 console.log("ADD PRODUCT TO COMPARE");
-                ///////////////////////////////////////////////////////////////////////////////add product!!!!      
+                $location.path("/Search").search({
+                    productsToCompare: $scope.productsToCompare
+                });
             }
         };
 
         $scope.category = {};
         $scope.category.features = [
             { header: "שם", name: "title" },
-            { header: "סוג", name: "subTitle" },
+            { header: "סוג", name: "type" },
             { header: "מחיר", name: "price" },
             { header: "משלוח", name: "delivery" },
             { header: "זמן אספקה", name: "supply" },
@@ -48,6 +48,7 @@
         
         $scope.$on("WallaShops.ProductDelited", onProductDelited);
 
+        
 
     }];
 

@@ -21,7 +21,7 @@
             <table class="compare-table">
 
 
-                <tr ng-repeat="product in productsToCompare" ng-show="isFull()">
+                <tr ng-repeat="product in productsToCompare" ng-show="!isEmpty()">
 
                     <td ng-repeat="feature in category.features">{{product[feature.name]}}    
                     </td>
