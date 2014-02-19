@@ -6,11 +6,14 @@
         "categoryService",
         "productService",
         "textResource",
-    function ($scope, $location, categoryService, productService, textResource) {
+        "config",
+    function ($scope, $location, categoryService, productService, textResource, config) {
 
 
         $scope.showProduct = function (product) {
-            window.open("http://www.wallashops.co.il/" + product.nameForUrl, "_blank");
+            var wsUrl = config.wsUrl;
+            console.log("showProduct:",wsUrl + "/" + product.nameForUrl);
+            window.open(wsUrl + "/" + product.nameForUrl, "_blank");
         };
 
         $scope.$watch("currentCategory", function (category) {

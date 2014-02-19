@@ -6,6 +6,7 @@
 
         var config = {
             baseUrl: getValue("base-url"),
+            wsUrl: getValue("ws-url"),
             version: getValue("version")
         };
         
