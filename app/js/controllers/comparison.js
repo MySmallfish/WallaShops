@@ -30,11 +30,10 @@
             }
         };
 
-
         $scope.category = {};
         $scope.category.features = [
-            { header: "שם", name: "name" },
-            { header: "סוג", name: "type" },
+            { header: "שם", name: "title" },
+            { header: "סוג", name: "subTitle" },
             { header: "מחיר", name: "price" },
             { header: "משלוח", name: "delivery" },
             { header: "זמן אספקה", name: "supply" },
@@ -46,9 +45,6 @@
             $scope.productsToCompare.splice($scope.productsToCompare.indexOf(args.product), 1);
             
         };
-
-
-        
         
         $scope.$on("WallaShops.ProductDelited", onProductDelited);
 

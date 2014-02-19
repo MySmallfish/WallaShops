@@ -24,7 +24,6 @@
         
 
         function openPromotion(url) {
-            console.log("openPromotion");
             window.open(url, "_blank");
         }
 

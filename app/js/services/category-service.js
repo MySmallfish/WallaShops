@@ -11,7 +11,7 @@
             } else {
 
                 var apiMenuCategories = wallaShopsApi.getMenuCategories();
-                
+
                 result = $q.when(apiMenuCategories).then(function (items) {
                     dailyCacheService.store(MenuCategoriesCacheKey, items);
 
@@ -65,27 +65,41 @@
             } else {
                 return fetchCategoryDetails().then(storeInCache);
             }
-
         }
 
         function getFilters(category) {
-
             var result = $q.when([]);
 
             var categories = dailyCacheService.get(MenuCategoriesCacheKey);
-            
+
             if (category && categories) {
 
                 if (typeof category.filters !== "undefined") {
                     result = $q.when(category.filters);
                 } else {
-                    
+
                     var mainCategoryId = category.mainCategoryId, subCategoryId = category.subCategoryId;
-                    
+
+
+
                     if (mainCategoryId) {
-                        result = getCategoryDetails(mainCategoryId, subCategoryId).then(function (fullApiCategory) {
-                            
-                            category.filters = wallaShopsApi.mapCategoryFilters(fullApiCategory.Filters);
+                        result = getCategoryDetails(mainCategoryId, subCategoryId).then(function(fullApiCategory) {
+
+                            if (fullApiCategory.ShowFilter) {
+                                if (fullApiCategory.Filters && fullApiCategory.Filters.length) {
+                                    category.filters = wallaShopsApi.mapCategoryFilters(fullApiCategory.Filters);
+                                }
+                            } else {
+                                if (category.subCategoryId &&
+                                    category.parent &&
+                                    category.parent.subCategoryId &&
+                                    fullApiCategory.ChildCategories &&
+                                    fullApiCategory.ChildCategories.length) {
+                                    
+                                    category.filters = [ wallaShopsApi.mapCategoriesToFilters(fullApiCategory) ];
+
+                                }
+                            }
                             return category.filters;
                         });
                     }

@@ -20,6 +20,7 @@
 
             if (result && result.then) {
                 result.then(function (items) {
+                    
                     $scope.filters = items;
                 });
             } else {

@@ -3,6 +3,7 @@
     <div class="comparison-products" ng-show="!isEmpty()">
         
         <product-pane product="product" is-compared="true" ng-repeat="product in productsToCompare"></product-pane>
+        <div class="add-product-to-compare" ng-click="addPruduct()" ng-show="!isFull()"><i class="fa fa-plus-circle"></i></div>
     </div>
 
     <div class="table-container">
@@ -28,7 +29,5 @@
             </table>
         </div>
     </div>
-
-    <div class="add-product-to-compare" ng-click="addPruduct()" ng-show="!isFull()"><i class="fa fa-plus-circle"></i></div>
     
 </div>

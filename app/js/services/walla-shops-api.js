@@ -107,7 +107,7 @@
                     icon: category.MenuIconPath,
                     isNewWindow: category.IsNewWindow,
                     link: category.MenuLink,
-                    level: parent ? parent.level+1 : 0,
+                    level: parent && typeof parent.level == "number" ? parent.level + 1 : 0,
                     parent: parent
                 };
             
@@ -119,7 +119,6 @@
             }
 
         function mapMenuCategories(menuCategories) {
-            
             return _.map(menuCategories, mapMenuCategory);
         }
 
@@ -155,13 +154,35 @@
             };
             return mappedFilterItem;
         }
-
+        
         function mapCategoryFilters(filters) {
-     
+
             var mappedfilters = _.map(filters, mapFilter);
 
             return mappedfilters;
         }
+        
+        function mapSubSubSubCategories(category) {
+            var mappedFilterItem = {
+                id: category.CategoryID,
+                title: category.MenuName,
+                nameForUrl: category.VirtualUrl,
+                link: category.CategoryLink
+            };
+            return mappedFilterItem;
+        }
+        
+        function mapCategoriesToFilters(mainCategory) {
+
+            var mappedFilter = {
+                title: mainCategory.MenuName,
+                values: _.map(mainCategory.ChildCategories, mapSubSubSubCategories)
+            };
+
+            return mappedFilter;
+        }
+
+        
 
         function mapProducts(product) {
             var mappedProduct = {
@@ -262,7 +283,8 @@
             getBrandProducts: getBrandProducts,
             getSubSubCategoryProducts: getSubSubCategoryProducts,
             getSubCategoryProducts: getSubCategoryProducts,
-            getMainCategoryProducts: getMainCategoryProducts
+            getMainCategoryProducts: getMainCategoryProducts,
+            mapCategoriesToFilters: mapCategoriesToFilters
             
         };
 

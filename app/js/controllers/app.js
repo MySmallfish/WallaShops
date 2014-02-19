@@ -8,11 +8,9 @@
         "textResource",
         "config",
     function ($scope, $location, categoryService, productService, textResource, config) {
-
+        var wsUrl = config.wsUrl;
 
         $scope.showProduct = function (product) {
-            var wsUrl = config.wsUrl;
-            console.log("showProduct:",wsUrl + "/" + product.nameForUrl);
             window.open(wsUrl + "/" + product.nameForUrl, "_blank");
         };
 

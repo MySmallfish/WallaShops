@@ -14,7 +14,6 @@
         //});
 
         $scope.openPromotion = function (url) {
-            console.log("openPromotion", url);
             promotionsService.openPromotion(url);
         };
          

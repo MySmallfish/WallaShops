@@ -699,6 +699,7 @@ div, i
 
 .add-product-to-compare
 {
+    
     border: solid 1px #ccc;
     background-color: #ddd;
     color: #ccc;
@@ -710,7 +711,8 @@ div, i
 
 .comparison-products
 {
-    position: absolute;
+    float: right;
+    position: relative;
     width: 150px;
     top: 50px;
 }
