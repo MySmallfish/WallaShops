@@ -2,14 +2,26 @@
 
     WS.DailyCacheService = [function () {
 
-        function getDateKey(date) {
-            return moment(date).format("YYYY-MM-D");
+        function getDateKey(today) {
+            return moment(today).format("YYYY-MM-D");
+        }
+
+        function getTomorow(today) {
+            return moment(today).add('days', 1).format("YYYY-MM-D");
         }
 
         var storage = {
-            ExpireAt: getDateKey(new Date()),
+            ExpireAt: getTomorow(new Date()),
             Storage: {}
         };
+
+        function setExpirationDate() {
+            if (storage && storage.ExpireAt) {
+                if (storage.ExpireAt != getTomorow(new Date())) {
+                    storage.ExpireAt = getTomorow(new Date());
+                }
+            }
+        }
 
         function setLocalStorage(key, value) {
             localStorage.setItem(key, value);
@@ -28,24 +40,16 @@
         }
 
         function load() {
-
-            var today = moment(new Date()).format("YYYY-MM-D");
+            setExpirationDate();
 
             var local = localStorage.getItem("dailyCache");
             if (local) {
-                storage = JSON.parse(local);
+                if (storage.ExpireAt == getDateKey(new Date())) {
+                    storage = JSON.parse(local);
+                }
             }
 
-            if (today == storage.ExpireAt) {
-                console.log("no update");
-            }
-            else {
-                console.log("update");
-            }
         }
-
-
-
 
         load();
 
