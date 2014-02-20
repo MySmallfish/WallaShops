@@ -12,7 +12,7 @@
         //}, function (error) {
         //    console.error("ERROR", error);
         //});
-
+        
         $scope.openPromotion = function (url) {
             promotionsService.openPromotion(url);
         };

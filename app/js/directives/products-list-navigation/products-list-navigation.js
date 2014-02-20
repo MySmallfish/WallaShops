@@ -3,11 +3,12 @@
     WS.ProductsListNavigationDirective = {
         restrict: 'E',
         templateUrl: 'app/js/directives/products-list-navigation/products-list-navigation.html',
-        scope: {
-            step: "@",
-            productsListLength: "@",
-            navigationInfo: "="
-        },
+        scope:false,
+        //scope: {
+        //    step: "@",
+        //    productsListLength: "@",
+        //    navigationInfo: "="
+        //},
         replace: true,
         controller: ["$scope", function ($scope) {
 
@@ -52,6 +53,7 @@
                         startIndex: startIndex
                     };
                     $scope.points = calculatePage();
+                    console.log("nav", $scope.navigationInfo);
                 }
             };
 
@@ -59,6 +61,7 @@
             $scope.canNavigateBack = canNavigateBack;
 
             $scope.navigateNext = function () {
+                
                 if (canNavigateNext()) {
                     startIndex += step();
                     updateProductPage();
@@ -73,7 +76,6 @@
 
                 }
             };
-
             
             updateProductPage();
 

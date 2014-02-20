@@ -1,6 +1,7 @@
 ﻿(function (_, S, WS) {
 
     WS.SearchController = ["$q", "$scope", "$filter", "$location", "productService", "dailyCacheService", "$routeParams", function ($q, $scope, $filter, $location, productService, dailyCacheService, $routeParams) {
+        $scope.hideNavigators = true;
         var storage = dailyCacheService.get("ComparisonProduct-Cache");
 
         function resetStorage() {
@@ -33,10 +34,14 @@
             if (dailyCacheService.get("productsToCompare")) {
                 if (dailyCacheService.get("productsToCompare").length <= $scope.maxSelection) {
                     dailyCacheService.store("productsToCompare", $scope.productsToCompare);
+                    if (dailyCacheService.get("productsToCompare").length == 0) {
+                        $scope.$parent.selectionMode = false;
+                    }
 
                     if (dailyCacheService.get("productsToCompare").length == $scope.maxSelection) {
                         openCamperisonPage();
                     }
+                    
                 }
             } else {
                 dailyCacheService.store("productsToCompare", $scope.productsToCompare);
@@ -60,6 +65,7 @@
 
         $scope.$watch("navigationInfo", function (newValue) {
             $scope.navigationInfo = newValue;
+            console.log("$scope.navigationInfo", $scope.navigationInfo);
             updateProductPage();
         });
         
@@ -112,6 +118,7 @@
             if (products && products.length) {
                 $scope.productsLine1 = _.filter(products, function (product, index) { return index % 2 == 0; });
                 $scope.productsLine2 = _.filter(products, function (product, index) { return index % 2 != 0; });
+                $scope.productsListLength = $scope.productsLine1.length;
             }
             return products;
         }
@@ -159,6 +166,7 @@
         }
 
         refresh();
+        
 
         _.extend($scope, {
             isFilterValueNotEmpty: isFilterValueNotEmpty,
