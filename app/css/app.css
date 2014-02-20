@@ -300,7 +300,6 @@ input[type=submit].search-button
     {
         width: 990px;
         height: 600px;
-        background-color: red;
         position: absolute;
         top: 80px;
     }
@@ -308,12 +307,8 @@ input[type=submit].search-button
     .search-page .products-list-content
     {
         position: relative;
-        top: 25px;
+        top: 35px;
         height: 600px;
-    }
-
-    .search-page .left-arrow
-    {
     }
 
 .home-page .products-list-container
@@ -536,17 +531,20 @@ div, i
     color: rgb(33, 141, 202);
 }
 
+.search-left-arrow,.search-right-arrow {
+    position: absolute;
+    color: deepskyblue;
+    font-size: 13pt;
+}
 
 .search-right-arrow
 {
-    position: absolute;
-    right: 0;
+    right: 20px;
 }
 
 .search-left-arrow
 {
-    position: absolute;
-    left: 0;
+    left: 25px;
 }
 
 .categories-menu, .filters-menu

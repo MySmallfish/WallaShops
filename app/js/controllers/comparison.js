@@ -23,7 +23,6 @@
 
         $scope.addPruduct = function () {
             if ($scope.productsToCompare.length < maxProducts) {
-                console.log("ADD PRODUCT TO COMPARE");
                 $location.path("/Search");
             }
         };
@@ -39,14 +38,14 @@
             { header: "יבואן", name: "importer" }
         ];
 
-        function onProductDelited(eventInfo, args) {
+        function onProductDeleted(eventInfo, args) {
             $scope.productsToCompare.splice($scope.productsToCompare.indexOf(args.product), 1);
             
         };
         
-        $scope.$on("WallaShops.ProductDelited", onProductDelited);
-
+        $scope.$on("WallaShops.ProductDeleted", onProductDeleted);
         
+
         
 
     }];

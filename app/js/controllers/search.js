@@ -12,6 +12,7 @@
 
         resetStorage();
 
+        $scope.navigationInfo = {};
         $scope.step = 4;
         $scope.maxSelection = 4;
 
@@ -34,9 +35,6 @@
                     dailyCacheService.store("productsToCompare", $scope.productsToCompare);
 
                     if (dailyCacheService.get("productsToCompare").length == $scope.maxSelection) {
-
-                       // $scope.selectionMode = false;
-
                         openCamperisonPage();
                     }
                 }
@@ -49,25 +47,22 @@
             $scope.$parent.selectionMode = !$scope.$parent.selectionMode;
         }
 
-        function updateProductPage(navigationInfo) {
-            if (navigationInfo && $scope.productsLine1) {
-                var visibleProducts1 = $filter("skip")($scope.productsLine1, navigationInfo.startIndex);
+        function updateProductPage() {
+            if ($scope.navigationInfo && $scope.productsLine1) {
+                var visibleProducts1 = $filter("skip")($scope.productsLine1, $scope.navigationInfo.startIndex);
                 $scope.currentProductsPage1 = $filter("limitTo")(visibleProducts1, $scope.step);
             }
-            if (navigationInfo && $scope.productsLine2) {
-                var visibleProducts2 = $filter("skip")($scope.productsLine2, navigationInfo.startIndex);
+            if ($scope.navigationInfo && $scope.productsLine2) {
+                var visibleProducts2 = $filter("skip")($scope.productsLine2, $scope.navigationInfo.startIndex);
                 $scope.currentProductsPage2 = $filter("limitTo")(visibleProducts2, $scope.step);
             }
         };
 
         $scope.$watch("navigationInfo", function (newValue) {
-            updateProductPage(newValue);
+            $scope.navigationInfo = newValue;
+            updateProductPage();
         });
         
-        $scope.$watch("selectionMode", function (newValue) {
-            console.log("selectionMode", $scope.selectionMode, $scope.productsToCompare);
-        });
-
         //$scope.$watch("searchTerm", function () {
         //    console.log("$watch", $scope.searchTerm);
         //    refresh();
@@ -154,6 +149,14 @@
             $scope.$root.$broadcast("WallaShops.clearSelectedFilterValues");
 
         }
+        
+        function isCheckedToCompare(product) {
+            var result = false;
+            if(_.find($scope.productsToCompare, function (theProduct) { return product.id == theProduct.id; })) {
+                result = true;
+            }
+            return result;
+        }
 
         refresh();
 
@@ -163,7 +166,8 @@
             selectCategoryByPath: selectCategoryByPath,
             toggleComparison: toggleComparison,
             isAnyProductSelected: isAnyProductSelected,
-            openCamperisonPage: openCamperisonPage
+            openCamperisonPage: openCamperisonPage,
+            isCheckedToCompare: isCheckedToCompare
         });
 
     }];
