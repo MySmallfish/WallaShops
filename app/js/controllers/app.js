@@ -10,38 +10,41 @@
     function ($scope, $location, categoryService, productService, textResource, config) {
         var wsUrl = config.wsUrl;
 
+        $scope.productsToCompare = [];
+        $scope.selectionMode = false;
+
         $scope.showProduct = function (product) {
             window.open(wsUrl + "/" + product.nameForUrl, "_blank");
         };
 
         $scope.$watch("currentCategory", function (category) {
-            var fullPath = {};
+            $scope.fullPath = {};
             
             if (category) {
                 if (category.isNewWindow) {
                     window.open(category.link + category.id, "_blank");
                 } else {
 
-                    fullPath.mainBreadCramb = textResource.get("MainBreadCramb") + "  > ";
-                    fullPath.current = category.title;
+                    $scope.fullPath.mainBreadCramb = textResource.get("MainBreadCramb") + "  > ";
+                    $scope.fullPath.current = category.title;
 
                     if (category.parent) {
-                        fullPath.parent = category.parent.title + " > ";
+                        $scope.fullPath.parent = category.parent.title + " > ";
 
                         if (category.parent.parent) {
-                            fullPath.ancestor = category.parent.parent.title + "  >  ";
+                            $scope.fullPath.ancestor = category.parent.parent.title + "  >  ";
                         }
 
                         if (category.level > 0) {
-                            $location.path("/Search").search({
+                            $location.path("/Search");
+                            /*.search({
                                 categoryId: category.id,
                                 categoryName: category.title,
-                                path: fullPath,
                                 level: category.level,
                                 mainCategoryId: category.mainCategoryId,
                                 subCategoryId: category.subCategoryId,
                                 parent: category.parent
-                            });
+                            });*/
                         }
                     }
                 }

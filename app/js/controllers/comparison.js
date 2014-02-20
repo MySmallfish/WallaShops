@@ -1,7 +1,7 @@
 ﻿(function (_, S, WS) {
 
     WS.ComparisonController = ["$scope", "$location", "$routeParams", function ($scope, $location, $routeParams) {
-        $scope.productsToCompare = $routeParams.productsToCompare;
+        
 
         var maxProducts = 4;
 
@@ -24,9 +24,7 @@
         $scope.addPruduct = function () {
             if ($scope.productsToCompare.length < maxProducts) {
                 console.log("ADD PRODUCT TO COMPARE");
-                $location.path("/Search").search({
-                    productsToCompare: $scope.productsToCompare
-                });
+                $location.path("/Search");
             }
         };
 
@@ -48,6 +46,7 @@
         
         $scope.$on("WallaShops.ProductDelited", onProductDelited);
 
+        
         
 
     }];

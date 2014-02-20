@@ -1,7 +1,7 @@
 ﻿<div class="search-page">
     
-    <div class="compare-link" ng-show="!isProductSelected()" ng-click="toggleComparison()">לחץ להשוואת מוצרים</div>
-    <div class="compare-link" ng-show="isProductSelected()" ng-click="openCamperisonPage()">עבור לדף השוואת מוצרים</div>
+    <div class="compare-link" ng-show="!isAnyProductSelected()" ng-click="toggleComparison()">לחץ להשוואת מוצרים</div>
+    <div class="compare-link" ng-show="isAnyProductSelected()" ng-click="openCamperisonPage()">עבור לדף השוואת מוצרים</div>
     <ul class="full-path">
         <li class="main-bread-cramb"><a href="#"> {{fullPath.mainBreadCramb}} </a></li>
         <li class="ancestor" ng-click="selectCategoryByPath(fullPath.ancestor)">{{fullPath.ancestor}}</li>

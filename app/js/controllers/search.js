@@ -12,27 +12,14 @@
 
         resetStorage();
 
-        
-
         $scope.step = 4;
         $scope.maxSelection = 4;
-        $scope.selectionMode = false;
-
-        function loadProductsToCompare() {
-            if ($routeParams.productsToCompare) {
-                $scope.productsToCompare = $routeParams.productsToCompare;
-            } else {
-                $scope.productsToCompare = [];
-            }
-        }
 
         function openCamperisonPage() {
-            $location.path("/Comparison").search({
-                productsToCompare: $scope.productsToCompare
-            });
+            $location.path("/Comparison");
         }
 
-        function isProductSelected() {
+        function isAnyProductSelected() {
             var result = false;
             if ($scope.productsToCompare.length > 0) {
                 result = true;
@@ -48,7 +35,7 @@
 
                     if (dailyCacheService.get("productsToCompare").length == $scope.maxSelection) {
 
-                        $scope.selectionMode = false;
+                       // $scope.selectionMode = false;
 
                         openCamperisonPage();
                     }
@@ -59,7 +46,7 @@
         });
 
         function toggleComparison() {
-            $scope.selectionMode = !$scope.selectionMode;
+            $scope.$parent.selectionMode = !$scope.$parent.selectionMode;
         }
 
         function updateProductPage(navigationInfo) {
@@ -75,6 +62,10 @@
 
         $scope.$watch("navigationInfo", function (newValue) {
             updateProductPage(newValue);
+        });
+        
+        $scope.$watch("selectionMode", function (newValue) {
+            console.log("selectionMode", $scope.selectionMode, $scope.productsToCompare);
         });
 
         //$scope.$watch("searchTerm", function () {
@@ -93,8 +84,6 @@
         }
 
         function buildSearchParameters(routeParameters) {
-            $scope.fullPath = routeParameters.path;
-
             var productParameters = {
             };
             if (routeParameters.searchTerm) {
@@ -136,10 +125,23 @@
             return $q.when(context);
         }
 
-        
+        function extractCategoryParameters() {
+            var category = $scope.currentCategory;
+            var routeParameters = {
+                categoryId: category.id,
+                categoryName: category.title,
+                level: category.level,
+                mainCategoryId: category.mainCategoryId,
+                subCategoryId: category.subCategoryId,
+                parent: category.parent
+            };
+            return routeParameters;
+        }
+
 
         function refresh() {
-            notifyProgress($routeParams)
+            notifyProgress()
+                .then(extractCategoryParameters)
                 .then(buildSearchParameters)
                 .then(fetch)
                 .then(load)
@@ -154,15 +156,13 @@
         }
 
         refresh();
-        loadProductsToCompare();
-        load(storage.products);
 
         _.extend($scope, {
             isFilterValueNotEmpty: isFilterValueNotEmpty,
             clearSelectedFilterValues: clearSelectedFilterValues,
             selectCategoryByPath: selectCategoryByPath,
             toggleComparison: toggleComparison,
-            isProductSelected: isProductSelected,
+            isAnyProductSelected: isAnyProductSelected,
             openCamperisonPage: openCamperisonPage
         });
 
