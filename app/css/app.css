@@ -565,6 +565,14 @@ div, i
     left: 25px;
 }
 
+.search-right-arrow.top, .search-left-arrow.top {
+    margin-top: 10px;
+}
+
+.search-right-arrow.bottom, .search-left-arrow.bottom {
+    margin-top: -23px;
+}
+
 .categories-menu, .filters-menu
 {
     cursor: pointer;
@@ -914,20 +922,20 @@ div, i
         text-decoration: none;
     }
 
-.current-category, .filter-path 
+.current-category, .filter-path
 {
     color: rgb(54, 132, 204);
     font-weight: bold;
 }
 
 
-.filter-path span
-{
-    color: #bbb;
-    font-weight: 100;
-    margin-left: 15px;
-    margin-right: 15px;
-}
+    .filter-path span
+    {
+        color: #bbb;
+        font-weight: 100;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
 
 .clear-filter-path .clear-filter
 {
@@ -973,6 +981,8 @@ div, i
     position: absolute;
     left: 50px;
     text-decoration: underline;
+    padding-top: 10px;
+    font-size: 14pt;
 }
 
 .productImg.compared
