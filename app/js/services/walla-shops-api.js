@@ -228,7 +228,7 @@
         }
 
         function getPromotionsCategories() {
-
+            
             var result = $q.defer();
 
             result.resolve(promotionsCategories);

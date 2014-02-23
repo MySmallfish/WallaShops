@@ -6,9 +6,9 @@
             </a>
             <div class="right-buffer"></div>
         </div>
-        
+
         <div class="header-category">
-            <ws-categories-menu-trigger ></ws-categories-menu-trigger>
+            <ws-categories-menu-trigger></ws-categories-menu-trigger>
 
         </div>
         <div class="right-buffer"></div>
@@ -19,14 +19,20 @@
                 <div class="search-input">
                     <input type="text" placeholder="מה תרצו לשופס?" ng-model="searchTerm" />
                 </div>
-                    <input type="submit" class="search-button" value="חפש" />
-               
+                <input type="submit" class="search-button" value="חפש" />
+
             </form>
         </div>
     </div>
 
+    <div class="user" ng-click="openUserCard()">
+        <div class="left-buffer"></div>
+        <i class="fa fa-user"></i>
+    </div>
+
+
     <!--<div class="header-left-side">
-            <div class="hello_user">
+            <div class="hello-user">
                 <span><a href="#">שלום קטי</a></span>
                 <i class="fa fa-caret-down"></i>
                 <div class="left-buffer"></div>
@@ -42,9 +48,9 @@
             </div>
         </div>-->
 
-    
+
     <div class="header-left-side">
-        
+
         <div class="call-center">
             <div class="left-buffer"></div>
             <div>מרכז הזמנות</div>

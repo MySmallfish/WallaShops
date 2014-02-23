@@ -6,37 +6,39 @@
         scope: {
             showProduct: "&",
             category: "="
-            
+
         },
         replace: true,
         controller: ["$scope", "$filter", function ($scope, $filter) {
             $scope.step = 4;
-            $scope.$watch("category", function() {
+            $scope.navigationInfo = {};
+            $scope.points = [];
+            
+            $scope.$watch("category", function () {
                 $scope.productsListLength = $scope.category.products.length;
             });
+            
             function updateProductPage(navigationInfo) {
-                if (navigationInfo && $scope.category.products) {
+                if ($scope.category.products) {
                     var visibleProducts = $filter("skip")($scope.category.products, navigationInfo.startIndex);
-                    
+
                     $scope.currentProductsPage = $filter("limitTo")(visibleProducts, $scope.step);
-
-
+                    $scope.productsListLength = $scope.category.products.length;
                 }
+
+
             };
-            $scope.$watch("navigationInfo", function(newValue) {
+            $scope.$watch("navigationInfo", function (newValue) {
                 updateProductPage(newValue);
             });
 
-
+            updateProductPage({});
         }],
-        link: function(scope, element, attributes, ctrl) {
+        link: function (scope, element, attributes, ctrl) {
             // bind clicks...          
-            
+
         }
     };
-
-    //var visibleProducts = $filter("skip")($scope.category.products, startIndex);
-    //$scope.category.currentProductsPage = $filter("limitTo")(visibleProducts, step);
 
 
 })(Simple, WallaShops);

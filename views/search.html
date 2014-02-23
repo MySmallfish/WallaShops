@@ -1,24 +1,25 @@
 ﻿<div class="search-page">
-    
+
     <div class="compare-link" ng-show="!isAnyProductSelected()" ng-click="toggleComparison()">לחץ להשוואת מוצרים</div>
     <div class="compare-link" ng-show="isAnyProductSelected()" ng-click="openCamperisonPage()">עבור לדף השוואת מוצרים</div>
     <ul class="full-path">
-        <li class="main-bread-cramb"><a href="#"> {{fullPath.mainBreadCramb}} </a></li>
+        <li class="main-bread-cramb"><a href="#">{{fullPath.mainBreadCramb}} </a></li>
         <li class="ancestor" ng-click="selectCategoryByPath(fullPath.ancestor)">{{fullPath.ancestor}}</li>
         <li class="parent" ng-click="selectCategoryByPath(fullPath.parent)">{{fullPath.parent}}</li>
         <li class="current-category">{{fullPath.current}}</li>
-        
+
     </ul>
 
     <ul class="filter-path">
-        <li class="filters-on-path" ng-repeat="filter in selectedFilterValues.values" ng-show="isFilterValueNotEmpty(filter.value)">
-            {{filter.value.title}} <span>|</span>
+        <li class="filters-on-path" ng-repeat="filter in selectedFilterValues.values" ng-show="isFilterValueNotEmpty(filter.value)">{{filter.value.title}} <span>|</span>
         </li>
-    
-    
-    <li class="clear-filter-path" ng-show="isFilterValueNotEmpty(selectedFilterValues)">
-        <div class="clear-filter" ng-click="clearSelectedFilterValues()">נקה סינון</div>
-    </li>
+        
+        <li ng-show="!isFilterValueNotEmpty(selectedFilterValues)">מוצרים נבחרים לקטגוריה</li>
+
+
+        <li class="clear-filter-path" ng-show="isFilterValueNotEmpty(selectedFilterValues)">
+            <div class="clear-filter" ng-click="clearSelectedFilterValues()">נקה סינון</div>
+        </li>
     </ul>
 
     <div class="products-list-container clear" ng-swipe-right="navigateNext()" ng-swipe-left="navigateBack()">
@@ -31,9 +32,9 @@
         <div class="search-left-arrow" ng-show="canNavigateNext()"><i class="fa fa-chevron-left"></i></div>
         <div class="search-right-arrow" ng-show="canNavigateBack()"><i class="fa fa-chevron-right"></i></div>
     </div>
-    
+
     <products-list-navigation></products-list-navigation>
-<!--    <products-list-navigation step="{{step}}" products-list-length="{{productsLine1.length}}" navigation-info="navigationInfo"></products-list-navigation>-->
+    <!--    <products-list-navigation step="{{step}}" products-list-length="{{productsLine1.length}}" navigation-info="navigationInfo"></products-list-navigation>-->
 
 </div>
 
