@@ -113,6 +113,7 @@ header
     margin-top: 10px;
     line-height: 50px;
     width: 115px;
+    z-index: 111;
 }
 
     .menu-is-open .category
@@ -896,7 +897,7 @@ div, i
 
 .full-path
 {
-    margin-top: 35px;
+    margin-top: 5px;
 }
 
     .full-path li, .filter-path li
