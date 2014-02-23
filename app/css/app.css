@@ -113,7 +113,6 @@ header
     margin-top: 10px;
     line-height: 50px;
     width: 115px;
-    z-index: 111;
 }
 
     .menu-is-open .category
@@ -351,7 +350,7 @@ input[type=submit].search-button
     float: right;
     height: 248px;
     width: 234px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .product
