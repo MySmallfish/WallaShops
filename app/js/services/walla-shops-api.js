@@ -71,7 +71,7 @@
         }
 
         function mapMenuCategories(menuCategories) {
-            return _.map(menuCategories, function(item, index) { return mapMenuCategory(item); });
+            return _.map(menuCategories, function (item, index) { return mapMenuCategory(item); });
         }
 
         function getCategoryDetails(mainCategoryId, subCategoryId) {
@@ -165,7 +165,7 @@
         }
 
         function mapSearchProducts(products) {
-            
+
             var mappedproducts = _.map(products, mapProducts);
             return mappedproducts;
         }
@@ -187,7 +187,7 @@
         }
 
         function getSearchProducts(searchTerm) {
-            return run("auctions/search", { search: searchTerm }).then(function(results) {
+            return run("auctions/search", { search: searchTerm }).then(function (results) {
                 return results.Items;
             }).then(mapSearchProducts);
         }
@@ -235,12 +235,50 @@
         }
 
         function getPromotionsCategories() {
-            
+
             var result = $q.defer();
 
             result.resolve(promotionsCategories);
 
             return result.promise;
+        }
+
+        function mapFeatures(products) {
+            var groups = {};
+
+            _.each(products, function (product) {
+                _.each(product.SpecGroups, function (specGroup) {
+                    var group = groups[specGroup.Name] = groups[specGroup.Name] || {};
+                    group.name = specGroup.Name;
+                    group.order = specGroup.GroupOrder;
+                    group.features = group.features || {};
+                    
+                    _.each(specGroup.Attributes, function (attribute) {
+                        var attr = group.features[attribute.Name] = group.features[attribute.Name] || { header: attribute.Name };
+                        attr.values = attr.values || {};
+                        attr.values[product.Pfid] = attribute.Value;
+                    });
+
+                });
+            });
+
+            var features = [];
+
+            _.each(groups, function (group) {
+                _.each(group.features, function (feature) {
+                    feature = _.extend(feature, {
+                        order: group.order,
+                        name: group.name
+                    });
+                    features.push(feature);
+                });
+            });
+
+            return features;
+        }
+
+        function getFeaturesToComparison(productsIds) {
+            return run("auctions/ProductsCompare", { PfIds: productsIds.join(",") }).then(mapFeatures);
         }
 
 
@@ -257,7 +295,8 @@
             getSubSubCategoryProducts: getSubSubCategoryProducts,
             getSubCategoryProducts: getSubCategoryProducts,
             getMainCategoryProducts: getMainCategoryProducts,
-            mapCategoriesToFilters: mapCategoriesToFilters
+            mapCategoriesToFilters: mapCategoriesToFilters,
+            getFeaturesToComparison: getFeaturesToComparison
 
         };
 

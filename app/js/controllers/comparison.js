@@ -1,6 +1,6 @@
 ﻿(function (_, S, WS) {
 
-    WS.ComparisonController = ["$scope", "$location", "$routeParams", function ($scope, $location, $routeParams) {
+    WS.ComparisonController = ["$scope", "$location", "$routeParams", "wallaShopsApi", function ($scope, $location, $routeParams, wallaShopsApi) {
         
 
         var maxProducts = 4;
@@ -27,22 +27,23 @@
             }
         };
 
-        $scope.category = {};
-        $scope.category.features = [
-            { header: "שם", name: "title" },
-            { header: "סוג", name: "type" },
-            { header: "מחיר", name: "price" },
-            { header: "משלוח", name: "delivery" },
-            { header: "זמן אספקה", name: "supply" },
-            { header: "סגירה", name: "closing" },
-            { header: "יבואן", name: "importer" }
-        ];
+        $scope.getFeatures = function () {
+            return wallaShopsApi.getFeaturesToComparison(_.pluck($scope.productsToCompare, "id")).then(function(features) {
+                $scope.features = features;
+            });
+        };
+        
+        $scope.getFeatures();
+
+        $scope.features = [];
 
         function onProductDeleted(eventInfo, args) {
             $scope.productsToCompare.splice($scope.productsToCompare.indexOf(args.product), 1);
             
         };
         
+
+
         $scope.$on("WallaShops.ProductDeleted", onProductDeleted);
         
 

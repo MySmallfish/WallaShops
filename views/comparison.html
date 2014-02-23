@@ -7,12 +7,12 @@
     </div>
 
     <div class="table-container">
-        <div class="table-wrapper" ng-style="{'width': (150*category.features.length) + 'px'}">
+        <div class="table-wrapper" ng-style="{'width': (150*features.length) + 'px'}">
             <table class="table-head">
 
                 <thead ng-show="!isEmpty()">
                     <tr>
-                        <th ng-repeat="feature in category.features">{{feature.header}}</th>
+                        <th ng-repeat="feature in features">{{feature.header}}</th>
                     </tr>
                 </thead>
             </table>
@@ -23,7 +23,7 @@
 
                 <tr ng-repeat="product in productsToCompare" ng-show="!isEmpty()">
 
-                    <td ng-repeat="feature in category.features">{{product[feature.name]}}    
+                    <td ng-repeat="feature in features">{{feature.values[product.id]}}    
                     </td>
                 </tr>
             </table>
