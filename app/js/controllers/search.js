@@ -65,7 +65,6 @@
 
         $scope.$watch("navigationInfo", function (newValue) {
             $scope.navigationInfo = newValue;
-            console.log("$scope.navigationInfo", $scope.navigationInfo);
             updateProductPage();
         });
         

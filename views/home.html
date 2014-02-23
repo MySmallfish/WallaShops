@@ -5,15 +5,15 @@
                 <ul class="nav nav-tabs">
                     
                     <li ng-repeat="promotion in main_promotions" ng-class="{'active': isSelected(promotion)}" ng-click="select(promotion)">
-                        <a ng-href="#{{promotion.name}}" data-toggle="tab">{{promotion.name}}</a>
+                        <a ng-href="#Promotion_{{promotion.id}}" data-toggle="tab">{{promotion.title.text}}</a>
                         <div class="promotion-arrow" ng-show="isSelected(promotion)"><i class="fa fa-caret-up"></i></div>
                     </li>
 
                 </ul>
 
                 <div class="tab-content">
-                    <div class="tab-pane" ng-repeat="promotion in main_promotions" ng-class="{'active': isSelected(promotion)}" id="{{promotion.name}}" ng-click="openPromotion(promotion.url)">
-                        <img ng-src="{{promotion.promotion}}" alt="{{promotion.name}}" />
+                    <div class="tab-pane" ng-repeat="promotion in main_promotions" ng-class="{'active': isSelected(promotion)}" id="Promotion_{{promotion.id}}" ng-click="openPromotion(promotion.link.url)">
+                        <img ng-src="{{promotion.image.url}}" alt="{{promotion.title.text}}" />
                     </div>
 
                 </div>
@@ -22,8 +22,8 @@
         </div>
 
         <div class="seasonal">
-            <img ng-src="{{ firstPromotion.promotion}}" alt="{{ firstPromotion.name }}" ng-click="openPromotion(firstPromotion.url)" />
-            <img ng-src="{{ secondPromotion.promotion}}" alt="{{ secondPromotion.name }}" ng-click="openPromotion(secondPromotion.url)" />
+            <img ng-src="{{ firstPromotion.image.url}}" alt="{{ firstPromotion.title.text }}" ng-click="openPromotion(firstPromotion.link.url)" />
+            <img ng-src="{{ secondPromotion.image.url}}" alt="{{ secondPromotion.title.text }}" ng-click="openPromotion(secondPromotion.link.url)" />
         </div>
     </div>
 

@@ -53,7 +53,6 @@
                         startIndex: startIndex
                     };
                     $scope.points = calculatePage();
-                    console.log("nav", $scope.navigationInfo);
                 }
             };
 

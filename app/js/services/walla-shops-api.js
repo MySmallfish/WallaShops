@@ -1,64 +1,6 @@
 ﻿(function (_, S, WS) {
 
     WS.WallaShopsApi = ["$http", "$q", "config", function ($http, $q, config) {
-
-        var mainPromotions = [
-            {
-                promotion: "app/img/pic1.png",
-                name: "promotion1",
-                url: "http://www.wallashops.co.il/LandingPage?uid=47d897cd-d951-44e4-9766-24450e6ab9ee"
-            },
-            {
-                promotion: "app/img/pic2.png",
-                name: "promotion2",
-                url: "http://www.wallashops.co.il/%D7%94%D7%9C%D7%91%D7%A9%D7%94-%D7%94%D7%A0%D7%A2%D7%9C%D7%94/%D7%97%D7%96%D7%99%D7%95%D7%AA-%D7%AA%D7%97%D7%AA%D7%95%D7%A0%D7%99%D7%9D#m=s&p=1&f=110390"
-
-            },
-            {
-                promotion: "app/img/pic3.png",
-                name: "promotion3",
-                url: "http://www.wallashops.co.il/%D7%93%D7%99%D7%9C-%D7%99%D7%95%D7%9E%D7%99/%D7%97%D7%95%D7%A8%D7%A3-%D7%97%D7%9D/%D7%90%D7%95%D7%A4%D7%A0%D7%94-%D7%97%D7%95%D7%A8%D7%A4%D7%99%D7%AA"
-            }
-        ];
-
-        var seasonalImages = [
-            {
-                "Id": 8098,
-                "CategoryCode": 5000,
-                "SystemId": 4,
-                "LocationCode": 9200,
-                "LayoutCode": 25,
-                "FocusPriority": 0,
-                "CategoryType": 0,
-                "CategoryRefId": 0,
-                "WSApiPromotionObjItem": null,
-                "Values": [
-                    {
-                        "code": "image",
-                        "URL": "http://test.wallashops.co.il/Promotions/0/11/8098_250x120.jpg",
-                        "HeightPixel": 120,
-                        "WidthPixel": 250
-                    },
-                    {
-                        "code": "text",
-                        "Text": "בק טו בלאק"
-                    },
-                    {
-                        "code": "link",
-                        "URL": "http://www.wallashops.co.il/landingpage.aspx?uid=a6aeae3d-b055-4826-9c5a-549d141a261d",
-                        "Text": ""
-                    }
-                ]
-            }
-        ];
-
-        //   [ {
-        //        promotion: "app/img/pic4.png",
-        //        name: "1",
-        //        url:"http://www.wallashops.co.il/%D7%97%D7%91%D7%99%D7%9C%D7%AA-%D7%A0%D7%95%D7%A4%D7%A9-7-%D7%9C%D7%99%D7%9C%D7%95%D7%AA-%D7%9C%D7%A8%D7%95%D7%9E%D7%90-%D7%91%D7%90%D7%A4%D7%A8%D7%99%D7%9C/pi2SKuguyf"
-        //    }
-        //];
-
         var promotionsCategories = [{
             name: "לאן ללכת?",
             products: [
@@ -83,17 +25,17 @@
             ],
             id: 1
         },
-           {
-               name: "לאיזה מכירות כדאי לשים לב",
-               products: [
-                   { id: 1, title: "א. 21", subtitle: "לגבר המטרוסקסואלי", rating: 4, ratersNumber: 20, icons: [{ url: "app/img/icon.png" }, { url: "app/img/icon.png" }], imageUrl: "app/img/product.png", price: "1000 שח", details: "לפרטים" },
-                   { id: 2, title: "ג. 22", subtitle: "לגבר המטרוסקסואלי", rating: 5, ratersNumber: 20, icons: [{ url: "app/img/icon.png" }, { url: "app/img/icon.png" }], imageUrl: "app/img/product.png", price: "1000 שח", details: "לפרטים" },
-                   { id: 3, title: "ב. 23", subtitle: "לגבר המטרוסקסואלי", rating: 1, ratersNumber: 20, icons: [{ url: "app/img/icon.png" }, { url: "app/img/icon.png" }], imageUrl: "app/img/product.png", price: "1000 שח", details: "לפרטים" },
-                   { id: 4, title: "מכונת 24", subtitle: "לגבר המטרוסקסואלי", rating: 2, ratersNumber: 20, icons: [{ url: "app/img/icon.png" }, { url: "app/img/icon.png" }], imageUrl: "app/img/product.png", price: "1000 שח", details: "לפרטים" },
-                   { id: 4, title: "מכונת524", subtitle: "לגבר המטרוסקסואלי", rating: 3, ratersNumber: 20, icons: [{ url: "app/img/icon.png" }, { url: "app/img/icon.png" }], imageUrl: "app/img/product.png", price: "1000 שח", details: "לפרטים" }
-               ],
-               id: 2
-           }];
+            {
+                name: "לאיזה מכירות כדאי לשים לב",
+                products: [
+                    { id: 1, title: "א. 21", subtitle: "לגבר המטרוסקסואלי", rating: 4, ratersNumber: 20, icons: [{ url: "app/img/icon.png" }, { url: "app/img/icon.png" }], imageUrl: "app/img/product.png", price: "1000 שח", details: "לפרטים" },
+                    { id: 2, title: "ג. 22", subtitle: "לגבר המטרוסקסואלי", rating: 5, ratersNumber: 20, icons: [{ url: "app/img/icon.png" }, { url: "app/img/icon.png" }], imageUrl: "app/img/product.png", price: "1000 שח", details: "לפרטים" },
+                    { id: 3, title: "ב. 23", subtitle: "לגבר המטרוסקסואלי", rating: 1, ratersNumber: 20, icons: [{ url: "app/img/icon.png" }, { url: "app/img/icon.png" }], imageUrl: "app/img/product.png", price: "1000 שח", details: "לפרטים" },
+                    { id: 4, title: "מכונת 24", subtitle: "לגבר המטרוסקסואלי", rating: 2, ratersNumber: 20, icons: [{ url: "app/img/icon.png" }, { url: "app/img/icon.png" }], imageUrl: "app/img/product.png", price: "1000 שח", details: "לפרטים" },
+                    { id: 4, title: "מכונת524", subtitle: "לגבר המטרוסקסואלי", rating: 3, ratersNumber: 20, icons: [{ url: "app/img/icon.png" }, { url: "app/img/icon.png" }], imageUrl: "app/img/product.png", price: "1000 שח", details: "לפרטים" }
+                ],
+                id: 2
+            }];
 
         var baseUrl = config.baseUrl;
 
@@ -252,62 +194,37 @@
             return run("auctions/" + type, { catid: categoryId }).then(mapSearchProducts);
         }
 
-        function mapPromotionValues(value) {
-            var mappedValue = {
-                code: value.code,
-                name: value.Text,
-                promotion: value.ImagePath,
-                url: value.URL,
-                height: value.HeightPixel,
-                Width: value.WidthPixel
-            };
-            return mappedValue;
-        }
 
-        function mapPromotions(mainPromotion) {
-            var mappedSeasonalImage = {
-                id: mainPromotion.Id,
-                categoryCode: mainPromotion.CategoryCode,
-                priority: mainPromotion.FocusPriority,
-                location: mainPromotion.LocationCode,
-                values: _.map(mainPromotion.Values, mapPromotionValues)
-
-            };
-            return mappedSeasonalImage;
+        function mapPromotions(promotions) {
+            return _.map(promotions, function (promotion) {
+                var mappedPromotions = {
+                    id: promotion.Id,
+                    categoryCode: promotion.CategoryCode,
+                    priority: promotion.FocusPriority,
+                    location: promotion.LocationCode
+                };
+                _.each(promotion.Values, function (value) {
+                    mappedPromotions[value.code] = {
+                        url: value.URL,
+                        text: value.Text,
+                        height: value.HeightPixel,
+                        width: value.WidthPixel
+                    };
+                });
+                return mappedPromotions;
+            });
         }
 
         function getMainPromotions() {
-
-            var mappedPromotions = _.map(mainPromotions, mapPromotions);
-            return mappedPromotions;
-
-            //var result = $q.defer();
-
-            //result.resolve(mainPromotions);
-
-            //return result.promise;
+            return run("promotions/GetPromotionItems", { locationCode: 5031 }).then(mapPromotions);
         }
 
-        function mapSeasonalImages(seasonalImage) {
-            var mappedSeasonalImage = {
-                id: seasonalImage.Id,
-                location: seasonalImage.LocationCode,
-                values: _.map(seasonalImage.Values, mapPromotionValues)
-                
-            };
-            return mappedSeasonalImage;
+        function getTopSeasonalImages() {
+            return run("promotions/GetPromotionItems", { locationCode: 9100 }).then(mapPromotions);
         }
 
-        function getSeasonalImages() {
-
-            var mappedPromotions = _.map(seasonalImages, mapSeasonalImages);
-            return mappedPromotions;
-
-            //var result = $q.defer();
-
-            //result.resolve(seasonalImages);
-
-            //return result.promise;
+        function getBottomSeasonalImages() {
+            return run("promotions/GetPromotionItems", { locationCode: 9200 }).then(mapPromotions);
         }
 
         function getPromotionsCategories() {
@@ -324,7 +241,8 @@
             getMenuCategories: getMenuCategories,
             mapCategoryFilters: mapCategoryFilters,
             getMainPromotions: getMainPromotions,
-            getSeasonalImages: getSeasonalImages,
+            getTopSeasonalImages: getTopSeasonalImages,
+            getBottomSeasonalImages: getBottomSeasonalImages,
             getPromotionsCategories: getPromotionsCategories,
             getCategoryDetails: getCategoryDetails,
             getSearchProducts: getSearchProducts,

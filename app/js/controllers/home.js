@@ -12,11 +12,13 @@
         //}, function (error) {
         //    console.error("ERROR", error);
         //});
-        
+
         $scope.openPromotion = function (url) {
-            promotionsService.openPromotion(url);
+            if (url) {
+                promotionsService.openPromotion(url);
+            }
         };
-         
+
         function isSelected(promotion) {
             return $scope.selectedPromotion === promotion;
         }
@@ -29,20 +31,19 @@
             return Math.floor((Math.random() * max));
         }
 
-        function loadSeasonalPromotions(promotions) {
+        function getRandomPromotion(promotions) {
             if (promotions.length) {
                 var randomIndex = getRandom(promotions.length);
-                $scope.firstPromotion = promotions[randomIndex];
-                if (promotions.length > 1) {
-                    var randomIndex2 = getRandom(promotions.length);
-                    while (randomIndex2 === randomIndex) {
-                        randomIndex2 = getRandom(promotions.length);
-                    }
-                    $scope.secondPromotion = promotions[randomIndex2];
-                }
+                return promotions[randomIndex];
             }
         }
-        
+
+        function loadSeasonalPromotions(promotions) {
+            console.log("PROMO", promotions);
+            $scope.firstPromotion = getRandomPromotion(promotions.top);
+            $scope.secondPromotion = getRandomPromotion(promotions.bottom);
+        }
+
         _.extend($scope, {
             select: select,
             isSelected: isSelected
@@ -52,12 +53,13 @@
         $scope.secondPromotion = null;
 
         $scope.promotionsCategories = null;
-        
+
         promotionsService.getSeasonalImages().then(loadSeasonalPromotions);
 
         $scope.main_promotions = null;
 
         promotionsService.getMainPromotions().then(function (items) {
+            
             $scope.main_promotions = items;
             $scope.selectedPromotion = $scope.main_promotions[0];
         });
