@@ -565,13 +565,15 @@ div, i
     left: 25px;
 }
 
-.search-right-arrow.top, .search-left-arrow.top {
-    margin-top: 10px;
-}
+    .search-right-arrow.top, .search-left-arrow.top
+    {
+        margin-top: 10px;
+    }
 
-.search-right-arrow.bottom, .search-left-arrow.bottom {
-    margin-top: -23px;
-}
+    .search-right-arrow.bottom, .search-left-arrow.bottom
+    {
+        margin-top: -23px;
+    }
 
 .categories-menu, .filters-menu
 {
@@ -904,6 +906,7 @@ div, i
 
 .full-path
 {
+    font-size: 13pt;
     margin-top: 5px;
 }
 
@@ -1018,4 +1021,11 @@ div, i
 .popover
 {
     margin-left: -77px;
+}
+
+.search-term
+{
+    font-weight: bold;
+    font-size: 13pt;
+    padding-top: 10px;
 }

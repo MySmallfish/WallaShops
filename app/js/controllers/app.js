@@ -8,7 +8,7 @@
         "productService",
         "textResource",
     function ($scope, $location, productDetailsPresenter, categoryService, productService, textResource) {
-        
+
 
         $scope.productsToCompare = [];
         $scope.selectionMode = false;
@@ -18,35 +18,12 @@
         };
 
         $scope.$watch("currentCategory", function (category) {
-            $scope.fullPath = {};
-            
             if (category) {
                 if (category.isNewWindow) {
                     window.open(category.link + category.id, "_blank");
-                } else {
+                } else if (category.parent) {
+                    $location.path("/Search");
 
-                    $scope.fullPath.mainBreadCramb = textResource.get("MainBreadCramb") + "  > ";
-                    $scope.fullPath.current = category.title;
-
-                    if (category.parent) {
-                        $scope.fullPath.parent = category.parent.title + " > ";
-
-                        if (category.parent.parent) {
-                            $scope.fullPath.ancestor = category.parent.parent.title + "  >  ";
-                        }
-
-                        if (category.level > 0) {
-                            $location.path("/Search");
-                            /*.search({
-                                categoryId: category.id,
-                                categoryName: category.title,
-                                level: category.level,
-                                mainCategoryId: category.mainCategoryId,
-                                subCategoryId: category.subCategoryId,
-                                parent: category.parent
-                            });*/
-                        }
-                    }
                 }
             } else {
                 $location.path("/");
@@ -54,7 +31,8 @@
         });
 
         function onCategorySelected(eventInfo, args) {
-                $scope.currentCategory = args.category;
+            $scope.searchTerm = null;
+            $scope.currentCategory = args.category;
         }
 
         $scope.$on("WallaShops.SelectCategoryRequested", onCategorySelected);
@@ -74,9 +52,7 @@
         };
 
         $scope.searchText = function () {
-            $location.path("/Search").search({
-                searchTerm: $scope.searchTerm
-            });
+            $location.path("/Search");
         };
 
     }];

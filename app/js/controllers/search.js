@@ -41,7 +41,7 @@
                     if (dailyCacheService.get("productsToCompare").length == $scope.maxSelection) {
                         openCamperisonPage();
                     }
-                    
+
                 }
             } else {
                 dailyCacheService.store("productsToCompare", $scope.productsToCompare);
@@ -67,17 +67,6 @@
             $scope.navigationInfo = newValue;
             updateProductPage();
         });
-        
-        //$scope.$watch("searchTerm", function () {
-        //    console.log("$watch", $scope.searchTerm);
-        //    refresh();
-        //});
-
-        function selectCategoryByPath(category) {
-            $scope.$root.$broadcast("WallaShops.SelectCategoryRequested", {
-                category: category
-            });
-        }
 
         function isFilterValueNotEmpty(filterValue) {
             return filterValue;
@@ -86,6 +75,7 @@
         function buildSearchParameters(routeParameters) {
             var productParameters = {
             };
+
             if (routeParameters.searchTerm) {
                 productParameters.searchTerm = routeParameters.searchTerm;
             } else {
@@ -97,6 +87,14 @@
                     }
                 } else {
                     productParameters.mainCategoryId = routeParameters.mainCategoryId;
+                }
+
+                if ($scope.selectedFilterValues) {
+                    productParameters.filters = _.map(_.filter($scope.selectedFilterValues.values, function (filter) {
+                        return filter.value;
+                    }), function (filter) {
+                        return filter.value.id;
+                    });
                 }
             }
             return productParameters;
@@ -118,6 +116,10 @@
                 $scope.productsLine1 = _.filter(products, function (product, index) { return index % 2 == 0; });
                 $scope.productsLine2 = _.filter(products, function (product, index) { return index % 2 != 0; });
                 $scope.productsListLength = $scope.productsLine1.length;
+            } else {
+                $scope.productsLine1 = [];
+                $scope.productsLine2 = [];
+                $scope.productsListLength = 0;
             }
             return products;
         }
@@ -127,17 +129,33 @@
         }
 
         function extractCategoryParameters() {
-            var category = $scope.currentCategory;
+
             var routeParameters = {
-                categoryId: category.id,
-                categoryName: category.title,
-                level: category.level,
-                mainCategoryId: category.mainCategoryId,
-                subCategoryId: category.subCategoryId,
-                parent: category.parent
+                searchTerm: $scope.searchTerm    
             };
+
+            var category = $scope.currentCategory;
+            if (category) {
+                routeParameters = _.extend(routeParameters, {
+                    categoryId: category.id,
+                    categoryName:
+                    category.title,
+                    level:
+                    category.level,
+                    mainCategoryId:
+                    category.mainCategoryId,
+                    subCategoryId:
+                    category.subCategoryId,
+                    parent:
+                    category.parent
+                });
+            }
             return routeParameters;
         }
+
+        $scope.$watch("searchTerm", refresh);
+        $scope.$watch("currentCategory", refresh);
+        $scope.$watch("selectedFilterValues", refresh);
 
 
         function refresh() {
@@ -147,30 +165,64 @@
                 .then(fetch)
                 .then(load)
                 .then(resetNavigation);
-                
+
         }
 
         function clearSelectedFilterValues() {
             $scope.$root.selectedFilterValues = null;
             $scope.$root.$broadcast("WallaShops.clearSelectedFilterValues");
-
         }
-        
+
         function isCheckedToCompare(product) {
             var result = false;
-            if(_.find($scope.productsToCompare, function (theProduct) { return product.id == theProduct.id; })) {
+            if (_.find($scope.productsToCompare, function (theProduct) { return product.id == theProduct.id; })) {
                 result = true;
             }
             return result;
         }
 
+        function find(categories, id) {
+            var category = _.find(categories, function (item) {
+                return item.id == id;
+            });
+
+            if (!category) {
+                for (var i = 0; i < categories.length; i++) {
+                    var found = find(categories[i].categories, id);
+                    if (found) {
+                        category = found;
+                        break;
+                    }
+                }
+            }
+
+            return category;
+        }
+
+        function selectCategoryById(categoryId) {
+
+
+            var categories = dailyCacheService.get("menuCategories");
+
+            if (categories) {
+
+                var category = find(categories, categoryId);
+
+                if (category) {
+                    $scope.$parent.currentCategory = category;
+                }
+            }
+
+            refresh();
+        }
+
         refresh();
-        
+
 
         _.extend($scope, {
             isFilterValueNotEmpty: isFilterValueNotEmpty,
             clearSelectedFilterValues: clearSelectedFilterValues,
-            selectCategoryByPath: selectCategoryByPath,
+            selectCategoryById: selectCategoryById,
             toggleComparison: toggleComparison,
             isAnyProductSelected: isAnyProductSelected,
             openCamperisonPage: openCamperisonPage,

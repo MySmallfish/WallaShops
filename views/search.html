@@ -2,25 +2,34 @@
 
     <div class="compare-link" ng-show="!isAnyProductSelected()" ng-click="toggleComparison()">לחץ להשוואת מוצרים</div>
     <div class="compare-link" ng-show="isAnyProductSelected()" ng-click="openCamperisonPage()">עבור לדף השוואת מוצרים</div>
-    <ul class="full-path">
-        <li class="main-bread-cramb"><a href="#">{{fullPath.mainBreadCramb}} </a></li>
-        <li class="ancestor" ng-click="selectCategoryByPath(fullPath.ancestor)">{{fullPath.ancestor}}</li>
-        <li class="parent" ng-click="selectCategoryByPath(fullPath.parent)">{{fullPath.parent}}</li>
-        <li class="current-category">{{fullPath.current}}</li>
+    
+    <div ng-switch on="!!searchTerm">
+        <div class="search-term" ng-switch-when="true">
+            מציג תוצאות חיפוש עבור "{{searchTerm}}"
+        </div>
+        <div ng-switch-default>
+            <ul class="full-path">
+                <li class="main-bread-cramb">ראשי <span>&gt;</span> </li>
+                <li class="ancestor" ng-if="currentCategory.parent.parent">{{currentCategory.parent.parent.title}} <span>&gt;</span> </li>
+                <li class="parent" ng-click="selectCategoryById(currentCategory.parent.id)" ng-if="currentCategory.parent">{{currentCategory.parent.title}} <span>&gt;</span> </li>
+                <li class="current-category">{{currentCategory.title}}</li>
+            </ul>
+            <ul class="filter-path">
+                <li class="filters-on-path" ng-repeat="filter in selectedFilterValues.values" ng-show="isFilterValueNotEmpty(filter.value)">{{filter.value.title}} <span>|</span>
+                </li>
 
-    </ul>
-
-    <ul class="filter-path">
-        <li class="filters-on-path" ng-repeat="filter in selectedFilterValues.values" ng-show="isFilterValueNotEmpty(filter.value)">{{filter.value.title}} <span>|</span>
-        </li>
-        
-        <li ng-show="!isFilterValueNotEmpty(selectedFilterValues)">מוצרים נבחרים לקטגוריה</li>
+                <li ng-show="!isFilterValueNotEmpty(selectedFilterValues)">מוצרים נבחרים לקטגוריה</li>
 
 
-        <li class="clear-filter-path" ng-show="isFilterValueNotEmpty(selectedFilterValues)">
-            <div class="clear-filter" ng-click="clearSelectedFilterValues()">נקה סינון</div>
-        </li>
-    </ul>
+                <li class="clear-filter-path" ng-show="isFilterValueNotEmpty(selectedFilterValues)">
+                    <div class="clear-filter" ng-click="clearSelectedFilterValues()">נקה סינון</div>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
 
     <div class="products-list-container clear" ng-swipe-right="navigateNext()" ng-swipe-left="navigateBack()">
         <div class="search-left-arrow top" ng-show="canNavigateNext()"><i class="fa fa-chevron-left"></i></div>

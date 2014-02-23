@@ -109,6 +109,7 @@
         $scope.$watch("filters", function (newValue) {
             $scope.hasFilter = !!newValue && !!newValue.length;
         });
+        
         $scope.$watch("selectedCategory", loadFilters);
         if ($scope.selectedCategory) {
             loadFilters();

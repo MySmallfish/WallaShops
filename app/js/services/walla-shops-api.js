@@ -71,7 +71,7 @@
         }
 
         function mapMenuCategories(menuCategories) {
-            return _.map(menuCategories, mapMenuCategory);
+            return _.map(menuCategories, function(item, index) { return mapMenuCategory(item); });
         }
 
         function getCategoryDetails(mainCategoryId, subCategoryId) {
@@ -165,21 +165,21 @@
         }
 
         function mapSearchProducts(products) {
-
+            
             var mappedproducts = _.map(products, mapProducts);
             return mappedproducts;
         }
 
         function getMainCategoryProducts(parameters) {
-            return getSearchPageProducts("maincat", parameters.mainCategoryId);
+            return getSearchPageProducts("maincat", parameters.mainCategoryId, parameters.filters);
         }
 
         function getSubCategoryProducts(parameters) {
-            return getSearchPageProducts("cat", parameters.subCategoryId);
+            return getSearchPageProducts("cat", parameters.subCategoryId, parameters.filters);
         }
 
         function getSubSubCategoryProducts(parameters) {
-            return getSearchPageProducts("cat", parameters.subSubCategoryId);
+            return getSearchPageProducts("cat", parameters.subSubCategoryId, parameters.filters);
         }
 
         function getBrandProducts(parameters) {
@@ -187,11 +187,18 @@
         }
 
         function getSearchProducts(searchTerm) {
-            return run("auctions/search", { search: searchTerm }).then(mapSearchProducts);
+            return run("auctions/search", { search: searchTerm }).then(function(results) {
+                return results.Items;
+            }).then(mapSearchProducts);
         }
 
-        function getSearchPageProducts(type, categoryId) {
-            return run("auctions/" + type, { catid: categoryId }).then(mapSearchProducts);
+        function getSearchPageProducts(type, categoryId, filters) {
+            var parameters = { catid: categoryId };
+            if (filters) {
+                parameters.filterOptions = 1;
+                parameters.filters = filters.join(",");
+            }
+            return run("auctions/" + type, parameters).then(mapSearchProducts);
         }
 
 
