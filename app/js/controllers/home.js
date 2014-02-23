@@ -39,7 +39,6 @@
         }
 
         function loadSeasonalPromotions(promotions) {
-            console.log("PROMO", promotions);
             $scope.firstPromotion = getRandomPromotion(promotions.top);
             $scope.secondPromotion = getRandomPromotion(promotions.bottom);
         }

@@ -3,18 +3,18 @@
     WS.AppController = [
         "$scope",
         "$location",
+        "productDetailsPresenter",
         "categoryService",
         "productService",
         "textResource",
-        "config",
-    function ($scope, $location, categoryService, productService, textResource, config) {
-        var wsUrl = config.wsUrl;
+    function ($scope, $location, productDetailsPresenter, categoryService, productService, textResource) {
+        
 
         $scope.productsToCompare = [];
         $scope.selectionMode = false;
 
         $scope.showProduct = function (product) {
-            window.open(wsUrl + "/" + product.nameForUrl, "_blank");
+            productDetailsPresenter.showProduct(product);
         };
 
         $scope.$watch("currentCategory", function (category) {

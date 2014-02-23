@@ -8,6 +8,7 @@
     app.service("productService", WS.ProductService);
     app.service("dailyCacheService", WS.DailyCacheService);
     app.service("wallaShopsApi", WS.WallaShopsApi);
+    app.service("productDetailsPresenter", WS.ProductDetailsPresenter);
     
     
     app.directive("appHeader", function () {
