@@ -2,7 +2,6 @@
 
     WS.ComparisonController = ["$scope", "$location", "$routeParams", "wallaShopsApi", function ($scope, $location, $routeParams, wallaShopsApi) {
         
-
         var maxProducts = 4;
 
         $scope.isFull = function() {
@@ -41,12 +40,8 @@
             $scope.productsToCompare.splice($scope.productsToCompare.indexOf(args.product), 1);
             
         };
-        
-
 
         $scope.$on("WallaShops.ProductDeleted", onProductDeleted);
-        
-
         
 
     }];

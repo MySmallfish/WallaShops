@@ -387,6 +387,7 @@ div, i
     border-right: solid 3px #ccc;
 }
 
+
 .product-info
 {
     height: 235px;
@@ -397,7 +398,11 @@ div, i
 
     .product-info p, .rating
     {
-        margin: 5px 0 0 0;
+        margin: 9px 0 0 0;
+    }
+
+    .rating.compared {
+        margin-top: 0;
     }
 
 .title
@@ -427,6 +432,11 @@ div, i
     position: absolute;
     left: 70px;
     color: #aaa;
+}
+
+.price
+{
+    font-size: 14pt;
 }
 
 .price, .details
@@ -481,14 +491,14 @@ div, i
 
 .right-arrow
 {
-    background-image: url('../img/right-arrow-button.png');
+    background-image: url('../img/prevBtn.png');
     background-position-y: 137px;
     right: 3px;
 }
 
 .left-arrow
 {
-    background-image: url('../img/left-arrow-button.png');
+    background-image: url('../img/nextBtn.png');
     background-position-y: 127px;
     background-position-x: 2px;
     left: 3px;
@@ -692,11 +702,16 @@ div, i
     clear: both;
 }
 
+.compare-table {
+    border-top: solid 1px #ccc;
+    margin-top: 15px;
+}
+
 .compare-table, .table-head
 {
     width: 100%;
-    border-spacing: 10px;
-    border-collapse: separate;
+    /*border-spacing: 10px;
+    border-collapse: separate;*/
 }
 
     .compare-table td .inner
@@ -719,8 +734,10 @@ div, i
 
     .compare-table td
     {
-        height: 130px;
-        border-right: solid 1px #ccc;
+        height: 140px;
+        border-left: solid 1px #ccc;
+        border-bottom: solid 1px #ccc;
+        
     }
 
 .add-product-to-compare
@@ -740,9 +757,9 @@ div, i
 
     .comparison-products .product-info
     {
-        height: 130px;
+        height: 140px;
         padding: 1px;
-        margin: 0 0 10px 0;
+        margin: 3px 0 0 0;
     }
 
     .comparison-products .product-border
@@ -991,14 +1008,20 @@ div, i
 .productImg.compared
 {
     width: 60%;
-    height: 60%;
+    height: 57%;
     margin-right: 18%;
 }
 
 .title.compared
 {
-    font-size: 11pt;
-    text-align: center;
+    font-size: 9pt;
+    margin-top: 3px;
+}
+
+.subtitle.compared
+{
+    font-size: 7pt;
+    margin: 0;
 }
 
 .stars.compared
@@ -1010,12 +1033,14 @@ div, i
     .stars.compared .fa
     {
         font-size: 10pt;
+        margin-top: -8px;
     }
 
 .price.compared
 {
-    font-size: 15pt;
-    font-weight: bold;
+    font-size: 13pt;
+    position: absolute;
+    right: 0;
 }
 
 /*.popover

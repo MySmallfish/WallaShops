@@ -134,33 +134,38 @@
             return mappedFilter;
         }
 
-
-        function mapProducts(product) {
-            var mappedProduct = {
-                id: product.ProductID,
-                title: product.TitleLine1,
-                subTitle: product.TitleLine2,
-                subtitle2: product.blabla,
-                imageUrl: product.SmallPicPath,
-                type: product.AuctionType,
-                rating: product.ReviewsScore,
-                ratersNumber: product.ReviewsCount,
-                price: product.Price,
-                coin: product.ProductCoin,
-                nameForUrl: product.VirtualUrl,
-                status: product.Status,
-                icons: _.map(product.SaleSquareIcons, mapIcons)
-            };
-
-            return mappedProduct;
-        }
-
         function mapIcons(icon) {
             var mappedProduct = {
                 image: icon.ImagePath,
                 link: icon.ImageLink,
                 imageAlt: icon.ImageAlt
             };
+            return mappedProduct;
+        }
+
+        function mapProducts(product) {
+            var mappedProduct = {
+                id: product.ProductID,
+                title: product.TitleLine1,
+                subTitle: product.TitleLine2,
+                imageUrl: product.SmallPicPath,
+                rating: product.ReviewsScore,
+                ratersNumber: product.ReviewsCount,
+                paymentsNum: product.PaymentsNum,
+                soldCount: product.SoldCount,
+                remainCount: product.RemainCount,
+                price: product.Price,
+                coin: product.ProductCoin, //2 = ILS, 3 = USD, 4 = USD, 11 = EURO
+                originalPrice: product.OriginalPrice,
+                area: product.GroupDealArea,
+                brandName: product.BrandName,
+                nameForUrl: product.VirtualUrl,
+                status: product.Status,
+                isActive: product.IsActive,
+                saleType: product.AuctionType,
+                icons: _.map(product.SaleSquareIcons, mapIcons)
+            };
+
             return mappedProduct;
         }
 
@@ -252,7 +257,7 @@
                     group.name = specGroup.Name;
                     group.order = specGroup.GroupOrder;
                     group.features = group.features || {};
-                    
+
                     _.each(specGroup.Attributes, function (attribute) {
                         var attr = group.features[attribute.Name] = group.features[attribute.Name] || { header: attribute.Name };
                         attr.values = attr.values || {};
@@ -277,9 +282,22 @@
             return features;
         }
 
+        function filterFeatures(features) {
+            var featuresNotForTable = ["סוג מכירה", "מחיר", "מספר מדרגים", "shpDays", "תקנון הספקה"];
+
+            var filteredFeatures = _.filter(features, function (feature) {
+                return !_.some(featuresNotForTable, function (item) {
+                    
+                    return item === feature.header;
+                });
+            });
+            return filteredFeatures;
+        };
+
         function getFeaturesToComparison(productsIds) {
-            return run("auctions/ProductsCompare", { PfIds: productsIds.join(",") }).then(mapFeatures);
+            return run("auctions/ProductsCompare", { PfIds: productsIds.join(",") }).then(mapFeatures).then(filterFeatures);
         }
+
 
 
         return {

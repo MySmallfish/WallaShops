@@ -71,7 +71,8 @@
             _.each($scope.filters, function (filter) {
                 filter.selectedValue = null;
             });
-
+            $scope.$root.selectedFilterValues = null;
+            
             publishClearedEvent();
         };
 
