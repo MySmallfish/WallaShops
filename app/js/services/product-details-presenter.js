@@ -5,7 +5,8 @@
         var wsUrl = config.wsUrl;
         
         function showProduct(product) {
-            window.open(wsUrl + "/" + product.nameForUrl, "_blank");
+var productUri = encodeURI(wsUrl + (product.nameForUrl.indexOf("/") == 0 ? "" :"/") + product.nameForUrl);
+            window.open(productUri, "_blank");
         };
 
         return {
