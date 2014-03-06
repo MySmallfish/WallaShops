@@ -80,13 +80,29 @@ header
 {
     position: absolute;
     right: 0;
-    width: 300px;
+    width: 375px;
 }
+
+.header-back-arrow
+{
+    position: absolute;
+    width: 70px;
+}
+
+    .header-back-arrow .fa
+    {
+        position: absolute;
+        top: 20px;
+        right: 15px;
+        font-size: 25pt;
+        color: #444;
+    }
 
 .logo
 {
     position: relative;
     width: 170px;
+    right: 70px;
 }
 
 .header-category
@@ -112,7 +128,7 @@ header
     border-radius: 4px 4px 0 0;
     margin-top: 10px;
     line-height: 50px;
-    width: 115px;
+    width: 120px;
 }
 
     .menu-is-open .category
@@ -122,7 +138,7 @@ header
 
 .right-buffer
 {
-    left: 0;
+    left: 1px;
 }
 
 .hello-user .left-buffer
@@ -136,13 +152,12 @@ header
     text-align: center;
 }
 
-
 .search
 {
     position: relative;
     display: block;
-    margin-left: 250px;
-    margin-right: 350px;
+    margin-left: 235px;
+    margin-right: 385px;
     height: 100%;
     padding-top: 15px;
 }
@@ -401,9 +416,10 @@ div, i
         margin: 9px 0 0 0;
     }
 
-    .rating.compared {
-        margin-top: 0;
-    }
+        .rating.compared
+        {
+            margin-top: 0;
+        }
 
 .title
 {
@@ -702,7 +718,8 @@ div, i
     clear: both;
 }
 
-.compare-table {
+.compare-table
+{
     border-top: solid 1px #ccc;
     margin-top: 15px;
 }
@@ -737,7 +754,6 @@ div, i
         height: 140px;
         border-left: solid 1px #ccc;
         border-bottom: solid 1px #ccc;
-        
     }
 
 .add-product-to-compare
@@ -861,7 +877,6 @@ div, i
 {
     padding: 0;
     border: solid 1px #444;
-    border-top-right-radius: 0;
 }
 
 .popover.bottom .arrow

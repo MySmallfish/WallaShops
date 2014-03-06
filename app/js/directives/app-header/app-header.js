@@ -11,6 +11,12 @@
             $scope.openUserCard = function () {
                 window.open(wsUrl + "/service/customer/CustomerMainPage.aspx", "_blank");
             };
+
+            $scope.goBack = function() {
+                window.history.back();
+
+            };
+
         }],
         link: function (scope, element, attributes, ctrl) {
             // bind clicks...
