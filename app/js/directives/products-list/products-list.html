@@ -1,8 +1,12 @@
-﻿<div ng-show="category.products.length" ng-swipe-right="navigateNext()" ng-swipe-left="navigateBack()">
-    <h4 class="products-list-name">{{category.name}}</h4>
-    <products-list-items products="currentProductsPage" show-product="showProduct({product: product})" comparisonArray="comparisonArray"></products-list-items>
+﻿<div ng-show="category.products.length"
+     ng-swipe-right="navigateNext()"
+     ng-swipe-left="navigateBack()"
+     ng-class="{ 'next-animation' : movedToNext, 'previous-animation' : movedToPrevious}">
+    <h4 class=" products-list-name">
+    {{category.name}}</h4>
+    <products-list-items products="currentProductsPage" show-product="showProduct({product: product})" comparisonarray="comparisonArray"></products-list-items>
     <products-list-navigation></products-list-navigation>
-    
+
     <!--<products-list-navigation step="{{step}}" products-list-length="{{category.products.length}}" navigation-info="navigationInfo"></products-list-navigation>-->
 </div>
 

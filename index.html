@@ -11,12 +11,13 @@
     <link rel="stylesheet" type="text/css" href="lib/bootstrap/rtl/css/bootstrap.rtl.css" />
     <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="app/css/app.css" />
+    <link rel="stylesheet" type="text/css" href="app/css/animations.css" />
 
     <script type="text/javascript" src="phonegap.js"></script>
 
 </head>
-<body class="rtl" ng-controller="AppCtrl">
-    <div class="content-container" >
+<body class="rtl swipe-animations-enabled" ng-controller="AppCtrl">
+    <div class="content-container">
         <app-header></app-header>
 
         <div class="content">
@@ -82,8 +83,8 @@
     <script src="app/js/services/daily-cache-service.js"></script>
     <script src="app/js/services/walla-shops-api.js"></script>
     <script src="app/js/services/product-details-presenter.js"></script>
-    
-    
+
+
 
 
     <!-- Filters -->
@@ -102,7 +103,7 @@
     <script src="app/js/directives/categories-menu/categories.js"></script>
     <script src="app/js/directives/categories-menu/categories-menu-trigger.js"></script>
     <script src="app/js/directives/categories-menu/categories-menu.js"></script>
-   
+
 
 
     <script src="app/js/app.js"></script>
@@ -122,7 +123,7 @@
                     code: "alert('STOP - HTML' + JSON.parse(document.body.innerText).Response.Name );"
                 });
             });
-            
+
             //ref.addEventListener("exit", function () {
             //    navigator.notification.alert("BYE!");
             //});

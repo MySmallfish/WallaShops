@@ -63,6 +63,8 @@
                 
                 if (canNavigateNext()) {
                     startIndex += step();
+                    $scope.movedToNext = true;
+                    $scope.movedToPrevious = false;
                     updateProductPage();
 
                 }
@@ -71,6 +73,8 @@
             $scope.navigateBack = function () {
                 if (canNavigateBack()) {
                     startIndex -= step();
+                    $scope.movedToNext = false;
+                    $scope.movedToPrevious = true;
                     updateProductPage();
 
                 }
