@@ -8,7 +8,7 @@
             if (product.nameForUrl) {
                 analytics.recordClick(_.extend(WS.AnalyticsEvents.ShowProduct, { Category: product.nameForUrl }));
                 var productUri = encodeURI(wsUrl + (product.nameForUrl.indexOf("/") == 0 ? "" : "/") + product.nameForUrl);
-                window.open(productUri, "_blank", "location=No");
+                window.open(productUri, "_blank", "location=0,width=300,height=200");
             }
         };
 
