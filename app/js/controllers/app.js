@@ -8,8 +8,6 @@
         "productService",
         "textResource",
     function ($scope, $location, productDetailsPresenter, categoryService, productService, textResource) {
-
-
         $scope.productsToCompare = [];
         $scope.selectionMode = false;
 

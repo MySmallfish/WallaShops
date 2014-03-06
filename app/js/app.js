@@ -10,7 +10,9 @@
     app.service("wallaShopsApi", WS.WallaShopsApi);
     app.service("productDetailsPresenter", WS.ProductDetailsPresenter);
     
-    
+    var analyticsService = S.GoogleAnalyticsService('UA-48712169-1');
+    app.service("analytics", analyticsService);
+
     app.directive("appHeader", function () {
         return WS.AppHeaderDirective;
     });
