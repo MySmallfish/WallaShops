@@ -3,7 +3,7 @@
         <ws-categories-menu load-categories="loadCategories()" load-filters="loadFilters()" selected-category="currentCategory"></ws-categories-menu>
     </script>
     
-    <div ng-class="{'menu-is-open':isMenuOpen}">
+    <div class="menu-button">
         <button class="category" bs-popover="'categories-menu.html'" data-trigger="manual" data-placement="bottom" >
             <b>לפי קטגוריה</b>
             <i class="fa fa-filter" ng-show="isFiltered"></i>

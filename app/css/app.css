@@ -121,17 +121,17 @@ header
 }
 
 /*.popover-click*/
-.menu-is-open
+.menu-button
 {
     background-color: #444;
     border-color: #444;
-    border-radius: 4px 4px 0 0;
+    border-radius: 8px 8px 0 0;
     margin-top: 10px;
     line-height: 50px;
     width: 120px;
 }
 
-    .menu-is-open .category
+    .menu-button .category
     {
         color: white;
     }
@@ -888,6 +888,7 @@ div, i
 {
     padding: 10px 0;
     position: relative;
+
 }
 
 .menu .nav-tabs, .menu .nav-tabs .active a, .menu .nav-tabs .active a:hover, .menu .nav-tabs li a
@@ -1011,13 +1012,20 @@ div, i
         background-image: url('../img/checkbox_checked.png');
     }
 
-.search-page .compare-link
+.search-page .compare-link, .search-page .go-to-comparison
 {
     position: absolute;
     left: 50px;
     text-decoration: underline;
-    padding-top: 10px;
     font-size: 14pt;
+}
+
+.search-page .compare-link {
+    margin-top: 5px;
+}
+
+.search-page .go-to-comparison {
+    margin-top: 35px;
 }
 
 .productImg.compared

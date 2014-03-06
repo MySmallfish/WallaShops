@@ -52,7 +52,7 @@
         $scope.searchText = function () {
             $location.path("/Search");
         };
-
+        $scope.loadCategories();
     }];
 
 })(_, Simple, WallaShops);

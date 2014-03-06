@@ -163,6 +163,7 @@
                 status: product.Status,
                 isActive: product.IsActive,
                 saleType: product.AuctionType,
+                shippingTime: product.ShippingTime,
                 icons: _.map(product.SaleSquareIcons, mapIcons)
             };
 
@@ -287,7 +288,7 @@
 
             var filteredFeatures = _.filter(features, function (feature) {
                 return !_.some(featuresNotForTable, function (item) {
-                    
+
                     return item === feature.header;
                 });
             });

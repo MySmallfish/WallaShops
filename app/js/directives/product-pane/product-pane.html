@@ -11,7 +11,8 @@
         <img class="productImg" ng-class="{'compared': isCompared}" ng-src="{{ product.imageUrl }}" />
         <div class="icons" ng-show="!isCompared">
             <div class="iconImg" ng-repeat="icon in product.icons">
-                <img ng-src="{{ product.icons }}" />
+                <!--<img ng-src=" product.icons " />-->
+                <img ng-src=" product.icons " />
             </div>
         </div>
 

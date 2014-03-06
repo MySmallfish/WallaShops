@@ -1,7 +1,9 @@
 ﻿<div class="search-page">
 
-    <div class="compare-link" ng-show="!isAnyProductSelected()" ng-click="toggleComparison()">לחץ להשוואת מוצרים</div>
-    <div class="compare-link" ng-show="isAnyProductSelected()" ng-click="openCamperisonPage()">עבור לדף השוואת מוצרים</div>
+    <div class="compare-link" ng-show="!selectionMode" ng-click="toggleComparison()">לחץ להשוואת מוצרים</div>
+    <div class="compare-link" ng-show="selectionMode" ng-click="toggleComparison()">צא ממצב בחירה</div>
+    <div class="go-to-comparison" ng-show="isAnyProductSelected()" ng-click="openCamperisonPage()">עבור לדף השוואת מוצרים</div>
+    
     
     <div ng-switch on="!!searchTerm">
         <div class="search-term" ng-switch-when="true">
