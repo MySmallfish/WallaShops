@@ -7,7 +7,8 @@
         var config = {
             baseUrl: getValue("base-url"),
             wsUrl: getValue("ws-url"),
-            version: getValue("version")
+            version: getValue("version"),
+            autoCloseAtLevel: getValue("auto-close-at-level")
         };
         
         return config;

@@ -252,7 +252,7 @@ input[type=submit].search-button
     font-weight: bold;
 }
 
-.phone-number, .phone-number:hover
+.phone-number, .phone-number:hover, .phone-number:visited , .phone-number:active
 {
     color: rgb(194, 3, 64);
     font-size: 15pt;
