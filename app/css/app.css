@@ -1,6 +1,7 @@
 ﻿html, body
 {
     height: 100%;
+    overflow: hidden;
 }
 
 body
@@ -951,7 +952,7 @@ div, i
 .full-path
 {
     font-size: 13pt;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
     .full-path li, .filter-path li
