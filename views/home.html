@@ -3,7 +3,7 @@
         <div class="main-promotion">
             <div>
                 <ul class="nav nav-tabs">
-                    
+
                     <li ng-repeat="promotion in main_promotions" ng-class="{'active': isSelected(promotion)}" ng-click="select(promotion)">
                         <a ng-href="#Promotion_{{promotion.id}}" data-toggle="tab">{{promotion.title.text}}</a>
                         <div class="promotion-arrow" ng-show="isSelected(promotion)"><i class="fa fa-caret-up"></i></div>
@@ -12,7 +12,13 @@
                 </ul>
 
                 <div class="tab-content">
-                    <div class="tab-pane" ng-repeat="promotion in main_promotions" ng-class="{'active': isSelected(promotion)}" id="Promotion_{{promotion.id}}" ng-click="openPromotion(promotion.link.url)">
+                    <div class="tab-pane"
+                        id="Promotion_{{promotion.id}}"
+                        ng-repeat="promotion in main_promotions"
+                        ng-class="{'active': isSelected(promotion)}"
+                        ng-swipe-right="swipeNext(promotion)"
+                        ng-swipe-left="swipeBack(promotion)"
+                        ng-click="openPromotion(promotion.link.url)">
                         <img ng-src="{{promotion.image.url}}" alt="{{promotion.title.text}}" />
                     </div>
 

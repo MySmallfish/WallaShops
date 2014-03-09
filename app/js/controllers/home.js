@@ -27,6 +27,24 @@
             $scope.selectedPromotion = promotion;
         }
 
+        function swipeNext(promotion) {
+            var nextIndex = ($scope.main_promotions.indexOf(promotion) + 1);
+            if (nextIndex >= $scope.main_promotions.length) {
+                nextIndex -= $scope.main_promotions.length;
+            }
+            console.log("next",$scope.main_promotions.length, nextIndex);
+            $scope.selectedPromotion = $scope.main_promotions[nextIndex];
+        }
+
+        function swipeBack(promotion) {
+            var backIndex = ($scope.main_promotions.indexOf(promotion) - 1);
+            if (backIndex < 0) {
+                backIndex += $scope.main_promotions.length;
+            }
+            console.log("back",$scope.main_promotions.length, backIndex);
+            $scope.selectedPromotion = $scope.main_promotions[backIndex];
+        }
+
         function getRandom(max) {
             return Math.floor((Math.random() * max));
         }
@@ -45,7 +63,9 @@
 
         _.extend($scope, {
             select: select,
-            isSelected: isSelected
+            isSelected: isSelected,
+            swipeNext: swipeNext,
+            swipeBack: swipeBack
         });
 
         $scope.firstPromotion = null;
@@ -58,7 +78,7 @@
         $scope.main_promotions = null;
 
         promotionsService.getMainPromotions().then(function (items) {
-            
+
             $scope.main_promotions = items;
             $scope.selectedPromotion = $scope.main_promotions[0];
         });
