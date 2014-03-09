@@ -253,7 +253,7 @@ input[type=submit].search-button
 
 .phone-number, .phone-number:hover
 {
-    color: #c20340;
+    color: rgb(194, 3, 64);
     font-size: 15pt;
     text-align: center;
     text-decoration: none;
@@ -884,7 +884,9 @@ div, i
 {
     padding: 0;
     border: solid 1px #444;
-    max-height: 80%;
+    max-height: 70%;
+    overflow: hidden;
+    overflow-y: auto;
 }
 
 .popover.bottom .arrow
@@ -896,7 +898,9 @@ div, i
 {
     padding: 10px 0;
     position: relative;
-    
+    /*max-height: 70%;
+    overflow: hidden;
+    overflow-y: auto;*/
 }
 
 .menu .nav-tabs, .menu .nav-tabs .active a, .menu .nav-tabs .active a:hover, .menu .nav-tabs li a
