@@ -869,7 +869,7 @@ div, i
 .popover
 {
     margin-top: 4px;
-    max-height: 100%;
+    height: 100%;
     
 }
 
@@ -884,9 +884,7 @@ div, i
 {
     padding: 0;
     border: solid 1px #444;
-    max-height: 70%;
-    overflow: hidden;
-    overflow-y: auto;
+    height: 100%;
 }
 
 .popover.bottom .arrow
@@ -898,6 +896,7 @@ div, i
 {
     padding: 10px 0;
     position: relative;
+    
 }
 
 .menu .nav-tabs, .menu .nav-tabs .active a, .menu .nav-tabs .active a:hover, .menu .nav-tabs li a
