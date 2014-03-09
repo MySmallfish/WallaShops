@@ -143,7 +143,7 @@
             return mappedProduct;
         }
 
-        function mapProducts(product) {
+        function mapProduct(product) {
             var mappedProduct = {
                 id: product.ProductID,
                 title: product.TitleLine1,
@@ -170,9 +170,15 @@
             return mappedProduct;
         }
 
-        function mapSearchProducts(products) {
+        function mapSearchProducts(products, innerObject) {
 
-            var mappedproducts = _.map(products, mapProducts);
+            var mappedproducts = _.map(products, function(product) {
+                if (innerObject) {
+                    return mapProduct(product[innerObject]);
+                } else {
+                    return mapProduct(product);
+                }
+            });
             return mappedproducts;
         }
 
@@ -240,13 +246,46 @@
             return run("promotions/GetPromotionItems", { locationCode: 9200 }).then(mapPromotions);
         }
 
+        function getOtherInterestedPromotionsCategories() {
+            return run("Auctions/AuctionsMostViewed").then(mapSearchProducts);
+        }
+
+        function getBestSellersPromotionsCategories() {
+            return run("Auctions/AuctionsMostSold").then(mapSearchProducts);
+        }
+
         function getPromotionsCategories() {
+            var categories = _.map(_.range(4), function(i) {
+                return {
+                    titleCode: 5060 + i,
+                    productsCode: 5070 + i
+                };
+            });
 
-            var result = $q.defer();
+            var promises = _.map(categories, function (category) {
+                function mapResult(arr) {
+                    if (arr[0].length) {
+                        return {
+                            name: arr[0][0].Values[0].Text,
+                            products: mapSearchProducts(arr[1], "WSApiPromotionObjItem")
+                        };
+                    } else {
+                        return null;
+                    }
+                }
 
-            result.resolve(promotionsCategories);
+                return $q.all([
+                    run("promotions/GetPromotionItems", { locationCode: category.titleCode }),
+                    run("promotions/GetPromotionItems", { locationCode: category.productsCode })
+                ]).then(mapResult);
+            });
 
-            return result.promise;
+            return $q.all(promises).then(function(items) {
+                return _.filter(items, function (i) {
+                    return i != null;
+                });
+            });
+            //return run("promotions/GetPromotionItems", { locationCode: 5060 }).then(mapSearchProducts);
         }
 
         function mapFeatures(products) {
@@ -307,6 +346,8 @@
             getMainPromotions: getMainPromotions,
             getTopSeasonalImages: getTopSeasonalImages,
             getBottomSeasonalImages: getBottomSeasonalImages,
+            getOtherInterestedPromotionsCategories: getOtherInterestedPromotionsCategories,
+            getBestSellersPromotionsCategories: getBestSellersPromotionsCategories,
             getPromotionsCategories: getPromotionsCategories,
             getCategoryDetails: getCategoryDetails,
             getSearchProducts: getSearchProducts,

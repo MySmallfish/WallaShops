@@ -2,10 +2,21 @@
 
     WS.ProductService = ["$q", "dailyCacheService", "wallaShopsApi", function ($q, dailyCacheService, wallaShopsApi) {
 
-        function getPromotionsCategories() {
-            return wallaShopsApi.getPromotionsCategories();
+        function getOtherInterestedPromotionsCategories() {
+
+            return wallaShopsApi.getOtherInterestedPromotionsCategories();
         }
         
+        function getBestSellersPromotionsCategories() {
+
+            return wallaShopsApi.getBestSellersPromotionsCategories();
+        }
+
+        function getPromotionsCategories() {
+
+            return wallaShopsApi.getPromotionsCategories();
+        }
+
 
         function search(parameters) {
 
@@ -22,16 +33,18 @@
                     result = wallaShopsApi.getSubSubCategoryProducts(parameters);
                 }
             }
-            
+
 
             return result;
         }
-        
+
 
 
 
         return {
-            getPromotionsCategories: getPromotionsCategories,
+            getOtherInterestedPromotionsCategories: getOtherInterestedPromotionsCategories,
+            getBestSellersPromotionsCategories: getBestSellersPromotionsCategories,
+            getPromotionsCategories:getPromotionsCategories,
             search: search
         };
 
