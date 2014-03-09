@@ -15,7 +15,6 @@
 
   <feature name="http://api.phonegap.com/1.0/network"/>
 
-  <preference name="ios-statusbarstyle" value="black" />
   <preference name="phonegap-version" value="3.3.0" />
   <preference name="target-device"    value="tablet" />
   <preference name="fullscreen"       value="false" />
