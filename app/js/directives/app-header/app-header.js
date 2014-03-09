@@ -17,6 +17,10 @@
 
             };
 
+            $scope.preventefault = function($event) {
+                $event.preventDefault();
+            };
+
         }],
         link: function (scope, element, attributes, ctrl) {
             // bind clicks...
