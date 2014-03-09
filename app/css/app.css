@@ -338,6 +338,7 @@ input[type=submit].search-button
         height: 600px;
         position: absolute;
         top: 50px;
+        overflow: hidden;
     }
 
     .search-page .products-list-content
@@ -884,7 +885,7 @@ div, i
 {
     padding: 0;
     border: solid 1px #444;
-    max-height: 75%;
+    max-height: 77.5%;
     overflow: hidden;
     overflow-y: auto;
 }
@@ -898,9 +899,7 @@ div, i
 {
     padding: 10px 0;
     position: relative;
-    /*max-height: 70%;
-    overflow: hidden;
-    overflow-y: auto;*/
+    
 }
 
 .menu .nav-tabs, .menu .nav-tabs .active a, .menu .nav-tabs .active a:hover, .menu .nav-tabs li a
