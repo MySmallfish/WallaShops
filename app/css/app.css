@@ -102,7 +102,7 @@ header
 {
     position: relative;
     width: 170px;
-    right: 70px;
+    right: 59px;
 }
 
 .header-category
@@ -128,7 +128,7 @@ header
     border-radius: 8px 8px 0 0;
     margin-top: 10px;
     line-height: 50px;
-    width: 120px;
+    width: 130px;
 }
 
     .menu-button .category

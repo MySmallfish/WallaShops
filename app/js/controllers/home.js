@@ -32,7 +32,6 @@
             if (nextIndex >= $scope.main_promotions.length) {
                 nextIndex -= $scope.main_promotions.length;
             }
-            console.log("next",$scope.main_promotions.length, nextIndex);
             $scope.selectedPromotion = $scope.main_promotions[nextIndex];
         }
 
@@ -41,7 +40,6 @@
             if (backIndex < 0) {
                 backIndex += $scope.main_promotions.length;
             }
-            console.log("back",$scope.main_promotions.length, backIndex);
             $scope.selectedPromotion = $scope.main_promotions[backIndex];
         }
 
