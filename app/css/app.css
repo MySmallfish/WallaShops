@@ -350,7 +350,7 @@ input[type=submit].search-button
 .home-page .products-list-container
 {
     position: relative;
-    overflow-y: hidden;
+    overflow: hidden;
     margin: auto;
 }
 
@@ -884,7 +884,7 @@ div, i
 {
     padding: 0;
     border: solid 1px #444;
-    height: 100%;
+    max-height: 80%;
 }
 
 .popover.bottom .arrow
