@@ -884,7 +884,7 @@ div, i
 {
     padding: 0;
     border: solid 1px #444;
-    max-height: 70%;
+    max-height: 75%;
     overflow: hidden;
     overflow-y: auto;
 }
