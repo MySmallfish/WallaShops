@@ -11,16 +11,16 @@
         </div>
         <div ng-switch-default>
             <ul class="full-path">
-                <li class="main-bread-cramb">ראשי <span>&gt;</span> </li>
-                <li class="ancestor" ng-if="currentCategory.parent.parent">{{currentCategory.parent.parent.title}} <span>&gt;</span> </li>
-                <li class="parent" ng-click="selectCategoryById(currentCategory.parent.id)" ng-if="currentCategory.parent">{{currentCategory.parent.title}} <span>&gt;</span> </li>
+                <li class="main-bread-cramb" ng-hide="true">ראשי <span>&gt;</span> </li>
+                <li class="ancestor" ng-if="currentCategory.parent.parent" ng-hide="true">{{currentCategory.parent.parent.title}} <span>&gt;</span> </li>
+                <li class="parent" ng-click="selectCategoryById(currentCategory.parent.id)" ng-if="currentCategory.parent" ng-hide="true">{{currentCategory.parent.title}} <span>&gt;</span> </li>
                 <li class="current-category">{{currentCategory.title}}</li>
             </ul>
             <ul class="filter-path">
                 <li class="filters-on-path" ng-repeat="filter in selectedFilterValues.values" ng-show="isFilterValueNotEmpty(filter.value)">{{filter.value.title}} <span>|</span>
                 </li>
 
-                <li ng-show="!isFilterValueNotEmpty(selectedFilterValues)">מוצרים נבחרים לקטגוריה</li>
+                <li ng-show="!isFilterValueNotEmpty(selectedFilterValues)" ng-hide="true">מוצרים נבחרים לקטגוריה</li>
 
 
                 <li class="clear-filter-path" ng-show="isFilterValueNotEmpty(selectedFilterValues)">
