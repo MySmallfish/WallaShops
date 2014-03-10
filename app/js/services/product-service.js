@@ -43,8 +43,7 @@
             getOtherInterestedPromotionsCategories: getOtherInterestedPromotionsCategories,
             getBestSellersPromotionsCategories: getBestSellersPromotionsCategories,
             getPromotionsCategories: getPromotionsCategories,
-            search: search,
-            cacheProductImage: cacheProductImage
+            search: search
         };
 
     }];
