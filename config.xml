@@ -44,6 +44,9 @@
   <gap:splash src="app/img/splash.png" gap:platform="android" gap:density="xhdpi" />
 
   <gap:splash src="app/img/splash.png"    gap:platform="ios"     width="1024" height="768" />
+  <gap:plugin name="org.apache.cordova.file" />
+  <gap:plugin name="org.apache.cordova.file-transfer" />
+
 
   <gap:platform name="ios" />
   <gap:platform name="android" />

@@ -68,6 +68,7 @@
             } else {
                 console.error("FIND result with undefined/null");
             }
+            return result;
 
         }
 
