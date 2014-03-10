@@ -10,8 +10,8 @@
 
         <img class="productImg" ng-class="{'compared': isCompared}" ng-src="{{ product.imageUrl }}" />
         <div style="border:solid 4px yellow">
-            <h1>{{product.localImageUrl}}</h1>
-            <img class="productImg" ng-class="{'compared': isCompared}" ng-src="{{ product.localImageUrl }}" />
+            <input value="{{product.localImageUrl}}" />
+            <img class="localImage" ng-class="{'compared': isCompared}" ng-src="{{ product.localImageUrl }}" />
         </div>
         <div class="icons" ng-show="!isCompared">
             <div class="iconImg" ng-repeat="icon in product.icons">

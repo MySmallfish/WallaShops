@@ -1,6 +1,6 @@
 ﻿(function (_, S, WS) {
 
-    WS.ProductService = ["$q", "dailyCacheService", "wallaShopsApi", "remoteStorage", "fileManager", "$sce", function ($q, dailyCacheService, wallaShopsApi, remoteStorage, fileManager, $sce) {
+    WS.ProductService = ["$q", "dailyCacheService", "wallaShopsApi", "remoteStorage", "fileManager", function ($q, dailyCacheService, wallaShopsApi, remoteStorage, fileManager) {
 
         function getOtherInterestedPromotionsCategories() {
 
@@ -45,7 +45,7 @@
             function setLocalImageUrl(fileEntry) {
                 console.log("SETTING FILE IMAGE URL", fileEntry.toURL());
                 if (fileEntry) {
-                    product.localImageUrl = $sce.trustAsUrl(fileEntry.toURL());
+                    product.localImageUrl = fileEntry.toURL();
                 } else {
                     product.localImageUrl = null;
                 }

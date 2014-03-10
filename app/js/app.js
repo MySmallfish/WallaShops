@@ -13,6 +13,10 @@
     var analyticsService = S.GoogleAnalyticsService('UA-48712169-1');
     app.service("analytics", analyticsService);
 
+    app.config(['$compileProvider', function ($compileProvider) {
+        $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|file|tel|cdvfile):/);
+    }]);
+
     app.directive("appHeader", function () {
         return WS.AppHeaderDirective;
     });
