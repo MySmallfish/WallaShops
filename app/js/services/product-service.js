@@ -35,54 +35,9 @@
             }
 
 
-            return result.then(cacheProductsImages);
-        }
-
-        function cacheProductImage(product) {
-            var directory = "ImagesCache",
-                fileName = "file-" + product.id + ".jpg";
-
-            function setLocalImageUrl(fileEntry) {
-                console.log("SETTING FILE IMAGE URL", fileEntry.toURL());
-                if (fileEntry) {
-                    product.localImageUrl = fileEntry.toURL();
-                } else {
-                    product.localImageUrl = null;
-                }
-            }
-
-            function dowloadFile(fileEntry) {
-                console.log("DOWNLOADING FILE: ", fileEntry.fullPath, fileEntry.toURL());
-                remoteStorage.downloadFile({
-                    url: product.imageUrl,
-                    filePath: fileEntry.toURL()
-                }).then(function(entry) {
-                    console.log("FILE DOWNLOADED: ", entry.fullPath, entry.toURL());
-                    setLocalImageUrl(entry);
-                });
-            }
-
-            function downloadProductImage() {
-                return fileManager.getFile(directory, fileName).then(dowloadFile);
-            }
-
-            
-            var result = fileManager.find(directory, fileName);
-            if (result) {
-                result.then(setLocalImageUrl, downloadProductImage);
-            } else {
-                console.error("FIND result with undefined/null");
-            }
             return result;
-
         }
 
-        function cacheProductsImages(products) {
-            if (window.cordova) {
-                _.each(products, cacheProductImage);
-            }
-            return products;
-        }
 
         return {
             getOtherInterestedPromotionsCategories: getOtherInterestedPromotionsCategories,
