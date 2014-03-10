@@ -7,7 +7,7 @@
     <meta name="base-url" content="http://dev.wallashops.co.il" />
     <meta name="ws-url" content="http://www.wallashops.co.il">
     <meta name="auto-close-at-level" content="0">
-    <meta name="version" content="1.1.4"/>
+    <meta name="version" content="1.1.6"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" type="text/css" href="lib/bootstrap/rtl/css/bootstrap.rtl.css" />
     <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -130,7 +130,7 @@
             window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
             
                 fileSystem.root.getDirectory("ImagesCache", { create: true, exclusive: false }, function(directoryEntry) {
-                    var file = directoryEntry.toURL() + "/testFile.jpg";
+                    //var file = directoryEntry.toURL() + "/testFile.jpg";
                     //window.resolveLocalFileSystemURI(file, function (localfileEntry) {
 
                     //    fileTransfer.download("http://ypk.cs4u.co.il/wbl_vcs31_P_Images/gto/pic/5BDgrggt_5.jpg", localfileEntry.fullPath, onFileDownloaded, onFailure);
@@ -141,7 +141,7 @@
 
                     directoryEntry.getFile("testfile.jpg", { create: true, exclusive: false }, function (localfileEntry) {
                         alert("FILE URI" + localfileEntry.toURL());
-                        fileTransfer.download("http://ypk.cs4u.co.il/wbl_vcs31_P_Images/gto/pic/5BDgrggt_5.jpg", localfileEntry.fullPath, onFileDownloaded, onFailure);
+                        fileTransfer.download("http://ypk.cs4u.co.il/wbl_vcs31_P_Images/gto/pic/5BDgrggt_5.jpg", localfileEntry.fullPath, onFileDownloaded, onFailure, true);
                     }, function(err) {
                         console.error("FILE ERROR!", err);
                         alert("FILE ERROR");
