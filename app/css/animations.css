@@ -88,14 +88,14 @@
 }
 .swipe-animations-enabled .previous-animation .product{
     position: relative;  
-    -webkit-animation: left linear .5s;
-    animation: left linear .5s;
+    -webkit-animation: left linear .3s;
+    animation: left linear .3s;
 }
 
 .swipe-animations-enabled .next-animation .product{
     position: relative;  
-    -webkit-animation: right linear .5s;
-    animation: right linear .5s;
+    -webkit-animation: right linear .3s;
+    animation: right linear .3s;
 }
 
 @-webkit-keyframes left {

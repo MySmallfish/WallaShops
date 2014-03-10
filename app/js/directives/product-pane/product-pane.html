@@ -8,7 +8,7 @@
         <div class="check-box" ng-show="selectionMode" ng-click="check($event)" ng-class="{'checked': checked }"></div>
 
 
-        <img class="productImg" ng-class="{'compared': isCompared}" ng-src="{{ product.imageUrl }}" />
+        <img class="productImg" ng-class="{'compared': isCompared}" ng-src="{{ product.localImageUrl.length ? product.localImageUrl : product.imageUrl }}" />
         <div class="icons" ng-show="!isCompared">
             <div class="iconImg" ng-repeat="icon in product.icons">
                 <!--<img ng-src=" product.icons " />-->

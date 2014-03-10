@@ -2,7 +2,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "il.co.wallashops"
-        version   = "1.1.0">
+        version   = "1.1.1">
   <name>Walla! שופס</name>
 
   <description>
@@ -21,6 +21,7 @@
   <preference name="webviewbounce" value="false" />
   <preference name="detect-data-types" value="false" />
   <preference name="orientation" value="landscape"/>
+  <preference name="ios-statusbarstyle" value="black-opaque" />
   <access origin="*" />
   <icon src="app/img/icon.png" />
   <!--<icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />
