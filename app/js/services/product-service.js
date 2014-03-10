@@ -53,7 +53,7 @@
             function dowloadFile(fileEntry) {
                 remoteStorage.downloadFile({
                     url: product.imageUrl,
-                    filePath: fileEntry.fullPath
+                    filePath: fileEntry.toURL()
                 }).then(setLocalImageUrl);
             }
 
