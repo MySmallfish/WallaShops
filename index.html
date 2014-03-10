@@ -130,7 +130,17 @@
             window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
             
                 fileSystem.root.getDirectory("ImagesCache", { create: true, exclusive: false }, function(directoryEntry) {
-                    directoryEntry.getFile("testfile.jpg", { create: true }, function(localfileEntry) {
+                    var file = directoryEntry.toURL() + "/testFile.jpg";
+                    //window.resolveLocalFileSystemURI(file, function (localfileEntry) {
+
+                    //    fileTransfer.download("http://ypk.cs4u.co.il/wbl_vcs31_P_Images/gto/pic/5BDgrggt_5.jpg", localfileEntry.fullPath, onFileDownloaded, onFailure);
+                    //}, function(e) {
+                    //    console.log("RESOLVE ERROR", e);
+                    //})
+                    
+
+                    directoryEntry.getFile("testfile.jpg", { create: true, exclusive: false }, function (localfileEntry) {
+                        alert("FILE URI" + localfileEntry.toURL());
                         fileTransfer.download("http://ypk.cs4u.co.il/wbl_vcs31_P_Images/gto/pic/5BDgrggt_5.jpg", localfileEntry.fullPath, onFileDownloaded, onFailure);
                     }, function(err) {
                         console.error("FILE ERROR!", err);
