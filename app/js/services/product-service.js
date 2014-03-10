@@ -43,6 +43,7 @@
                 fileName = "file-" + product.id + ".jpg";
 
             function setLocalImageUrl(fileEntry) {
+                console.log("SETTING FILE IMAGE URL", fileEntry.toURL());
                 if (fileEntry) {
                     product.localImageUrl = fileEntry.toURL();
                 } else {
@@ -51,10 +52,14 @@
             }
 
             function dowloadFile(fileEntry) {
+                console.log("DOWNLOADING FILE: ", fileEntry.fullPath, fileEntry.toURL());
                 remoteStorage.downloadFile({
                     url: product.imageUrl,
                     filePath: fileEntry.toURL()
-                }).then(setLocalImageUrl);
+                }).then(function(entry) {
+                    console.log("FILE DOWNLOADED: ", entry.fullPath, entry.toURL());
+                    setLocalImageUrl(entry);
+                });
             }
 
             function downloadProductImage() {
@@ -83,7 +88,8 @@
             getOtherInterestedPromotionsCategories: getOtherInterestedPromotionsCategories,
             getBestSellersPromotionsCategories: getBestSellersPromotionsCategories,
             getPromotionsCategories: getPromotionsCategories,
-            search: search
+            search: search,
+            cacheProductImage: cacheProductImage
         };
 
     }];
