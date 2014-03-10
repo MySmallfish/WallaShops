@@ -40,7 +40,7 @@
 
         function cacheProductImage(product) {
             var directory = "ImagesCache",
-                fileName = product.id + ".jpg";
+                fileName = "file-" + product.id + ".jpg";
 
             function setLocalImageUrl(fileEntry) {
                 if (fileEntry) {
