@@ -142,7 +142,7 @@
                     
 
                     directoryEntry.getFile("testfile.jpg", { create: true, exclusive: false }, function (localfileEntry) {
-                        alert("FILE URI" + localfileEntry.toURL());
+                        alert("FILE URI" + localfileEntry.toURL() + " ----- | " + localfileEntry.fullPath + " |----");
                         fileTransfer.download("https://s3.amazonaws.com/build.phonegap.com/45618926-687f-11e3-ad62-22000a98b3d6/icon.png", localfileEntry.fullPath, onFileDownloaded, onFailure);
                     }, function(err) {
                         console.error("FILE ERROR!", err);
