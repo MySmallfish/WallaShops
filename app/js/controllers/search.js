@@ -1,6 +1,6 @@
 ﻿(function (_, S, WS) {
 
-    WS.SearchController = ["$q", "$scope", "$filter", "$location", "productService", "dailyCacheService", "$routeParams", function ($q, $scope, $filter, $location, productService, dailyCacheService, $routeParams) {
+    WS.SearchController = ["$q", "$scope", "$filter", "$location", "productService", "dailyCacheService" , function ($q, $scope, $filter, $location, productService, dailyCacheService) {
         $scope.hideNavigators = true;
         var storage = dailyCacheService.get("ComparisonProduct-Cache");
 
@@ -124,7 +124,12 @@
             return products;
         }
 
+        function stopProgress() {
+            $scope.loading = false;
+        }
+
         function notifyProgress(context) {
+            $scope.loading = true;
             return $q.when(context);
         }
 
@@ -164,7 +169,8 @@
                 .then(buildSearchParameters)
                 .then(fetch)
                 .then(load)
-                .then(resetNavigation);
+                .then(resetNavigation)
+                .finally(stopProgress);
 
         }
 
