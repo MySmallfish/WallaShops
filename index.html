@@ -112,7 +112,7 @@
     <script src="app/js/app.js"></script>
     <script src="app/js/routes.js"></script>
     <script src="app/js/resources.js"></script>
-    <!--<script>
+    <script>
         document.addEventListener("deviceready", function() {
             alert("READY!");
             $("#btn").click(function () {
@@ -142,8 +142,8 @@
                     
 
                     directoryEntry.getFile("testfile.jpg", { create: true, exclusive: false }, function (localfileEntry) {
-                        alert("FILE URI" + localfileEntry.toURL() + " ----- | " + localfileEntry.fullPath + " |----");
-                        fileTransfer.download("https://s3.amazonaws.com/build.phonegap.com/45618926-687f-11e3-ad62-22000a98b3d6/icon.png", localfileEntry.fullPath, onFileDownloaded, onFailure);
+                        
+                        fileTransfer.download("https://s3.amazonaws.com/build.phonegap.com/45618926-687f-11e3-ad62-22000a98b3d6/icon.png", localfileEntry.toURL(), onFileDownloaded, onFailure);
                     }, function(err) {
                         console.error("FILE ERROR!", err);
                         alert("FILE ERROR");
@@ -180,6 +180,6 @@
                 //});
             });
         }, false);
-    </script>-->
+    </script>
 </body>
 </html>
