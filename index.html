@@ -20,6 +20,7 @@
 <body class="rtl swipe-animations-enabled" ng-controller="AppCtrl">
     <div class="content-container">
         <button id="btn">DOWNLOAD</button>
+        <div id="ready"></div>
         <app-header></app-header>
 
         <div class="content">
@@ -114,67 +115,112 @@
     <script>
         document.addEventListener("deviceready", function() {
             alert("READY!");
+            function downloadFile() {
+                window.requestFileSystem(
+                             LocalFileSystem.PERSISTENT, 0,
+                             function onFileSystemSuccess(fileSystem) {
+                                 fileSystem.root.getFile(
+                                             "dummy.html", { create: true, exclusive: false },
+                                             function gotFileEntry(fileEntry) {
+                                                 var sPath = fileEntry.fullPath.replace("dummy.html", "");
+                                                 var fileTransfer = new FileTransfer();
+                                                 fileEntry.remove();
+
+                                                 fileTransfer.download(
+                                                           "http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf",
+                                                           sPath + "theFile.pdf",
+                                                           function (theFile) {
+                                                               console.log("download complete: " + theFile.toURI());
+                                                               showLink(theFile.toURI());
+                                                           },
+                                                           function (error) {
+                                                               console.log("download error source " + error.source);
+                                                               console.log("download error target " + error.target);
+                                                               console.log("upload error code: " + error.code);
+                                                           }
+                                                           );
+                                             },
+                                             fail);
+                             },
+                             fail);
+
+            }
+
+            function showLink(url) {
+                alert(url);
+                var divEl = document.getElementById("ready");
+                var aElem = document.createElement("a");
+                aElem.setAttribute("target", "_blank");
+                aElem.setAttribute("href", url);
+                aElem.appendChild(document.createTextNode("Ready! Click To Open."));
+                divEl.appendChild(aElem);
+
+            }
+
+
+            function fail(evt) {
+                console.log(evt.target.error.code);
+            }
             $("#btn").click(function () {
-            var fileTransfer = new FileTransfer();
+                downloadFile();
+                //var fileTransfer = new FileTransfer();
 
-            function onFileDownloaded(i) {
-                console.log("I", i);
-                alert("FILE DOWNLOADED!!!");
-            }
+                //function onFileDownloaded(i) {
+                //    console.log("I", i);
+                //    alert("FILE DOWNLOADED!!!");
+                //}
 
-            function onFailure(e) {
-                console.error("Download error", e);
-                alert("DOWNLOAD ERROR, CODE: " + e.code);
-            }
+                //function onFailure(e) {
+                //    console.error("Download error", e);
+                //    alert("DOWNLOAD ERROR, CODE: " + e.code);
+                //}
 
-            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
-            
-                fileSystem.root.getDirectory("ImagesCache", { create: true, exclusive: false }, function(directoryEntry) {
-                    //var file = directoryEntry.toURL() + "/testFile.jpg";
-                    //window.resolveLocalFileSystemURI(file, function (localfileEntry) {
+                //window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
 
-                    //    fileTransfer.download("http://ypk.cs4u.co.il/wbl_vcs31_P_Images/gto/pic/5BDgrggt_5.jpg", localfileEntry.fullPath, onFileDownloaded, onFailure);
-                    //}, function(e) {
-                    //    console.log("RESOLVE ERROR", e);
-                    //})
-                    
+                //    fileSystem.root.getDirectory("ImagesCache", { create: true, exclusive: false }, function(directoryEntry) {
+                //        //var file = directoryEntry.toURL() + "/testFile.jpg";
+                //        //window.resolveLocalFileSystemURI(file, function (localfileEntry) {
 
-                    directoryEntry.getFile("testfile.jpg", { create: true, exclusive: false }, function (localfileEntry) {
-                        alert("FILE URI" + localfileEntry.toURL());
-                        fileTransfer.download("http://ypk.cs4u.co.il/wbl_vcs31_P_Images/gto/pic/5BDgrggt_5.jpg", localfileEntry.fullPath, onFileDownloaded, onFailure, true);
-                    }, function(err) {
-                        console.error("FILE ERROR!", err);
-                        alert("FILE ERROR");
-                    });
-                    
-                    
-                }, function(e) {
-                    console.error("DIRECTORY", e);
-                    alert("DIRECTORY ERROR");
-                });
+                //        //    fileTransfer.download("http://ypk.cs4u.co.il/wbl_vcs31_P_Images/gto/pic/5BDgrggt_5.jpg", localfileEntry.fullPath, onFileDownloaded, onFailure);
+                //        //}, function(e) {
+                //        //    console.log("RESOLVE ERROR", e);
+                //        //})
 
-                
-                
-            }, function(e) {
-                alert("FILE SYSTEM Error");
-            });
 
-            
+                //        directoryEntry.getFile("testfile.jpg", { create: true, exclusive: false }, function (localfileEntry) {
+                //            alert("FILE URI" + localfileEntry.toURL());
+                //            fileTransfer.download("http://ypk.cs4u.co.il/wbl_vcs31_P_Images/gto/pic/5BDgrggt_5.jpg", localfileEntry.fullPath, onFileDownloaded, onFailure, true);
+                //        }, function(err) {
+                //            console.error("FILE ERROR!", err);
+                //            alert("FILE ERROR");
+                //        });
 
-            //var ref = window.open("http://billme.azurewebsites.net/api/values", "_blank", "location=no");
-            ////ref.addEventListener("loadstart", function () {
-            ////    ref.executeScript({
-            ////        code: "alert('HTML' + document.innerHTML );"
-            ////    });
-            ////});
-            //ref.addEventListener("loadstop", function () {
-            //    ref.executeScript({
-            //        code: "alert('STOP - HTML' + JSON.parse(document.body.innerText).Response.Name );"
-            //    });
-            //});
 
-            //ref.addEventListener("exit", function () {
-            //    navigator.notification.alert("BYE!");
+                //    }, function(e) {
+                //        console.error("DIRECTORY", e);
+                //        alert("DIRECTORY ERROR");
+                //    });
+
+
+//}, function(e) {
+                //    alert("FILE SYSTEM Error");
+                //});
+
+
+//var ref = window.open("http://billme.azurewebsites.net/api/values", "_blank", "location=no");
+                ////ref.addEventListener("loadstart", function () {
+                ////    ref.executeScript({
+                ////        code: "alert('HTML' + document.innerHTML );"
+                ////    });
+                ////});
+                //ref.addEventListener("loadstop", function () {
+                //    ref.executeScript({
+                //        code: "alert('STOP - HTML' + JSON.parse(document.body.innerText).Response.Name );"
+                //    });
+                //});
+
+                //ref.addEventListener("exit", function () {
+                //    navigator.notification.alert("BYE!");
                 //});
             });
         }, false);
