@@ -40,7 +40,7 @@
          ng-swipe-left="navigateBack()"
          ng-class="{ 'next-animation' : movedToNext, 'previous-animation' : movedToPrevious}">
         <div class="loading" ng-show="loading"></div>
-        <div ng-hide="loading">
+        <div ng-hide="loading"></div>
             <div class="search-left-arrow top" ng-show="canNavigateNext()"><i class="fa fa-chevron-left"></i></div>
             <div class="search-right-arrow top" ng-show="canNavigateBack()"><i class="fa fa-chevron-right"></i></div>
             <div class="products-list-content" ng-show="productsLine1.length">
