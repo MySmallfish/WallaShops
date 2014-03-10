@@ -130,7 +130,7 @@
             window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
             
                 fileSystem.root.getDirectory("ImagesCache", { create: true, exclusive: false }, function(directoryEntry) {
-                    directoryEntry.getFile("file-test.jpg", { create: false }, function(localfileEntry) {
+                    directoryEntry.getFile("file-test.jpg", { create: true }, function(localfileEntry) {
                         fileTransfer.download("http://ypk.cs4u.co.il/wbl_vcs31_P_Images/gto/pic/5BDgrggt_5.jpg", localfileEntry.fullPath, onFileDownloaded, onFailure);
                     }, function(err) {
                         console.error("FILE ERROR!", err);
