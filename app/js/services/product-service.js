@@ -61,15 +61,20 @@
                 return fileManager.getFile(directory, fileName).then(dowloadFile);
             }
 
-            // reset
-            setLocalImageUrl();
-
-            fileManager.find(directory, fileName).then(setLocalImageUrl, downloadProductImage);
+            
+            var result = fileManager.find(directory, fileName);
+            if (result) {
+                result.then(setLocalImageUrl, downloadProductImage);
+            } else {
+                console.error("FIND result with undefined/null");
+            }
 
         }
 
         function cacheProductsImages(products) {
-            _.each(products, cacheProductImage);
+            if (window.cordova) {
+                _.each(products, cacheProductImage);
+            }
             return products;
         }
 

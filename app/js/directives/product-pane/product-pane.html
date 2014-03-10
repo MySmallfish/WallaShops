@@ -9,6 +9,9 @@
 
 
         <img class="productImg" ng-class="{'compared': isCompared}" ng-src="{{ product.localImageUrl.length ? product.localImageUrl : product.imageUrl }}" />
+        <div style="border:solid 4px yellow">
+            <img class="productImg" ng-class="{'compared': isCompared}" ng-src="{{ product.localImageUrl }}" />
+        </div>
         <div class="icons" ng-show="!isCompared">
             <div class="iconImg" ng-repeat="icon in product.icons">
                 <!--<img ng-src=" product.icons " />-->
