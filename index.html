@@ -17,168 +17,211 @@
     <script type="text/javascript" src="phonegap.js"></script>
 
 </head>
-<body class="rtl swipe-animations-enabled" ng-controller="AppCtrl">
-    <div class="content-container">
-        <app-header></app-header>
+    <body class="rtl swipe-animations-enabled" ng-controller="AppCtrl">
+        <button class="set">SET IMAGE!!!</button>
+        <img class="host"/>
+        <!-- <div class="content-container">
+                <app-header></app-header>
 
-        <div class="content">
-            <div class="container-fluid">
-                <ng-view></ng-view>
-            </div>
-        </div>
-    </div>
-
-
-
-    <script src="lib/analytics/ga_local.js"></script>
-    <script src="lib/underscore/underscore.js"></script>
-    <script src="lib/jquery/jquery-2.0.3.min.js"></script>
-    <script src="lib/moment/moment.min.js"></script>
-
-    <script src="lib/angular/angular.js"></script>
-    <script src="lib/angular/angular-route.min.js"></script>
-    <script src="lib/angular/angular-touch.min.js"></script>
-
-    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="lib/angular-strap/angular-strap.js"></script>
-
-    <script src="lib/simple/simple.js"></script>
-    <!-- Services -->
-    <script src="lib/simple/services/utils.js"></script>
-    <script src="lib/simple/services/file-utils.js"></script>
-    <script src="lib/simple/services/attachments-manager.js"></script>
-    <script src="lib/simple/services/phonegap.js"></script>
-    <script src="lib/simple/services/null-camera-service.js"></script>
-    <script src="lib/simple/services/phonegap-camera-service.js"></script>
-    <script src="lib/simple/services/phonegap-remote-storage.js"></script>
-    <script src="lib/simple/services/phonegap-file-manager.js"></script>
-    <script src="lib/simple/services/queue-manager.js"></script>
-    <script src="lib/simple/services/state-manager.js"></script>
-    <script src="lib/simple/services/geo-location.js"></script>
-    <script src="lib/simple/services/storage-service.js"></script>
-    <script src="lib/simple/services/language.js"></script>
-    <script src="lib/simple/services/text-resources.js"></script>
-    <script src="lib/simple/services/safe-apply.js"></script>
-    <script src="lib/simple/services/network-service.js"></script>
-    <script src="lib/simple/services/network-manager.js"></script>
-    <script src="lib/simple/services/configuration.js"></script>
-    <script src="lib/simple/services/alert-service.js"></script>
-    <script src="lib/simple/services/analytics-service.js"></script>
-    <!-- Filters -->
-    <script src="lib/simple/filters/localize.js"></script>
-    <script src="lib/simple/filters/skip.js"></script>
-    <script src="lib/simple/filters/gps-location.js"></script>
-    <script src="lib/simple/filters/entity-description.js"></script>
-    <!-- Directives -->
-    <script src="lib/simple/directives/simple-nav.js"></script>
-    <script src="lib/simple/directives/local-cache.js"></script>
-
-    <script src="lib/simple/simple-module.js"></script>
-
-
-    <script src="app/js/wallashops.js"></script>
-    <!-- Services -->
-    <script src="app/js/services/config.js"></script>
-    <script src="app/js/services/category-service.js"></script>
-    <script src="app/js/services/promotions-service.js"></script>
-    <script src="app/js/services/product-service.js"></script>
-    <script src="app/js/services/daily-cache-service.js"></script>
-    <script src="app/js/services/walla-shops-api.js"></script>
-    <script src="app/js/services/product-details-presenter.js"></script>
+                <div class="content">
+                    <div class="container-fluid">
+                        <ng-view></ng-view>
+                    </div>
+                </div>
+            </div>-->
 
 
 
+        <script src="lib/analytics/ga_local.js"></script>
+        <script src="lib/underscore/underscore.js"></script>
+        <script src="lib/jquery/jquery-2.0.3.min.js"></script>
+        <script src="lib/moment/moment.min.js"></script>
 
-    <!-- Filters -->
-    <!-- Directives -->
-    <script src="app/js/directives/app-header/app-header.js"></script>
-    <script src="app/js/directives/product-pane/product-pane.js"></script>
-    <script src="app/js/directives/products-list/products-list.js"></script>
-    <script src="app/js/directives/products-list-navigation/products-list-navigation.js"></script>
-    <script src="app/js/directives/products-list-items/products-list-items.js"></script>
-    <!-- Controllers -->
-    <script src="app/js/controllers/app.js"></script>
-    <script src="app/js/controllers/home.js"></script>
-    <script src="app/js/controllers/search.js"></script>
-    <script src="app/js/controllers/comparison.js"></script>
-    <script src="app/js/directives/categories-menu/filter.js"></script>
-    <script src="app/js/directives/categories-menu/categories.js"></script>
-    <script src="app/js/directives/categories-menu/categories-menu-trigger.js"></script>
-    <script src="app/js/directives/categories-menu/categories-menu.js"></script>
+        <script src="lib/angular/angular.js"></script>
+        <script src="lib/angular/angular-route.min.js"></script>
+        <script src="lib/angular/angular-touch.min.js"></script>
+
+        <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+        <script src="lib/angular-strap/angular-strap.js"></script>
+
+        <script src="lib/simple/simple.js"></script>
+        <!-- Services -->
+        <script src="lib/simple/services/utils.js"></script>
+        <script src="lib/simple/services/file-utils.js"></script>
+        <script src="lib/simple/services/attachments-manager.js"></script>
+        <script src="lib/simple/services/phonegap.js"></script>
+        <script src="lib/simple/services/null-camera-service.js"></script>
+        <script src="lib/simple/services/phonegap-camera-service.js"></script>
+        <script src="lib/simple/services/phonegap-remote-storage.js"></script>
+        <script src="lib/simple/services/phonegap-file-manager.js"></script>
+        <script src="lib/simple/services/queue-manager.js"></script>
+        <script src="lib/simple/services/state-manager.js"></script>
+        <script src="lib/simple/services/geo-location.js"></script>
+        <script src="lib/simple/services/storage-service.js"></script>
+        <script src="lib/simple/services/language.js"></script>
+        <script src="lib/simple/services/text-resources.js"></script>
+        <script src="lib/simple/services/safe-apply.js"></script>
+        <script src="lib/simple/services/network-service.js"></script>
+        <script src="lib/simple/services/network-manager.js"></script>
+        <script src="lib/simple/services/configuration.js"></script>
+        <script src="lib/simple/services/alert-service.js"></script>
+        <script src="lib/simple/services/analytics-service.js"></script>
+        <!-- Filters -->
+        <script src="lib/simple/filters/localize.js"></script>
+        <script src="lib/simple/filters/skip.js"></script>
+        <script src="lib/simple/filters/gps-location.js"></script>
+        <script src="lib/simple/filters/entity-description.js"></script>
+        <!-- Directives -->
+        <script src="lib/simple/directives/simple-nav.js"></script>
+        <script src="lib/simple/directives/local-cache.js"></script>
+
+        <script src="lib/simple/simple-module.js"></script>
+
+
+        <script src="app/js/wallashops.js"></script>
+        <!-- Services -->
+        <script src="app/js/services/config.js"></script>
+        <script src="app/js/services/category-service.js"></script>
+        <script src="app/js/services/promotions-service.js"></script>
+        <script src="app/js/services/product-service.js"></script>
+        <script src="app/js/services/daily-cache-service.js"></script>
+        <script src="app/js/services/walla-shops-api.js"></script>
+        <script src="app/js/services/product-details-presenter.js"></script>
 
 
 
-    <script src="app/js/app.js"></script>
-    <script src="app/js/routes.js"></script>
-    <script src="app/js/resources.js"></script>
-    <!--<script>
-        document.addEventListener("deviceready", function() {
-            alert("READY!");
-            $("#btn").click(function () {
-            var fileTransfer = new FileTransfer();
 
-            function onFileDownloaded(i) {
-                console.log("I", i);
-                $("#img").attr("src", i.toURL());
-                alert("FILE DOWNLOADED!!!");
-            }
+        <!-- Filters -->
+        <!-- Directives -->
+        <script src="app/js/directives/app-header/app-header.js"></script>
+        <script src="app/js/directives/product-pane/product-pane.js"></script>
+        <script src="app/js/directives/products-list/products-list.js"></script>
+        <script src="app/js/directives/products-list-navigation/products-list-navigation.js"></script>
+        <script src="app/js/directives/products-list-items/products-list-items.js"></script>
+        <!-- Controllers -->
+        <script src="app/js/controllers/app.js"></script>
+        <script src="app/js/controllers/home.js"></script>
+        <script src="app/js/controllers/search.js"></script>
+        <script src="app/js/controllers/comparison.js"></script>
+        <script src="app/js/directives/categories-menu/filter.js"></script>
+        <script src="app/js/directives/categories-menu/categories.js"></script>
+        <script src="app/js/directives/categories-menu/categories-menu-trigger.js"></script>
+        <script src="app/js/directives/categories-menu/categories-menu.js"></script>
 
-            function onFailure(e) {
-                console.error("Download error", e);
-                alert("DOWNLOAD ERROR, CODE: " + e.code);
-            }
 
-            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
-            
-                fileSystem.root.getDirectory("ImagesCache", { create: true, exclusive: false }, function(directoryEntry) {
-                    //var file = directoryEntry.toURL() + "/testFile.jpg";
-                    //window.resolveLocalFileSystemURI(file, function (localfileEntry) {
 
-                    //    fileTransfer.download("http://ypk.cs4u.co.il/wbl_vcs31_P_Images/gto/pic/5BDgrggt_5.jpg", localfileEntry.fullPath, onFileDownloaded, onFailure);
-                    //}, function(e) {
-                    //    console.log("RESOLVE ERROR", e);
-                    //})
-                    
+        <script src="app/js/app.js"></script>
+        <script src="app/js/routes.js"></script>
+        <script src="app/js/resources.js"></script>
+        <script>
+        
 
-                    directoryEntry.getFile("testfile.jpg", { create: true, exclusive: false }, function (localfileEntry) {
-                        
-                        fileTransfer.download("https://s3.amazonaws.com/build.phonegap.com/45618926-687f-11e3-ad62-22000a98b3d6/icon.png", localfileEntry.toURL(), onFileDownloaded, onFailure);
-                    }, function(err) {
-                        console.error("FILE ERROR!", err);
-                        alert("FILE ERROR");
-                    });
-                    
-                    
-                }, function(e) {
-                    console.error("DIRECTORY", e);
-                    alert("DIRECTORY ERROR");
+            function setImage() {
+                angular.element("html").injector().invoke(function(fileManager, remoteStorage, fileUtils) {
+                    var directory = "images2",
+                        fileName = "file-" + fileUtils.fileName(src);
+                    console.log("CACHING IMAGE ", src, " TO FILE ", fileName);
+
+                    function set(url) {
+                        console.log("STTING URL", url);
+                        $("img.host").attr("src", url);
+                        console.log("NEW URL: ", url, $(element).attr("src"));
+                    }
+
+                    function setLocalImageUrl(fileEntry) {
+                        console.log("SETTING FILE IMAGE URL", fileEntry.toNativeURL());
+                        if (fileEntry) {
+                            set(fileEntry.toNativeURL());
+                        }
+                    }
+
+                    function dowloadFile(fileEntry) {
+                        console.log("DOWNLOADING FILE: ", fileEntry.fullPath, fileEntry.toURL());
+                        remoteStorage.downloadFile({
+                            url: product.imageUrl,
+                            filePath: fileEntry.fullPath
+                        }).then(function(entry) {
+                            console.log("FILE DOWNLOADED: ", entry.fullPath, entry.toURL());
+                            setLocalImageUrl(entry);
+                        });
+                    }
+
+                    function downloadProductImage() {
+                        return fileManager.getFile(directory, fileName).then(dowloadFile);
+                    }
+
+                    fileManager.find(directory, fileName).then(setLocalImageUrl, downloadProductImage);
                 });
+            }
 
-                
-                
-            }, function(e) {
-                alert("FILE SYSTEM Error");
-            });
+        
+            document.addEventListener("deviceready", function () {
+                $("button.set").removeAttr("disabled");
+                $("button.set").click(setImage);
+                //alert("READY!");
+                //$("#btn").click(function () {
+                //var fileTransfer = new FileTransfer();
 
-            
+                //function onFileDownloaded(i) {
+                //    console.log("I", i);
+                //    $("#img").attr("src", i.toURL());
+                //    alert("FILE DOWNLOADED!!!");
+                //}
 
-            //var ref = window.open("http://billme.azurewebsites.net/api/values", "_blank", "location=no");
-            ////ref.addEventListener("loadstart", function () {
-            ////    ref.executeScript({
-            ////        code: "alert('HTML' + document.innerHTML );"
-            ////    });
-            ////});
-            //ref.addEventListener("loadstop", function () {
-            //    ref.executeScript({
-            //        code: "alert('STOP - HTML' + JSON.parse(document.body.innerText).Response.Name );"
-            //    });
-            //});
+                //function onFailure(e) {
+                //    console.error("Download error", e);
+                //    alert("DOWNLOAD ERROR, CODE: " + e.code);
+                //}
 
-            //ref.addEventListener("exit", function () {
-            //    navigator.notification.alert("BYE!");
+                //window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+
+                //    fileSystem.root.getDirectory("ImagesCache", { create: true, exclusive: false }, function(directoryEntry) {
+                //        //var file = directoryEntry.toURL() + "/testFile.jpg";
+                //        //window.resolveLocalFileSystemURI(file, function (localfileEntry) {
+
+                //        //    fileTransfer.download("http://ypk.cs4u.co.il/wbl_vcs31_P_Images/gto/pic/5BDgrggt_5.jpg", localfileEntry.fullPath, onFileDownloaded, onFailure);
+                //        //}, function(e) {
+                //        //    console.log("RESOLVE ERROR", e);
+                //        //})
+
+
+                //        directoryEntry.getFile("testfile.jpg", { create: true, exclusive: false }, function (localfileEntry) {
+
+                //            fileTransfer.download("https://s3.amazonaws.com/build.phonegap.com/45618926-687f-11e3-ad62-22000a98b3d6/icon.png", localfileEntry.toURL(), onFileDownloaded, onFailure);
+                //        }, function(err) {
+                //            console.error("FILE ERROR!", err);
+                //            alert("FILE ERROR");
+                //        });
+
+
+                //    }, function(e) {
+                //        console.error("DIRECTORY", e);
+                //        alert("DIRECTORY ERROR");
+                //    });
+
+
+//}, function(e) {
+                //    alert("FILE SYSTEM Error");
+                //});
+
+
+//var ref = window.open("http://billme.azurewebsites.net/api/values", "_blank", "location=no");
+                ////ref.addEventListener("loadstart", function () {
+                ////    ref.executeScript({
+                ////        code: "alert('HTML' + document.innerHTML );"
+                ////    });
+                ////});
+                //ref.addEventListener("loadstop", function () {
+                //    ref.executeScript({
+                //        code: "alert('STOP - HTML' + JSON.parse(document.body.innerText).Response.Name );"
+                //    });
+                //});
+
+                //ref.addEventListener("exit", function () {
+                //    navigator.notification.alert("BYE!");
                 //});
             });
-        }, false);
-    </script>-->
-</body>
+            }, false);
+        </script>
+    </body>
 </html>

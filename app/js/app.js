@@ -47,4 +47,5 @@
     app.controller("ComparisonCtrl", WS.ComparisonController);
     app.controller("AppCtrl", WS.AppController);
 
+
 })(_, Simple, WallaShops);
