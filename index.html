@@ -18,9 +18,9 @@
 
 </head>
     <body class="rtl swipe-animations-enabled" ng-controller="AppCtrl">
-        <button class="set">SET IMAGE!!!</button>
-        <img class="host"/>
-        <!-- <div class="content-container">
+        <!--<button class="set">SET IMAGE!!!</button>
+        <img class="host"/>-->
+         <div class="content-container">
                 <app-header></app-header>
 
                 <div class="content">
@@ -28,7 +28,7 @@
                         <ng-view></ng-view>
                     </div>
                 </div>
-            </div>-->
+            </div>
 
 
 
@@ -158,6 +158,7 @@
             document.addEventListener("deviceready", function () {
                 $("button.set").removeAttr("disabled");
                 $("button.set").click(setImage);
+            }, false);
                 //alert("READY!");
                 //$("#btn").click(function () {
                 //var fileTransfer = new FileTransfer();
@@ -220,8 +221,9 @@
                 //ref.addEventListener("exit", function () {
                 //    navigator.notification.alert("BYE!");
                 //});
-            });
-            }, false);
+            
+            
+            
         </script>
     </body>
 </html>
