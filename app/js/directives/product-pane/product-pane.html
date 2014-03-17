@@ -42,8 +42,6 @@
             <b> {{product.price}} ש"ח</b>
             <div class="diagonal"></div>
         </div>
-
-        {{product.saleType}} {{product.ratersNumber}} {{product.hideDiscount}} 
         
         <span class="details-text" ng-show="setDetailsLine(product) == 'discount'"><div class="diagonal" ng-show="setDetailsLine(product) == 'discount'"></div>במקום {{product.originalPrice}} ש"ח</span>
         <span class="details-text" ng-show="setDetailsLine(product) == 'details'">לפרטים</span>
@@ -51,7 +49,6 @@
         <span class="details-text" ng-show="setDetailsLine(product) == 'personalPrice'">מחיר אישי</span>
         <span class="details-text" ng-show="setDetailsLine(product) == 'getPrice'">קבל מחיר</span>
         <p class="details" ng-show="!isCompared"></p>
-
 
     </div>
 

@@ -139,8 +139,8 @@
                 icons: _.map(product.SaleSquareIcons, mapIcons)
             };
             
-            //img = new Image();
-            //img.src = product;
+            var img = new Image();
+            img.src = product.imageUrl;
             
             return mappedProduct;
         }
