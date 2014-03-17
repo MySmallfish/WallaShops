@@ -495,13 +495,24 @@ div, i
 
 .diagonal
 {
-    width: 75px;
+    width: 100%;
     height: 54px;
     border-bottom: 1px solid black;
-    -webkit-transform: rotate(-8deg);
     position: absolute;
-    bottom: 12px;
-    left: 28px;
+}
+
+.details-text .diagonal
+{
+    -webkit-transform: rotate(-8deg);
+    bottom: 6px;
+    right: 3px;
+}
+
+.price .diagonal
+{
+    -webkit-transform: rotate(-15deg);
+    bottom: 8px;
+    right: 7px;
 }
 
 .icons
@@ -778,8 +789,7 @@ div, i
     .compare-table td
     {
         height: 140px;
-        border-left: solid 1px #ccc;
-        border-bottom: solid 1px #ccc;
+        border: solid 1px #ccc;
     }
 
 .add-product-to-compare
@@ -811,7 +821,6 @@ div, i
 
 .table-container
 {
-    margin-right: 150px;
     overflow: auto;
 }
 

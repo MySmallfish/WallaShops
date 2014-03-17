@@ -47,32 +47,33 @@
                 }
             }
 
-            scope.isShippingIncluded = function (product) {
-                var result = "details";
-
-                if ((product.saleType == "DiscountAuction" || product.saleType == "GroupDeal")) {
-
-                    if (!product.hideDiscount && product.discountAmount > 0) {
-                        result = "discount";
-                    }
-                    if (product.shippingMode !== 2 && product.shippingPrice === 0) {
-                        result = "shipping";
-                    }
-                }
-                return result;
-            };
-
-            scope.isRating = function (product) {
+            scope.setRatingLine = function (product) {
                 var result = "rating";
-                
+
                 if (product.ratersNumber == 0) {
-                    if ((product.saleType == 'DiscountAuction' || product.saleType == 'GroupDeal') && product.buyersCount >= product.minBuyersCount) {
+                    if (product.saleType == 'DiscountAuction' || product.saleType == 'GroupDeal') {
                         result = "soldCount";
                     } else {
                         result = "payments";
                     }
                 }
 
+                return result;
+            };
+
+            scope.setDetailsLine = function (product) {
+                var result = "details";
+
+                if (product.saleType == "Personal") {
+                    result = product.isDirectPrice ? "getPrice" : "personalPrice";
+                }
+                else if ((product.saleType == "DiscountAuction" || product.saleType == "GroupDeal") && !product.hideDiscount) {
+                    result = "discount";
+                }
+
+                else if ((product.saleType == "DiscountAuction" || product.saleType == "GroupSale") && product.shippingMode !== 2 && product.shippingPrice === 0) {
+                    result = "shipping";
+                }
                 return result;
             };
 

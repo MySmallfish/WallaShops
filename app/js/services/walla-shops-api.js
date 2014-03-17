@@ -134,10 +134,13 @@
                 shippingPrice: product.ShippingPrice,
                 hideDiscount: product.HideDiscount ? product.HideDiscount : false,
                 discountAmount: product.DiscountAmount,
+                isDirectPrice: product.IsPersonalAuctionDirectPrice,
+                showAvgPrice: product.ShowApproxAvgZap,
                 icons: _.map(product.SaleSquareIcons, mapIcons)
             };
             
-            
+            //img = new Image();
+            //img.src = product;
             
             return mappedProduct;
         }
