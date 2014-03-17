@@ -113,11 +113,12 @@
                 id: product.ProductID,
                 title: product.TitleLine1,
                 subTitle: product.TitleLine2,
-                imageUrl: product.SmallPicPath,
+                saleType: product.AuctionType,
+                imageUrl: product.AuctionType == "DiscountAuction" || product.AuctionType == "GroupDeal" ? product.SmallPicPathGroupDeal : product.SmallPicPath,
                 rating: product.ReviewsScore,
                 ratersNumber: product.ReviewsCount,
                 paymentsNum: product.PaymentsNum,
-                soldCount: product.SoldCount,
+                buyersCount: product.SoldCount,
                 remainCount: product.RemainCount,
                 price: product.Price,
                 coin: product.ProductCoin, //2 = ILS, 3 = USD, 4 = USD, 11 = EURO
@@ -127,8 +128,11 @@
                 nameForUrl: product.VirtualUrl,
                 status: product.Status,
                 isActive: product.IsActive,
-                saleType: product.AuctionType,
                 shippingTime: product.ShippingTime,
+                shippingMode: product.ShippingMode,
+                shippingPrice: product.ShippingPrice,
+                hideDiscount: product.HideDiscount ? product.HideDiscount : false,
+                discountAmount: product.DiscountAmount,
                 icons: _.map(product.SaleSquareIcons, mapIcons)
             };
 
@@ -250,7 +254,7 @@
                     return i != null;
                 });
             });
-            //return run("promotions/GetPromotionItems", { locationCode: 5060 }).then(mapSearchProducts);
+            
         }
 
         function mapFeatures(products) {

@@ -10,7 +10,7 @@
             maxSelection: "@",
             isCompared: "=",
             isCheckedToCompare: "&"
-            
+
         },
         replace: true,
         link: function (scope, element, attributes, ctrl) {
@@ -46,6 +46,22 @@
                     scope.checked = true;
                 }
             }
+
+            scope.isShippingIncluding = function (product) {
+                var result = "details";
+
+                if ((product.saleType == "DiscountAuction" || product.saleType == "GroupDeal")) {
+
+                    if (!product.hideDiscount && product.discountAmount > 0) {
+                        result = "discount";
+                    }
+                    if (product.shippingMode !== 2 && product.shippingPrice === 0) {
+                        result = "shipping";
+                    }
+                }
+                return result;
+            };
+
 
             isChecked();
         }

@@ -252,7 +252,7 @@ input[type=submit].search-button
     font-weight: bold;
 }
 
-.phone-number, .phone-number:hover, .phone-number:visited , .phone-number:active
+.phone-number, .phone-number:hover, .phone-number:visited, .phone-number:active
 {
     color: rgb(194, 3, 64);
     font-size: 15pt;
@@ -413,7 +413,7 @@ div, i
 .product-info
 {
     height: 235px;
-    padding-right: 25px;
+    padding-right: 10px;
     position: relative;
     font-size: 10pt;
 }
@@ -457,9 +457,14 @@ div, i
     color: #aaa;
 }
 
-.price
+.price b
 {
-    font-size: 14pt;
+    font-size: 12pt;
+}
+
+.price .space
+{
+    width: 10px;
 }
 
 .price, .details
@@ -481,8 +486,19 @@ div, i
 .details-text
 {
     position: absolute;
-    left: 40px;
+    left: 32px;
     bottom: 5px;
+}
+
+.diagonal
+{
+    width: 75px;
+    height: 54px;
+    border-bottom: 1px solid black;
+    -webkit-transform: rotate(-8deg);
+    position: absolute;
+    bottom: 12px;
+    left: 28px;
 }
 
 .icons
@@ -872,7 +888,6 @@ div, i
 {
     margin-top: 4px;
     height: 100%;
-    
 }
 
 .popover-title
@@ -900,7 +915,6 @@ div, i
 {
     padding: 10px 0;
     position: relative;
-    
 }
 
 .menu .nav-tabs, .menu .nav-tabs .active a, .menu .nav-tabs .active a:hover, .menu .nav-tabs li a
@@ -1042,12 +1056,17 @@ div, i
     margin-top: 35px;
 }
 
-.productImg.compared
+.productImg
 {
-    width: 60%;
-    height: 57%;
-    margin-right: 18%;
+    height: 100px;
 }
+
+    .productImg.compared
+    {
+        width: 60%;
+        height: 57%;
+        margin-right: 18%;
+    }
 
 .title.compared
 {
@@ -1089,7 +1108,8 @@ div, i
 
 
 
-.loading {
+.loading
+{
     position: absolute;
     background-image: url(../img/loading.gif);
     background-position: center center;

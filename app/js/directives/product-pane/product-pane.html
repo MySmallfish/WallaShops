@@ -2,6 +2,7 @@
     <div class="remove-product" ng-show="isCompared" ng-click="publishRemoveProduct()">
         <div class="x">X</div>
     </div>
+
     <div class="product-info">
 
         <div class="comparison" ng-show="selectionMode"></div>
@@ -29,11 +30,16 @@
             </div>
         </div>
 
-        <p ng-show="!isCompared && product.ratersNumber == 0" > מספר תשלומים: {{ product.paymentsNum}}</p>
+        <p ng-show="!isCompared && product.ratersNumber == 0 && !(product.saleType == 'DiscountAuction' || product.saleType == 'GroupDeal ')">מספר תשלומים: {{ product.paymentsNum}}</p>
+        <p ng-show="!isCompared && product.ratersNumber == 0 && (product.saleType == 'DiscountAuction' || product.saleType == 'GroupDeal ')">נרכשו: {{ product.buyersCount}}</p>
 
-        <p class="price" ng-class="{'compared': isCompared}"><b>{{ product.price}} ש"ח</b></p>
+        <p class="price" ng-class="{'compared': isCompared}"><span ng-show="isShippingIncluding(product) == 'discount'">רק </span><b>{{product.price}} ש"ח</b></p>
 
-        <span class="details-text" ng-show="!isCompared">{{ product.details}}</span>
+        <div class="diagonal" ng-show="isShippingIncluding(product) == 'discount'"></div>
+
+        <span class="details-text" ng-show="isShippingIncluding(product) == 'discount'">במקום {{product.originalPrice}} ש"ח</span>
+        <span class="details-text" ng-show="isShippingIncluding(product) == 'details'">לפרטים</span>
+        <span class="details-text" ng-show="isShippingIncluding(product) == 'shipping' ">כולל משלוח</span>
         <p class="details" ng-show="!isCompared"></p>
 
 
