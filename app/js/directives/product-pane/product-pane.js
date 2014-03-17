@@ -10,7 +10,7 @@
             maxSelection: "@",
             isCompared: "=",
             isCheckedToCompare: "&"
-            
+
         },
         replace: true,
         link: function (scope, element, attributes, ctrl) {
@@ -46,6 +46,37 @@
                     scope.checked = true;
                 }
             }
+
+            scope.setRatingLine = function (product) {
+                var result = "rating";
+
+                if (product.ratersNumber == 0) {
+                    if (product.saleType == 'DiscountAuction' || product.saleType == 'GroupDeal') {
+                        result = "soldCount";
+                    } else {
+                        result = "payments";
+                    }
+                }
+
+                return result;
+            };
+
+            scope.setDetailsLine = function (product) {
+                var result = "details";
+
+                if (product.saleType == "Personal") {
+                    result = product.isDirectPrice ? "getPrice" : "personalPrice";
+                }
+                else if ((product.saleType == "DiscountAuction" || product.saleType == "GroupDeal") && !product.hideDiscount) {
+                    result = "discount";
+                }
+
+                else if ((product.saleType == "DiscountAuction" || product.saleType == "GroupSale") && product.shippingMode !== 2 && product.shippingPrice === 0) {
+                    result = "shipping";
+                }
+                return result;
+            };
+
 
             isChecked();
         }

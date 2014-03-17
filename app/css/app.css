@@ -252,7 +252,7 @@ input[type=submit].search-button
     font-weight: bold;
 }
 
-.phone-number, .phone-number:hover, .phone-number:visited , .phone-number:active
+.phone-number, .phone-number:hover, .phone-number:visited, .phone-number:active
 {
     color: rgb(194, 3, 64);
     font-size: 15pt;
@@ -413,7 +413,7 @@ div, i
 .product-info
 {
     height: 235px;
-    padding-right: 25px;
+    padding-right: 10px;
     position: relative;
     font-size: 10pt;
 }
@@ -448,8 +448,6 @@ div, i
         -webkit-transform: scaleX(-1);
     }
 
-
-
 .raters-number
 {
     position: absolute;
@@ -457,9 +455,19 @@ div, i
     color: #aaa;
 }
 
-.price
+.payments
 {
-    font-size: 14pt;
+    font-size: 7.7pt;
+}
+
+.price b
+{
+    font-size: 12pt;
+}
+
+.price .space
+{
+    width: 10px;
 }
 
 .price, .details
@@ -481,8 +489,30 @@ div, i
 .details-text
 {
     position: absolute;
-    left: 40px;
+    left: 32px;
     bottom: 5px;
+}
+
+.diagonal
+{
+    width: 100%;
+    height: 54px;
+    border-bottom: 1px solid black;
+    position: absolute;
+}
+
+.details-text .diagonal
+{
+    -webkit-transform: rotate(-8deg);
+    bottom: 6px;
+    right: 3px;
+}
+
+.price .diagonal
+{
+    -webkit-transform: rotate(-15deg);
+    bottom: 8px;
+    right: 7px;
 }
 
 .icons
@@ -759,8 +789,7 @@ div, i
     .compare-table td
     {
         height: 140px;
-        border-left: solid 1px #ccc;
-        border-bottom: solid 1px #ccc;
+        border: solid 1px #ccc;
     }
 
 .add-product-to-compare
@@ -792,7 +821,6 @@ div, i
 
 .table-container
 {
-    margin-right: 150px;
     overflow: auto;
 }
 
@@ -872,7 +900,6 @@ div, i
 {
     margin-top: 4px;
     height: 100%;
-    
 }
 
 .popover-title
@@ -900,7 +927,6 @@ div, i
 {
     padding: 10px 0;
     position: relative;
-    
 }
 
 .menu .nav-tabs, .menu .nav-tabs .active a, .menu .nav-tabs .active a:hover, .menu .nav-tabs li a
@@ -1042,12 +1068,17 @@ div, i
     margin-top: 35px;
 }
 
-.productImg.compared
+.productImg
 {
-    width: 60%;
-    height: 57%;
-    margin-right: 18%;
+    height: 100px;
 }
+
+    .productImg.compared
+    {
+        width: 60%;
+        height: 57%;
+        margin-right: 18%;
+    }
 
 .title.compared
 {
@@ -1089,7 +1120,8 @@ div, i
 
 
 
-.loading {
+.loading
+{
     position: absolute;
     background-image: url(../img/loading.gif);
     background-position: center center;
