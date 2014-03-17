@@ -137,6 +137,9 @@
                 icons: _.map(product.SaleSquareIcons, mapIcons)
             };
             
+            
+            
+            return mappedProduct;
         }
 
         function mapSearchProducts(products, innerObject) {
