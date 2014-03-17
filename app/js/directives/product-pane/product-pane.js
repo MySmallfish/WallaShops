@@ -47,7 +47,7 @@
                 }
             }
 
-            scope.isShippingIncluding = function (product) {
+            scope.isShippingIncluded = function (product) {
                 var result = "details";
 
                 if ((product.saleType == "DiscountAuction" || product.saleType == "GroupDeal")) {
@@ -59,6 +59,20 @@
                         result = "shipping";
                     }
                 }
+                return result;
+            };
+
+            scope.isRating = function (product) {
+                var result = "rating";
+                
+                if (product.ratersNumber == 0) {
+                    if ((product.saleType == 'DiscountAuction' || product.saleType == 'GroupDeal') && product.buyersCount >= product.minBuyersCount) {
+                        result = "soldCount";
+                    } else {
+                        result = "payments";
+                    }
+                }
+
                 return result;
             };
 

@@ -448,13 +448,16 @@ div, i
         -webkit-transform: scaleX(-1);
     }
 
-
-
 .raters-number
 {
     position: absolute;
     left: 70px;
     color: #aaa;
+}
+
+.payments
+{
+    font-size: 7.7pt;
 }
 
 .price b

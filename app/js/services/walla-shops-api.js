@@ -119,6 +119,7 @@
                 ratersNumber: product.ReviewsCount,
                 paymentsNum: product.PaymentsNum,
                 buyersCount: product.SoldCount,
+                minBuyersCount: 2, //product.MinSoldCount
                 remainCount: product.RemainCount,
                 price: product.Price,
                 coin: product.ProductCoin, //2 = ILS, 3 = USD, 4 = USD, 11 = EURO
@@ -135,8 +136,7 @@
                 discountAmount: product.DiscountAmount,
                 icons: _.map(product.SaleSquareIcons, mapIcons)
             };
-
-            return mappedProduct;
+            
         }
 
         function mapSearchProducts(products, innerObject) {
