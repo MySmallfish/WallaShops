@@ -9,9 +9,15 @@
         <div class="check-box" ng-show="selectionMode" ng-click="check($event)" ng-class="{'checked': checked }"></div>
 
 
-        <img class="productImg" ng-class="{'compared': isCompared}" ng-src="{{ product.imageUrl }}" />
+        <img class="productImg" ng-class="{'compared': isCompared}" ng-src="{{ product.imageUrl }}" s-local-cache />
+
+        
+        
         <div class="icons" ng-show="!isCompared">
-            <div class="iconImg" ng-repeat="icon in product.icons">
+            
+            <div class="discount-icon" ng-show="product.saleType=='DiscountAuction' || product.saleType=='GroupDeal'"><div class="icon-text"> {{ product.discountAmount }}<span>%</span>  הנחה </div></div>
+            <div class="icon-image" ng-repeat="icon in product.icons">
+                
                 <!--<img ng-src=" product.icons " />-->
                 <img ng-src=" product.icons " />
             </div>
@@ -35,15 +41,17 @@
 
         <div class="price" ng-class="{'compared': isCompared}" ng-show="product.saleType !== 'Personal'">
             <span>רק </span>
-            <b> {{product.price}} ש"ח</b>
+            <b>{{product.price}} ש"ח</b>
 
         </div>
         <div class="price" ng-class="{'compared': isCompared}" ng-show="product.saleType === 'Personal' && product.showAvgPrice">
-            <b> {{product.price}} ש"ח</b>
+            <b>{{product.price}} ש"ח</b>
             <div class="diagonal"></div>
         </div>
-        
-        <span class="details-text" ng-show="setDetailsLine(product) == 'discount'"><div class="diagonal" ng-show="setDetailsLine(product) == 'discount'"></div>במקום {{product.originalPrice}} ש"ח</span>
+
+        <span class="details-text" ng-show="setDetailsLine(product) == 'discount'">
+            <div class="diagonal" ng-show="setDetailsLine(product) == 'discount'"></div>
+            במקום {{product.originalPrice}} ש"ח</span>
         <span class="details-text" ng-show="setDetailsLine(product) == 'details'">לפרטים</span>
         <span class="details-text" ng-show="setDetailsLine(product) == 'shipping'">כולל משלוח</span>
         <span class="details-text" ng-show="setDetailsLine(product) == 'personalPrice'">מחיר אישי</span>
