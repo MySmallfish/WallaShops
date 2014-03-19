@@ -2,7 +2,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "il.co.wallashops"
-        version   = "1.1.26">
+        version   = "1.1.27">
   <name>Walla! שופס</name>
 
   <description>
@@ -15,7 +15,7 @@
 
   <feature name="http://api.phonegap.com/1.0/network"/>
 
-  <preference name="phonegap-version" value="3.3.0" />
+  <preference name="phonegap-version" value="2.9.0" />
   <preference name="target-device"    value="tablet" />
   <preference name="fullscreen"       value="false" />
   <preference name="webviewbounce" value="false" />
@@ -44,8 +44,8 @@
   <gap:splash src="app/img/splash.png" gap:platform="android" gap:density="xhdpi" />
 
   <gap:splash src="app/img/splash.png"    gap:platform="ios"     width="1024" height="768" />
-  <gap:plugin name="org.apache.cordova.file" />
-  <gap:plugin name="org.apache.cordova.file-transfer" />
+  <!--<gap:plugin name="org.apache.cordova.file" />
+  <gap:plugin name="org.apache.cordova.file-transfer" />-->
 
 
   <gap:platform name="ios" />
