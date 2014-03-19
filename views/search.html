@@ -45,10 +45,16 @@
     <div class="bottom">
 
         <div class="comparison-products">
-            <div ng-show="!isAnyProductSelected()">סמן להשוואה</div>
-            <span ng-repeat="product in productsToCompare">
-                      <img ng-src="{{product.imageUrl}}" />
-                  </span>
+            <div class="mark-to-compare" ng-show="!isAnyProductSelected()">סמן להשוואה</div>
+
+            <div class="comparison-products-container" ng-repeat="product in productsToCompare">
+                    <div class="remove-product" ng-click="publishRemoveProduct()">
+                        <div class="x"><i class="fa fa-times"></i></div>
+                    </div>
+                    <img ng-src="{{product.imageUrl}}" />
+                
+            </div>
+
         </div>
         <div class="go-to-comparison" ng-show="isAnyProductSelected()" ng-click="openCamperisonPage()">להשוואה</div>
 
@@ -57,7 +63,6 @@
 </div>
 
 <products-list-navigation></products-list-navigation>
-<!--    <products-list-navigation step="{{step}}" products-list-length="{{productsLine1.length}}" navigation-info="navigationInfo"></products-list-navigation>-->
 
 
 

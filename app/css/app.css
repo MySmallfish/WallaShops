@@ -328,26 +328,28 @@ input[type=submit].search-button
     margin-bottom: 5%;
 }
 
-.search-page
+.search-page .products-list-container
 {
-  
+    width: 990px;
+    height: 600px;
+    position: absolute;
+    top: 25px;
+    overflow: hidden;
 }
 
-    .search-page .products-list-container
-    {
-        width: 990px;
-        height: 600px;
-        position: absolute;
-        top: 25px;
-        overflow: hidden;
-    }
+.search-page .products-list-content
+{
+    position: relative;
+    top: 35px;
+    height: 600px;
+}
 
-    .search-page .products-list-content
-    {
-        position: relative;
-        top: 35px;
-        height: 600px;
-    }
+.search-page .comparison-products-container
+{
+    display: inline-block;
+    border: 1px solid blue;
+    margin-right: 30px;
+}
 
 .home-page .products-list-container
 {
@@ -820,17 +822,17 @@ div, i
     line-height: 100px;
 }
 
-    .comparison-products .product-info
-    {
-        height: 140px;
-        padding: 1px;
-        margin: 3px 0 0 0;
-    }
+.comparison-products .product-info
+{
+    height: 140px;
+    padding: 1px;
+    margin: 3px 0 0 0;
+}
 
-    .comparison-products .product-border
-    {
-        margin: 0;
-    }
+.comparison-products .product-border
+{
+    margin: 0;
+}
 
 .table-container
 {
@@ -839,15 +841,13 @@ div, i
 
 .remove-product
 {
+    background-color: red;
     position: absolute;
     z-index: 1;
-    height: 0;
-    width: 0;
-    opacity: .5;
-    border-top: 25px solid red;
-    border-right: 25px solid red;
-    border-bottom: 25px solid transparent;
-    border-left: 25px solid transparent;
+    height: 20px;
+    width: 28px;
+    text-align: center;
+    border-radius: 8px;
 }
 
     .remove-product .x
@@ -1081,7 +1081,8 @@ div, i
     margin-top: 5px;
 }
 
-.search-page >.bottom {
+.search-page > .bottom
+{
     position: absolute;
     right: 0;
     left: 0;
@@ -1090,6 +1091,7 @@ div, i
 
 .search-page .comparison-products
 {
+    position: relative;
     border: 2px solid #ccc;
     border-radius: 10px;
     width: 370px;
@@ -1097,7 +1099,7 @@ div, i
     margin: auto;
 }
 
-    .search-page .comparison-products div
+    .search-page .comparison-products .mark-to-compare
     {
         font-size: 22pt;
         font-weight: bold;
@@ -1106,9 +1108,10 @@ div, i
         color: #777;
     }
 
-.search-page .comparison-products img {
-    height: 60px;
-}
+    .search-page .comparison-products img
+    {
+        height: 60px;
+    }
 
 .productImg
 {
