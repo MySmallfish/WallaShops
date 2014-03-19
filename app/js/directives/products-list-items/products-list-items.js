@@ -6,8 +6,8 @@
         scope: {
             products: "=",
             showProduct: "&",
-            selectionMode: "=",
             selectedItems: "=",
+            isSearchPage: "=",
             maxSelection: "@",
             isCheckedToCompare: "&"
         },

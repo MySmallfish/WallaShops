@@ -5,20 +5,23 @@
 
     <div class="product-info">
 
-        <div class="comparison" ng-show="selectionMode"></div>
-        <div class="check-box" ng-show="selectionMode" ng-click="check($event)" ng-class="{'checked': checked }"></div>
-
+        <div class="check-box" ng-click="check($event)" ng-class="{'checked': checked }" ng-show="isSearchPage">
+            <div ng-show="!checked">לחץ להשוואה</div>
+            <div ng-show="checked">בטל השוואה</div>
+        </div>
 
         <img class="productImg" ng-class="{'compared': isCompared}" ng-src="{{ product.imageUrl }}" s-local-cache />
 
-        
-        
         <div class="icons" ng-show="!isCompared">
-            
-            <div class="discount-icon" ng-show="product.saleType=='DiscountAuction' || product.saleType=='GroupDeal'"><div class="icon-text"> {{ product.discountAmount }}<span>%</span>  הנחה </div></div>
+
+            <div class="discount-icon" ng-show="product.saleType=='DiscountAuction' || product.saleType=='GroupDeal'">
+                <div class="icon-text">{{ product.discountAmount }}<span>%</span>  הנחה </div>
+            </div>
+
             <div class="icon-image" ng-repeat="icon in product.icons">
-                
+
                 <!--<img ng-src=" product.icons " />-->
+
                 <img ng-src=" product.icons " />
             </div>
         </div>

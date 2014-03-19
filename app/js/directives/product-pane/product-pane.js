@@ -5,8 +5,8 @@
         templateUrl: 'app/js/directives/product-pane/product-pane.html',
         scope: {
             product: "=",
-            selectionMode: "=",
             selectedItems: "=",
+            isSearchPage: "=",
             maxSelection: "@",
             isCompared: "=",
             isCheckedToCompare: "&"

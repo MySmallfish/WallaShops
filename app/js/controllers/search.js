@@ -34,10 +34,6 @@
             if (dailyCacheService.get("productsToCompare")) {
                 if (dailyCacheService.get("productsToCompare").length <= $scope.maxSelection) {
                     dailyCacheService.store("productsToCompare", $scope.productsToCompare);
-                    if (dailyCacheService.get("productsToCompare").length == 0) {
-                        $scope.$parent.selectionMode = false;
-                    }
-
                     if (dailyCacheService.get("productsToCompare").length == $scope.maxSelection) {
                         openCamperisonPage();
                     }
@@ -47,10 +43,6 @@
                 dailyCacheService.store("productsToCompare", $scope.productsToCompare);
             }
         });
-
-        function toggleComparison() {
-            $scope.$parent.selectionMode = !$scope.$parent.selectionMode;
-        }
 
         function updateProductPage() {
             if ($scope.navigationInfo && $scope.productsLine1) {
@@ -229,7 +221,6 @@
             isFilterValueNotEmpty: isFilterValueNotEmpty,
             clearSelectedFilterValues: clearSelectedFilterValues,
             selectCategoryById: selectCategoryById,
-            toggleComparison: toggleComparison,
             isAnyProductSelected: isAnyProductSelected,
             openCamperisonPage: openCamperisonPage,
             isCheckedToCompare: isCheckedToCompare

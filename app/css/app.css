@@ -330,7 +330,7 @@ input[type=submit].search-button
 
 .search-page
 {
-    position: relative;
+  
 }
 
     .search-page .products-list-container
@@ -338,7 +338,7 @@ input[type=submit].search-button
         width: 990px;
         height: 600px;
         position: absolute;
-        top: 50px;
+        top: 25px;
         overflow: hidden;
     }
 
@@ -425,6 +425,7 @@ div, i
     width: 57px;
     height: 53px;
     color: #9a6faa;
+    text-align: center;
 }
 
     .discount-icon .icon-text
@@ -436,7 +437,7 @@ div, i
         right: 5px;
     }
 
-}
+
 
 .product-info p, .rating
 {
@@ -819,14 +820,6 @@ div, i
     line-height: 100px;
 }
 
-.comparison-products
-{
-    float: right;
-    position: relative;
-    width: 150px;
-    top: 50px;
-}
-
     .comparison-products .product-info
     {
         height: 140px;
@@ -1051,26 +1044,31 @@ div, i
     z-index: 1;
 }
 
-.product-info .check-box
+.search-page .product-info .check-box
 {
     position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background-image: url('../img/checkbox_unchecked.png');
+    width: 45px;
+    height: 42px;
+    margin-right: -12px;
+    margin-top: -7px;
+    border-radius: 26px;
+    border-top-right-radius: 0;
+    background-color: rgb(160, 160, 160);
     background-repeat: no-repeat;
     background-position: center;
-    z-index: 1;
-    opacity: .7;
+    opacity: 0.9;
+    text-align: center;
+    font-weight: bold;
+    font-size: 9pt;
+    line-height: normal;
 }
 
-    .product-info .check-box.checked
-    {
-        background-image: url('../img/checkbox_checked.png');
-    }
+.product-info .check-box.checked
+{
+    background-color: red;
+}
 
-.search-page .compare-link, .search-page .go-to-comparison
+.search-page .go-to-comparison
 {
     position: absolute;
     left: 50px;
@@ -1083,9 +1081,33 @@ div, i
     margin-top: 5px;
 }
 
-.search-page .go-to-comparison
+.search-page >.bottom {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.search-page .comparison-products
 {
-    margin-top: 35px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    width: 370px;
+    height: 65px;
+    margin: auto;
+}
+
+    .search-page .comparison-products div
+    {
+        font-size: 22pt;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 25px;
+        color: #777;
+    }
+
+.search-page .comparison-products img {
+    height: 60px;
 }
 
 .productImg
