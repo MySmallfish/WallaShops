@@ -12,17 +12,13 @@
 
         <img class="productImg" ng-class="{'compared': isCompared}" ng-src="{{ product.imageUrl }}" s-local-cache />
 
-        <div class="icons" ng-show="!isCompared">
+        <div class="icons">
+            <div class="image-icon" ng-repeat="icon in product.icons">
+                <div class="discount-icon" ng-show="!icon.id">
+                    <div class="icon-text">{{ product.discountAmount }}<span>%</span>  הנחה </div>
+                </div>
 
-            <div class="discount-icon" ng-show="product.saleType=='DiscountAuction' || product.saleType=='GroupDeal'">
-                <div class="icon-text">{{ product.discountAmount }}<span>%</span>  הנחה </div>
-            </div>
-
-            <div class="icon-image" ng-repeat="icon in product.icons">
-
-                <!--<img ng-src=" product.icons " />-->
-
-                <img ng-src=" product.icons " />
+                <img ng-src="{{icon.imageUrl}}" />
             </div>
         </div>
 

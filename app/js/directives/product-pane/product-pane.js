@@ -15,6 +15,7 @@
         replace: true,
         link: function (scope, element, attributes, ctrl) {
             // bind clicks...            
+
             scope.stars = [0, 1, 2, 3, 4];
             scope.isDecimal = function (number) {
                 return number > parseInt(number, 10);
@@ -76,8 +77,30 @@
                 }
                 return result;
             };
+            
+            function mapIcon(icon) {
 
+                var mappedIcon = {
+                    id: icon.id,
+                    imageAlt: icon.imageAlt
+                };
 
+                if (icon.id === 2) {
+                    if (scope.product.shippingTime === 2) {
+                        mappedIcon.imageUrl = icon.imageUrl2;
+                    } else {
+                        mappedIcon.imageUrl = icon.imageUrl1;
+                    }
+                }
+
+                else{
+                    mappedIcon.imageUrl = icon.imageUrl;
+                    mappedIcon.imageAlt = icon.imageAlt;
+                }
+                return mappedIcon;
+            }
+
+            scope.product.icons = _.map(scope.product.icons, mapIcon);
             isChecked();
         }
     };

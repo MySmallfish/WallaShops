@@ -420,12 +420,16 @@ div, i
     font-size: 10pt;
 }
 
-.discount-icon
+.image-icon, .discount-icon
 {
     position: relative;
-    background: url('../img/dealIcon.png') no-repeat;
     width: 57px;
     height: 53px;
+}
+
+.discount-icon
+{
+    background: url('../img/dealIcon.png') no-repeat;
     color: #9a6faa;
     text-align: center;
 }
@@ -541,6 +545,7 @@ div, i
 .icons
 {
     position: absolute;
+    width: 57px;
     left: 5px;
     top: 5px;
 }

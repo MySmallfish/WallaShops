@@ -99,13 +99,34 @@
             return mappedFilter;
         }
 
-        function mapIcons(icon) {
-            var mappedProduct = {
-                image: icon.ImagePath,
-                link: icon.ImageLink,
-                imageAlt: icon.ImageAlt
+        function mapIcon(icon) {
+            var mappedIcon = {
+                id: icon
             };
-            return mappedProduct;
+            
+            if (icon === 2) {
+                mappedIcon.imageUrl1 = baseUrl + "/images/Auctions/CubeIcons/OrderGetTodayIcon.png";
+                mappedIcon.imageUrl2 = baseUrl + "/images/Auctions/CubeIcons/OrderGetTomorrowIcon.png";
+                mappedIcon.imageAlt = "הספקה מהירה";
+            }
+            
+            if (icon === 3) {
+                mappedIcon.imageUrl = icon.saleSquareIcons.ImagePath;
+                mappedIcon.imageAlt = icon.saleSquareIcons.ImageAlt;
+                mappedIcon.link = icon.ImageLink;
+            }
+
+            else if (icon === 4) {
+                mappedIcon.imageUrl = baseUrl + "/Images/Auctions/CubeIcons/free_delivery.png";
+                mappedIcon.imageAlt = "free delivery";
+            }
+            
+            else if (icon === 5) {
+                mappedIcon.imageUrl = baseUrl + "/images/Auctions/CubeIcons/PaymentsSaleIcon.png";
+                mappedIcon.imageAlt = "36 תשלומים ללא ריבית";
+            }
+            
+            return mappedIcon;
         }
 
         function mapProduct(product) {
@@ -136,7 +157,8 @@
                 discountAmount: product.DiscountAmount,
                 isDirectPrice: product.IsPersonalAuctionDirectPrice,
                 showAvgPrice: product.ShowApproxAvgZap,
-                icons: _.map(product.SaleSquareIcons, mapIcons)
+                saleSquareIcons:product.SaleSquareIcons,
+                icons: _.map(product.CubeIconTypes, mapIcon)
             };
             
             var img = new Image();
