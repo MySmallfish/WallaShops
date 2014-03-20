@@ -38,9 +38,7 @@
                 }
             };
 
-            scope.publishRemoveProduct = function () {
-                scope.$root.$broadcast("WallaShops.ProductDeleted", { product: scope.product });
-            };
+            
 
             function isChecked() {
                 if (scope.isCheckedToCompare(scope.product)) {

@@ -36,12 +36,6 @@
 
         $scope.features = [];
 
-        function onProductDeleted(eventInfo, args) {
-            $scope.productsToCompare.splice($scope.productsToCompare.indexOf(args.product), 1);
-            
-        };
-
-        $scope.$on("WallaShops.ProductDeleted", onProductDeleted);
         
 
     }];

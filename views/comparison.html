@@ -1,5 +1,5 @@
 ﻿<div class="comparison-page">
-    
+
     <!--<div class="comparison-products">
         
         <product-pane product="product" is-compared="true" ng-repeat="product in productsToCompare"></product-pane>
@@ -11,7 +11,7 @@
             <table class="table-head">
 
                 <thead ng-show="!isEmpty()">
-                    
+
                     <tr>
                         <th></th>
                         <th ng-repeat="feature in features">{{feature.header}}</th>
@@ -24,12 +24,18 @@
 
 
                 <tr ng-repeat="product in productsToCompare" ng-show="!isEmpty()">
-                    <td><img ng-src="{{ product.imageUrl }}" /></td>
+                    <td>
+                        <div class="remove-product" ng-click="publishRemoveProduct()">
+                            <div class="x"><i class="fa fa-times"></i></div>
+                        </div>
+                        <img ng-src="{{ product.imageUrl }}" />
+                    </td>
                     <td ng-repeat="feature in features">{{feature.values[product.id]}}    
                     </td>
                 </tr>
+                <tr ng-show="!isFull()"><td ng-repeat="feature in features"></td></tr>
             </table>
         </div>
     </div>
-    
+
 </div>

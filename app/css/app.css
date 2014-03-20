@@ -333,7 +333,7 @@ input[type=submit].search-button
     width: 990px;
     height: 600px;
     position: absolute;
-    top: 25px;
+    top: 0;
     overflow: hidden;
 }
 
@@ -347,7 +347,10 @@ input[type=submit].search-button
 .search-page .comparison-products-container
 {
     display: inline-block;
-    border: 1px solid blue;
+    margin-right: 15px;
+}
+
+.search-page .comparison-products-container:first-child {
     margin-right: 30px;
 }
 
@@ -849,18 +852,31 @@ div, i
     background-color: red;
     position: absolute;
     z-index: 1;
-    height: 20px;
-    width: 28px;
     text-align: center;
     border-radius: 8px;
 }
 
-    .remove-product .x
-    {
-        margin: -18px -17px 0 0;
-        color: white;
-        font-weight: bolder;
-    }
+.search-page .remove-product
+{
+    height: 20px;
+    width: 28px;
+}
+
+.comparison-page .remove-product
+{
+    height: 28px;
+    width: 28px;
+    line-height: 28px;
+    margin-top: -10px;
+}
+
+.remove-product .x
+{
+    color: white;
+    font-weight: bolder;
+}
+
+
 
 .main-promotion .nav-tabs, .main-promotion .nav-tabs .active a, .main-promotion .nav-tabs .active a:hover, .main-promotion .nav-tabs li a
 {
@@ -1115,7 +1131,8 @@ div, i
 
     .search-page .comparison-products img
     {
-        height: 60px;
+        margin: 10px 10px 0 0;
+        height: 53px;
     }
 
 .productImg

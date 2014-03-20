@@ -10,6 +10,17 @@
     function ($scope, $location, productDetailsPresenter, categoryService, productService, textResource) {
         $scope.productsToCompare = [];
 
+        $scope.publishRemoveProduct = function () {
+            $scope.$root.$broadcast("WallaShops.ProductDeleted", { product: $scope.product });
+        };
+
+        function onProductDeleted(eventInfo, args) {
+            $scope.productsToCompare.splice($scope.productsToCompare.indexOf(args.product), 1);
+
+        };
+
+        $scope.$on("WallaShops.ProductDeleted", onProductDeleted);
+        
         $scope.showProduct = function (product) {
             productDetailsPresenter.showProduct(product);
         };
