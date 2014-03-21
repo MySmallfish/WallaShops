@@ -160,9 +160,12 @@
                 saleSquareIcons:product.SaleSquareIcons,
                 icons: _.map(product.CubeIconTypes, mapIcon)
             };
+            console.log("CACHESSS", mappedProduct.imageUrl);
+            if (mappedProduct.imageUrl) {
+                var img = new Image();
+                img.src = mappedProduct.imageUrl;
+            }
             
-            var img = new Image();
-            img.src = product.imageUrl;
             
             return mappedProduct;
         }

@@ -32,7 +32,9 @@
             });
         };
         
-        $scope.getFeatures();
+        $scope.notifyProgress()
+            .then($scope.getFeatures)
+            .finally($scope.stopProgress);
 
         $scope.features = [];
 

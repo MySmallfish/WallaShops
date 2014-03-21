@@ -933,7 +933,7 @@ div, i
 .popover
 {
     margin-top: 4px;
-    height: 100%;
+    
 }
 
 .popover-title
@@ -1091,10 +1091,9 @@ div, i
 
 .search-page .go-to-comparison
 {
-    position: absolute;
-    left: 50px;
     text-decoration: underline;
     font-size: 14pt;
+    display: inline-block;
 }
 
 .search-page .compare-link
@@ -1117,7 +1116,12 @@ div, i
     border-radius: 10px;
     width: 370px;
     height: 65px;
-    margin: auto;
+    display: inline-block;
+}
+
+.search-page .products-comparison-wrapper {
+     margin: auto;
+    text-align: center;
 }
 
     .search-page .comparison-products .mark-to-compare

@@ -13,7 +13,8 @@
                 <li class="current-category">{{currentCategory.title}}</li>
             </ul>
             <ul class="filter-path">
-                <li class="filters-on-path" ng-repeat="filter in selectedFilterValues.values" ng-show="isFilterValueNotEmpty(filter.value)">{{filter.value.title}} <span>|</span>
+                <li class="filters-on-path" ng-repeat="filter in selectedFilterValues.values" ng-show="isFilterValueNotEmpty(filter.value)">
+                    {{filter.value.title}} <span>|</span>
                 </li>
 
                 <li ng-show="!isFilterValueNotEmpty(selectedFilterValues)" ng-hide="true">מוצרים נבחרים לקטגוריה</li>
@@ -27,9 +28,9 @@
     </div>
 
     <div class="products-list-container clear"
-        ng-swipe-right="navigateNext()"
-        ng-swipe-left="navigateBack()"
-        ng-class="{ 'next-animation' : movedToNext, 'previous-animation' : movedToPrevious}">
+         ng-swipe-right="navigateNext()"
+         ng-swipe-left="navigateBack()"
+         ng-class="{ 'next-animation' : movedToNext, 'previous-animation' : movedToPrevious}">
         <div class="loading" ng-show="loading"></div>
         <div ng-hide="loading"></div>
         <div class="search-left-arrow top" ng-show="canNavigateNext()"><i class="fa fa-chevron-left"></i></div>
@@ -43,21 +44,21 @@
     </div>
 
     <div class="bottom">
+        <div class="products-comparison-wrapper">
+            <div class="comparison-products">
+                <div class="mark-to-compare" ng-show="!isAnyProductSelected()">סמן להשוואה</div>
 
-        <div class="comparison-products">
-            <div class="mark-to-compare" ng-show="!isAnyProductSelected()">סמן להשוואה</div>
-
-            <div class="comparison-products-container" ng-repeat="product in productsToCompare">
+                <div class="comparison-products-container" ng-repeat="product in productsToCompare">
                     <div class="remove-product" ng-click="publishRemoveProduct()">
                         <div class="x"><i class="fa fa-times"></i></div>
                     </div>
                     <img ng-src="{{product.imageUrl}}" />
-                
+
+                </div>
+
             </div>
-
+            <div class="go-to-comparison" ng-show="isAnyProductSelected()" ng-click="openCamperisonPage()">להשוואה</div>
         </div>
-        <div class="go-to-comparison" ng-show="isAnyProductSelected()" ng-click="openCamperisonPage()">להשוואה</div>
-
     </div>
 
 </div>

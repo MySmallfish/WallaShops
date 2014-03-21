@@ -5,9 +5,18 @@
         "$location",
         "productDetailsPresenter",
         "categoryService",
-        "productService",
-        "textResource",
-    function ($scope, $location, productDetailsPresenter, categoryService, productService, textResource) {
+        "$q",
+    function ($scope, $location, productDetailsPresenter, categoryService, $q) {
+        $scope.stopProgress = function() {
+            $scope.loading = false;
+        };
+
+        $scope.notifyProgress = function(context) {
+            $scope.loading = true;
+            return $q.when(context);
+        };
+
+
         $scope.productsToCompare = [];
 
         $scope.publishRemoveProduct = function () {

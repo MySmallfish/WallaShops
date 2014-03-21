@@ -1,4 +1,5 @@
 ﻿<div class="home-page">
+    <div class="loading" ng-show="loading"></div>
     <div class="promotions">
         <div class="main-promotion">
             <div>
@@ -13,12 +14,12 @@
 
                 <div class="tab-content">
                     <div class="tab-pane"
-                        id="Promotion_{{promotion.id}}"
-                        ng-repeat="promotion in main_promotions"
-                        ng-class="{'active': isSelected(promotion)}"
-                        ng-swipe-right="swipeNext(promotion)"
-                        ng-swipe-left="swipeBack(promotion)"
-                        ng-click="openPromotion(promotion.link.url)">
+                         id="Promotion_{{promotion.id}}"
+                         ng-repeat="promotion in main_promotions"
+                         ng-class="{'active': isSelected(promotion)}"
+                         ng-swipe-right="swipeNext(promotion)"
+                         ng-swipe-left="swipeBack(promotion)"
+                         ng-click="openPromotion(promotion.link.url)">
                         <img ng-src="{{promotion.image.url}}" alt="{{promotion.title.text}}" />
                     </div>
 

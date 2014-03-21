@@ -1,12 +1,12 @@
 ﻿<div class="comparison-page">
-
+    <div class="loading" ng-show="loading"></div>
     <!--<div class="comparison-products">
         
         <product-pane product="product" is-compared="true" ng-repeat="product in productsToCompare"></product-pane>
         <div class="add-product-to-compare" ng-click="addPruduct()" ng-show="!isFull()"><i class="fa fa-plus-circle"></i></div>
     </div>-->
 
-    <div class="table-container">
+    <div class="table-container" ng-hide="loading">
         <div class="table-wrapper" ng-style="{'width': (150*features.length) + 'px'}">
             <table class="table-head">
 
