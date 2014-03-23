@@ -2,7 +2,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "il.co.wallashops"
-        version   = "1.1.28">
+        version   = "1.1.29">
   <name>Walla! שופס</name>
 
   <description>
@@ -43,9 +43,9 @@
   <gap:splash src="assets/splash/ios/Default-568h@2x.png" gap:platform="ios" width="640" height="1136" />
 
   <gap:splash src="assets/splash/ios/Default-Landscape.png" gap:platform="ios" width="1024" height="768" />
-  <gap:splash src="assets/splash/ios/Default-Portrait.png" gap:platform="ios" width="768" height="1024" />
-  <gap:splash src="assets/splash/ios/Default-Landscape.png" gap:platform="ios" width="2048" height="1536" />
-  <gap:splash src="assets/splash/ios/Default-Portrait.png" gap:platform="ios" width="1536" height="2048" />
+  <!--<gap:splash src="assets/splash/ios/Default-Portrait.png" gap:platform="ios" width="768" height="1024" />
+  <gap:splash src="assets/splash/ios/Default-Landscape@2x.png" gap:platform="ios" width="2048" height="1536" />
+  <gap:splash src="assets/splash/ios/Default-Portrait@2x.png" gap:platform="ios" width="1536" height="2048" />-->
 
   <gap:plugin name="org.apache.cordova.file" />
   <gap:plugin name="org.apache.cordova.file-transfer" />

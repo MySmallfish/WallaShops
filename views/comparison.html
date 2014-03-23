@@ -1,41 +1,45 @@
 ﻿<div class="comparison-page">
+    <br />
+    <h2 class="filter-path">
+        תוצאות השוואה
+    </h2>
     <div class="loading" ng-show="loading"></div>
-    <!--<div class="comparison-products">
-        
-        <product-pane product="product" is-compared="true" ng-repeat="product in productsToCompare"></product-pane>
-        <div class="add-product-to-compare" ng-click="addPruduct()" ng-show="!isFull()"><i class="fa fa-plus-circle"></i></div>
-    </div>-->
-
-    <div class="table-container" ng-hide="loading">
-        <div class="table-wrapper" ng-style="{'width': (150*features.length) + 'px'}">
-            <table class="table-head">
-
+    <div class="table-background">
+        <div class="table-container" ng-hide="loading">
+            <table class="compare-table">
                 <thead ng-show="!isEmpty()">
 
                     <tr>
-                        <th></th>
+                        <th class="headcol"><div class="inner">מוצרים</div></th>
                         <th ng-repeat="feature in features">{{feature.header}}</th>
                     </tr>
                 </thead>
-            </table>
-
-
-            <table class="compare-table">
-
-
-                <tr ng-repeat="product in productsToCompare" ng-show="!isEmpty()">
-                    <td>
-                        <div class="remove-product" ng-click="publishRemoveProduct()">
-                            <div class="x"><i class="fa fa-times"></i></div>
-                        </div>
-                        <img ng-src="{{ product.imageUrl }}" />
-                    </td>
-                    <td ng-repeat="feature in features">{{feature.values[product.id]}}    
-                    </td>
-                </tr>
-                <tr ng-show="!isFull()"><td ng-repeat="feature in features"></td></tr>
+                <tbody>
+                    <tr ng-repeat="product in productsToCompare" ng-show="!isEmpty()">
+                        <td class="headcol">
+                            <div class="remove-product" ng-click="publishRemoveProduct()">
+                                <i class="fa fa-times"></i>
+                            </div>
+                            <div class="inner">
+                                <img ng-src="{{ product.imageUrl }}" />
+                            </div>
+                        </td>
+                        <td ng-repeat="feature in features">
+                            <div class="inner">
+                                {{feature.values[product.id]}}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr ng-show="!isFull()">
+                        <td class="headcol">
+                            <div class="inner">
+                                <div class="add-product-to-compare" ng-click="addPruduct()"></div>
+                            </div>
+                        </td>
+                        <td ng-repeat="feature in features"></td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </div>
-
 </div>
