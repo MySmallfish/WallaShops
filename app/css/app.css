@@ -694,6 +694,7 @@ div, i {
     overflow-y: visible;
     padding-bottom: 1px;
     margin-right: 143px;
+    -webkit-overflow-scrolling: touch;
 }
 .table-background {
     margin-top: 15px;
