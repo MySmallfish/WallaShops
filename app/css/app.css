@@ -691,7 +691,7 @@ div, i {
 }
 .table-container {
     overflow: auto;
-    overflow-y: visible;
+    
     padding-bottom: 1px;
     margin-right: 143px;
     -webkit-overflow-scrolling: touch;
