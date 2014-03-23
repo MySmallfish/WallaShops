@@ -685,12 +685,15 @@ div, i {
     
 }
 
+.inner.addproduct {
+    padding: 15px;
+    padding-bottom: 0;
+}
 .table-container {
-
-    overflow-x: scroll;
+    overflow: auto;
     overflow-y: visible;
     padding-bottom: 1px;
-    margin-right: 123px;
+    margin-right: 143px;
 }
 .table-background {
     margin-top: 15px;
@@ -698,7 +701,41 @@ div, i {
     position: relative;
     border-right: solid 1px #BBB;
 }
-.compare-table thead th.headcol .inner {
+
+.table-background thead th
+{
+    min-width: 140px;
+    vertical-align: top;
+    height: 48px;    
+}
+.table-background td div.inner {
+    min-height: 120px;
+}
+.compare-table td, .compare-table thead th {
+    border: solid 1px #BBB;
+}
+.compare-table td {
+    position: relative;
+    background-color: white;
+    min-width: 80px;
+    white-space: nowrap;
+    height: 100px;
+    text-align: center;
+    
+}
+
+.comparison-products-table {
+    position: absolute;
+    right: 0;
+    top: 0;
+    
+}
+.compare-table td div.inner {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+/*.compare-table thead th.headcol .inner {
 width: 122px;
 margin-top: -2px;
 border-top: solid 1px #BBB;    
@@ -708,39 +745,16 @@ border-top: solid 1px #BBB;
     background-color: transparent;
 
 }
-
-.compare-table thead th
-{
-    min-width: 140px;
-    vertical-align: top;
-    
-}
-.compare-table td, .compare-table thead th {
-    border: solid 1px #BBB;
-}
-.compare-table td {
-    background-color: white;
-    min-width: 80px;
-    white-space: nowrap;
-    height: 100px;
-    text-align: center;
-    
-}
-.compare-table td div.inner {
-    padding-right: 10px;
-    padding-left: 10px;
-}
 .headcol {
     position: absolute;
     right: 0;
     top: auto;
     background-color: white;
-}
+}*/
 
 .add-product-to-compare {
     background-color: #555;
     width: 90px;
-    margin: 5px;
     height: 90px;
 }
 
