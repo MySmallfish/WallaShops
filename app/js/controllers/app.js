@@ -49,12 +49,18 @@
             }
         });
 
+        function clearSelectedFilterValues() {
+            $scope.$root.selectedFilterValues = null;
+            $scope.$root.$broadcast("WallaShops.clearSelectedFilterValues");
+        }
+
         function onCategorySelected(eventInfo, args) {
 
             console.log("appjs", $scope, eventInfo, args);
 
             if (args.category.level === 1 || args.category.level === 0) {
                 $scope.productsToCompare = [];
+                clearSelectedFilterValues();
             }
             
             $scope.searchTerm = null;
