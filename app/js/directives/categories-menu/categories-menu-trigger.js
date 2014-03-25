@@ -43,7 +43,9 @@
 
 
                 scope.$on("WallaShops.CategorySelected", function (eventInfo, args) {
-                    
+
+                    //console.log("on", scope, eventInfo, args);
+
                     var level = args.category.level;
                     if (autoCloseAtLevel != 0 && level >= autoCloseAtLevel) {
                         hide();

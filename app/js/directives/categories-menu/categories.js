@@ -64,6 +64,7 @@
         }
         
         function publishCategorySelectedEvent(lastSelected) {
+
             publish("WallaShops.CategorySelected", {
                 previous: lastSelected,
                 category: $scope.selectedCategory

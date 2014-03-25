@@ -333,7 +333,7 @@ input[type=submit].search-button
     width: 990px;
     height: 600px;
     position: absolute;
-    top: 25px;
+    top: 65px;
     overflow: hidden;
 }
 
@@ -343,7 +343,6 @@ input[type=submit].search-button
     height: 600px;
     width: 1110px;
     overflow-x: scroll;
-    top: 35px;
 }
 
 .search-page .comparison-products-container
@@ -673,14 +672,9 @@ div, i
     left: 25px;
 }
 
-    .search-right-arrow.top, .search-left-arrow.top
-    {
-        margin-top: 10px;
-    }
-
     .search-right-arrow.bottom, .search-left-arrow.bottom
     {
-        margin-top: -23px;
+        margin-top: -50px;
     }
 
 .categories-menu, .filters-menu

@@ -86,6 +86,7 @@
 .c_cell div {
     width: 100%;
 }
+
 .swipe-animations-enabled .previous-animation .product{
     position: relative;  
     -webkit-animation: left linear .3s;

@@ -50,6 +50,13 @@
         });
 
         function onCategorySelected(eventInfo, args) {
+
+            console.log("appjs", $scope, eventInfo, args);
+
+            if (args.category.level === 1 || args.category.level === 0) {
+                $scope.productsToCompare = [];
+            }
+            
             $scope.searchTerm = null;
             $scope.currentCategory = args.category;
         }
