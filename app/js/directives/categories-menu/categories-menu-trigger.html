@@ -1,14 +1,21 @@
 ﻿<div>
+     
     <script type="text/ng-template" id="categories-menu.html">
-        <ws-categories-menu load-categories="loadCategories()" load-filters="loadFilters()" selected-category="currentCategory"></ws-categories-menu>
+        
+        <ws-categories-menu load-categories="loadCategories()" load-filters="loadFilters()" selected-category="currentCategory" is-categories="isCategories"></ws-categories-menu>
     </script>
     
-    <div class="menu-button">
+    <div class="menu-button" >
+        
         <button class="category" bs-popover="'categories-menu.html'" data-trigger="manual" data-placement="bottom" >
             <b>לפי קטגוריה</b>
             <i class="fa fa-filter" ng-show="isFiltered"></i>
             <i class="fa fa-caret-down" ng-show="!isFiltered"></i>
         </button>
+        
     </div>
+    
+    
+    
 </div>
 

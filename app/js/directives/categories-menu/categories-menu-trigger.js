@@ -20,6 +20,7 @@
 
                 function show() {
                     triggerElement.popover("show");
+                    console.log("show", scope);
                     scope.isMenuOpen = true;
                     if (!scope.$root.$$phase) {
                         scope.$apply();

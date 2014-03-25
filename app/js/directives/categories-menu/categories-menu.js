@@ -7,9 +7,19 @@
             scope: {
                 loadFilters: "&",
                 loadCategories: "&",
-                selectedCategory: "="
+                selectedCategory: "=",
+                isCategories: "="
             },
-            replace: true
+            replace: true,
+            link: function(scope) {
+                scope.markFilterSelected = function() {
+                    scope.$root.$broadcast("WallaShops.MenuTabSelected", { tab: "Filter" });
+                };
+                scope.markCategorySelected = function() {
+                    scope.$root.$broadcast("WallaShops.MenuTabSelected", { tab: "Category" });
+                };
+                
+            }
         };
     }];
 

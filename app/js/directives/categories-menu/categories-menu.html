@@ -2,20 +2,20 @@
 <div class="menu">
     
     <ul class="nav nav-tabs" >
-        <li class="category-tab active" >
+        <li class="category-tab" ng-class="{'active': isCategories || !hasFilter}" ng-click="markCategorySelected()">
             <a href="#categories" data-toggle="tab">קטגוריות</a>
         </li>
 
-        <li class="filter-tab" ng-class="{'disable': !hasFilter}" >
+        <li class="filter-tab" ng-class="{'disable': !hasFilter, 'active': !isCategories && hasFilter}" ng-click="markFilterSelected()">
             <a href="#filter" data-toggle="tab">סינון</a>
         </li>
     </ul>
 
     <div class="tab-content">
-        <div class="tab-pane active" id="categories">
+        <div class="tab-pane"  ng-class="{'active': isCategories || !hasFilter}"  id="categories">
             <ws-categories load="loadCategories()" selected-category="selectedCategory"></ws-categories>
         </div>
-        <div class="tab-pane" id="filter">
+        <div class="tab-pane" ng-class="{'disable': !hasFilter, 'active': !isCategories && hasFilter}" id="filter">
             <ws-filter load="loadFilters()" selected-category="selectedCategory" has-filter="hasFilter"></ws-filter>
         </div>
     </div>

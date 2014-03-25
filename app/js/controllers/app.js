@@ -7,12 +7,12 @@
         "productDetailsPresenter",
         "categoryService",
         "$q",
-    function ($scope, $location,$window, productDetailsPresenter, categoryService, $q) {
-        $scope.stopProgress = function() {
+    function ($scope, $location, $window, productDetailsPresenter, categoryService, $q) {
+        $scope.stopProgress = function () {
             $scope.loading = false;
         };
 
-        $scope.notifyProgress = function(context) {
+        $scope.notifyProgress = function (context) {
             $scope.loading = true;
             return $q.when(context);
         };
@@ -20,12 +20,11 @@
         $scope.productsToCompare = [];
 
         $scope.publishRemoveProduct = function (product) {
-            
+
             $scope.$root.$broadcast("WallaShops.ProductDeleted", { product: product });
         };
 
         $scope.goBack = function () {
-            console.log("?????");
             $window.history.back();
         };
 
@@ -35,10 +34,12 @@
         };
 
         $scope.$on("WallaShops.ProductDeleted", onProductDeleted);
-        
+
         $scope.showProduct = function (product) {
             productDetailsPresenter.showProduct(product);
         };
+
+        
 
         $scope.$watch("currentCategory", function (category) {
             if (category) {
@@ -64,10 +65,12 @@
                 $scope.productsToCompare = [];
                 clearSelectedFilterValues();
             }
-            
+
             $scope.searchTerm = null;
             $scope.currentCategory = args.category;
         }
+
+
 
         $scope.$on("WallaShops.SelectCategoryRequested", onCategorySelected);
         $scope.$on("WallaShops.CategorySelected", onCategorySelected);
@@ -88,7 +91,15 @@
         $scope.searchText = function () {
             $location.path("/Search");
         };
+        $scope.isCategories = true;
+        $scope.$on("WallaShops.MenuTabSelected", function(eventInfo, args) {
+            $scope.isCategories = args.tab == "Category";
+        });
+        
+
         $scope.loadCategories();
+
+
     }];
 
 })(_, Simple, WallaShops);
