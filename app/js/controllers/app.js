@@ -19,11 +19,13 @@
 
         $scope.productsToCompare = [];
 
-        $scope.publishRemoveProduct = function () {
-            $scope.$root.$broadcast("WallaShops.ProductDeleted", { product: $scope.product });
+        $scope.publishRemoveProduct = function (product) {
+            
+            $scope.$root.$broadcast("WallaShops.ProductDeleted", { product: product });
         };
 
         function onProductDeleted(eventInfo, args) {
+            console.log("onProductDeleted", eventInfo, args);
             $scope.productsToCompare.splice($scope.productsToCompare.indexOf(args.product), 1);
 
         };

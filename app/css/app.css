@@ -291,14 +291,16 @@ input[type=submit].search-button {
     width: 990px;
     height: 600px;
     position: absolute;
-    top: 0;
+    top: 25px;
     overflow: hidden;
 }
 
 .search-page .products-list-content {
     position: relative;
-    top: 35px;
     height: 600px;
+    width: 1110px;
+    overflow-x: scroll;
+    top: 35px;
 }
 
 .search-page .comparison-products-container {
@@ -788,6 +790,7 @@ border-top: solid 1px #BBB;
 }
 
 .comparison-page .remove-product {
+position: relative;
     height: 28px;
     line-height: 28px;
     color: white;
@@ -946,6 +949,7 @@ border-top: solid 1px #BBB;
     position: inherit;
     color: #333;
     font-weight: normal;
+    z-index: 111;
 }
 
 .product-info .comparison {
@@ -1078,6 +1082,7 @@ border-top: solid 1px #BBB;
     top: 0;
     bottom: 0;
     right: 0;
+    z-index: 1010;
 }
 
 

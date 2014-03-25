@@ -10,15 +10,12 @@
                 <li class="main-bread-cramb" ng-hide="true">ראשי <span>&gt;</span> </li>
                 <li class="ancestor" ng-if="currentCategory.parent.parent" ng-hide="true">{{currentCategory.parent.parent.title}} <span>&gt;</span> </li>
                 <li class="parent" ng-click="selectCategoryById(currentCategory.parent.id)" ng-if="currentCategory.parent" ng-hide="true">{{currentCategory.parent.title}} <span>&gt;</span> </li>
-                <li class="current-category">{{currentCategory.title}}</li>
+                <li class="current-category">מוצרים נבחרים בקטגורית {{currentCategory.title}}</li>
             </ul>
             <ul class="filter-path">
                 <li class="filters-on-path" ng-repeat="filter in selectedFilterValues.values" ng-show="isFilterValueNotEmpty(filter.value)">
                     {{filter.value.title}} <span>|</span>
                 </li>
-
-                <li ng-show="!isFilterValueNotEmpty(selectedFilterValues)" ng-hide="true">מוצרים נבחרים לקטגוריה</li>
-
 
                 <li class="clear-filter-path" ng-show="isFilterValueNotEmpty(selectedFilterValues)">
                     <div class="clear-filter" ng-click="clearSelectedFilterValues()">נקה סינון</div>
@@ -34,10 +31,9 @@
         <div class="loading" ng-show="loading"></div>
         <div ng-hide="loading"></div>
         <div class="search-left-arrow top" ng-show="canNavigateNext()"><i class="fa fa-chevron-left"></i></div>
-        <div class="search-right-arrow top" ng-show="canNavigateBack()"><i class="fa fa-chevron-right"></i></div>
         <div class="products-list-content" ng-show="productsLine1.length">
-            <products-list-items products="currentProductsPage1" show-product="showProduct(product)" selected-items="productsToCompare" is-search-page="true" max-selection="maxSelection" is-checked-to-compare="isCheckedToCompare(product)"></products-list-items>
-            <products-list-items products="currentProductsPage2" show-product="showProduct(product)" selected-items="productsToCompare" is-search-page="true" max-selection="maxSelection" is-checked-to-compare="isCheckedToCompare(product)"></products-list-items>
+            <products-list-items products="currentProductsPage1" products-line=" productsLine1" show-product="showProduct(product)" selected-items="productsToCompare" is-search-page="true" max-selection="maxSelection" is-checked-to-compare="isCheckedToCompare(product)"></products-list-items>
+            <products-list-items products="currentProductsPage2" products-line=" productsLine2" show-product="showProduct(product)" selected-items="productsToCompare" is-search-page="true" max-selection="maxSelection" is-checked-to-compare="isCheckedToCompare(product)"></products-list-items>
         </div>
         <div class="search-left-arrow bottom" ng-show="canNavigateNext()"><i class="fa fa-chevron-left"></i></div>
         <div class="search-right-arrow bottom" ng-show="canNavigateBack()"><i class="fa fa-chevron-right"></i></div>

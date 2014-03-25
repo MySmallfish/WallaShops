@@ -5,6 +5,7 @@
         templateUrl: 'app/js/directives/products-list-items/products-list-items.html',
         scope: {
             products: "=",
+            productsLine:"=",
             showProduct: "&",
             selectedItems: "=",
             isSearchPage: "=",

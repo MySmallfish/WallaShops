@@ -47,11 +47,11 @@
         function updateProductPage() {
             if ($scope.navigationInfo && $scope.productsLine1) {
                 var visibleProducts1 = $filter("skip")($scope.productsLine1, $scope.navigationInfo.startIndex);
-                $scope.currentProductsPage1 = $filter("limitTo")(visibleProducts1, $scope.step);
+                $scope.currentProductsPage1 = $filter("limitTo")(visibleProducts1, $scope.step+1);
             }
             if ($scope.navigationInfo && $scope.productsLine2) {
                 var visibleProducts2 = $filter("skip")($scope.productsLine2, $scope.navigationInfo.startIndex);
-                $scope.currentProductsPage2 = $filter("limitTo")(visibleProducts2, $scope.step);
+                $scope.currentProductsPage2 = $filter("limitTo")(visibleProducts2, $scope.step+1);
             }
         };
 
