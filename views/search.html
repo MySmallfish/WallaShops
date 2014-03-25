@@ -1,5 +1,6 @@
 ﻿<div class="search-page">
-
+    
+    <div class="back-button"><button type="button" class="btn btn-default" ng-click="goBack()">חזור</button></div>
 
     <div ng-switch on="!!searchTerm">
         <div class="search-term" ng-switch-when="true">
@@ -13,8 +14,7 @@
                 <li class="current-category">מוצרים נבחרים בקטגורית {{currentCategory.title}}</li>
             </ul>
             <ul class="filter-path">
-                <li class="filters-on-path" ng-repeat="filter in selectedFilterValues.values" ng-show="isFilterValueNotEmpty(filter.value)">
-                    {{filter.value.title}} <span>|</span>
+                <li class="filters-on-path" ng-repeat="filter in selectedFilterValues.values" ng-show="isFilterValueNotEmpty(filter.value)">{{filter.value.title}} <span>|</span>
                 </li>
 
                 <li class="clear-filter-path" ng-show="isFilterValueNotEmpty(selectedFilterValues)">
@@ -25,12 +25,12 @@
     </div>
 
     <div class="products-list-container clear"
-         ng-swipe-right="navigateNext()"
-         ng-swipe-left="navigateBack()"
-         ng-class="{ 'next-animation' : movedToNext, 'previous-animation' : movedToPrevious}">
+        ng-swipe-right="navigateNext()"
+        ng-swipe-left="navigateBack()"
+        ng-class="{ 'next-animation' : movedToNext, 'previous-animation' : movedToPrevious}">
         <div class="loading" ng-show="loading"></div>
         <div ng-hide="loading"></div>
-        
+
         <div class="no-products" ng-show="!loading && !currentProductsPage1.length"><b>לא קיימים מוצרים בקטגוריה</b></div>
         <div class="products-list-content" ng-show="productsLine1.length">
             <products-list-items products="currentProductsPage1" products-line=" productsLine1" show-product="showProduct(product)" selected-items="productsToCompare" is-search-page="true" max-selection="maxSelection" is-checked-to-compare="isCheckedToCompare(product)"></products-list-items>

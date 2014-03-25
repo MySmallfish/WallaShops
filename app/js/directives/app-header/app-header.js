@@ -12,11 +12,6 @@
                 window.open(wsUrl + "/service/customer/CustomerMainPage.aspx", "_blank");
             };
 
-            $scope.goBack = function() {
-                window.history.back();
-
-            };
-
             $scope.preventefault = function($event) {
                 $event.preventDefault();
             };

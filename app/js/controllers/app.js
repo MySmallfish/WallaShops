@@ -3,10 +3,11 @@
     WS.AppController = [
         "$scope",
         "$location",
+        "$window",
         "productDetailsPresenter",
         "categoryService",
         "$q",
-    function ($scope, $location, productDetailsPresenter, categoryService, $q) {
+    function ($scope, $location,$window, productDetailsPresenter, categoryService, $q) {
         $scope.stopProgress = function() {
             $scope.loading = false;
         };
@@ -21,6 +22,11 @@
         $scope.publishRemoveProduct = function (product) {
             
             $scope.$root.$broadcast("WallaShops.ProductDeleted", { product: product });
+        };
+
+        $scope.goBack = function () {
+            console.log("?????");
+            $window.history.back();
         };
 
         function onProductDeleted(eventInfo, args) {

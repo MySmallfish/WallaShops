@@ -108,14 +108,14 @@ header
 {
     position: relative;
     width: 170px;
-    right: 59px;
+    right: 15px;
 }
 
 .header-category
 {
     position: absolute;
     top: 0;
-    left: 10px;
+    left: 32px;
 }
 
 .category
@@ -1275,3 +1275,19 @@ border-top: solid 1px #BBB;
     padding-right: 5px;
     padding-left: 5px;
 }
+
+.back-button
+{
+    position: absolute;
+    left: 50px;
+    top: 20px;
+}
+
+    .back-button button.btn
+    {
+        width: 80px;
+        border: 1px solid #aaa;
+        font-weight: bold;
+        font-size: 12pt;
+        color: #444;
+    }
