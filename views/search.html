@@ -46,7 +46,7 @@
                 <div class="mark-to-compare" ng-show="!isAnyProductSelected()">סמן להשוואה</div>
 
                 <div class="comparison-products-container" ng-repeat="product in productsToCompare">
-                    <div class="remove-product" ng-click="publishRemoveProduct()">
+                    <div class="remove-product" ng-click="publishRemoveProduct(product)">
                         <i class="fa fa-times"></i>
                     </div>
                     <img ng-src="{{product.imageUrl}}" />

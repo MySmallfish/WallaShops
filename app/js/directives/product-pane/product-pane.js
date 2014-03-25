@@ -38,8 +38,6 @@
                 }
             };
 
-            
-
             function isChecked() {
                 if (scope.isCheckedToCompare(scope.product)) {
                     scope.checked = true;
@@ -97,6 +95,16 @@
                 }
                 return mappedIcon;
             }
+            
+            function onProductDeleted(eventInfo, args) {
+                console.log("remove", scope.checked);
+                
+                if (scope.product.id === args.product.id) {
+                    scope.checked = false;
+                }
+            }
+
+            scope.$on("WallaShops.ProductDeleted", onProductDeleted);
 
             scope.product.icons = _.map(scope.product.icons, mapIcon);
             isChecked();

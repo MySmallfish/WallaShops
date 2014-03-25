@@ -16,7 +16,6 @@
             return $q.when(context);
         };
 
-
         $scope.productsToCompare = [];
 
         $scope.publishRemoveProduct = function (product) {
@@ -25,7 +24,6 @@
         };
 
         function onProductDeleted(eventInfo, args) {
-            console.log("onProductDeleted", eventInfo, args);
             $scope.productsToCompare.splice($scope.productsToCompare.indexOf(args.product), 1);
 
         };
