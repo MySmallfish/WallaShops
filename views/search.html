@@ -31,6 +31,7 @@
         <div class="loading" ng-show="loading"></div>
         <div ng-hide="loading"></div>
         <div class="search-left-arrow top" ng-show="canNavigateNext()"><i class="fa fa-chevron-left"></i></div>
+        <div class="no-products" ng-show="!loading && !currentProductsPage1.length && !currentProductsPage2.length"><b>לא קיימים מוצרים בקטגוריה</b></div>
         <div class="products-list-content" ng-show="productsLine1.length">
             <products-list-items products="currentProductsPage1" products-line=" productsLine1" show-product="showProduct(product)" selected-items="productsToCompare" is-search-page="true" max-selection="maxSelection" is-checked-to-compare="isCheckedToCompare(product)"></products-list-items>
             <products-list-items products="currentProductsPage2" products-line=" productsLine2" show-product="showProduct(product)" selected-items="productsToCompare" is-search-page="true" max-selection="maxSelection" is-checked-to-compare="isCheckedToCompare(product)"></products-list-items>
