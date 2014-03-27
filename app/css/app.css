@@ -811,7 +811,7 @@ div, i
 {
     overflow: auto;
     padding-bottom: 1px;
-    margin-right: 143px;
+    margin-right: 123px;
     -webkit-overflow-scrolling: touch;
 }
 
@@ -832,7 +832,6 @@ div, i
 
     .table-background td div.inner
     {
-        min-height: 120px;
     }
 
 .compare-table td, .compare-table thead th
@@ -842,11 +841,10 @@ div, i
 
 .compare-table td
 {
-    position: relative;
     background-color: white;
     min-width: 80px;
     white-space: nowrap;
-    height: 100px;
+    height: 140px;
     text-align: center;
 }
 
@@ -863,7 +861,7 @@ div, i
     padding-left: 10px;
 }
 
-/*.compare-table thead th.headcol .inner {
+.compare-table thead th.headcol .inner {
 width: 122px;
 margin-top: -2px;
 border-top: solid 1px #BBB;    
@@ -878,12 +876,12 @@ border-top: solid 1px #BBB;
     right: 0;
     top: auto;
     background-color: white;
-}*/
+}
 
 .add-product-to-compare
 {
     background-color: #555;
-    width: 90px;
+    width: 100px;
     height: 90px;
 }
 

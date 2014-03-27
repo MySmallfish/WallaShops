@@ -8,14 +8,16 @@
 
     <div class="loading" ng-show="loading"></div>
     <div class="table-background">
-        <div class="comparison-products-table">
-            <table class="compare-table">
-                <thead>
+        <div class="table-container" ng-hide="loading">
+            <table class="compare-table" ng-style="{width: (150*features.length) + 'px'}">
+                <thead ng-show="!isEmpty()">
                     <tr>
                         <th class="headcol"><div class="inner">מוצרים</div></th>
+                        <th ng-repeat="feature in features">{{feature.header}}</th>
                     </tr>
                 </thead>
                 <tbody>
+                    
                     <tr ng-repeat="product in productsToCompare" ng-show="!isEmpty()">
                         <td class="headcol">
                             <div class="remove-product" ng-click="publishRemoveProduct()">
@@ -24,28 +26,7 @@
                             <div class="inner">
                                 <img ng-src="{{ product.imageUrl }}" />
                             </div>
-                        </td>
-                    </tr>
-                    <tr ng-show="!isFull()">
-                        <td class="headcol">
-                            <div class="inner addproduct">
-                                <div class="add-product-to-compare" ng-click="addPruduct()"></div>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="table-container" ng-hide="loading">
-            <table class="compare-table" ng-style="{width: (150*features.length) + 'px'}">
-                <thead ng-show="!isEmpty()">
-                    <tr>
-
-                        <th ng-repeat="feature in features">{{feature.header}}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="product in productsToCompare" ng-show="!isEmpty()">
+                        </td>                        
                         <td ng-repeat="feature in features">
                             <div class="inner">
                                 {{feature.values[product.id]}}
@@ -53,6 +34,11 @@
                         </td>
                     </tr>
                     <tr ng-show="!isFull()">
+                        <td class="headcol">
+                            <div class="inner addproduct">
+                                <div class="add-product-to-compare" ng-click="addPruduct()"></div>
+                            </div>
+                        </td>                        
                         <td ng-repeat="feature in features">
                             <div class="inner">&nbsp;</div>
                         </td>
