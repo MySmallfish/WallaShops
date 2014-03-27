@@ -61,11 +61,11 @@
         };
 
         function isFilterSelected(filter) {
-            return $scope.selectedFilter === filter;
+            return $scope.$root.selectedFilter === filter;
         };
 
         function clearSelectedFilter() {
-            $scope.selectFilter(null);
+            $scope.$root.selectedFilter = null;
         };
 
         function clearSelectedFilterValues() {
@@ -73,16 +73,16 @@
                 filter.selectedValue = null;
             });
             $scope.$root.selectedFilterValues = null;
-            
+            clearSelectedFilter();
             publishClearedEvent();
         };
 
         function isAnyFilterSelected() {
-            return $scope.selectedFilter;
+            return $scope.$root.selectedFilter;
         };
 
         function selectFilter(filter) {
-            $scope.selectedFilter = filter;
+            $scope.$root.selectedFilter = filter;
             publishFilterSelectedEvent();
         };
 

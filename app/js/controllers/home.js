@@ -3,6 +3,7 @@
     WS.HomeController = ["$scope", "promotionsService", "productService", "$q", function ($scope, promotionsService, productService, $q) {
 
         $scope.openPromotion = function (url) {
+            console.log("OPEN!")
             if (url) {
                 promotionsService.openPromotion(url);
             }
@@ -17,19 +18,45 @@
         }
 
         function swipeNext(promotion) {
-            var nextIndex = ($scope.main_promotions.indexOf(promotion) + 1);
-            if (nextIndex >= $scope.main_promotions.length) {
-                nextIndex -= $scope.main_promotions.length;
-            }
-            $scope.selectedPromotion = $scope.main_promotions[nextIndex];
+            console.log("SWIPE?", promotion);
         }
 
+        $scope.direction = 'left';
+        $scope.currentIndex = 0;
+        function setCurrentSlideIndex(index) {
+            $scope.direction = (index > $scope.currentIndex) ? 'left' : 'right';
+            $scope.currentIndex = index;
+            $scope.selectedPromotion = $scope.main_promotions[index];
+        };
+
+        function next() {
+            console.log("NEXT!");
+
+            $scope.direction = 'right';
+            setCurrentSlideIndex(($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.main_promotions.length - 1);
+
+            //var nextIndex = ($scope.main_promotions.indexOf($scope.selectedPromotion) + 1);
+            //if (nextIndex >= $scope.main_promotions.length) {
+            //    nextIndex -= $scope.main_promotions.length;
+            //}
+            //$scope.selectedPromotion = $scope.main_promotions[nextIndex];
+        }
+        function back() {
+            console.log("BACK!");
+            $scope.direction = 'left';
+            setCurrentSlideIndex(($scope.currentIndex < $scope.main_promotions.length - 1) ? ++$scope.currentIndex : 0);
+
+            //var backIndex = ($scope.main_promotions.indexOf($scope.selectedPromotion) - 1);
+            //if (backIndex < 0) {
+            //    backIndex += $scope.main_promotions.length;
+            //}
+            //$scope.selectedPromotion = $scope.main_promotions[backIndex];
+        }
+
+
         function swipeBack(promotion) {
-            var backIndex = ($scope.main_promotions.indexOf(promotion) - 1);
-            if (backIndex < 0) {
-                backIndex += $scope.main_promotions.length;
-            }
-            $scope.selectedPromotion = $scope.main_promotions[backIndex];
+            console.log("SWIPE?", promotion);
+
         }
 
         function getRandom(max) {
@@ -52,7 +79,12 @@
             select: select,
             isSelected: isSelected,
             swipeNext: swipeNext,
-            swipeBack: swipeBack
+            swipeBack: swipeBack,
+            next: next,
+            back: back,
+            write: function() {
+                console.log("WWW");
+            }
         });
 
         $scope.firstPromotion = null;

@@ -1,9 +1,9 @@
 ﻿<div ng-class="{'somethingSelected': isAnyFilterSelected()}">
     <ul class="filters-menu">
 
-        <li class="category-container">
-            <div class="clear-filter" ng-click="clearSelectedFilterValues()">נקה סינון</div>
-            <div class="category-name" ng-click="clearSelectedFilter()">שם הקטגוריה</div>
+        <li class="category-container" ng-click="clearSelectedFilterValues()">
+            <div class="clear-filter">נקה סינון</div>
+            <div class="category-name">{{selectedCategory.title}}</div>
         </li>
 
         <li ng-repeat="filter in filters|limitTo: 4" ng-click="selectFilter(filter);">
