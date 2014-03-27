@@ -4,8 +4,7 @@
     <div class="product-info">
 
         <div class="check-box" ng-click="check($event)" ng-class="{'checked': checked }" ng-show="isSearchPage">
-            <div ng-show="!checked">לחץ להשוואה</div>
-            <div ng-show="checked">בטל השוואה</div>
+            {{ !checked ?'לחץ להשוואה':'בטל השוואה' }}
         </div>
 
         <img class="productImg" ng-class="{'compared': isCompared}" ng-src="{{ product.imageUrl }}" s-local-cache />

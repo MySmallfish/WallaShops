@@ -1291,3 +1291,7 @@ border-top: solid 1px #BBB;
         font-size: 12pt;
         color: #444;
     }
+
+    table {
+        max-width: none;
+    }
