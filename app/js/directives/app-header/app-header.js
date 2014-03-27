@@ -9,7 +9,7 @@
             var wsUrl = config.wsUrl;
 
             $scope.openUserCard = function () {
-                window.open(wsUrl + "/service/customer/CustomerMainPage.aspx", "_blank");
+                window.open(wsUrl + "/service/customer/CustomerMainPage.aspx", "_system");
             };
 
             $scope.preventefault = function($event) {
