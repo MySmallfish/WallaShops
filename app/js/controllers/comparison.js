@@ -33,10 +33,13 @@
         };
         
         $scope.notifyProgress()
+            .then(function() {
+                $scope.features = [];
+            })
             .then($scope.getFeatures)
             .finally($scope.stopProgress);
 
-        $scope.features = [];
+        
 
         
 
