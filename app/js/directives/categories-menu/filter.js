@@ -15,6 +15,7 @@
     }];
 
     WS.FilterController = ["$scope", function ($scope) {
+        
         function loadFilters() {
             var result = $scope.load();
 
