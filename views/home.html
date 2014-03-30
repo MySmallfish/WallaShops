@@ -1,35 +1,40 @@
 ﻿<div class="home-page">
     <div class="loading" ng-show="loading"></div>
+    <div class="fatal-error" ng-show="!isOnline || fatalError" s-online>
+        <div class="alert alert-danger" ng-show="fatalError">לא ניתן להתחבר לשרת, אירעה שגיאה בלתי צפויה. נא להפעיל את האפליקציה מחדש.</div>
+        <div class="alert alert-warning" s-online ng-hide="isOnline">האפליקציה דורשת חיבור רשת פעיל. יש להתחבר לרשת ולנסות שוב.</div>
+        <br/>
+        <a href="#" ng-click="reload()">נסה שנית</a>
+    </div>
     <div class="promotions">
         <div class="promotions-container"
-             ng-swipe-left="back()" ng-swipe-right="next()">
+             ng-swipe-left="back()" ng-swipe-right="next()"
+             ng-click="openPromotion(selectedPromotion.link.url)">
             <div class="main-promotion">
                 <!--  <div>
-                <ul class="nav nav-tabs">
+            <ul class="nav nav-tabs">
 
-                    <li ng-repeat="promotion in main_promotions" ng-class="{'active': isSelected(promotion)}" ng-click="select(promotion)">
-                        <a ng-href="#Promotion_{{promotion.id}}" data-toggle="tab">{{promotion.title.text}}</a>
-                        <div class="promotion-arrow" ng-show="isSelected(promotion)"><i class="fa fa-caret-up"></i></div>
-                    </li>
+                <li ng-repeat="promotion in main_promotions" ng-class="{'active': isSelected(promotion)}" ng-click="select(promotion)">
+                    <a ng-href="#Promotion_{{promotion.id}}" data-toggle="tab">{{promotion.title.text}}</a>
+                    <div class="promotion-arrow" ng-show="isSelected(promotion)"><i class="fa fa-caret-up"></i></div>
+                </li>
 
-                </ul>
+            </ul>
 
-                <div class="tab-content">
-                also removed 'tab-pane'
-                -->
-                <div class="promotion slide-animation"
+            <div class="tab-content">
+            also removed 'tab-pane'
+            -->
+                <div class="promotion"
                      id="Promotion_{{promotion.id}}"
                      ng-class="{'active': isSelected(promotion)}"
-                     ng-repeat="promotion in main_promotions"
-                     n-g-swipe-right="swipeNext(promotion)"
-                     n-g-swipe-left="swipeBack(promotion)"
-                     n-g-click="openPromotion(promotion.link.url)">
+                     ng-show="isSelected(promotion)"
+                     ng-repeat="promotion in main_promotions">
                     <img ng-src="{{promotion.image.url}}" alt="{{promotion.title.text}}" />
                 </div>
 
                 <!--</div>
 
-                </div>-->
+            </div>-->
             </div>
         </div>
 

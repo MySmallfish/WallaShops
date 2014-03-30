@@ -1,60 +1,72 @@
 ﻿<div class="search-page">
-    
+
     <div class="back-button"><button type="button" class="btn btn-default" ng-click="goBack()">חזור</button></div>
 
-    <div ng-switch on="!!searchTerm">
-        <div class="search-term" ng-switch-when="true">
-            מציג תוצאות חיפוש עבור "{{searchTerm}}"
+    <div ng-hide="fatalError || !isOnline">
+        <div ng-switch on="!!searchTerm">
+            <div class="search-term" ng-switch-when="true">
+                מציג תוצאות חיפוש עבור "{{searchTerm}}"
+            </div>
+            <div ng-switch-default>
+                <ul class="full-path">
+                    <li class="main-bread-cramb" ng-hide="true">ראשי <span>&gt;</span> </li>
+                    <li class="ancestor" ng-if="currentCategory.parent.parent" ng-hide="true">{{currentCategory.parent.parent.title}} <span>&gt;</span> </li>
+                    <li class="parent" ng-click="selectCategoryById(currentCategory.parent.id)" ng-if="currentCategory.parent" ng-hide="true">{{currentCategory.parent.title}} <span>&gt;</span> </li>
+                    <li class="current-category">מוצרים נבחרים בקטגורית {{currentCategory.title}}</li>
+                </ul>
+                <ul class="filter-path">
+                    <li class="filters-on-path" ng-repeat="filter in selectedFilterValues.values" ng-show="isFilterValueNotEmpty(filter.value)">
+                        {{filter.value.title}} <span>|</span>
+                    </li>
+
+                    <li class="clear-filter-path" ng-show="isFilterValueNotEmpty(selectedFilterValues)">
+                        <div class="clear-filter" ng-click="clearSelectedFilterValues()">נקה סינון</div>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div ng-switch-default>
-            <ul class="full-path">
-                <li class="main-bread-cramb" ng-hide="true">ראשי <span>&gt;</span> </li>
-                <li class="ancestor" ng-if="currentCategory.parent.parent" ng-hide="true">{{currentCategory.parent.parent.title}} <span>&gt;</span> </li>
-                <li class="parent" ng-click="selectCategoryById(currentCategory.parent.id)" ng-if="currentCategory.parent" ng-hide="true">{{currentCategory.parent.title}} <span>&gt;</span> </li>
-                <li class="current-category">מוצרים נבחרים בקטגורית {{currentCategory.title}}</li>
-            </ul>
-            <ul class="filter-path">
-                <li class="filters-on-path" ng-repeat="filter in selectedFilterValues.values" ng-show="isFilterValueNotEmpty(filter.value)">{{filter.value.title}} <span>|</span>
-                </li>
 
-                <li class="clear-filter-path" ng-show="isFilterValueNotEmpty(selectedFilterValues)">
-                    <div class="clear-filter" ng-click="clearSelectedFilterValues()">נקה סינון</div>
-                </li>
-            </ul>
+        <div class="products-list-container clear"
+             n-g-swipe-right="navigateNext()"
+             n-g-swipe-left="navigateBack()"
+             ng-class="{ 'next-animation' : movedToNext, 'previous-animation' : movedToPrevious}">
+            <div class="loading" ng-show="loading"></div>
+            <div ng-hide="loading"></div>
+
+            <div class="no-products" ng-show="!loading && !currentProductsPage1.length"><b>לא קיימים מוצרים בקטגוריה</b></div>
+            <div class="products-list-content" ng-show="productsLine1.length">
+                <products-list-items products="currentProductsPage1" products-line=" productsLine1" show-product="showProduct(product)" selected-items="productsToCompare" is-search-page="true" max-selection="{{maxSelection}}" is-checked-to-compare="isCheckedToCompare(product)"></products-list-items>
+                <products-list-items products="currentProductsPage2" products-line=" productsLine2" show-product="showProduct(product)" selected-items="productsToCompare" is-search-page="true" max-selection="{{maxSelection}}" is-checked-to-compare="isCheckedToCompare(product)"></products-list-items>
+            </div>
+            <div class="search-left-arrow bottom" ng-show="canNavigateNext()"><i class="fa fa-chevron-left"></i></div>
+            <div class="search-right-arrow bottom" ng-show="canNavigateBack()"><i class="fa fa-chevron-right"></i></div>
         </div>
-    </div>
 
-    <div class="products-list-container clear"
-        n-g-swipe-right="navigateNext()"
-        n-g-swipe-left="navigateBack()"
-        ng-class="{ 'next-animation' : movedToNext, 'previous-animation' : movedToPrevious}">
-        <div class="loading" ng-show="loading"></div>
-        <div ng-hide="loading"></div>
+        <div class="bottom" ng-hide="!loading && !currentProductsPage1.length">
+            <div class="products-comparison-wrapper">
+                <div class="comparison-products" ng-show="isAnyProductSelected()">
+                    <div class="comparison-products-container" ng-repeat="product in productsToCompare">
+                        <div class="remove-product" ng-click="publishRemoveProduct(product)">
+                            <i class="fa fa-times"></i>
+                        </div>
+                        <img ng-src="{{product.imageUrl}}" />
 
-        <div class="no-products" ng-show="!loading && !currentProductsPage1.length"><b>לא קיימים מוצרים בקטגוריה</b></div>
-        <div class="products-list-content" ng-show="productsLine1.length">
-            <products-list-items products="currentProductsPage1" products-line=" productsLine1" show-product="showProduct(product)" selected-items="productsToCompare" is-search-page="true" max-selection="{{maxSelection}}" is-checked-to-compare="isCheckedToCompare(product)"></products-list-items>
-            <products-list-items products="currentProductsPage2" products-line=" productsLine2" show-product="showProduct(product)" selected-items="productsToCompare" is-search-page="true" max-selection="{{maxSelection}}" is-checked-to-compare="isCheckedToCompare(product)"></products-list-items>
-        </div>
-        <div class="search-left-arrow bottom" ng-show="canNavigateNext()"><i class="fa fa-chevron-left"></i></div>
-        <div class="search-right-arrow bottom" ng-show="canNavigateBack()"><i class="fa fa-chevron-right"></i></div>
-    </div>
-
-    <div class="bottom" ng-hide="!loading && !currentProductsPage1.length">
-        <div class="products-comparison-wrapper">
-            <div class="comparison-products" ng-show="isAnyProductSelected()">
-                <div class="comparison-products-container" ng-repeat="product in productsToCompare">
-                    <div class="remove-product" ng-click="publishRemoveProduct(product)">
-                        <i class="fa fa-times"></i>
                     </div>
-                    <img ng-src="{{product.imageUrl}}" />
 
                 </div>
-
+                <div class="go-to-comparison" ng-show="isAnyProductSelected()" ng-click="openCamperisonPage()">להשוואה</div>
             </div>
-            <div class="go-to-comparison" ng-show="isAnyProductSelected()" ng-click="openCamperisonPage()">להשוואה</div>
         </div>
+
     </div>
+    <div class="fatal-error" ng-show="!isOnline || fatalError" s-online>
+        <div class="alert alert-danger" ng-show="fatalError">לא ניתן להתחבר לשרת, אירעה שגיאה בלתי צפויה. נא להפעיל את האפליקציה מחדש.</div>
+        <div class="alert alert-warning" s-online ng-hide="isOnline">האפליקציה דורשת חיבור רשת פעיל. יש להתחבר לרשת ולנסות שוב.</div>
+        <br />
+        <a href="#" ng-click="refresh()">נסה שנית</a>
+    </div>
+
+
 
 </div>
 

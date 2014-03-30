@@ -279,24 +279,26 @@ input[type=submit].search-button {
     margin-left: 260px;
     position: relative;
     overflow: hidden;
-    height: 208px;
     width: 645px;
     pointer-events: none;
 }
 
 .promotion {
-    position: absolute;
-    top: 0;
-    width: 645px;
-    height: 208px;
-    left: -700px;
-
+    opacity: 1;
 }
 
-
-.promotion.active {
-    left: 0;
-    -webkit-transition: left 0.8s;
+.promotion.ng-hide-add,
+.promotion.ng-hide-remove {
+  display:block!important;
+}
+.promotion.ng-hide-add.ng-hide-add-active,
+.promotion.ng-hide-remove.ng-hide-remove-active {
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+}
+ 
+.promotion.ng-hide {
+  opacity:0;
 }
 
 
@@ -1164,4 +1166,14 @@ table {
 right: 14px;
 top: 14px;
 opacity: 0.9;
+}
+
+.fatal-error {
+    margin: 60px;
+    font-size: 14pt;
+    text-align: center;
+}
+
+.fatal-error .alert {
+    text-align: right;
 }

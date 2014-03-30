@@ -146,7 +146,10 @@
         $scope.$watch("currentCategory", refresh);
         $scope.$watch("selectedFilterValues", refresh);
 
-
+        
+        function displayError(error) {
+            $scope.fatalError = error;
+        }
         function refresh() {
             $scope.notifyProgress()
                 .then(extractCategoryParameters)
@@ -154,6 +157,7 @@
                 .then(fetch)
                 .then(load)
                 .then(resetNavigation)
+                .catch(displayError)
                 .finally($scope.stopProgress);
 
         }

@@ -1,6 +1,6 @@
 ﻿(function (_, S, WS) {
 
-    WS.HomeController = ["$scope", "promotionsService", "productService", "$q", function ($scope, promotionsService, productService, $q) {
+    WS.HomeController = ["$scope", "promotionsService", "productService", "$q", "network", function ($scope, promotionsService, productService, $q, network) {
 
         $scope.openPromotion = function (url) {
             console.log("OPEN!")
@@ -125,12 +125,20 @@
 
         }
 
-        $scope.notifyProgress()
-            .then(loadMainPromotions)
-            .then(loadSidePromotions)
-            .then(loadCategoryPromotions)
-            .finally($scope.stopProgress);
+        function displayError (error) {
+            $scope.fatalError = error;
+        }
+        $scope.reload = function () {
+            $scope.notifyProgress()
+                .then(loadMainPromotions)
+                .then(loadSidePromotions)
+                .then(loadCategoryPromotions)
+                .catch(displayError)
+                .finally($scope.stopProgress);
+        }
 
+        
+        $scope.reload();
 
     }];
 
