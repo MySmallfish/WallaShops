@@ -1,13 +1,13 @@
 ﻿<!doctype html>
-<html lang="he-IL" ng-app="WallaShops">
+<html lang="he-IL">
 <head>
     <meta charset="utf-8">
     <title>Walla! שופס</title>
     <!--<meta name="base-url" content="http://www.wallashops.co.il"/>-->
-    <meta name="base-url" content="http://dev.wallashops.co.il" />
+    <meta name="base-url" content="http://www.wallashops.co.il" />
     <meta name="ws-url" content="http://www.wallashops.co.il">
     <meta name="auto-close-at-level" content="1">
-    <meta name="version" content="1.1.34"/>
+    <meta name="version" content="1.1.35"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" type="text/css" href="lib/bootstrap/rtl/css/bootstrap.rtl.css" />
     <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -20,15 +20,16 @@
     <body class="rtl swipe-animations-enabled" ng-controller="AppCtrl">
         <!--<button class="set">SET IMAGE!!!</button>
         <img class="host"/>-->
-         <div class="content-container">
-                <app-header></app-header>
+        <div class="content-container">
+            <div class="loading" ng-hide="true"></div>
+            <app-header></app-header>
 
-                <div class="content">
-                    <div class="container-fluid">
-                        <ng-view></ng-view>
-                    </div>
+            <div class="content">
+                <div class="container-fluid">
+                    <ng-view></ng-view>
                 </div>
             </div>
+        </div>
 
 
 
@@ -114,117 +115,20 @@
         <script src="app/js/app.js"></script>
         <script src="app/js/routes.js"></script>
         <script src="app/js/resources.js"></script>
-        <script>
         
-
-            function setImage() {
-                angular.element("html").injector().invoke(function(fileManager, remoteStorage, fileUtils) {
-                    var directory = "images2",
-                        fileName = "file-" + fileUtils.fileName(src);
-                    console.log("CACHING IMAGE ", src, " TO FILE ", fileName);
-
-                    function set(url) {
-                        console.log("STTING URL", url);
-                        $("img.host").attr("src", url);
-                        console.log("NEW URL: ", url, $(element).attr("src"));
-                    }
-
-                    function setLocalImageUrl(fileEntry) {
-                        console.log("SETTING FILE IMAGE URL", fileEntry.toNativeURL());
-                        if (fileEntry) {
-                            set(fileEntry.toNativeURL());
-                        }
-                    }
-
-                    function dowloadFile(fileEntry) {
-                        console.log("DOWNLOADING FILE: ", fileEntry.fullPath, fileEntry.toURL());
-                        remoteStorage.downloadFile({
-                            url: product.imageUrl,
-                            filePath: fileEntry.fullPath
-                        }).then(function(entry) {
-                            console.log("FILE DOWNLOADED: ", entry.fullPath, entry.toURL());
-                            setLocalImageUrl(entry);
-                        });
-                    }
-
-                    function downloadProductImage() {
-                        return fileManager.getFile(directory, fileName).then(dowloadFile);
-                    }
-
-                    fileManager.find(directory, fileName).then(setLocalImageUrl, downloadProductImage);
+        <script>
+            function onDeviceReady() {
+                angular.element(document).ready(function () {
+                    angular.bootstrap(document, ['WallaShops']);
                 });
             }
 
-        
-            document.addEventListener("deviceready", function () {
-                $("button.set").removeAttr("disabled");
-                $("button.set").click(setImage);
-            }, false);
-                //alert("READY!");
-                //$("#btn").click(function () {
-                //var fileTransfer = new FileTransfer();
-
-                //function onFileDownloaded(i) {
-                //    console.log("I", i);
-                //    $("#img").attr("src", i.toURL());
-                //    alert("FILE DOWNLOADED!!!");
-                //}
-
-                //function onFailure(e) {
-                //    console.error("Download error", e);
-                //    alert("DOWNLOAD ERROR, CODE: " + e.code);
-                //}
-
-                //window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
-
-                //    fileSystem.root.getDirectory("ImagesCache", { create: true, exclusive: false }, function(directoryEntry) {
-                //        //var file = directoryEntry.toURL() + "/testFile.jpg";
-                //        //window.resolveLocalFileSystemURI(file, function (localfileEntry) {
-
-                //        //    fileTransfer.download("http://ypk.cs4u.co.il/wbl_vcs31_P_Images/gto/pic/5BDgrggt_5.jpg", localfileEntry.fullPath, onFileDownloaded, onFailure);
-                //        //}, function(e) {
-                //        //    console.log("RESOLVE ERROR", e);
-                //        //})
-
-
-                //        directoryEntry.getFile("testfile.jpg", { create: true, exclusive: false }, function (localfileEntry) {
-
-                //            fileTransfer.download("https://s3.amazonaws.com/build.phonegap.com/45618926-687f-11e3-ad62-22000a98b3d6/icon.png", localfileEntry.toURL(), onFileDownloaded, onFailure);
-                //        }, function(err) {
-                //            console.error("FILE ERROR!", err);
-                //            alert("FILE ERROR");
-                //        });
-
-
-                //    }, function(e) {
-                //        console.error("DIRECTORY", e);
-                //        alert("DIRECTORY ERROR");
-                //    });
-
-
-//}, function(e) {
-                //    alert("FILE SYSTEM Error");
-                //});
-
-
-//var ref = window.open("http://billme.azurewebsites.net/api/values", "_blank", "location=no");
-                ////ref.addEventListener("loadstart", function () {
-                ////    ref.executeScript({
-                ////        code: "alert('HTML' + document.innerHTML );"
-                ////    });
-                ////});
-                //ref.addEventListener("loadstop", function () {
-                //    ref.executeScript({
-                //        code: "alert('STOP - HTML' + JSON.parse(document.body.innerText).Response.Name );"
-                //    });
-                //});
-
-                //ref.addEventListener("exit", function () {
-                //    navigator.notification.alert("BYE!");
-                //});
-            
-            
-            
+            if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
+                document.addEventListener("deviceready", onDeviceReady, false);
+            } else {
+                onDeviceReady(); //this is the browser
+            }
         </script>
+
     </body>
 </html>
