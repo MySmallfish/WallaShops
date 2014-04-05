@@ -1,0 +1,39 @@
+﻿<div ng-class="{'somethingSelected': isAnyFilterSelected()}">
+    <ul class="filters-menu">
+
+        <li class="category-container" ng-click="clearSelectedFilterValues()">
+            <div class="clear-filter">נקה סינון</div>
+            <div class="category-name">{{selectedCategory.title}}</div>
+        </li>
+
+        <li ng-repeat="filter in filters|limitTo: 4" ng-click="selectFilter(filter);">
+
+            <div class="category-container" ng-class="{'selected': isFilterSelected(filter) }">
+                <div class="category-dot">
+                    <i class="fa fa-circle"></i>
+                </div>
+                <div class="category-name">
+                    {{filter.title}}
+                </div>
+
+                <div class="category-arrow" ng-if="filter.values.length">
+                    <i class="fa" ng-class="{ 'fa-caret-left': !isFilterSelected(filter), 'fa-caret-down': isFilterSelected(filter)}"></i>
+                </div>
+            </div>
+
+            <ul ng-show="filter.values.length && isFilterSelected(filter)">
+                <li class="level1" ng-repeat="filterValue in filter.values" ng-click="selectFilterValue(filter, filterValue)">
+                    <div class="filter-container" ng-class="{'selected': isFilterValueSelected(filter, filterValue) }">
+
+                        <div class="filter-check">
+                            <i class="fa fa-check"></i>
+                        </div>
+                        <div class="category-name">
+                            {{filterValue.title}}
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

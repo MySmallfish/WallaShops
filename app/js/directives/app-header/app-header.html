@@ -1,44 +1,64 @@
 ﻿<header>
-    <div class="logo">
-        <a href="#">
-            <img src="app/img/logo.png">
-        </a>
+    
+    <div class="header-right-side">
+        <div class="logo">
+            <a href="#">
+                <img src="app/img/logo.png">
+            </a>
+            
+        </div>
+        <div class="right-buffer"></div>
+        <div class="header-category">
+            <ws-categories-menu-trigger></ws-categories-menu-trigger>
+
+        </div>
+        <div class="right-buffer"></div>
     </div>
-    <div class="buffer"></div>
+    <div class="search">
+        <div class="search-inner">
+            <form ng-submit="searchText()">
+                <div class="search-input">
+                    <input type="text" placeholder="מה תרצו לשופס?" ng-model="searchTerm" />
+                </div>
+                <input type="submit" class="search-button" value="חפש" />
 
-    <div class="category">
-        <span><a href="#"><b>לפי קטגוריה</b></a></span>
-        <i class="fa fa-caret-down"></i>
-    </div>
-
-    <div class="popover bottom ">
-        <div class="popover-title"></div>
-        <div class="popover-content">
-
-            <!-- Nav tabs -->
-            <!-- Tab panes -->
+            </form>
         </div>
     </div>
 
-    <div class="buffer"></div>
-    <div class="search">
-        <form method="get" action="#">
-            <input class="search_input" type="text" name="s" id="s" placeholder="מה תרצו לשופס?" />
-            <input class="search_button" type="submit" value="חפש" />
-        </form>
+    <div class="user" ng-click="openUserCard()">
+        <div class="left-buffer"></div>
+        <div class="user-image"></div>
     </div>
-    <div class="hello_user">
-        <span><a href="#">שלום קטי</a></span>
-        <i class="fa fa-caret-down"></i>
-    </div>
-    <div>
-    </div>
-    <div class="buffer"></div>
-    <div class="cart">
-        <a href="#">
-            <img src="app/img/cart.png">
-        </a>
-    </div>
-</header>
 
+
+    <!--<div class="header-left-side">
+            <div class="hello-user">
+                <span><a href="#">שלום קטי</a></span>
+                <i class="fa fa-caret-down"></i>
+                <div class="left-buffer"></div>
+            </div>
+            <div>
+            </div>
+
+            <div class="cart">
+
+                <a href="#">
+                    <img src="app/img/cart.png">
+                </a>
+            </div>
+        </div>-->
+
+
+    <div class="header-left-side">
+
+        <div class="call-center">
+            <div class="left-buffer"></div>
+            <div>מרכז הזמנות</div>
+            <a class="phone-number" href="#" ng-click="preventefault($event)">09-9608020</a>
+        </div>
+
+    </div>
+
+</header>
 

@@ -1,0 +1,29 @@
+﻿    <div ng-class="{'somethingSelected': isAnythingSelected()}">
+        <ul class="categories-menu">
+
+            <li class="category-container" ng-click="clearSelectedCategory()">
+                <div class="category-name">כל הקטגוריות</div>
+            </li>
+
+            <li ng-repeat="category in categories" >
+
+                <div class="category-container" ng-class="{'selected': isSelected(category), 'expanded': isExpanded(category)  }" ng-click="selectCategory(category)">
+                    <div class="category-dot">
+                        <i class="fa fa-circle"></i>
+                    </div>
+                    <div class="category-name">
+                        {{category.title}}
+                    </div>
+
+                    <div class="category-arrow" ng-if="category.categories.length">
+                        <i class="fa" ng-class="{ 'fa-caret-left': !isSelected(category), 'fa-caret-down': isSelected(category)}"></i>
+                    </div>
+                </div>
+
+                <ul ng-show="isExpanded(category)">
+                    <li class="level1" ng-class="{'selected': isSelected(childCategory) }" ng-repeat="childCategory in category.categories" ng-click="selectCategory(childCategory)">{{childCategory.title}}
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>

@@ -1,0 +1,242 @@
+﻿.page-animations-enabled .main-content.ng-enter {
+  -webkit-animation: enter linear 0.9s;
+  animation: enter linear 0.9s;
+}
+
+.page-animations-enabled .main-content.ng-leave {
+  -webkit-animation: enter linear 0.5s reverse;
+  animation: enter linear 0.5s reverse;
+}
+
+@-webkit-keyframes enter {
+  0% {
+    top: -100%;
+      opacity: 0.2;
+  }
+  20% {
+      top: -50%;
+      opacity: 0.3;
+  }
+  40% {
+      top: -30%;
+      opacity: 0.4;
+  }
+  50% {
+      top: -15%;
+      opacity: 0.5;
+  }
+  60% {
+      top: 0;
+      opacity: 0.6;
+  }
+  70% {
+      top: 15%;
+      opacity: 0.7;
+  }
+  80% {
+      top: 30%;
+      opacity: 0.8;
+  }
+  90% {
+      top: 15%;
+      opacity: 0.9;
+  }
+  100% {
+    top: 0;
+      opacity: 1;
+  }
+}
+
+@keyframes enter {
+   0% {
+    top: -100%;
+      opacity: 0.2;
+  }
+  20% {
+      top: -70%;
+      opacity: 0.3;
+  }
+  40% {
+      top: -50%;
+      opacity: 0.4;
+  }
+  50% {
+      top: 0;
+      opacity: 0.5;
+  }
+  60% {
+      top: 10%;
+      opacity: 0.6;
+  }
+  80% {
+      top: 20%;
+      opacity: 0.7;
+  }
+  100% {
+    top: 0;
+      opacity: 1;
+  }
+}
+
+.credit_row {
+    transition: height 1.5s;
+    -webkit-transition: height 1.5s;
+}
+
+.c_cell div {
+    width: 100%;
+}
+
+.swipe-animations-enabled .previous-animation .product{
+    position: relative;  
+    -webkit-animation: left linear .3s;
+    animation: left linear .3s;
+}
+
+.swipe-animations-enabled .next-animation .product{
+    position: relative;  
+    -webkit-animation: right linear .3s;
+    animation: right linear .3s;
+}
+
+@-webkit-keyframes left {
+  0% {
+    left: 25%;
+  }
+  10% {
+      left: 22.5%;
+  }
+  20% {
+      left: 20%;
+  }
+  30% {
+      left: 17.5%;
+  }
+  40% {
+      left: 15%;
+  }
+  50% {
+      left: 12.5%;
+  }
+  60% {
+      left: 10%;
+  }
+  70% {
+      left: 7.5%;
+  }
+  80% {
+      left: 5%;
+  }
+  90% {
+      left: 2.5%;
+  }
+  100% {
+    left: 1%;
+  }
+}
+@keyframes left {
+  0% {
+    left: 25%;
+  }
+  10% {
+      left: 22.5%;
+  }
+  20% {
+      left: 20%;
+  }
+  30% {
+      left: 17.5%;
+  }
+  40% {
+      left: 15%;
+  }
+  50% {
+      left: 12.5%;
+  }
+  60% {
+      left: 10%;
+  }
+  70% {
+      left: 7.5%;
+  }
+  80% {
+      left: 5%;
+  }
+  90% {
+      left: 2.5%;
+  }
+  100% {
+    left: 1%;
+  }
+}
+
+@-webkit-keyframes right {
+   0% {
+    right: 25%;
+  }
+  10% {
+      right: 22.5%;
+  }
+  20% {
+      right: 20%;
+  }
+  30% {
+      right: 17.5%;
+  }
+  40% {
+      right: 15%;
+  }
+  50% {
+      right: 12.5%;
+  }
+  60% {
+      right: 10%;
+  }
+  70% {
+      right: 7.5%;
+  }
+  80% {
+      right: 5%;
+  }
+  90% {
+      right: 2.5%;
+  }
+  100% {
+    right: 1%;
+  }
+}
+@keyframes right {
+   0% {
+    right: 25%;
+  }
+  10% {
+      right: 22.5%;
+  }
+  20% {
+      right: 20%;
+  }
+  30% {
+      right: 17.5%;
+  }
+  40% {
+      right: 15%;
+  }
+  50% {
+      right: 12.5%;
+  }
+  60% {
+      right: 10%;
+  }
+  70% {
+      right: 7.5%;
+  }
+  80% {
+      right: 5%;
+  }
+  90% {
+      right: 2.5%;
+  }
+  100% {
+    right: 1%;
+  }
+}

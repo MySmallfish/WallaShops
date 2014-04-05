@@ -1,40 +1,23 @@
-﻿<ul class="nav nav-tabs">
-    <li><a href="#categories" data-toggle="tab">קטגוריות</a></li>
-    <li class="filte"><a class="filtering" href="#filter" data-toggle="tab">סינון</a></li>
-</ul>
-<div class="tab-content">
-    <div class="tab-pane active" id="categories" ng-class="{'somethingSelected': isAnythingSelected()}">
-        <ul class="categories-menu">
+﻿
+<div class="menu">
+    
+    <ul class="nav nav-tabs" >
+        <li class="category-tab" ng-class="{'active': isCategories || !hasFilter}" ng-click="markCategorySelected()">
+            <a href="#categories" data-toggle="tab">קטגוריות</a>
+        </li>
 
-            <li class="category-container" ng-click="clearSelectedCategory()">
-                <div class="category-name">כל הקטגוריות</div>
-            </li>
+        <li class="filter-tab" ng-class="{'disable': !hasFilter, 'active': !isCategories && hasFilter}" ng-click="markFilterSelected()">
+            <a href="#filter" data-toggle="tab">סינון</a>
+        </li>
+    </ul>
 
-            <li ng-repeat="category in categories" ng-click="selectCategory(category)">
-
-                <div class="category-container"   ng-class="{'selected': isSelected(category) }">
-                    <div class="category-dot">
-                        <i class="fa fa-circle"></i>
-                    </div>
-                    <div class="category-name">
-                        {{category.title}}
-                    </div>
-
-                    <div class="category-arrow" ng-if="category.categories.length">
-                        <i class="fa" ng-class="{ 'fa-caret-left': !isSelected(category), 'fa-caret-down': isSelected(category)}"></i>
-                    </div>
-                </div>
-
-                <ul ng-show="category.categories.length && isSelected(category)">
-                    <li class="level1" ng-repeat="childCategory in category.categories" ng-click="selectCategory(childCategory)">{{childCategory.title}}
-                    </li>
-                </ul>
-            </li>
-        </ul>
-
-
-
+    <div class="tab-content">
+        <div class="tab-pane"  ng-class="{'active': isCategories || !hasFilter}"  id="categories">
+            <ws-categories load="loadCategories()" selected-category="selectedCategory"></ws-categories>
+        </div>
+        <div class="tab-pane" ng-class="{'disable': !hasFilter, 'active': !isCategories && hasFilter}" id="filter">
+            <ws-filter load="loadFilters()" selected-category="selectedCategory" has-filter="hasFilter"></ws-filter>
+        </div>
     </div>
-    <div class="tab-pane" id="filter">bbb</div>
 </div>
 

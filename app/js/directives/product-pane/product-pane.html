@@ -1,18 +1,59 @@
-﻿<div class="product_info">
-    <img class="productImg" ng-src="{{ product.imageUrl }}" />
-    <div class="icons">
-        <div class="iconImg" ng-repeat="icon in product.icons">
-            <img ng-src="{{ icon.url }}" />
+﻿<div class="product-border">
+    
+
+    <div class="product-info">
+
+        <div class="check-box" ng-click="check($event)" ng-class="{'checked': checked }" ng-show="isSearchPage">
+            {{ !checked ?'לחץ להשוואה':'בטל השוואה' }}
         </div>
+
+        <img class="productImg" ng-class="{'compared': isCompared}" ng-src="{{ product.imageUrl }}" s-local-cache />
+
+        <div class="icons">
+            <div class="image-icon" ng-repeat="icon in product.icons">
+                <div class="discount-icon" ng-show="!icon.id">
+                    <div class="icon-text">{{ product.discountAmount }}<span>%</span>  הנחה </div>
+                </div>
+
+                <img ng-src="{{icon.imageUrl}}" />
+            </div>
+        </div>
+
+        <p class="title" ng-class="{'compared': isCompared}"><b>{{ product.title }}</b></p>
+
+        <p class="subtitle" ng-class="{'compared': isCompared}">{{ product.subTitle }}</p>
+
+
+
+        <div class="rating" ng-show="setRatingLine(product)==='rating'" ng-class="{'compared': isCompared}">
+            <div class="raters-number" ng-show="!isCompared">({{product.ratersNumber}})</div>
+            <div class="stars" ng-class="{'compared': isCompared}">
+                <i class="fa" ng-repeat="star in stars" ng-class="{'fa-star': $index<product.rating, 'fa-star-o':$index>=product.rating, 'fa-star-half-o' : $index==asInt(product.rating) && isDecimal(product.rating) }"></i>
+            </div>
+        </div>
+
+        <p ng-show="!isCompared && setRatingLine(product)==='payments'">מספר תשלומים: {{ product.paymentsNum}} <span class="payments" ng-show="product.paymentsNum < 36">(עד 36 תשלומים כולל ריבית)</span></p>
+        <p ng-show="!isCompared && setRatingLine(product)==='soldCount'">נרכשו: {{ product.buyersCount}}</p>
+
+        <div class="price" ng-class="{'compared': isCompared}" ng-show="product.saleType !== 'Personal'">
+            <span>רק </span>
+            <b>{{product.price}} ש"ח</b>
+
+        </div>
+        <div class="price" ng-class="{'compared': isCompared}" ng-show="product.saleType === 'Personal' && product.showAvgPrice">
+            <b>{{product.price}} ש"ח</b>
+            <div class="diagonal"></div>
+        </div>
+
+        <span class="details-text" ng-show="setDetailsLine(product) == 'discount'">
+            <div class="diagonal" ng-show="setDetailsLine(product) == 'discount'"></div>
+            במקום {{product.originalPrice}} ש"ח</span>
+        <span class="details-text" ng-show="setDetailsLine(product) == 'details'">לפרטים</span>
+        <span class="details-text" ng-show="setDetailsLine(product) == 'shipping'">כולל משלוח</span>
+        <span class="details-text" ng-show="setDetailsLine(product) == 'personalPrice'">מחיר אישי</span>
+        <span class="details-text" ng-show="setDetailsLine(product) == 'getPrice'">קבל מחיר</span>
+        <p class="details" ng-show="!isCompared"></p>
+
     </div>
-
-    <h3 class="title">{{ product.title }}</h3>
-    <p class="subtitle">{{ product.subtitle}}</p>
-    <p class="rating">{{ product.rating}}</p>
-    <p class="price">{{ product.price}}</p>
-    <form method="get" action="#">
-        <input class="details_button" type="submit" value="לפרטים >" />
-    </form>
-
 
 </div>
