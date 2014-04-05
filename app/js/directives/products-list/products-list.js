@@ -19,12 +19,14 @@
             });
             
             function updateProductPage(navigationInfo) {
-                if ($scope.category.products) {
-                    var visibleProducts = $filter("skip")($scope.category.products, navigationInfo.startIndex);
+                $scope.currentProductsPage = $scope.category.products;
+                $scope.productsListLength = $scope.category.products.length;
+                //if ($scope.category.products) {
+                //    var visibleProducts = $filter("skip")($scope.category.products, navigationInfo.startIndex);
 
-                    $scope.currentProductsPage = $filter("limitTo")(visibleProducts, $scope.step);
-                    $scope.productsListLength = $scope.category.products.length;
-                }
+                //    $scope.currentProductsPage = $filter("limitTo")(visibleProducts, $scope.step);
+                //    $scope.productsListLength = $scope.category.products.length;
+                //}
 
 
             };

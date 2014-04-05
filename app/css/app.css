@@ -287,19 +287,20 @@ input[type=submit].search-button {
     opacity: 1;
 }
 
-.promotion.ng-hide-add,
-.promotion.ng-hide-remove {
-  display:block!important;
-}
-.promotion.ng-hide-add.ng-hide-add-active,
-.promotion.ng-hide-remove.ng-hide-remove-active {
-  -webkit-transition:all linear 0.5s;
-  transition:all linear 0.5s;
-}
- 
-.promotion.ng-hide {
-  opacity:0;
-}
+    .promotion.ng-hide-add,
+    .promotion.ng-hide-remove {
+        display: block !important;
+    }
+
+        .promotion.ng-hide-add.ng-hide-add-active,
+        .promotion.ng-hide-remove.ng-hide-remove-active {
+            -webkit-transition: all linear 0.5s;
+            transition: all linear 0.5s;
+        }
+
+    .promotion.ng-hide {
+        opacity: 0;
+    }
 
 
 .seasonal {
@@ -322,15 +323,15 @@ input[type=submit].search-button {
 
 .search-page .products-list-container {
     width: 990px;
-    height: 600px;
+    /*height: 600px;
     position: absolute;
-    top: 65px;
+    top: 65px;*/
+    margin-top: 24px;
     overflow: hidden;
 }
 
-.search-page .products-list-content {
+.products-list-content {
     position: relative;
-    height: 600px;
     width: 1110px;
     overflow-x: scroll;
 }
@@ -598,6 +599,7 @@ div, i {
 .products-list-name {
     margin-right: 20px;
     margin-bottom: 20px;
+    margin-top: 20px;
     color: rgb(33, 141, 202);
 }
 
@@ -605,6 +607,7 @@ div, i {
     position: absolute;
     color: deepskyblue;
     font-size: 13pt;
+    
 }
 
 .search-right-arrow {
@@ -615,9 +618,10 @@ div, i {
     left: 25px;
 }
 
-    .search-right-arrow.bottom, .search-left-arrow.bottom {
-        margin-top: -60px;
-    }
+.search-indicators {
+    width: auto;
+    position: relative;
+}
 
 .categories-menu, .filters-menu {
     cursor: pointer;
@@ -806,6 +810,7 @@ border-top: solid 1px #BBB;
     padding: 1px;
     margin: 3px 0 0 0;
 }
+
 .headcol {
     position: relative;
 }
@@ -893,15 +898,14 @@ border-top: solid 1px #BBB;
     margin-top: -1px;
     margin-left: -45px;
     padding: 0;
-    
 }
-.popover.bottom .arrow {
-    display: none;
-}
+
+    .popover.bottom .arrow {
+        display: none;
+    }
 
 .popover-title {
     padding: 1px;
-    
     background-color: #444;
     border-bottom: 1px solid #444;
 }
@@ -963,7 +967,7 @@ border-top: solid 1px #BBB;
 
 .full-path {
     font-size: 13pt;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
     .full-path li, .filter-path li {
@@ -1163,9 +1167,9 @@ table {
 
 .comparison-page .remove-product {
     position: absolute;
-right: 14px;
-top: 14px;
-opacity: 0.9;
+    right: 14px;
+    top: 14px;
+    opacity: 0.9;
 }
 
 .fatal-error {
@@ -1174,6 +1178,13 @@ opacity: 0.9;
     text-align: center;
 }
 
-.fatal-error .alert {
-    text-align: right;
+    .fatal-error .alert {
+        text-align: right;
+    }
+
+.footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20px;
 }

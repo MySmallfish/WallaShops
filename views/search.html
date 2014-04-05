@@ -38,11 +38,13 @@
                 <products-list-items products="currentProductsPage1" products-line=" productsLine1" show-product="showProduct(product)" selected-items="productsToCompare" is-search-page="true" max-selection="{{maxSelection}}" is-checked-to-compare="isCheckedToCompare(product)"></products-list-items>
                 <products-list-items products="currentProductsPage2" products-line=" productsLine2" show-product="showProduct(product)" selected-items="productsToCompare" is-search-page="true" max-selection="{{maxSelection}}" is-checked-to-compare="isCheckedToCompare(product)"></products-list-items>
             </div>
+        </div>
+        <div class="search-indicators">
             <div class="search-left-arrow bottom" ng-show="canNavigateNext()"><i class="fa fa-chevron-left"></i></div>
             <div class="search-right-arrow bottom" ng-show="canNavigateBack()"><i class="fa fa-chevron-right"></i></div>
         </div>
 
-        <div class="bottom" ng-hide="!loading && !currentProductsPage1.length">
+        <div class="footer" ng-hide="!loading && !currentProductsPage1.length">
             <div class="products-comparison-wrapper">
                 <div class="comparison-products" ng-show="isAnyProductSelected()">
                     <div class="comparison-products-container" ng-repeat="product in productsToCompare">
