@@ -326,7 +326,6 @@ input[type=submit].search-button {
     /*height: 600px;
     position: absolute;
     top: 65px;*/
-    margin-top: 24px;
     overflow: hidden;
 }
 
@@ -967,7 +966,7 @@ border-top: solid 1px #BBB;
 
 .full-path {
     font-size: 13pt;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
     .full-path li, .filter-path li {
@@ -1149,7 +1148,7 @@ border-top: solid 1px #BBB;
 .back-button {
     position: absolute;
     left: 50px;
-    top: 20px;
+    top: 5px;
 }
 
     .back-button button.btn {
@@ -1186,5 +1185,5 @@ table {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 20px;
+    bottom: 10px;
 }
