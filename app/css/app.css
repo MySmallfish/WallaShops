@@ -342,7 +342,8 @@ input[type=submit].search-button {
 .products-list-content {
     position: relative;
     width: 1110px;
-    overflow-x: scroll;
+    o-verflow-x: scroll;
+    overflow: auto;
 }
 
 .search-page .comparison-products-container {
