@@ -1,6 +1,4 @@
 ﻿html, body {
-    height: 100%;
-    overflow: hidden;
 }
 * {
         -webkit-tap-highlight-color: transparent;
@@ -329,19 +327,17 @@ input[type=submit].search-button {
 }
 
 .search-page .products-list-container {
-    width: 990px;
+    margin-right: 20px;
+    margin-left: 20px;
     /*height: 600px;
     position: absolute;
-    top: 65px;*/
+    top: 65px;
     overflow: hidden;
+        */
 }
 
-.products-list-container {
-    margin-right: 10px;
-}
 .products-list-content {
     position: relative;
-    width: 1110px;
     o-verflow-x: scroll;
     overflow: auto;
 }
@@ -1058,7 +1054,7 @@ border-top: solid 1px #BBB;
     line-height: normal;
 }
 
-.product-info .check-box.checked {
+.check-box.checked {
     background-color: red;
 }
 

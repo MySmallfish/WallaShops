@@ -255,7 +255,7 @@
         }
 
         function getPromotionsCategories() {
-            var categories = _.map(_.range(4), function(i) {
+            var categories = _.map(_.range(1,3), function(i) {
                 return {
                     titleCode: 5060 + i,
                     productsCode: 5070 + i
