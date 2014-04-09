@@ -1,12 +1,9 @@
 ﻿<div class="product-border">
-    
-
+    <div class="check-box" ></div>
+    <div class="check-box-text" ng-click="check($event)" ng-class="{'checked': checked }" >
+        {{ !checked ?'לחץ להשוואה':'בטל השוואה' }}
+    </div>
     <div class="product-info">
-
-        <div class="check-box" ng-click="check($event)" ng-class="{'checked': checked }" ng-show="isSearchPage">
-            {{ !checked ?'לחץ להשוואה':'בטל השוואה' }}
-        </div>
-
         <img class="productImg" ng-class="{'compared': isCompared}" ng-src="{{ product.imageUrl }}" s-local-cache />
 
         <div class="icons">
@@ -26,13 +23,14 @@
 
 
         <div class="rating" ng-show="setRatingLine(product)==='rating'" ng-class="{'compared': isCompared}">
-            <div class="raters-number" ng-show="!isCompared">({{product.ratersNumber}})</div>
-            <div class="stars" ng-class="{'compared': isCompared}">
+            
+            <span class="stars" ng-class="{'compared': isCompared}">
                 <i class="fa" ng-repeat="star in stars" ng-class="{'fa-star': $index<product.rating, 'fa-star-o':$index>=product.rating, 'fa-star-half-o' : $index==asInt(product.rating) && isDecimal(product.rating) }"></i>
-            </div>
+            </span>
+            <span class="raters-number" ng-show="!isCompared">({{product.ratersNumber}})</span>
         </div>
 
-        <p ng-show="!isCompared && setRatingLine(product)==='payments'">מספר תשלומים: {{ product.paymentsNum}} <span class="payments" ng-show="product.paymentsNum < 36">(עד 36 תשלומים כולל ריבית)</span></p>
+        <p ng-show="!isCompared && setRatingLine(product)==='payments'">מס' תשלומים: {{ product.paymentsNum}} <span class="payments" ng-show="product.paymentsNum < 36">(עד 36 תשלומים כולל ריבית)</span></p>
         <p ng-show="!isCompared && setRatingLine(product)==='soldCount'">נרכשו: {{ product.buyersCount}}</p>
 
         <div class="price" ng-class="{'compared': isCompared}" ng-show="product.saleType !== 'Personal'">

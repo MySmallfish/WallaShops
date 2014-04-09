@@ -3,7 +3,6 @@
     WS.HomeController = ["$scope", "promotionsService", "productService", "$q", "network", function ($scope, promotionsService, productService, $q, network) {
 
         $scope.openPromotion = function (url) {
-            console.log("OPEN!")
             if (url) {
                 promotionsService.openPromotion(url);
             }
@@ -18,7 +17,6 @@
         }
 
         function swipeNext(promotion) {
-            console.log("SWIPE?", promotion);
         }
 
         $scope.direction = 'left';
@@ -30,8 +28,6 @@
         };
 
         function next() {
-            console.log("NEXT!");
-
             $scope.direction = 'right';
             setCurrentSlideIndex(($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.main_promotions.length - 1);
 
@@ -42,7 +38,6 @@
             //$scope.selectedPromotion = $scope.main_promotions[nextIndex];
         }
         function back() {
-            console.log("BACK!");
             $scope.direction = 'left';
             setCurrentSlideIndex(($scope.currentIndex < $scope.main_promotions.length - 1) ? ++$scope.currentIndex : 0);
 
@@ -55,7 +50,6 @@
 
 
         function swipeBack(promotion) {
-            console.log("SWIPE?", promotion);
 
         }
 

@@ -2,7 +2,12 @@
     height: 100%;
     overflow: hidden;
 }
-
+* {
+        -webkit-tap-highlight-color: transparent;
+    /*user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;*/
+}
 body {
     direction: rtl;
     font-size: 12pt;
@@ -99,6 +104,7 @@ header {
 .logo {
     display: inline-block;
     width: 170px;
+    text-align: center;
 }
 
 .header-category {
@@ -197,8 +203,8 @@ input[type=submit].search-button {
     box-shadow: none;
     margin: 0;
     padding: 0;
-    font-size: 16pt;
-    line-height: 27pt;
+    font-size: 24px;
+    line-height: 40px;
     text-indent: .2em;
     background-color: transparent;
 }
@@ -315,6 +321,7 @@ input[type=submit].search-button {
     margin-top: 2%;
     position: relative;
     margin-bottom: 5%;
+    margin-right: 5%;
 }
 
 .seasonal img {
@@ -329,6 +336,9 @@ input[type=submit].search-button {
     overflow: hidden;
 }
 
+.products-list-container {
+    margin-right: 10px;
+}
 .products-list-content {
     position: relative;
     width: 1110px;
@@ -358,7 +368,6 @@ input[type=submit].search-button {
 
 .products-list {
     width: 98%;
-    height: 255px;
     position: relative;
     clear: both;
 }
@@ -371,9 +380,8 @@ input[type=submit].search-button {
     border: solid 1px lightgrey;
     background-color: white;
     float: right;
-    height: 248px;
     width: 234px;
-    margin-bottom: 30px;
+    margin-bottom: 12px;
 }
 
 .product {
@@ -393,7 +401,9 @@ div, i {
 }
 
 .product-border {
-    margin: 6px 2px 6px 2px;
+    position: relative;
+    overflow: hidden;
+    padding: 6px 2px 6px 2px;
     background-color: white;
 }
 
@@ -407,7 +417,7 @@ div, i {
 
 
 .product-info {
-    height: 235px;
+    height: 210px;
     padding-right: 10px;
     position: relative;
     font-size: 10pt;
@@ -436,7 +446,7 @@ div, i {
 
 
 .product-info p, .rating {
-    margin: 9px 0 0 0;
+    margin: 6px 0 0 0;
 }
 
     .rating.compared {
@@ -448,21 +458,19 @@ div, i {
     margin-top: 10px;
 }
 
-
-.rating {
-    position: relative;
+.rating .stars {
+    display: inline-block;
 }
 
     .rating .fa {
-        font-size: 15pt;
+        font-size: 12pt;
         letter-spacing: 1px;
         color: rgb(6, 181, 240);
         -webkit-transform: scaleX(-1);
+        
     }
 
 .raters-number {
-    position: absolute;
-    left: 70px;
     color: #aaa;
 }
 
@@ -1013,21 +1021,39 @@ border-top: solid 1px #BBB;
     z-index: 1;
 }
 
-.search-page .product-info .check-box {
+.check-box, .check-box-text {
+    display: none;
+}
+
+.search-page .check-box, .search-page .check-box-text {
+    display: block;
+}
+
+.check-box-text {
     position: absolute;
-    width: 45px;
-    height: 42px;
-    margin-right: -12px;
-    margin-top: -7px;
-    border-radius: 26px;
+    right: -4px;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    z-index: 11;
+    text-align: center;
+    font-size: 8pt;
+    font-weight: bold;
+}
+.check-box {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    right: -30px;
+    top: -30px;
+    z-index: 10;
+    border-radius: 40px;
     border-top-right-radius: 0;
     background-color: rgb(160, 160, 160);
+    background-color:#BBB;
     background-repeat: no-repeat;
     background-position: center;
     opacity: 0.9;
-    text-align: center;
-    font-weight: bold;
-    font-size: 9pt;
     line-height: normal;
 }
 
@@ -1150,6 +1176,7 @@ border-top: solid 1px #BBB;
     left: 50px;
     top: 5px;
 }
+
 
     .back-button button.btn {
         width: 80px;

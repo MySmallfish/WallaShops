@@ -1,14 +1,18 @@
 ﻿(function (_, S, WS) {
 
     var app = angular.module("WallaShops", ["ngRoute", "ngTouch", "$strap", "Simple"]);
-
+    app.run(function () {
+        FastClick.attach(document.body);
+    });
     app.service("config", WS.Configuration);
     app.service("categoryService", WS.CategoryService);
     app.service("promotionsService", WS.PromotionsService);
     app.service("productService", WS.ProductService);
     app.service("dailyCacheService", WS.DailyCacheService);
     app.service("wallaShopsApi", WS.WallaShopsApi);
+    app.service("externalBrowser", WS.ExternalBrowser);
     app.service("productDetailsPresenter", WS.ProductDetailsPresenter);
+    
     
     var analyticsService = S.GoogleAnalyticsService('UA-48712169-1');
     app.service("analytics", analyticsService);
