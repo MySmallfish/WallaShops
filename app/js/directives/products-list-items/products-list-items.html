@@ -1,4 +1,4 @@
-﻿<div class="products-list clear" ng-style="{'width': (280*products.length) + 'px'}">
+﻿<div class="products-list clear" ng-style="{'width': (240*products.length) + 'px'}">
     <div class="product" ng-repeat="product in products" ng-click="showProduct({product:product})">
         <product-pane product="product" is-compared="false" selected-items="selectedItems" is-search-page="isSearchPage" max-selection="{{maxSelection}}" is-checked-to-compare="isCheckedToCompare({product:product})"></product-pane>
     </div>

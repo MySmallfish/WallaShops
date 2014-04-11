@@ -337,9 +337,10 @@ input[type=submit].search-button {
 }
 
 .products-list-content {
-    position: relative;
-    o-verflow-x: scroll;
     overflow: auto;
+}
+.products-list-stable {
+    position: relative;
 }
 
 .search-page .comparison-products-container {
@@ -1210,4 +1211,21 @@ table {
     left: 0;
     right: 0;
     bottom: 10px;
+}
+
+
+.hider {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    z-index: 300;
+background: -webkit-gradient(linear, left top, right top, color-stop(0, rgba(200,200,200,1)), color-stop(1, rgba(255,255,255,0.2)));
+
+}
+.hider.reverse {
+    left: auto;
+    right: 0;
+    background: -webkit-gradient(linear, right top, left top, color-stop(0, rgba(200,200,200,1)), color-stop(1, rgba(255,255,255,0.2)));
 }
