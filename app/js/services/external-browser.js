@@ -119,7 +119,7 @@
             var url = encodeURI(wsUrl + relativeUrl);
             url += (url.indexOf("?") >= 0 ? "&" : "?") + "tablet=1";
 
-            window.open(url, '_blank', 'location=yes+-');
+            window.open(url, '_blank', 'location=yes');
 
             return openBrowser(url);
         };

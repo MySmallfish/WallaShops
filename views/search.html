@@ -35,9 +35,12 @@
 
             <div class="no-products" ng-show="!loading && !currentProductsPage1.length"><b>לא קיימים מוצרים בקטגוריה</b></div>
             <div class="products-list-content" ng-show="productsLine1.length">
-                <products-list-items products="currentProductsPage1" products-line=" productsLine1" show-product="showProduct(product)" selected-items="productsToCompare" is-search-page="true" max-selection="{{maxSelection}}" is-checked-to-compare="isCheckedToCompare(product)"></products-list-items>
-                <products-list-items products="currentProductsPage2" products-line=" productsLine2" show-product="showProduct(product)" selected-items="productsToCompare" is-search-page="true" max-selection="{{maxSelection}}" is-checked-to-compare="isCheckedToCompare(product)"></products-list-items>
-                <div class="hider"></div>
+                <div class="products-list-stable">
+                    <div class="hider reverse" ng-show="isScrollingRight"></div>
+                    <products-list-items products="currentProductsPage1" products-line=" productsLine1" show-product="showProduct(product)" selected-items="productsToCompare" is-search-page="true" max-selection="{{maxSelection}}" is-checked-to-compare="isCheckedToCompare(product)"></products-list-items>
+                    <products-list-items products="currentProductsPage2" products-line=" productsLine2" show-product="showProduct(product)" selected-items="productsToCompare" is-search-page="true" max-selection="{{maxSelection}}" is-checked-to-compare="isCheckedToCompare(product)"></products-list-items>
+                    <div class="hider" ng-show="isScrollingLeft"></div>
+                </div>
             </div>
         </div>
         <div class="search-indicators">
