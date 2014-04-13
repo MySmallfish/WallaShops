@@ -7,7 +7,7 @@
     <meta name="base-url" content="http://dev.wallashops.co.il" />
     <meta name="ws-url" content="http://www.wallashops.co.il">
     <meta name="auto-close-at-level" content="1">
-    <meta name="version" content="1.1.44"/>
+    <meta name="version" content="1.1.45"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0,target-densitydpi=device-dpi">
     <link rel="stylesheet" type="text/css" href="lib/bootstrap/rtl/css/bootstrap.rtl.css" />
     <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -15,18 +15,7 @@
     <link rel="stylesheet" type="text/css" href="app/css/animations.css" />
 
     <script type="text/javascript" src="phonegap.js"></script>
-    <script type="text/javascript">
-        var viewPortWidth = 1024;
-        function setViewport() {
-            if ((navigator.userAgent.toLowerCase().indexOf("android") != -1)) {
-                var wW0 = window.screen.width;
-                var scale = wW0 / viewPortWidth;
-                var vPort = "width=" + viewPortWidth + ", maximum-scale=" + scale + ", minimum-scale=" + scale + ", initial-scale=" + scale + ", user-scalable=yes";
-                document.getElementById("viewport").setAttribute("content", vPort);
-            }
-        }
-        setViewport();
-    </script>
+
 </head>
     <body class="rtl swipe-animations-enabled" ng-controller="AppCtrl" s-online>
         <!--<button class="set">SET IMAGE!!!</button>

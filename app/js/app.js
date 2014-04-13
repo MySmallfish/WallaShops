@@ -18,29 +18,29 @@
             restrict: "A",
             scope: false,
             link: function (scope, element) {
-                var s = false;
-                $(element).on("scroll", function () {
-                    if (s) return;
-
+                function updateScrolling() {
                     var scrollLeft = element[0].scrollLeft;
                     scrollLeft = element[0].scrollWidth - element[0].clientWidth - scrollLeft;
-                    console.log(element[0].clientWidth, scrollLeft);
                     scope.isScrollingRight = scrollLeft > 10;
-                    scope.isScrollingLeft = element[0].clientWidth > scrollLeft + 50;
-                    //console.log(scrollLeft, scrollLeft/, Math.floor(element[0].scrollWidth / Math.max(scrollLeft, 1)) * 230);
-                    console.log(Math.floor(scrollLeft / 230) * 230);
-                    var newScrollLeft = element[0].scrollLeft;
-                    console.log(newScrollLeft);
-                    if ((newScrollLeft/230) != Math.floor(newScrollLeft / 230)) {
-                        newScrollLeft = Math.floor(newScrollLeft / 230) * 230;
-                        setTimeout(function() {
-                            element[0].scrollLeft = newScrollLeft;;
-                        }, 250);
+                    scope.isScrollingLeft = element[0].scrollLeft > 40;
 
-                    }
+                    //console.log(scrollLeft, scrollLeft/, Math.floor(element[0].scrollWidth / Math.max(scrollLeft, 1)) * 230);
+                    //console.log(Math.floor(scrollLeft / 230) * 230);
+                    //var newScrollLeft = element[0].scrollLeft;
+                    //console.log(newScrollLeft);
+                    //if ((newScrollLeft/230) != Math.floor(newScrollLeft / 230)) {
+                    //    newScrollLeft = Math.floor(newScrollLeft / 230) * 230;
+                    //    setTimeout(function() {
+                    //        element[0].scrollLeft = newScrollLeft;;
+                    //    }, 250);
+
+                    //}
                     scope.$apply();
-                    s = false;
-                });
+                }
+
+                $(element).on("scroll", updateScrolling);
+
+                updateScrolling();
             }
         };
     });
