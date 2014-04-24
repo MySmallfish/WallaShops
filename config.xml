@@ -2,7 +2,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "il.co.wallashops.app"
-        version   = "1.1.46">
+        version   = "1.1.47">
   <name>Walla! שופס</name>
 
   <description>
@@ -28,6 +28,7 @@
   <preference name="detect-data-types" value="false" />
   <preference name="orientation" value="landscape"/>
   <preference name="ios-statusbarstyle" value="black-opaque" />
+  
   <access origin="*" />
   <icon src="assets/app-icons/ios/appicon.png" />
   <icon src="assets/app-icons/ios/appicon.png"            gap:platform="ios"        width="57" height="57" />
@@ -43,6 +44,7 @@
 
 
   <gap:splash src="assets/splash/android/default.png"  gap:platform="android" />
+  <gap:splash src="assets/splash/android/res-notlong-land-hdpi/default.png"  gap:platform="android" gap:density="hdpi" />
 
   <!--<gap:splash src="assets/splash/ios/Default.png" gap:platform="ios" width="320" height="480" />
   <gap:splash src="assets/splash/ios/Default@2x.png" gap:platform="ios" width="640" height="960" />
@@ -59,7 +61,7 @@
   -->
 
   <gap:plugin name="org.apache.cordova.inappbrowser" />
-
+  <gap:plugin name="com.phonegap.plugin.statusbar" />
 
   <gap:platform name="ios" />
   <gap:platform name="android" />

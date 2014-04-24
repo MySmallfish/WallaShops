@@ -163,10 +163,9 @@
         }
 
         function clearSelectedFilterValues() {
-            clearSelectedFilter();
-            $scope.$root.selectedFilterValues = null;
             $scope.$root.$broadcast("WallaShops.clearSelectedFilterValues");
         }
+
 
         function isCheckedToCompare(product) {
             var result = false;

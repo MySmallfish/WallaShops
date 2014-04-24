@@ -54,15 +54,28 @@
             }
         });
 
+        $scope.home = function () {
+            $scope.$root.$broadcast("WallaShops.ClearCategoriesRequested");
+
+            clearProductsToCompare();
+            clearSelectedFilterValues();
+            selectCategoriesTab();
+            $location.path("/");
+            return false;
+        }
+
+        function clearProductsToCompare() {
+            $scope.productsToCompare = [];
+        }
+
         function clearSelectedFilterValues() {
-            $scope.$root.selectedFilterValues = null;
             $scope.$root.$broadcast("WallaShops.clearSelectedFilterValues");
         }
 
         function onCategorySelected(eventInfo, args) {
 
             if (args.category.level === 1 || args.category.level === 0) {
-                $scope.productsToCompare = [];
+                clearProductsToCompare();
                 clearSelectedFilterValues();
             }
 
@@ -92,6 +105,11 @@
             $location.path("/Search");
         };
         $scope.isCategories = true;
+
+        function selectCategoriesTab() {
+            $scope.$root.$broadcast("WallaShops.MenuTabSelected", { tab: "Category"});
+        }
+
         $scope.$on("WallaShops.MenuTabSelected", function(eventInfo, args) {
             $scope.isCategories = args.tab == "Category";
         });

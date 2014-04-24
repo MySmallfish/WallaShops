@@ -72,6 +72,7 @@
 
         }
 
+        $scope.$on("WallaShops.ClearCategoriesRequested", clearSelectedCategory);
         function clearSelectedCategory() {
             $scope.selectedCategory = null;
             storage = null;

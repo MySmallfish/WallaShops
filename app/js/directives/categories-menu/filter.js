@@ -65,10 +65,12 @@
         };
 
         function clearSelectedFilter() {
+            
             $scope.$root.selectedFilter = null;
         };
-
+            
         function clearSelectedFilterValues() {
+
             _.each($scope.filters, function (filter) {
                 filter.selectedValue = null;
             });
@@ -82,13 +84,20 @@
         };
 
         function selectFilter(filter) {
-            $scope.$root.selectedFilter = filter;
+            
+            if ($scope.$root.selectedFilter == filter) {
+                clearSelectedFilter();
+            } else {
+                $scope.$root.selectedFilter = filter;
+            }
             publishFilterSelectedEvent();
         };
 
-        function selectFilterValue(filter, filterValue) {
+        function selectFilterValue(filter, filterValue, $event) {
+            $event.stopPropagation();
             filter.selectedValue = filterValue;
             publishFilterValueSelectedEvent();
+            
         };
 
         function isFilterValueSelected(filter, filterValue) {

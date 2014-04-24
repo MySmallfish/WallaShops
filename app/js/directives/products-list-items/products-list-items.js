@@ -8,7 +8,7 @@
             productsLine:"=",
             showProduct: "&",
             selectedItems: "=",
-            isSearchPage: "=",
+            comparisonEnabled: "=",
             maxSelection: "@",
             isCheckedToCompare: "&"
         },

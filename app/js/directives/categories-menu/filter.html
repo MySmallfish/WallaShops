@@ -22,7 +22,7 @@
             </div>
 
             <ul ng-show="filter.values.length && isFilterSelected(filter)">
-                <li class="level1" ng-repeat="filterValue in filter.values" ng-click="selectFilterValue(filter, filterValue)">
+                <li class="level1" ng-repeat="filterValue in filter.values" ng-click="selectFilterValue(filter, filterValue, $event)">
                     <div class="filter-container" ng-class="{'selected': isFilterValueSelected(filter, filterValue) }">
 
                         <div class="filter-check">

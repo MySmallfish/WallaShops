@@ -9,14 +9,12 @@
         };
 
         function isSelected(promotion) {
-            return $scope.selectedPromotion === promotion;
+            return $scope.selectedPromotion.id === promotion.id;
         }
 
         function select(promotion) {
+            console.log("SLEECTED!")
             $scope.selectedPromotion = promotion;
-        }
-
-        function swipeNext(promotion) {
         }
 
         $scope.direction = 'left';
@@ -49,9 +47,6 @@
         }
 
 
-        function swipeBack(promotion) {
-
-        }
 
         function getRandom(max) {
             return Math.floor((Math.random() * max));
@@ -72,8 +67,6 @@
         _.extend($scope, {
             select: select,
             isSelected: isSelected,
-            swipeNext: swipeNext,
-            swipeBack: swipeBack,
             next: next,
             back: back,
             write: function() {
@@ -93,7 +86,8 @@
         function loadMainPromotions() {
             return promotionsService.getMainPromotions().then(function(items) {
                 $scope.main_promotions = items;
-                $scope.selectedPromotion = $scope.main_promotions[0];
+                
+                select($scope.main_promotions[0]);
             });
         }
 

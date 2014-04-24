@@ -1,10 +1,10 @@
 ﻿<div class="product-border">
-    <div class="check-box" ng-class="{'checked': checked }"></div>
-    <div class="check-box-text" ng-click="check($event)">
+    <div ng-show="comparisonEnabled" class="check-box" ng-class="{'checked': checked }"></div>
+    <div ng-show="comparisonEnabled" class="check-box-text" ng-click="check($event)">
         {{ !checked ?'לחץ להשוואה':'בטל השוואה' }}
     </div>
     <div class="product-info">
-        <img class="productImg" ng-class="{'compared': isCompared}" ng-src="{{ product.imageUrl }}" s-local-cache />
+        <img class="productImg" ng-class="{'compared': isCompared}" ng-src="{{ product.imageUrl }}"/>
 
         <div class="icons">
             <div class="image-icon" ng-repeat="icon in product.icons">
@@ -35,17 +35,17 @@
 
         <div class="price" ng-class="{'compared': isCompared}" ng-show="product.saleType !== 'Personal'">
             <span>רק </span>
-            <b>{{product.price}} ש"ח</b>
+            <b>{{product.price|number:0}} ש"ח</b>
 
         </div>
         <div class="price" ng-class="{'compared': isCompared}" ng-show="product.saleType === 'Personal' && product.showAvgPrice">
-            <b>{{product.price}} ש"ח</b>
+            <b>{{product.price|number:0}} ש"ח</b>
             <div class="diagonal"></div>
         </div>
 
         <span class="details-text" ng-show="setDetailsLine(product) == 'discount'">
             <div class="diagonal" ng-show="setDetailsLine(product) == 'discount'"></div>
-            במקום {{product.originalPrice}} ש"ח</span>
+            במקום {{product.originalPrice|number:0}} ש"ח</span>
         <span class="details-text" ng-show="setDetailsLine(product) == 'details'">לפרטים</span>
         <span class="details-text" ng-show="setDetailsLine(product) == 'shipping'">כולל משלוח</span>
         <span class="details-text" ng-show="setDetailsLine(product) == 'personalPrice'">מחיר אישי</span>

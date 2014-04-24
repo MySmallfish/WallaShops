@@ -1,5 +1,9 @@
 ﻿(function (_, S, WS) {
 
+    if (navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i)) {
+        $('html').addClass('ipad ios7');
+    }
+
     var app = angular.module("WallaShops", ["ngRoute", "ngTouch", "$strap", "Simple"]);
     app.run(function () {
         FastClick.attach(document.body);
@@ -13,37 +17,26 @@
     app.service("externalBrowser", WS.ExternalBrowser);
     app.service("productDetailsPresenter", WS.ProductDetailsPresenter);
 
-    app.directive("setScroll", function() {
-        return {
-            restrict: "A",
-            scope: false,
-            link: function (scope, element) {
-                function updateScrolling() {
-                    var scrollLeft = element[0].scrollLeft;
-                    scrollLeft = element[0].scrollWidth - element[0].clientWidth - scrollLeft;
-                    scope.isScrollingRight = scrollLeft > 10;
-                    scope.isScrollingLeft = element[0].scrollLeft > 40;
+    //app.directive("setScroll", ["safeApply", function(safeApply) {
+    //    return {
+    //        restrict: "A",
+    //        scope: false,
+    //        link: function (scope, element) {
+    //            function updateScrolling() {
+    //                var scrollLeft = element[0].scrollLeft;
+    //                scrollLeft = element[0].scrollWidth - element[0].clientWidth - scrollLeft;
+    //                scope.isScrollingRight = scrollLeft > 10;
+    //                scope.isScrollingLeft = element[0].scrollLeft > 40;
 
-                    //console.log(scrollLeft, scrollLeft/, Math.floor(element[0].scrollWidth / Math.max(scrollLeft, 1)) * 230);
-                    //console.log(Math.floor(scrollLeft / 230) * 230);
-                    //var newScrollLeft = element[0].scrollLeft;
-                    //console.log(newScrollLeft);
-                    //if ((newScrollLeft/230) != Math.floor(newScrollLeft / 230)) {
-                    //    newScrollLeft = Math.floor(newScrollLeft / 230) * 230;
-                    //    setTimeout(function() {
-                    //        element[0].scrollLeft = newScrollLeft;;
-                    //    }, 250);
+    //                safeApply(scope);
+    //            }
 
-                    //}
-                    scope.$apply();
-                }
+    //            $(element).on("scroll", updateScrolling);
 
-                $(element).on("scroll", updateScrolling);
-
-                updateScrolling();
-            }
-        };
-    });
+    //            updateScrolling();
+    //        }
+    //    };
+    //}]);
     
     var analyticsService = S.GoogleAnalyticsService('UA-48712169-1');
     app.service("analytics", analyticsService);
@@ -51,6 +44,14 @@
     app.config(['$compileProvider', function ($compileProvider) {
         $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|file|tel|cdvfile):/);
     }]);
+
+    app.directive("wsLoading", function () {
+        return {
+            restrict: 'E',
+            replace: true,
+            template: '<div class="loading">אנו אוספים נתונים עבורך, אנא המתן/י</div>'
+        };
+    });
 
     app.directive("appHeader", function () {
         return WS.AppHeaderDirective;

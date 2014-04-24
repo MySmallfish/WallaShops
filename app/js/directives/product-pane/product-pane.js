@@ -6,7 +6,7 @@
         scope: {
             product: "=",
             selectedItems: "=",
-            isSearchPage: "=",
+            comparisonEnabled: "=",
             maxSelection: "@",
             isCompared: "=",
             isCheckedToCompare: "&"
