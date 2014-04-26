@@ -39,13 +39,15 @@
 
         </div>
         <div class="price" ng-class="{'compared': isCompared}" ng-show="product.saleType === 'Personal' && product.showAvgPrice">
-            <b>{{product.price|number:0}} ש"ח</b>
+            <b>{{product.averagePrice|number:0}} ש"ח</b>
             <div class="diagonal"></div>
         </div>
 
         <span class="details-text" ng-show="setDetailsLine(product) == 'discount'">
-            <div class="diagonal" ng-show="setDetailsLine(product) == 'discount'"></div>
-            במקום {{product.originalPrice|number:0}} ש"ח</span>
+            <!-- recent update to specs without diagonal on discount-->
+            <div class="diagonal" ng-hide="true" n-g-show="setDetailsLine(product) == 'discount'"></div>
+            במקום {{product.originalPrice|number:0}} ש"ח
+        </span>
         <span class="details-text" ng-show="setDetailsLine(product) == 'details'">לפרטים</span>
         <span class="details-text" ng-show="setDetailsLine(product) == 'shipping'">כולל משלוח</span>
         <span class="details-text" ng-show="setDetailsLine(product) == 'personalPrice'">מחיר אישי</span>

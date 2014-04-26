@@ -1,6 +1,6 @@
 ﻿(function (_, S, WS) {
 
-    WS.SearchController = ["$q", "$scope", "$filter", "$location", "productService", "dailyCacheService" , function ($q, $scope, $filter, $location, productService, dailyCacheService) {
+    WS.SearchController = ["$q", "$scope", "$filter", "$location", "productService", "dailyCacheService", function ($q, $scope, $filter, $location, productService, dailyCacheService) {
         $scope.hideNavigators = true;
         var storage = dailyCacheService.get("ComparisonProduct-Cache");
 
@@ -47,11 +47,11 @@
         function updateProductPage() {
             if ($scope.navigationInfo && $scope.productsLine1) {
                 var visibleProducts1 = $filter("skip")($scope.productsLine1, $scope.navigationInfo.startIndex);
-                $scope.currentProductsPage1 = $filter("limitTo")(visibleProducts1, $scope.step+1);
+                $scope.currentProductsPage1 = $filter("limitTo")(visibleProducts1, $scope.step + 1);
             }
             if ($scope.navigationInfo && $scope.productsLine2) {
                 var visibleProducts2 = $filter("skip")($scope.productsLine2, $scope.navigationInfo.startIndex);
-                $scope.currentProductsPage2 = $filter("limitTo")(visibleProducts2, $scope.step+1);
+                $scope.currentProductsPage2 = $filter("limitTo")(visibleProducts2, $scope.step + 1);
             }
         };
 
@@ -69,7 +69,7 @@
             };
 
             if (routeParameters.searchTerm) {
-                productParameters.searchTerm = routeParameters.searchTerm;
+                 productParameters.searchTerm = routeParameters.searchTerm;
             } else {
                 if (routeParameters.subCategoryId >= 0) {
                     if (routeParameters.parent && routeParameters.parent.subCategoryId >= 0) {
@@ -120,7 +120,7 @@
         function extractCategoryParameters() {
 
             var routeParameters = {
-                searchTerm: $scope.searchTerm    
+                searchTerm: $scope.searchTerm
             };
 
             var category = $scope.currentCategory;
@@ -142,11 +142,11 @@
             return routeParameters;
         }
 
-        $scope.$watch("searchTerm", refresh);
+        $scope.$watch("searchTerm", _.throttle(refresh, 1000, { leading: false}));
         $scope.$watch("currentCategory", refresh);
         $scope.$watch("selectedFilterValues", refresh);
 
-        
+
         function displayError(error) {
             $scope.fatalError = error;
         }
@@ -212,7 +212,7 @@
 
         refresh();
 
-
+     
         _.extend($scope, {
             isFilterValueNotEmpty: isFilterValueNotEmpty,
             clearSelectedFilterValues: clearSelectedFilterValues,

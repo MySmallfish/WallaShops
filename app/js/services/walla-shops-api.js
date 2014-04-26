@@ -140,7 +140,7 @@
                 ratersNumber: product.ReviewsCount,
                 paymentsNum: product.PaymentsNum,
                 buyersCount: product.SoldCount,
-                minBuyersCount: 2, //product.MinSoldCount
+                minBuyersCount: product.MinSoldCount,
                 remainCount: product.RemainCount,
                 price: product.Price,
                 coin: product.ProductCoin, //2 = ILS, 3 = USD, 4 = USD, 11 = EURO
@@ -157,6 +157,7 @@
                 discountAmount: product.DiscountAmount,
                 isDirectPrice: product.IsPersonalAuctionDirectPrice,
                 showAvgPrice: product.ShowApproxAvgZap,
+                averagePrice: product.ApproxAvgPrice,
                 saleSquareIcons:product.SaleSquareIcons,
                 icons: _.map(product.CubeIconTypes, mapIcon)
             };
