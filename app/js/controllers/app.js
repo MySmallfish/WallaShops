@@ -6,8 +6,9 @@
         "$window",
         "productDetailsPresenter",
         "categoryService",
+        "$timeout",
         "$q",
-    function ($scope, $location, $window, productDetailsPresenter, categoryService, $q) {
+    function ($scope, $location, $window, productDetailsPresenter, categoryService,$timeout, $q) {
         $scope.stopProgress = function () {
             $scope.loading = false;
         };
@@ -47,7 +48,6 @@
                     window.open(category.link + category.id, "_blank");
                 } else if (category.parent) {
                     $location.path("/Search");
-
                 }
             } else {
                 $location.path("/");
@@ -72,9 +72,20 @@
             $scope.$root.$broadcast("WallaShops.clearSelectedFilterValues");
         }
 
+        $scope.loadImages = function (items) {
+            for (var i = 0; i < items.length; i++) {
+                    items[i].imageUrl = items[i].cachedImageUrl;
+                    for (var j = 0; j < items[i].icons.length; j++) {
+                        items[i].icons[j].imageUrl = items[i].icons[j].cachedImageUrl;
+                        items[i].icons[j].imageUrl1 = items[i].icons[j].cachedImageUrl1;
+                        items[i].icons[j].imageUrl2 = items[i].icons[j].cachedImageUrl2;
+                    }
+                }
+        }
+
         function onCategorySelected(eventInfo, args) {
 
-            if (args.category.level === 1 || args.category.level === 0) {
+            if (args.category.level === 1 || args.category.level === 0 || $scope.currentCategory.id != args.category.id) {
                 clearProductsToCompare();
                 clearSelectedFilterValues();
             }
@@ -101,8 +112,12 @@
 
         };
 
-        $scope.searchText = function () {
-            $location.path("/Search");
+        $scope.search = function () {
+            if ($location.path() != "/Search") {
+                $location.path("/Search");
+            } else {
+                $scope.$broadcast("WallaShops.Search");
+            }
         };
         $scope.isCategories = true;
 
@@ -113,9 +128,8 @@
         $scope.$on("WallaShops.MenuTabSelected", function(eventInfo, args) {
             $scope.isCategories = args.tab == "Category";
         });
-        
 
-        $scope.loadCategories();
+        $timeout($scope.loadCategories, 350);
 
 
     }];

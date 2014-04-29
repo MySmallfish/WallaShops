@@ -5,7 +5,8 @@
     WS.ExternalBrowser = ["config", function (config) {
 
         function openBrowser(url, options) {
-            if (!options.url) {
+            options = options || {};
+            if ( !options.url) {
                 throw new Error("Must specify url");
             }
             var target = options.externalBrowser ? "_system" : "_blank",

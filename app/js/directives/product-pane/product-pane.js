@@ -8,14 +8,16 @@
             selectedItems: "=",
             comparisonEnabled: "=",
             maxSelection: "@",
-            isCompared: "=",
             isCheckedToCompare: "&"
 
         },
         replace: true,
         link: function (scope, element, attributes, ctrl) {
             // bind clicks...            
-
+            scope.round = function(num) {
+                var result = Math.ceil(num);
+                return result;
+            }
             scope.stars = [0, 1, 2, 3, 4];
             scope.isDecimal = function (number) {
                 return number > parseInt(number, 10);

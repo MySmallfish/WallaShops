@@ -6,7 +6,6 @@
         scope: {
             showProduct: "&",
             category: "="
-
         },
         replace: true,
         controller: ["$scope", "$filter", function ($scope, $filter) {

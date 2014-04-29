@@ -1,6 +1,6 @@
 ﻿(function (_, S, WS) {
 
-    WS.HomeController = ["$scope", "promotionsService", "productService", "$q", "network", function ($scope, promotionsService, productService, $q, network) {
+    WS.HomeController = ["$scope", "promotionsService", "productService", "$q", "network", "$timeout", function ($scope, promotionsService, productService, $q, network, $timeout) {
 
         $scope.openPromotion = function (url) {
             if (url) {
@@ -13,7 +13,6 @@
         }
 
         function select(promotion) {
-            console.log("SLEECTED!")
             $scope.selectedPromotion = promotion;
         }
 
@@ -69,7 +68,7 @@
             isSelected: isSelected,
             next: next,
             back: back,
-            write: function() {
+            write: function () {
                 console.log("WWW");
             }
         });
@@ -78,15 +77,15 @@
         $scope.secondPromotion = null;
 
         $scope.promotionsCategories = [];
-        function loadSidePromotions(){
+        function loadSidePromotions() {
             return promotionsService.getSeasonalImages().then(loadSeasonalPromotions);
         }
         $scope.main_promotions = null;
 
         function loadMainPromotions() {
-            return promotionsService.getMainPromotions().then(function(items) {
+            return promotionsService.getMainPromotions().then(function (items) {
                 $scope.main_promotions = items;
-                
+
                 select($scope.main_promotions[0]);
             });
         }
@@ -107,25 +106,41 @@
                 }),
                 productService.getPromotionsCategories()
             ]).then(function (items) {
-                $scope.promotionsCategories = _.union($scope.promotionsCategories, items[0], items[1], items[2]);
+                var promotions = _.union($scope.promotionsCategories, items[0], items[1], items[2]);
+                $scope.promotionsCategories = promotions;
+                $timeout(function () {
+                    _.each(promotions, function (promotion) {
+                        $scope.loadImages(promotion.products);
+
+                    });
+                    $scope.promotionsCategories = promotions;
+                }, 200);
+                return promotions;
             });
 
 
         }
 
-        function displayError (error) {
+        function displayError(error) {
             $scope.fatalError = error;
         }
         $scope.reload = function () {
             $scope.notifyProgress()
-                .then(loadMainPromotions)
-                .then(loadSidePromotions)
-                .then(loadCategoryPromotions)
+                .then(function () {
+                    return $q.all([
+                        loadMainPromotions(),
+                        loadSidePromotions(),
+                        loadCategoryPromotions()
+                    ]);
+                })
+                //.then( loadMainPromotions)
+                //.then(loadSidePromotions)
+                //.then(loadCategoryPromotions)
                 .catch(displayError)
                 .finally($scope.stopProgress);
         }
 
-        
+
         $scope.reload();
 
     }];

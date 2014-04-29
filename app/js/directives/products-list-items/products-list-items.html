@@ -1,5 +1,5 @@
 ﻿<div class="products-list clear" ng-style="{'width': (240*products.length) + 'px'}">
     <div class="product" ng-repeat="product in products" ng-click="showProduct({product:product})">
-        <product-pane product="product" is-compared="false" selected-items="selectedItems" max-selection="{{maxSelection}}" comparison-enabled="comparisonEnabled" is-checked-to-compare=" ischeckedtocompare({product:product})"></product-pane>
+        <product-pane product="product" selected-items="selectedItems" max-selection="{{maxSelection}}" comparison-enabled="comparisonEnabled" is-checked-to-compare=" ischeckedtocompare({product:product})"></product-pane>
     </div>
 </div>

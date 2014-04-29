@@ -54,6 +54,7 @@
 
                 scope.$on("WallaShops.FilterValueSelected", function(e, args) {
                     scope.isFiltered = true;
+                    hide();
                 });
 
                 scope.$on("WallaShops.publishCleared", function (e, args) {

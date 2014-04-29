@@ -10,6 +10,10 @@ h4 {
     font-size: 16pt;
 }
 
+    h4.title {
+        color: #326fc0;
+    }
+
 * {
     -webkit-tap-highlight-color: transparent;
     /*user-select: none;
@@ -124,7 +128,7 @@ header {
 .category {
     background-color: transparent;
     border: none;
-    font-size: 16pt;
+    font-size: 14pt;
     outline: none;
 }
 
@@ -133,18 +137,19 @@ header {
     background-color: #3f464d;
     border: solid 1px #3f464d;
     border-bottom: none;
-    border-radius: 14px 14px 0 0;
+    border-radius: 6px 6px 0 0;
     width: 160px;
     text-align: center;
     color: white;
     margin: 8px;
+    margin-top: 12px;
     margin-bottom: 8px;
     line-height: normal;
 }
 
     .menu-button .category {
         color: white;
-        height: 48px;
+        height: 36px;
         width: 100%;
     }
 
@@ -167,7 +172,7 @@ header {
     margin-left: 235px;
     margin-right: 385px;
     height: 100%;
-    padding-top: 20px;
+    padding-top: 16px;
 }
 
 .search-inner {
@@ -332,7 +337,7 @@ input[type=submit].search-button {
 .promotions {
     margin-top: 2%;
     position: relative;
-    margin-bottom: 5%;
+    margin-bottom: 10px;
     margin-right: 5%;
 }
 
@@ -368,8 +373,9 @@ input[type=submit].search-button {
     }
 
 .no-products {
-    
-    font-size: 13pt;
+    font-size: 14pt;
+    margin-top: 6px;
+    margin-bottom: 6px;
 }
 
 .home-page .products-list-container {
@@ -461,7 +467,7 @@ div, i {
     margin-top: 0;
 }
 
-.title {
+.product-info .title {
     font-size: 14px;
     font-weight: normal;
     margin-top: 4px;
@@ -487,7 +493,11 @@ div, i {
 }
 
 .price b {
-    font-size: 12pt;
+    font-size: 10pt;
+}
+
+.average-price {
+    text-decoration: line-through;
 }
 
 .price .space {
@@ -615,7 +625,6 @@ div, i {
     margin-right: 20px;
     margin-bottom: 20px;
     margin-top: 20px;
-    color: #326fc0;
 }
 
 .search-left-arrow, .search-right-arrow {
@@ -786,7 +795,7 @@ div, i {
 
     .table-background thead th {
         min-width: 140px;
-        vertical-align: top;
+        vertical-align: bottom;
         height: 48px;
     }
 
@@ -796,16 +805,21 @@ div, i {
 .compare-table td, .compare-table thead th {
     border: solid 1px #f6f6f6;
 }
-
+.compare-table {
+    table-layout: fixed;
+}
 .compare-table td {
     background-color: white;
-    min-width: 80px;
-    white-space: nowrap;
+    
     height: 140px;
     text-align: center;
     color: #575757;
 }
-
+.compare-table td, .compare-table th {
+    width: 100px;
+    word-wrap: break-word;
+    white-space: normal;
+}
 .comparison-products-table {
     position: absolute;
     right: 0;
@@ -838,6 +852,12 @@ border-top: solid 1px #BBB;
     background-color: #555;
     width: 100px;
     height: 90px;
+}
+
+.compare-hint {
+    line-height: 64px;
+    font-size: 16pt;
+    color: #AAA;
 }
 
 .comparison-products .product-info {
@@ -1094,6 +1114,7 @@ border-top: solid 1px #BBB;
     text-decoration: underline;
     font-size: 14pt;
     display: inline-block;
+    margin-right: 20px;
 }
 
 .search-page .compare-link {
@@ -1180,7 +1201,11 @@ p {
 .search-term {
     font-weight: bold;
     font-size: 13pt;
-    padding-top: 10px;
+}
+
+.search-header {
+    margin-top: 14px;
+    margin-bottom: 14px;
 }
 
 
@@ -1270,3 +1295,15 @@ table {
         right: 0;
         background: -webkit-gradient(linear, right top, left top, color-stop(0, rgba(255,255,255,1)), color-stop(1, rgba(255,255,255,0.5)));
     }
+
+.product-info .title {
+    font-weight: bold;
+}
+
+.menu .ng-click-active {
+    background-color: #888;
+    color: white;
+}
+.details-line {
+    margin-top: 2px;
+}

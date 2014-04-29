@@ -127,7 +127,12 @@
                 mappedIcon.imageUrl = baseUrl + "/images/Auctions/CubeIcons/PaymentsSaleIcon.png";
                 mappedIcon.imageAlt = "36 תשלומים ללא ריבית";
             }
-            
+            mappedIcon.cachedImageUrl = mappedIcon.imageUrl;
+            mappedIcon.cachedImageUrl1 = mappedIcon.imageUrl1;
+            mappedIcon.cachedImageUrl2 = mappedIcon.imageUrl2;
+            delete mappedIcon.imageUrl;
+            delete mappedIcon.imageUrl1;
+            delete mappedIcon.imageUrl2;
             return mappedIcon;
         }
 
@@ -137,7 +142,7 @@
                 title: product.TitleLine1,
                 subTitle: product.TitleLine2,
                 saleType: product.AuctionType,
-                imageUrl: product.AuctionType == "DiscountAuction" || product.AuctionType == "GroupDeal" ? product.SmallPicPathGroupDeal : product.SmallPicPath,
+                cachedImageUrl: product.AuctionType == "DiscountAuction" || product.AuctionType == "GroupDeal" ? product.SmallPicPathGroupDeal : product.SmallPicPath,
                 rating: product.ReviewsScore,
                 ratersNumber: product.ReviewsCount,
                 paymentsNum: product.PaymentsNum,
@@ -159,14 +164,14 @@
                 discountAmount: product.DiscountAmount,
                 isDirectPrice: product.IsPersonalAuctionDirectPrice,
                 showAvgPrice: product.ShowApproxAvgZap,
-                averagePrice: product.ApproxAvgPrice,
+                averagePrice: product.ApproxAvgPrice / 100,
                 saleSquareIcons:product.SaleSquareIcons,
                 icons: _.map(product.CubeIconTypes, mapIcon)
             };
 
             if (mappedProduct.imageUrl) {
                 var img = new Image();
-                img.src = mappedProduct.imageUrl;
+                img.src = mappedProduct.cachedImageUrl;
             }
             
             
@@ -344,12 +349,12 @@
         }
 
         function filterFeatures(features) {
-            var featuresNotForTable = ["סוג מכירה", "מחיר", "מספר מדרגים", "shpDays", "תקנון הספקה"];
+            
+            var featuresNotForTable = ["סוג מכירה", "מספר מדרגים", "shpDays", "תקנון הספקה","מועד סגירה","ספק"];
 
             var filteredFeatures = _.filter(features, function (feature) {
-                return !_.some(featuresNotForTable, function (item) {
-
-                    return item === feature.header;
+                return _.some(feature.values, function (value) { return !!value; }) && !_.some(featuresNotForTable, function (item) {
+                        return item === feature.header;
                 });
             });
             return filteredFeatures;

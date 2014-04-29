@@ -15,32 +15,40 @@
                 <thead ng-show="!isEmpty()">
                     <tr>
                         <th class="headcol"><div class="inner">מוצרים</div></th>
+                        <th>שם מוצר</th>
                         <th ng-repeat="feature in features">{{feature.header}}</th>
                     </tr>
                 </thead>
                 <tbody>
 
                     <tr ng-repeat="product in productsToCompare" ng-show="!isEmpty()">
-                        <td class="headcol">
-                            <div class="remove-product" ng-click="publishRemoveProduct()">
+                        <td class="headcol" ng-click="showProduct(product)">
+                            <div ng-if="productsToCompare.length>1" class="remove-product" ng-click="publishRemoveProduct()">
                                 <i class="fa fa-times"></i>
                             </div>
                             <div class="inner">
                                 <img ng-src="{{ product.imageUrl }}" />
+                                <div class="details-line">
+                                    <span class="details-text">לפרטים</span>
+                                    <span class="details"></span>
+                                </div>
                             </div>
                         </td>
-                        <td ng-repeat="feature in features">
-                            {{feature.values[product.id]}}
-                        </td>
-                    </tr>
-                    <tr ng-show="!isFull()">
-                        <td class="headcol">
-                            <div class="inner addproduct">
-                                <div class="add-product-to-compare" ng-click="addPruduct()"></div>
-                            </div>
+                        <td>
+                            {{product.title}}
                         </td>
                         <td ng-repeat="feature in features">
-                            <div class="inner">&nbsp;</div>
+                            
+                            <span ng-switch on="feature.header">
+                                
+                                <span class="rating" ng-switch-when="דרוג גולשים">
+                                    <img ng-src="app/img/star{{round(feature.values[product.id])}}.png" ng-if="round(feature.values[product.id])>0" />
+                                </span>
+                                <span ng-switch-default>
+                                    {{feature.values[product.id]}}
+                                </span>
+                            </span>
+                            
                         </td>
                     </tr>
                 </tbody>

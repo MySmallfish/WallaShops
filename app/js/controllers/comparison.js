@@ -3,6 +3,10 @@
     WS.ComparisonController = ["$scope", "$location", "$routeParams", "wallaShopsApi", function ($scope, $location, $routeParams, wallaShopsApi) {
         
         var maxProducts = 4;
+        $scope.round = function (num) {
+            var result = Math.ceil(num);
+            return result;
+        }
 
         $scope.isFull = function() {
             var result = false;

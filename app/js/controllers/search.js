@@ -1,6 +1,6 @@
 ﻿(function (_, S, WS) {
 
-    WS.SearchController = ["$q", "$scope", "$filter", "$location", "productService", "dailyCacheService", function ($q, $scope, $filter, $location, productService, dailyCacheService) {
+    WS.SearchController = ["$timeout","$q", "$scope", "$filter", "$location", "productService", "dailyCacheService", function ($timeout, $q, $scope, $filter, $location, productService, dailyCacheService) {
         $scope.hideNavigators = true;
         var storage = dailyCacheService.get("ComparisonProduct-Cache");
 
@@ -21,7 +21,7 @@
             $location.path("/Comparison");
         }
 
-        function isAnyProductSelected() {
+        function areProductsSelected() {
             var result = false;
             if ($scope.productsToCompare.length > 0) {
                 result = true;
@@ -47,11 +47,23 @@
         function updateProductPage() {
             if ($scope.navigationInfo && $scope.productsLine1) {
                 var visibleProducts1 = $filter("skip")($scope.productsLine1, $scope.navigationInfo.startIndex);
-                $scope.currentProductsPage1 = $filter("limitTo")(visibleProducts1, $scope.step + 1);
+                var products1 = $filter("limitTo")(visibleProducts1, $scope.step + 1);
+                $scope.currentProductsPage1 = products1;
+                $timeout(function () {
+                    $scope.loadImages(products1);
+
+                    $scope.currentProductsPage1 = products1;
+                }, 200);
             }
             if ($scope.navigationInfo && $scope.productsLine2) {
                 var visibleProducts2 = $filter("skip")($scope.productsLine2, $scope.navigationInfo.startIndex);
-                $scope.currentProductsPage2 = $filter("limitTo")(visibleProducts2, $scope.step + 1);
+                var products2 = $filter("limitTo")(visibleProducts2, $scope.step + 1);
+                $scope.currentProductsPage2 = products2;
+                $timeout(function () {
+                    $scope.loadImages(products2);
+
+                    $scope.currentProductsPage2 = products2;
+                }, 200);
             }
         };
 
@@ -69,7 +81,7 @@
             };
 
             if (routeParameters.searchTerm) {
-                 productParameters.searchTerm = routeParameters.searchTerm;
+                 $scope.searchText = productParameters.searchTerm = routeParameters.searchTerm;
             } else {
                 if (routeParameters.subCategoryId >= 0) {
                     if (routeParameters.parent && routeParameters.parent.subCategoryId >= 0) {
@@ -142,8 +154,11 @@
             return routeParameters;
         }
 
-        $scope.$watch("searchTerm", _.throttle(refresh, 1000, { leading: false}));
-        $scope.$watch("currentCategory", refresh);
+        $scope.$on("WallaShops.Search", refresh);
+        $scope.$watch("currentCategory", function() {
+            cancelInitial = true;
+            refresh();
+        });
         $scope.$watch("selectedFilterValues", refresh);
 
 
@@ -210,14 +225,21 @@
             refresh();
         }
 
-        refresh();
+        var cancelInitial = false;
+        $timeout(function() {
+            if (!cancelInitial) {
+                refresh();
+            } else {
+                cancelInitial = true;
+            }
+        }, 300);
 
      
         _.extend($scope, {
             isFilterValueNotEmpty: isFilterValueNotEmpty,
             clearSelectedFilterValues: clearSelectedFilterValues,
             selectCategoryById: selectCategoryById,
-            isAnyProductSelected: isAnyProductSelected,
+            areProductsSelected: areProductsSelected,
             openCamperisonPage: openCamperisonPage,
             isCheckedToCompare: isCheckedToCompare
         });

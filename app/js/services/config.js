@@ -1,7 +1,7 @@
 (function(S, WS) {
     WS.Configuration = function(utils){
-        function getValue(name){
-            return $("head meta[name='" + name + "']").attr("content");
+        function getValue(name) {
+            return document.querySelector("head meta[name='" + name + "']").getAttribute("content");
         }
 
         var config = {
