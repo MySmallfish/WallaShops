@@ -1,53 +1,41 @@
-﻿<div class="product-border">
-    <div ng-show="comparisonEnabled" class="check-box" ng-class="{'checked': checked }"></div>
-    <div ng-show="comparisonEnabled" class="check-box-text" ng-click="check($event)">
-        {{ !checked ?'לחץ להשוואה':'בטל השוואה' }}
+﻿<div class="product-info">
+    <div class="comparison-check">
+        <div ng-show="comparisonEnabled" class="check-box" ng-class="{'checked': checked }"></div>
+        <div ng-show="comparisonEnabled" class="check-box-text" ng-click="check($event)">
+            {{ !checked ?'לחץ להשוואה':'בטל השוואה' }}
+        </div>
+
     </div>
-    <div class="product-info">
-        <img class="productImg" ng-src="{{ product.imageUrl }}"/>
+    <img class="productImg" ng-src="{{ product.imageUrl }}" />
 
-        <div class="icons">
-            <div class="image-icon" ng-repeat="icon in product.icons">
-                <div class="discount-icon" ng-show="!icon.id">
-                    <div class="icon-text">{{ product.discountAmount }}<span>%</span>  הנחה </div>
-                </div>
-
-                <img ng-hide="loading" ng-src="{{icon.imageUrl}}" />
+    <div class="icons">
+        <div class="image-icon" ng-repeat="icon in product.icons">
+            <div class="discount-icon" ng-if="!icon.id">
+                <div class="icon-text">{{ product.discountAmount }}<span>%</span>  הנחה </div>
             </div>
+
+            <img ng-hide="loading" ng-src="{{icon.imageUrl}}" />
         </div>
-
-        <div class="title">{{ product.title }}</div>
-
-        <div class="subtitle">{{ product.subTitle }}</div>
-
-        <div class="rating" ng-if="setRatingLine(product)==='rating' && round(product.rating) > 0">
-            <img ng-src="app/img/star{{round(product.rating)}}.png" />
-            <span class="raters-number">({{product.ratersNumber}})</span>
-        </div>
-
-        <div ng-show="setRatingLine(product)==='payments'">מס' תשלומים: {{ product.paymentsNum}} <span class="payments" ng-show="product.paymentsNum < 36">(עד 36 תשלומים כולל ריבית)</span></div>
-        <div ng-show="setRatingLine(product)==='soldCount'">נרכשו: {{ product.buyersCount}}</div>
-
-        <div class="price" ng-show="product.saleType !== 'Personal'">
-            <span>רק </span>
-            <b>{{product.price|number:0}} ₪</b>
-        </div>
-        <div class="price" ng-show="product.saleType === 'Personal' && product.showAvgPrice">
-            <b class="average-price">{{product.averagePrice|number:0}} ₪</b>
-            
-        </div>
-
-        <span class="details-text" ng-show="setDetailsLine(product) == 'discount'">
-            <!-- recent update to specs without diagonal on discount-->
-            <div class="diagonal" ng-hide="true" n-g-show="setDetailsLine(product) == 'discount'"></div>
-            במקום {{product.originalPrice|number:0}} ₪
-        </span>
-        <span class="details-text" ng-show="setDetailsLine(product) == 'details'">לפרטים</span>
-        <span class="details-text" ng-show="setDetailsLine(product) == 'shipping'">כולל משלוח</span>
-        <span class="details-text" ng-show="setDetailsLine(product) == 'personalPrice'">מחיר אישי</span>
-        <span class="details-text" ng-show="setDetailsLine(product) == 'getPrice'">קבל מחיר</span>
-        <div class="details"></div>
-
     </div>
 
+    <div class="title">{{ product.title }}</div>
+    <div class="subtitle">{{ product.subTitle }}</div>
+
+    <div class="rating" ng-if="product.viewOptions.rating == 0 && round(product.rating) > 0">
+        <img ng-src="app/img/star{{round(product.rating)}}.png" />
+        <span class="raters-number">({{product.ratersNumber}})</span>
+    </div>
+
+    <div ng-if="product.viewOptions.rating == 2">מס' תשלומים: {{ product.paymentsNum}} <span class="payments" ng-if="product.paymentsNum < 36">(עד 36 תשלומים כולל ריבית)</span></div>
+    <div ng-if="product.viewOptions.rating == 1">נרכשו: {{ product.buyersCount}}</div>
+
+    <div class="price" ng-if="product.showPrice">
+        <span>רק </span>
+        <b>{{product.price|number:0}} ₪</b>
+    </div>
+    <div class="price average-price" ng-if="product.displayAveragePrice">
+        {{product.averagePrice|number:0}} ₪
+    </div>
+    <span class="details-text">{{product.detailsText}}</span>
+    <div class="details"></div>
 </div>

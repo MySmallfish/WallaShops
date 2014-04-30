@@ -6,6 +6,8 @@
         <br />
         <a href="#" ng-click="reload()">נסה שנית</a>
     </div>
+    <!-- cache rating stars -->
+    <img ng-repeat="star in stars" ng-src="app/img/star{{star}}.png" ng-hide="true"/>
     <div class="promotions" ng-hide="!isOnline || fatalError" s-online>
         <div class="promotions-container"
              ng-swipe-left="next()" ng-swipe-right="back()">

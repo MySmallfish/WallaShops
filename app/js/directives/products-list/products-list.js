@@ -14,20 +14,16 @@
             $scope.points = [];
             
             $scope.$watch("category", function () {
-                $scope.productsListLength = $scope.category.products.length;
+                if ($scope.category) {
+                    $scope.productsListLength = $scope.category.products.length;
+                }
             });
             
             function updateProductPage(navigationInfo) {
-                $scope.currentProductsPage = $scope.category.products;
-                $scope.productsListLength = $scope.category.products.length;
-                //if ($scope.category.products) {
-                //    var visibleProducts = $filter("skip")($scope.category.products, navigationInfo.startIndex);
-
-                //    $scope.currentProductsPage = $filter("limitTo")(visibleProducts, $scope.step);
-                //    $scope.productsListLength = $scope.category.products.length;
-                //}
-
-
+                if ($scope.category) {
+                    $scope.currentProductsPage = $scope.category.products;
+                    $scope.productsListLength = $scope.category.products.length;
+                }
             };
             $scope.$watch("navigationInfo", function (newValue) {
                 updateProductPage(newValue);

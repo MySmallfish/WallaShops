@@ -1,7 +1,7 @@
 ﻿(function (_, S, WS) {
 
     WS.HomeController = ["$scope", "promotionsService", "productService", "$q", "network", "$timeout", function ($scope, promotionsService, productService, $q, network, $timeout) {
-
+        $scope.stars = _.range(2, 11);
         $scope.openPromotion = function (url) {
             if (url) {
                 promotionsService.openPromotion(url);
