@@ -8,7 +8,7 @@
         "categoryService",
         "$timeout",
         "$q",
-    function ($scope, $location, $window, productDetailsPresenter, categoryService,$timeout, $q) {
+    function ($scope, $location, $window, productDetailsPresenter, categoryService, $timeout, $q) {
         $scope.stopProgress = function () {
             $scope.loading = false;
         };
@@ -26,6 +26,7 @@
         };
 
         $scope.goBack = function () {
+
             $window.history.back();
         };
 
@@ -40,7 +41,7 @@
             productDetailsPresenter.showProduct(product);
         };
 
-        
+
 
         $scope.$watch("currentCategory", function (category) {
             if (category) {
@@ -54,12 +55,15 @@
             }
         });
 
-        $scope.home = function () {
+        $scope.clear = function () {
             $scope.$root.$broadcast("WallaShops.ClearCategoriesRequested");
 
             clearProductsToCompare();
             clearSelectedFilterValues();
             selectCategoriesTab();
+        }
+        $scope.home = function () {
+
             $location.path("/");
             return false;
         }
@@ -74,13 +78,13 @@
 
         $scope.loadImages = function (items) {
             for (var i = 0; i < items.length; i++) {
-                    items[i].imageUrl = items[i].cachedImageUrl;
-                    for (var j = 0; j < items[i].icons.length; j++) {
-                        items[i].icons[j].imageUrl = items[i].icons[j].cachedImageUrl;
-                        items[i].icons[j].imageUrl1 = items[i].icons[j].cachedImageUrl1;
-                        items[i].icons[j].imageUrl2 = items[i].icons[j].cachedImageUrl2;
-                    }
+                items[i].imageUrl = items[i].cachedImageUrl;
+                for (var j = 0; j < items[i].icons.length; j++) {
+                    items[i].icons[j].imageUrl = items[i].icons[j].cachedImageUrl;
+                    items[i].icons[j].imageUrl1 = items[i].icons[j].cachedImageUrl1;
+                    items[i].icons[j].imageUrl2 = items[i].icons[j].cachedImageUrl2;
                 }
+            }
         }
 
         function onCategorySelected(eventInfo, args) {
@@ -122,10 +126,10 @@
         $scope.isCategories = true;
 
         function selectCategoriesTab() {
-            $scope.$root.$broadcast("WallaShops.MenuTabSelected", { tab: "Category"});
+            $scope.$root.$broadcast("WallaShops.MenuTabSelected", { tab: "Category" });
         }
 
-        $scope.$on("WallaShops.MenuTabSelected", function(eventInfo, args) {
+        $scope.$on("WallaShops.MenuTabSelected", function (eventInfo, args) {
             $scope.isCategories = args.tab == "Category";
         });
 

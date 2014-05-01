@@ -12,6 +12,7 @@ h4 {
 
     h4.title {
         color: #326fc0;
+        line-height: 32px;
     }
 
 * {
@@ -337,7 +338,7 @@ input[type=submit].search-button {
     margin-top: 2%;
     position: relative;
     margin-bottom: 10px;
-    margin-right: 5%;
+    margin-right: 2%;
 }
 
 .seasonal img {
@@ -380,7 +381,6 @@ input[type=submit].search-button {
 .home-page .products-list-container {
     position: relative;
     overflow: hidden;
-    margin: auto;
 }
 
 .products-list {
@@ -389,9 +389,9 @@ input[type=submit].search-button {
     clear: both;
 }
 
-.home-page .products-list {
-    right: 2%;
-}
+/*.home-page .products-list {
+    margin-right: 2%;
+}*/
 
 .product {
     border-left: solid 1px lightgrey;
@@ -412,7 +412,9 @@ input[type=submit].search-button {
     background-color: white;
 }
 .product {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F2F2F2), color-stop(12%,#ffffff), color-stop(88%,#ffffff), color-stop(100%,#F2F2F2)); /* Chrome,Safari4+ */
     background: linear-gradient(to bottom, #F2F2F2 0%,#ffffff 12%,#ffffff 88%,#F2F2F2 100%); /* W3C */
+    
     /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#E7E7E7', endColorstr='#cccccc',GradientType=0 );*/ /* IE6-9 */
 }
 
@@ -1197,7 +1199,7 @@ p {
     font-size: 13pt;
 }
 
-.search-header {
+.titles {
     margin-top: 14px;
     margin-bottom: 20px;
 }
@@ -1231,8 +1233,8 @@ p {
 
 .back-button {
     position: absolute;
-    left: 50px;
-    top: 5px;
+    left: 0;
+    top: 0;
 }
 
 
@@ -1305,4 +1307,10 @@ table {
 .fade {
     opacity: 1;
     -webkit-transition: none;
+}
+
+.products-list-container, .titles {
+    margin-right: 2%;
+    margin-left: 2%;
+    position: relative;
 }

@@ -340,7 +340,7 @@
         function filterFeatures(features) {
             
             var featuresNotForTable = ["סוג מכירה", "מספר מדרגים", "shpDays", "תקנון הספקה","מועד סגירה","ספק"];
-            g
+            
             var filteredFeatures = _.filter(features, function (feature) {
                 return _.some(feature.values, function (value) { return !!value; }) && !_.some(featuresNotForTable, function (item) {
                         return item === feature.header;
