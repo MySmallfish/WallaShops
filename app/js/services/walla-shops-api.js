@@ -142,7 +142,7 @@
                 title: product.TitleLine1,
                 subTitle: product.TitleLine2,
                 saleType: product.AuctionType,
-                cachedImageUrl: product.AuctionType == "DiscountAuction" || product.AuctionType == "GroupDeal" ? product.SmallPicPathGroupDeal : product.SmallPicPath,
+                cachedImageUrl: product.SmallPicPath,// product.AuctionType == "DiscountAuction" || product.AuctionType == "GroupDeal" ? product.SmallPicPathGroupDeal : product.SmallPicPath,
                 rating: product.ReviewsScore,
                 ratersNumber: product.ReviewsCount,
                 paymentsNum: product.PaymentsNum,

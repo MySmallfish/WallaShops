@@ -87,6 +87,8 @@
                 $scope.main_promotions = items;
 
                 select($scope.main_promotions[0]);
+
+                $("#promotion-tabs a").tab();
             });
         }
 

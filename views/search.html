@@ -30,12 +30,13 @@
             </div>
         </div>
         <ws-loading ng-show="loading"></ws-loading>
+        <div class="no-products" ng-show="!loading && !currentProductsPage1.length">לצערנו לא נמצאו תוצאות עבור "{{searchText}}"</div>
         <div class="products-list-container clear"
              n-g-swipe-right="navigateNext()"
              n-g-swipe-left="navigateBack()"
              ng-hide="loading"
              ng-class="{ 'next-animation' : movedToNext, 'previous-animation' : movedToPrevious}">
-            <div class="no-products" ng-show="!loading && !currentProductsPage1.length">לצערנו לא נמצאו תוצאות עבור "{{searchText}}"</div>
+            
             <div class="products-list-content" ng-show="productsLine1.length">
                 <div class="products-list-stable">
                     <div class="hider reverse" ng-show="isScrollingRight"></div>
