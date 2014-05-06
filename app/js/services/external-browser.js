@@ -2,11 +2,11 @@
 
 
 
-    WS.ExternalBrowser = ["config", function (config) {
+    WS.ExternalBrowser = ["$q","config", function ($q, config) {
 
         function Browser(url, options) {
             options = options || {};
-            if ( !options.url) {
+            if ( !url) {
                 throw new Error("Must specify url");
             }
             var target = options.externalBrowser ? "_system" : "_blank",
@@ -64,7 +64,7 @@
             function openTheBrowser() {
                 var result = new $q.defer();
 
-                win = window.open(options.url, target, "location=" + location);
+                win = window.open(url, target, "location=" + location);
                 win.addEventListener("loaderror", function onLoadError(event) {
                     result.reject(event.message);
                 });
@@ -119,9 +119,9 @@
         function open(relativeUrl) {
             var url = encodeURI(wsUrl + relativeUrl);
             url += (url.indexOf("?") >= 0 ? "&" : "?") + "tablet=1";
-            var browser = new Browser(url);
-            return browser.open();
-            window.open(url, '_blank', 'location=yes');
+            //var browser = new Browser(url);
+            //return browser.open();
+            window.open(url, '_blank', 'location=no');
 
             return openBrowser(url);
         };
