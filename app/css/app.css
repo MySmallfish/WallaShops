@@ -297,6 +297,7 @@ input[type=submit].search-button {
     right: 0;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
+    -webkit-transform: translate3d(0px,0px,0px);
 }
 
 .main-promotion {
@@ -357,6 +358,8 @@ input[type=submit].search-button {
 
 .products-list-content {
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    -webkit-transform: translate3d(0px,0px,0px);
 }
 
 .products-list-stable {
@@ -405,16 +408,17 @@ input[type=submit].search-button {
     .product:first-child {
         border-right: solid 1px lightgrey;
     }
-    .product {
+
+.product {
     position: relative;
     overflow: hidden;
     padding: 12px 2px 12px 2px;
     background-color: white;
 }
+
 .product {
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F2F2F2), color-stop(12%,#ffffff), color-stop(88%,#ffffff), color-stop(100%,#F2F2F2)); /* Chrome,Safari4+ */
     background: linear-gradient(to bottom, #F2F2F2 0%,#ffffff 12%,#ffffff 88%,#F2F2F2 100%); /* W3C */
-    
     /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#E7E7E7', endColorstr='#cccccc',GradientType=0 );*/ /* IE6-9 */
 }
 
@@ -800,21 +804,24 @@ div, i {
 .compare-table td, .compare-table thead th {
     border: solid 1px #f6f6f6;
 }
+
 .compare-table {
     table-layout: fixed;
 }
-.compare-table td {
-    background-color: white;
-    
-    height: 140px;
-    text-align: center;
-    color: #575757;
-}
-.compare-table td, .compare-table th {
-    width: 100px;
-    word-wrap: break-word;
-    white-space: normal;
-}
+
+    .compare-table td {
+        background-color: white;
+        height: 140px;
+        text-align: center;
+        color: #575757;
+    }
+
+    .compare-table td, .compare-table th {
+        width: 100px;
+        word-wrap: break-word;
+        white-space: normal;
+    }
+
 .comparison-products-table {
     position: absolute;
     right: 0;
@@ -871,6 +878,7 @@ border-top: solid 1px #BBB;
 
 .table-container {
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .remove-product {
@@ -1300,6 +1308,7 @@ table {
     background-color: #888;
     color: white;
 }
+
 .details-line {
     margin-top: 2px;
 }

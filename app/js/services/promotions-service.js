@@ -3,7 +3,7 @@
     WS.PromotionsService = ["$q", "dailyCacheService", "wallaShopsApi", function ($q, dailyCacheService, wallaShopsApi) {
 
         function openPromotion(url) {
-            window.open(url, "_blank");
+            window.open(url, "_blank", "location=no");
         }
         
         function getMainPromotions() {
