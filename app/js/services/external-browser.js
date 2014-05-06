@@ -4,7 +4,7 @@
 
     WS.ExternalBrowser = ["config", function (config) {
 
-        function openBrowser(url, options) {
+        function Browser(url, options) {
             options = options || {};
             if ( !options.url) {
                 throw new Error("Must specify url");
@@ -105,7 +105,7 @@
             }
 
             return {
-                open: open,
+                open: openTheBrowser,
                 close: close,
                 isOpen: isOpen
             };
@@ -119,7 +119,8 @@
         function open(relativeUrl) {
             var url = encodeURI(wsUrl + relativeUrl);
             url += (url.indexOf("?") >= 0 ? "&" : "?") + "tablet=1";
-
+            var browser = new Browser(url);
+            return browser.open();
             window.open(url, '_blank', 'location=yes');
 
             return openBrowser(url);
