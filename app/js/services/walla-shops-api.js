@@ -136,7 +136,7 @@
             return mappedIcon;
         }
 
-        function mapProduct(product) {
+        function mapProduct(product, index) {
             var mappedProduct = {
                 id: product.ProductID,
                 title: product.TitleLine1,
@@ -169,10 +169,13 @@
                 icons: _.map(product.CubeIconTypes, mapIcon)
             };
 
-            if (mappedProduct.imageUrl) {
+            if (mappedProduct.cachedImageUrl) {
                 var img = new Image();
                 img.src = mappedProduct.cachedImageUrl;
             }
+            //if (index < 4) {
+            //    mappedProduct.imageUrl
+            //}
             
             
             return mappedProduct;
