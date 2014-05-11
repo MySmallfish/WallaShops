@@ -72,9 +72,7 @@
     app.directive("appHeader", function () {
         return WS.AppHeaderDirective;
     });
-    app.directive("productPane", function () {
-        return WS.ProductPaneDirective;
-    });
+    app.directive("productPane", WS.ProductPaneDirective);
     app.directive("productsList", function () {
         return WS.ProductsListDirective;
     });

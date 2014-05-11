@@ -5,12 +5,8 @@
         templateUrl: 'app/js/directives/products-list-items/products-list-items.html',
         scope: {
             products: "=",
-            productsLine:"=",
-            showProduct: "&",
-            selectedItems: "=",
             comparisonEnabled: "=",
-            maxSelection: "@",
-            isCheckedToCompare: "&"
+            canCheck: "="
         },
         replace: true,
         link: function (scope, element, attributes, ctrl) {

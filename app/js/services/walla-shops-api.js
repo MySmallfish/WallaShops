@@ -2,7 +2,8 @@
 
     WS.WallaShopsApi = ["$http", "$q", "config", function ($http, $q, config) {
 
-        var baseUrl = config.baseUrl;
+        var baseUrl = config.baseUrl,
+            wsBaseUrl = config.wsUrl;
 
         function run(url, parameters) {
             return $http({
@@ -105,8 +106,8 @@
             };
             
             if (icon === 2) {
-                mappedIcon.imageUrl1 = baseUrl + "/images/Auctions/CubeIcons/OrderGetTodayIcon.png";
-                mappedIcon.imageUrl2 = baseUrl + "/images/Auctions/CubeIcons/OrderGetTomorrowIcon.png";
+                mappedIcon.imageUrl1 = wsBaseUrl + "/images/Auctions/CubeIcons/OrderGetTodayIcon.png";
+                mappedIcon.imageUrl2 = wsBaseUrl + "/images/Auctions/CubeIcons/OrderGetTomorrowIcon.png";
                 mappedIcon.imageAlt = "הספקה מהירה";
             }
             
@@ -119,12 +120,12 @@
             }
 
             else if (icon === 4) {
-                mappedIcon.imageUrl = baseUrl + "/Images/Auctions/CubeIcons/free_delivery.png";
+                mappedIcon.imageUrl = wsBaseUrl + "/Images/Auctions/CubeIcons/free_delivery.png";
                 mappedIcon.imageAlt = "free delivery";
             }
             
             else if (icon === 5) {
-                mappedIcon.imageUrl = baseUrl + "/images/Auctions/CubeIcons/PaymentsSaleIcon.png";
+                mappedIcon.imageUrl = wsBaseUrl + "/images/Auctions/CubeIcons/PaymentsSaleIcon.png";
                 mappedIcon.imageAlt = "36 תשלומים ללא ריבית";
             }
             mappedIcon.cachedImageUrl = mappedIcon.imageUrl;
@@ -222,10 +223,7 @@
                 parameters.filterOptions = 1;
                 parameters.filters = filters.join(",");
             }
-            return run("auctions/" + type, parameters).then(function(r) {
-                console.log(r);
-                return r;
-            }).then(mapSearchProducts);
+            return run("auctions/" + type, parameters).then(mapSearchProducts);
         }
 
 

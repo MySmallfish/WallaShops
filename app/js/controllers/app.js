@@ -18,7 +18,7 @@
             return $q.when(context);
         };
 
-        $scope.productsToCompare = [];
+        clearProductsToCompare();
 
         $scope.publishRemoveProduct = function (product, $event) {
             $event.stopPropagation();
@@ -73,11 +73,22 @@
 
         function clearProductsToCompare() {
             $scope.productsToCompare = [];
+            $scope.canCheck = true;
         }
 
         function clearSelectedFilterValues() {
             $scope.$root.$broadcast("WallaShops.clearSelectedFilterValues");
         }
+
+        $scope.$on("WallaShops.ProductChecked", function(eventInfo, args) {
+            var index = $scope.productsToCompare.indexOf(args.product);
+            if (index >= 0) {
+                $scope.productsToCompare.splice(index, 1);
+            } else {
+                $scope.productsToCompare.push(args.product);
+            }
+            $scope.canCheck = $scope.productsToCompare.length < 4;
+        });
 
         $scope.loadImages = function (items) {
             for (var i = 0; i < items.length; i++) {
@@ -109,7 +120,7 @@
 
         $scope.$on("WallaShops.FilterValueSelected", function (eventInfo, args) {
             $scope.$root.selectedFilterValues = args;
-            $scope.productsToCompare = [];
+            clearProductsToCompare();
         });
 
         $scope.loadCategories = function () {

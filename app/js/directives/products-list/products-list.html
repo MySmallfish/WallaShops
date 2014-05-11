@@ -8,7 +8,8 @@
     <div class="products-list-stable">
         <div class="hider reverse" ng-show="isScrollingRight" ></div>
         <div class="products-list-content" set-scroll>
-            <products-list-items products="currentProductsPage" show-product="showProduct({product: product})" comparisonarray="comparisonArray"></products-list-items>
+            <products-list-items products="currentProductsPage" 
+                                 can-check="canCheck"></products-list-items>
         </div>
         <div class="hider" ng-show="isScrollingLeft"></div>
     </div>

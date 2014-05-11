@@ -398,16 +398,27 @@ input[type=submit].search-button {
 }*/
 
 .product {
-    border-left: solid 1px lightgrey;
+    /*border-left: solid 1px lightgrey;*/
     background-color: white;
     float: right;
     width: 234px;
     margin-bottom: 12px;
+    position: relative;
+}
+
+.product-separator {
+    width: 1px;
+    position: absolute;
+    left: 1px;
+    top: 0;
+    bottom: 0;
+    background-image: url(../img/product-cube-separator.png);
+    background-repeat: repeat-x;
 }
 
 
-    .product:first-child {
-        border-right: solid 1px lightgrey;
+    .product:last-child .product-separator {
+        display: none;
     }
 
 .product {
@@ -418,9 +429,8 @@ input[type=submit].search-button {
 }
 
 .product {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F2F2F2), color-stop(12%,#ffffff), color-stop(88%,#ffffff), color-stop(100%,#F2F2F2)); /* Chrome,Safari4+ */
-    background: linear-gradient(to bottom, #F2F2F2 0%,#ffffff 12%,#ffffff 88%,#F2F2F2 100%); /* W3C */
-    /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#E7E7E7', endColorstr='#cccccc',GradientType=0 );*/ /* IE6-9 */
+    background-image: url(../img/product-cube-gradient.png);
+    background-repeat: repeat-x;
 }
 
 div, i {
@@ -837,9 +847,10 @@ div, i {
 .headcol {
     vertical-align: top;
 }
-.headcol .inner{
-    margin-top: 10px;
-}
+
+    .headcol .inner {
+        margin-top: 10px;
+    }
 /*
 .compare-table thead th.headcol .inner {
 width: 122px;
@@ -1103,13 +1114,11 @@ border-top: solid 1px #BBB;
 
 .check-box {
     position: absolute;
-    width: 80px;
-    height: 80px;
-    
+    width: 44px;
+    height: 44px;
     z-index: 10;
     right: 0;
     top: 0;
-    
     /*
         right: -30px;
     top: -30px;border-radius: 40px;
@@ -1242,12 +1251,13 @@ p {
     text-align: center;
     font-size: 16pt;
 }
-.loading .message {
-    top: 60%;
-position: absolute;
-left: 0;
-right: 0;
-}
+
+    .loading .message {
+        top: 60%;
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
 
 .container-fluid {
     padding: 0;
@@ -1282,7 +1292,6 @@ table {
     position: absolute;
     right: 14px;
     top: 0px;
-    
 }
 
 .fatal-error {

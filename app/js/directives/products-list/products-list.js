@@ -4,8 +4,8 @@
         restrict: 'E',
         templateUrl: 'app/js/directives/products-list/products-list.html',
         scope: {
-            showProduct: "&",
-            category: "="
+            category: "=",
+            canCheck: "="
         },
         replace: true,
         controller: ["$scope", "$filter", function ($scope, $filter) {

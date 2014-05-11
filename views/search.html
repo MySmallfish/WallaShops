@@ -42,12 +42,15 @@
              ng-hide="loading"
              ng-class="{ 'next-animation' : movedToNext, 'previous-animation' : movedToPrevious}">
 
-            <div class="products-list-content" ng-show="productsLine1.length">
+            <div class="products-list-content" ng-show="currentProductsPage1.length">
                 <div class="products-list-stable">
-                    <div class="hider reverse" ng-show="isScrollingRight"></div>
-                    <products-list-items products="currentProductsPage1" products-line=" productsLine1" show-product="showProduct(product)" selected-items="productsToCompare" comparison-enabled="currentCategory.level == 2" is-search-page="true" max-selection="{{maxSelection}}" is-checked-to-compare="isCheckedToCompare(product)"></products-list-items>
-                    <products-list-items products="currentProductsPage2" products-line=" productsLine2" show-product="showProduct(product)" selected-items="productsToCompare" comparison-enabled="currentCategory.level == 2" max-selection="{{maxSelection}}" is-checked-to-compare="isCheckedToCompare(product)"></products-list-items>
-                    <div class="hider" ng-show="isScrollingLeft"></div>
+                    <products-list-items products="currentProductsPage1"
+                                         comparison-enabled="currentCategory.level == 2"
+                                         can-check="canCheck"></products-list-items>
+                    <products-list-items products="currentProductsPage2"
+                                         comparison-enabled="currentCategory.level == 2"
+                                         can-check="canCheck"></products-list-items>
+
                 </div>
             </div>
         </div>
@@ -62,7 +65,7 @@
                 <div class="comparison-products">
                     <div class="compare-hint" ng-show="!productsToCompare || productsToCompare.length == 0">סמנו מוצרים להשוואה</div>
                     <div class="comparison-products-container" ng-repeat="product in productsToCompare">
-                        <div class="remove-product" ng-click="publishRemoveProduct(product)">
+                        <div class="remove-product" ng-click="publishRemoveProduct(product, $event)">
                             <i class="fa fa-times"></i>
                         </div>
                         <img ng-src="{{product.imageUrl}}" />

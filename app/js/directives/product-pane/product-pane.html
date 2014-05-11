@@ -1,37 +1,45 @@
-﻿<div class="product-info">
+﻿<div class="product" ng-click="showProduct()">
+
     <div class="comparison-check">
-        <div ng-show="comparisonEnabled" class="check-box" ng-class="{'checked': checked }" ng-click="check($event)"></div>
+        <div ng-show="comparisonEnabled"
+             class="check-box"
+             ng-class="{'checked': checked }"
+             ng-click="check($event)"></div>
     </div>
-    <img class="productImg" ng-src="{{ product.imageUrl }}" />
 
-    <div class="icons">
-        <div class="image-icon" ng-repeat="icon in product.icons">
-            <div class="discount-icon" ng-if="!icon.id">
-                <div class="icon-text">{{ product.discountAmount }}<span>%</span>  הנחה </div>
+    <div class="product-info">
+        <img class="productImg" ng-src="{{ product.imageUrl }}" />
+
+        <div class="icons">
+            <div class="image-icon" ng-repeat="icon in product.icons">
+                <div class="discount-icon" ng-if="!icon.id">
+                    <div class="icon-text">{{ product.discountAmount }}<span>%</span>  הנחה </div>
+                </div>
+
+                <img ng-hide="loading" ng-src="{{icon.imageUrl}}" />
             </div>
-
-            <img ng-hide="loading" ng-src="{{icon.imageUrl}}" />
         </div>
-    </div>
 
-    <div class="title">{{ product.title }}</div>
-    <div class="subtitle">{{ product.subTitle }}</div>
+        <div class="title">{{ product.title }}</div>
+        <div class="subtitle">{{ product.subTitle }}</div>
 
-    <div class="rating" ng-if="product.viewOptions.rating == 0 && round(product.rating) > 0">
-        <img ng-src="app/img/star{{round(product.rating)}}.png" />
-        <span class="raters-number">({{product.ratersNumber}})</span>
-    </div>
+        <div class="rating" ng-if="product.viewOptions.ratingImageUrl">
+            <img ng-src="{{product.viewOptions.ratingImageUrl}}" />
+            <span class="raters-number">({{product.ratersNumber}})</span>
+        </div>
 
-    <div ng-if="product.viewOptions.rating == 2">מס' תשלומים: {{ product.paymentsNum}} <span class="payments" ng-if="product.paymentsNum < 36">(עד 36 תשלומים כולל ריבית)</span></div>
-    <div ng-if="product.viewOptions.rating == 1">נרכשו: {{ product.buyersCount}}</div>
+        <div ng-if="product.viewOptions.rating == 2">מס' תשלומים: {{ product.paymentsNum}} <span class="payments" ng-if="product.paymentsNum < 36">(עד 36 תשלומים כולל ריבית)</span></div>
+        <div ng-if="product.viewOptions.rating == 1">נרכשו: {{ product.buyersCount}}</div>
 
-    <div class="price" ng-if="product.viewOptions.showPrice">
-        <span>רק </span>
-        <b>{{product.price|number:0}} ₪</b>
+        <div class="price" ng-if="product.viewOptions.showPrice">
+            <span>רק </span>
+            <b>{{product.price|number:0}} ₪</b>
+        </div>
+        <div class="price average-price" ng-if="product.viewOptions.displayAveragePrice">
+            {{product.averagePrice|number:0}} ₪
+        </div>
+        <span class="details-text">{{product.detailsText}}</span>
+        <div class="details"></div>
     </div>
-    <div class="price average-price" ng-if="product.viewOptions.displayAveragePrice">
-        {{product.averagePrice|number:0}} ₪
-    </div>
-    <span class="details-text">{{product.detailsText}}</span>
-    <div class="details"></div>
+    <div class="product-separator"></div>
 </div>

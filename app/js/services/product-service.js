@@ -84,6 +84,13 @@
             }
         }
 
+        function getRatingUrl(rating) {
+            var value = Math.ceil(rating);
+            if (value > 0) {
+                return "app/img/star" + String(value) + ".png";
+            }
+        }
+
         function prepare(products) {
             return _.map(products, function(product) {
                 product.viewOptions = {
@@ -94,6 +101,9 @@
                     isDiscounted: (product.saleType == "DiscountAuction" || product.saleType == "GroupDeal") && !product.hideDiscount
                 };
                 product.detailsText = detailsText(product);
+                if (product.viewOptions.rating === WS.RatingLineOptions.Rating) {
+                    product.viewOptions.ratingImageUrl = getRatingUrl(product.rating);
+                }
                 return product;
             });
         }
