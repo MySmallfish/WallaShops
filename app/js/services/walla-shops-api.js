@@ -173,9 +173,9 @@
                 var img = new Image();
                 img.src = mappedProduct.cachedImageUrl;
             }
-            //if (index < 4) {
-            //    mappedProduct.imageUrl
-            //}
+            if (index < 8) {
+                mappedProduct.imageUrl = mappedProduct.cachedImageUrl;
+            }
             
             
             return mappedProduct;
@@ -209,9 +209,10 @@
             return run("auctions/brand", { id: parameters.id }).then(mapSearchProducts);
         }
 
+        var defaultPageSize = 100;
         function getSearchProducts(searchTerm) {
-            return run("auctions/search", { search: searchTerm }).then(function (results) {
-                return results.Items;
+            return run("auctions/search", { search: searchTerm, pagingsize: defaultPageSize }).then(function (results) {
+                return results.pageList.Items;
             }).then(mapSearchProducts);
         }
 
@@ -221,7 +222,10 @@
                 parameters.filterOptions = 1;
                 parameters.filters = filters.join(",");
             }
-            return run("auctions/" + type, parameters).then(mapSearchProducts);
+            return run("auctions/" + type, parameters).then(function(r) {
+                console.log(r);
+                return r;
+            }).then(mapSearchProducts);
         }
 
 

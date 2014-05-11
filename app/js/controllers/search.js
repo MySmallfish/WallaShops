@@ -1,6 +1,6 @@
 ﻿(function (_, S, WS) {
 
-    WS.SearchController = ["$timeout","$q", "$scope", "$filter", "$location", "productService", "dailyCacheService", function ($timeout, $q, $scope, $filter, $location, productService, dailyCacheService) {
+    WS.SearchController = ["$timeout", "$q", "$scope", "$filter", "$location", "productService", "dailyCacheService", function ($timeout, $q, $scope, $filter, $location, productService, dailyCacheService) {
         $scope.hideNavigators = true;
         var storage = dailyCacheService.get("ComparisonProduct-Cache");
 
@@ -45,30 +45,25 @@
         });
 
         function updateProductPage() {
-            if ($scope.navigationInfo && $scope.productsLine1) {
-                var visibleProducts1 = $filter("skip")($scope.productsLine1, $scope.navigationInfo.startIndex);
-                var products1 = $filter("limitTo")(visibleProducts1, $scope.step + 1);
-                $scope.currentProductsPage1 = products1;
+            if ($scope.navigationInfo && $scope.productsLine1 && $scope.productsLine2) {
+                //var visibleProducts1 = $filter("skip")($scope.productsLine1, $scope.navigationInfo.startIndex);
+                var products1 = $scope.productsLine1; // $filter("limitTo")(visibleProducts1, $scope.step + 1);
+                $scope.currentProductsPage1 = _.first(products1, 4);
+                var products2 = $scope.productsLine2; //$filter("limitTo")(visibleProducts2, $scope.step + 1);
+                $scope.currentProductsPage2 = _.first(products2, 4);
                 $timeout(function () {
                     $scope.loadImages(products1);
-
-                    $scope.currentProductsPage1 = products1;
-                }, 200);
-            }
-            if ($scope.navigationInfo && $scope.productsLine2) {
-                var visibleProducts2 = $filter("skip")($scope.productsLine2, $scope.navigationInfo.startIndex);
-                var products2 = $filter("limitTo")(visibleProducts2, $scope.step + 1);
-                $scope.currentProductsPage2 = products2;
-                $timeout(function () {
                     $scope.loadImages(products2);
 
                     $scope.currentProductsPage2 = products2;
-                }, 200);
+                    $scope.currentProductsPage1 = products1;
+                }, 250);
             }
         };
 
         $scope.$watch("navigationInfo", function (newValue) {
             $scope.navigationInfo = newValue;
+
             updateProductPage();
         });
 
@@ -81,7 +76,7 @@
             };
 
             if (routeParameters.searchTerm) {
-                 $scope.searchText = productParameters.searchTerm = routeParameters.searchTerm;
+                $scope.searchText = productParameters.searchTerm = routeParameters.searchTerm;
             } else {
                 if (routeParameters.subCategoryId >= 0) {
                     if (routeParameters.parent && routeParameters.parent.subCategoryId >= 0) {
@@ -105,9 +100,13 @@
         }
 
         function fetch(productParameters) {
+            var category = $scope.currentCategory;
+            
             var products = productService.search(productParameters);
-
-            return products;
+            
+            return products.then(function (items) {
+                return { category: category, items: items };
+            });
         }
 
         function resetNavigation(context) {
@@ -115,7 +114,8 @@
             return context;
         }
 
-        function load(products) {
+        function load(items) {
+            var products = items.items;
             if (products && products.length) {
                 $scope.productsLine1 = _.filter(products, function (product, index) { return index % 2 == 0; });
                 $scope.productsLine2 = _.filter(products, function (product, index) { return index % 2 != 0; });
@@ -125,6 +125,7 @@
                 $scope.productsLine2 = [];
                 $scope.productsListLength = 0;
             }
+
             return products;
         }
 
@@ -154,9 +155,13 @@
             return routeParameters;
         }
 
-        $scope.$on("WallaShops.Search", refresh);
-        $scope.$watch("currentCategory", function() {
+        $scope.$on("WallaShops.Search", function() {
+            $scope.clear(true);
+            refresh();
+        });
+        $scope.$watch("currentCategory", function () {
             cancelInitial = true;
+
             refresh();
         });
         $scope.$watch("selectedFilterValues", refresh);
@@ -226,7 +231,7 @@
         }
 
         var cancelInitial = false;
-        $timeout(function() {
+        $timeout(function () {
             if (!cancelInitial) {
                 refresh();
             } else {
@@ -234,7 +239,7 @@
             }
         }, 300);
 
-     
+
         _.extend($scope, {
             isFilterValueNotEmpty: isFilterValueNotEmpty,
             clearSelectedFilterValues: clearSelectedFilterValues,

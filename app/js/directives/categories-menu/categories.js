@@ -106,8 +106,12 @@
                 
                 var lastSelected = $scope.selectedCategory;
                 $scope.selectedCategory = category;
+
                 storage.selected = $scope.selectedCategory;
                 storage.lastSelected = lastSelected;
+                
+                
+
                 if ($scope.selectedCategory.level < 2) {
                     loadCategories(lastSelected);
                 }

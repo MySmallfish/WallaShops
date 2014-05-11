@@ -123,7 +123,7 @@
             //return browser.open();
             window.open(url, '_blank', 'location=no');
 
-            return openBrowser(url);
+            
         };
 
         return {

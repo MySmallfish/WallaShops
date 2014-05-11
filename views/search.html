@@ -2,7 +2,7 @@
 
     
 
-    <div ng-hide="fatalError || !isOnline">
+    <div ng-hide="fatalError || !isOnline" s-online>
         <div class="titles">
             <div ng-switch on="!!searchText" class="search-header">
                 <div class="search-term" ng-switch-when="true">
@@ -16,7 +16,7 @@
 
                         <span class="ancestor" ng-if="currentCategory.parent.parent" ng-hide="true">{{currentCategory.parent.parent.title}} <span>&gt;</span> </span>
                         <span class="parent" ng-click="selectCategoryById(currentCategory.parent.id)" ng-if="currentCategory.parent" ng-hide="true">{{currentCategory.parent.title}} <span>&gt;</span> </span>
-                        <span class="current-category">מוצרים נבחרים בקטגורית {{currentCategory.title}}</span>
+                        <span class="current-category">מוצרים בקטגוריה {{currentCategory.title}}</span>
 
                     </h4>
                     <ul class="filter-path">
@@ -30,17 +30,18 @@
                     </ul>
                 </div>
             </div>
-            <div class="back-button"><button type="button" class="btn btn-default" ng-click="goBack()">חזור</button></div>            
+            <div class="back-button"><button type="button" class="btn btn-default" ng-click="goBack()">חזור</button></div>
         </div>
 
         <ws-loading ng-show="loading"></ws-loading>
-        <div class="no-products" ng-show="!loading && !currentProductsPage1.length">לצערנו לא נמצאו תוצאות עבור "{{searchText}}"</div>
+        <div class="no-products" ng-show="!loading && !currentProductsPage1.length && searchText">לצערנו לא נמצאו תוצאות עבור "{{searchText}}"</div>
+        <div class="no-products" ng-show="!loading && !currentProductsPage1.length && !searchText">לא נמצאו מוצרים בקטגוריה {{currentCategory.title}}</div>
         <div class="products-list-container clear"
              n-g-swipe-right="navigateNext()"
              n-g-swipe-left="navigateBack()"
              ng-hide="loading"
              ng-class="{ 'next-animation' : movedToNext, 'previous-animation' : movedToPrevious}">
-            
+
             <div class="products-list-content" ng-show="productsLine1.length">
                 <div class="products-list-stable">
                     <div class="hider reverse" ng-show="isScrollingRight"></div>
@@ -76,7 +77,7 @@
     </div>
     <div class="fatal-error" ng-show="!isOnline || fatalError" s-online>
         <div class="alert alert-danger" ng-show="fatalError">לא ניתן להתחבר לשרת, אירעה שגיאה בלתי צפויה. נא להפעיל את האפליקציה מחדש.</div>
-        <div class="alert alert-warning" s-online ng-hide="isOnline">האפליקציה דורשת חיבור רשת פעיל. יש להתחבר לרשת ולנסות שוב.</div>
+        <div class="alert alert-warning" ng-hide="isOnline" s-online>האפליקציה דורשת חיבור רשת פעיל. יש להתחבר לרשת ולנסות שוב.</div>
         <br />
         <a href="#" ng-click="refresh()">נסה שנית</a>
     </div>

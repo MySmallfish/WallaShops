@@ -49,8 +49,24 @@
         return {
             restrict: 'E',
             replace: true,
-            template: '<div class="loading">אנו אוספים נתונים עבורך, אנא המתן/י</div>'
+            template: '<div class="loading" ><div class="message">אנו אוספים נתונים עבורך, אנא המתן/י</div></div>'
         };
+    });
+
+    app.directive("wsMark", function() {
+        return {
+            restrict: "A",
+            link: function (scope, element, attr) {
+
+                element.on("mousedown", function () {
+                    element.addClass("ng-click-active");
+                });
+                element.on("mouseup", function () {
+                    element.removeClass("ng-click-active");
+                });
+
+            }
+        }
     });
 
     app.directive("appHeader", function () {

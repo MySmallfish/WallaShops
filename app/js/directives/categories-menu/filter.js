@@ -83,8 +83,8 @@
             return $scope.$root.selectedFilter;
         };
 
-        function selectFilter(filter) {
-            
+        function selectFilter(filter, $event) {
+
             if ($scope.$root.selectedFilter == filter) {
                 clearSelectedFilter();
             } else {

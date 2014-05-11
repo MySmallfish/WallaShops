@@ -2,7 +2,7 @@
     <ws-loading ng-show="loading"></ws-loading>
     <div class="fatal-error" ng-show="!isOnline || fatalError" s-online>
         <div class="alert alert-danger" ng-show="fatalError">לא ניתן להתחבר לשרת, אירעה שגיאה בלתי צפויה. נא להפעיל את האפליקציה מחדש.</div>
-        <div class="alert alert-warning" ng-hide="isOnline">האפליקציה דורשת חיבור רשת פעיל. יש להתחבר לרשת ולנסות שוב.</div>
+        <div class="alert alert-warning" ng-hide="isOnline" s-online>האפליקציה דורשת חיבור רשת פעיל. יש להתחבר לרשת ולנסות שוב.</div>
         <br />
         <a href="#" ng-click="reload()">נסה שנית</a>
     </div>

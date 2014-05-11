@@ -379,6 +379,7 @@ input[type=submit].search-button {
     font-size: 17px;
     margin-top: 6px;
     margin-bottom: 6px;
+    margin-right: 18px;
 }
 
 .home-page .products-list-container {
@@ -832,6 +833,13 @@ div, i {
     padding-right: 10px;
     padding-left: 10px;
 }
+
+.headcol {
+    vertical-align: top;
+}
+.headcol .inner{
+    margin-top: 10px;
+}
 /*
 .compare-table thead th.headcol .inner {
 width: 122px;
@@ -1097,21 +1105,28 @@ border-top: solid 1px #BBB;
     position: absolute;
     width: 80px;
     height: 80px;
-    right: -30px;
-    top: -30px;
+    
     z-index: 10;
-    border-radius: 40px;
+    right: 0;
+    top: 0;
+    
+    /*
+        right: -30px;
+    top: -30px;border-radius: 40px;
     border-top-right-radius: 0;
     background-color: rgb(160, 160, 160);
     background-color: #BBB;
     background-repeat: no-repeat;
     background-position: center;
     opacity: 0.9;
-    line-height: normal;
+    line-height: normal;*/
+    background-image: url(../img/compair_icon.png);
+    background-position: right top;
+    background-repeat: no-repeat;
 }
 
     .check-box.checked {
-        background-color: red;
+        background-image: url(../img/compair_icon-remove.png);
     }
 
 .search-page .go-to-comparison {
@@ -1224,11 +1239,15 @@ p {
     bottom: 0;
     right: 0;
     z-index: 1010;
-    padding-top: 45%;
     text-align: center;
     font-size: 16pt;
 }
-
+.loading .message {
+    top: 60%;
+position: absolute;
+left: 0;
+right: 0;
+}
 
 .container-fluid {
     padding: 0;
@@ -1262,8 +1281,8 @@ table {
 .comparison-page .remove-product {
     position: absolute;
     right: 14px;
-    top: 14px;
-    opacity: 0.9;
+    top: 0px;
+    
 }
 
 .fatal-error {
@@ -1304,8 +1323,10 @@ table {
     font-weight: bold;
 }
 
-.menu .ng-click-active {
-    background-color: #888;
+.categories-menu .ng-click-active,
+.filters-menu .category-container.ng-click-active,
+.filters-menu .level1.ng-click-active {
+    background-color: #9A9A9A;
     color: white;
 }
 

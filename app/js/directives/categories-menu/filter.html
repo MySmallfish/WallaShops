@@ -6,9 +6,9 @@
             <div class="category-name">{{selectedCategory.title}}</div>
         </li>
 
-        <li ng-repeat="filter in filters|limitTo: 4" ng-click="selectFilter(filter);">
+        <li ng-repeat="filter in filters|limitTo: 4" ng-click="selectFilter(filter, $event);" >
 
-            <div class="category-container" ng-class="{'selected': isFilterSelected(filter) }">
+            <div class="category-container" ng-class="{'selected': isFilterSelected(filter) }" ws-mark>
                 <div class="category-dot">
                     <i class="fa fa-circle"></i>
                 </div>

@@ -11,6 +11,7 @@
                 var autoCloseAtLevel = config.autoCloseAtLevel;
 
                 function hide() {
+                    $(".popover").css("display", "none");
                     triggerElement.popover("hide");
                     scope.isMenuOpen = false;
                     if (!scope.$root.$$phase) {
@@ -43,7 +44,7 @@
 
 
                 scope.$on("WallaShops.CategorySelected", function (eventInfo, args) {
-
+                    
                     //console.log("on", scope, eventInfo, args);
 
                     var level = args.category.level;

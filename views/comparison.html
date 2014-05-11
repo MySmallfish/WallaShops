@@ -23,7 +23,7 @@
 
                     <tr ng-repeat="product in productsToCompare" ng-show="!isEmpty()">
                         <td class="headcol" ng-click="showProduct(product)">
-                            <div ng-if="productsToCompare.length>1" class="remove-product" ng-click="publishRemoveProduct()">
+                            <div ng-if="productsToCompare.length>1" class="remove-product" ng-click="publishRemoveProduct(null,$event)">
                                 <i class="fa fa-times"></i>
                             </div>
                             <div class="inner">
@@ -40,7 +40,9 @@
                         <td ng-repeat="feature in features">
                             
                             <span ng-switch on="feature.header">
-                                
+                                <span ng-switch-when="מחיר">
+                                    {{feature.values[product.id] | number:0}} ₪
+                                </span>
                                 <span class="rating" ng-switch-when="דרוג גולשים">
                                     <img ng-src="app/img/star{{round(feature.values[product.id])}}.png" ng-if="round(feature.values[product.id])>0" />
                                 </span>
