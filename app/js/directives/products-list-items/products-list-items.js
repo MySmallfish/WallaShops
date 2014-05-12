@@ -8,10 +8,7 @@
             comparisonEnabled: "=",
             canCheck: "="
         },
-        replace: true,
-        link: function (scope, element, attributes, ctrl) {
-            // bind clicks...            
-        }
+        replace: true
     };
 
 })(Simple, WallaShops);

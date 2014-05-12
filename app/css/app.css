@@ -352,8 +352,8 @@ input[type=submit].search-button {
 
 .products-list-content {
     overflow: auto;
+    overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
-    -webkit-transform: translate3d(0px,0px,0px);
 }
 
 .products-list-stable {

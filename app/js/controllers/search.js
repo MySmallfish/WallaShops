@@ -115,7 +115,7 @@
         }
 
         function load(items) {
-            var products = items.items;
+            var products = _.first(items.items, 16);
             if (products && products.length) {
                 $scope.productsLine1 = _.filter(products, function (product, index) { return index % 2 == 0; });
                 $scope.productsLine2 = _.filter(products, function (product, index) { return index % 2 != 0; });
