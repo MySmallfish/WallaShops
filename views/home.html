@@ -8,6 +8,8 @@
     </div>
     <!-- cache rating stars -->
     <img ng-repeat="star in stars" ng-src="app/img/star{{star}}.png" ng-hide="true"/>
+    <img src="app/img/compair_icon.png" ng-hide="true"/>
+    <img src="app/img/compair_icon-remove.png" ng-hide="true" />
     <div class="promotions" ng-hide="!isOnline || fatalError" s-online>
         
         <div class="promotions-container"
@@ -51,7 +53,7 @@
     </div>
 
     <div class="products-list-container" ng-repeat="category in promotionsCategories">
-        <products-list category="category" show-product="showProduct(product)"></products-list>
+        <products-list category="category"></products-list>
 
     </div>
 

@@ -1,17 +1,16 @@
-﻿<div ng-show="category.products.length"
-     ng-class="{ 'next-animation' : movedToNext, 'previous-animation' : movedToPrevious}">
+﻿<div ng-show="category.products.length">
 
     <h4 class="products-list-name">
         {{category.name}}
     </h4>
 
     <div class="products-list-stable">
-        <div class="hider reverse" ng-show="isScrollingRight" ></div>
-        <div class="products-list-content" set-scroll>
-            <products-list-items products="currentProductsPage" 
-                                 can-check="canCheck"></products-list-items>
+        <div class="products-list-content">
+            <products-list-items products="category.products" 
+                                 can-check="canCheck">
+                
+            </products-list-items>
         </div>
-        <div class="hider" ng-show="isScrollingLeft"></div>
     </div>
 </div>
 

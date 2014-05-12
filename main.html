@@ -1,0 +1,156 @@
+﻿<!doctype html>
+<html lang="he-IL">
+<head>
+    <meta charset="utf-8">
+    <title>Walla! שופס</title>
+    <!--<meta name="base-url" content="http://www.wallashops.co.il"/>-->
+    <meta name="b-ase-url" content="http://www.wallashops.co.il" />
+    <meta name="base-url" content="http://wsp.azurewebsites.net" />
+    <meta name="ws-url" content="http://www.wallashops.co.il">
+    <meta name="auto-close-at-level" content="2">
+    <meta name="version" content="1.1.59" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0,target-densitydpi=device-dpi">
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/rtl/css/bootstrap.rtl.css" />
+    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="app/css/app.css" />
+    <link rel="stylesheet" type="text/css" href="app/css/animations.css" />
+
+    <script type="text/javascript" src="phonegap.js"></script>
+
+</head>
+<body class="rtl swipe-animations-enabled" ng-controller="AppCtrl">
+    <!--<button class="set">SET IMAGE!!!</button>
+    <img class="host"/>-->
+    <div class="content-container">
+        <div class="loading" ng-hide="true">
+            <div class="message">
+                אנו אוספים נתונים עבורך, אנא המתן/י
+            </div>
+        </div>
+
+        <app-header></app-header>
+
+        <div class="content">
+            <div class="container-fluid">
+                <ng-view s-online></ng-view>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="lib/fastclick/fastclick.js"></script>
+    <script src="lib/analytics/ga_local.js"></script>
+    <script src="lib/underscore/underscore.js"></script>
+    <!--<script src="lib/jquery/jquery-2.0.3.min.js"></script>-->
+    <script src="lib/jquery/jquery.2.1.0.js"></script>
+    <script src="lib/moment/moment.min.js"></script>
+
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-route.min.js"></script>
+    <script src="lib/angular/angular-touch.min.js"></script>
+    <script src="lib/angular/angular-animate.min.js"></script>
+
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="lib/angular-strap/angular-strap.js"></script>
+
+    <script src="lib/simple/simple.js"></script>
+    <!-- Services -->
+    <script src="lib/simple/services/utils.js"></script>
+    <script src="lib/simple/services/file-utils.js"></script>
+    <script src="lib/simple/services/attachments-manager.js"></script>
+    <script src="lib/simple/services/phonegap.js"></script>
+    <script src="lib/simple/services/null-camera-service.js"></script>
+    <script src="lib/simple/services/phonegap-camera-service.js"></script>
+    <script src="lib/simple/services/phonegap-remote-storage.js"></script>
+    <script src="lib/simple/services/phonegap-file-manager.js"></script>
+    <script src="lib/simple/services/queue-manager.js"></script>
+    <script src="lib/simple/services/state-manager.js"></script>
+    <script src="lib/simple/services/geo-location.js"></script>
+    <script src="lib/simple/services/storage-service.js"></script>
+    <script src="lib/simple/services/language.js"></script>
+    <script src="lib/simple/services/text-resources.js"></script>
+    <script src="lib/simple/services/safe-apply.js"></script>
+    <script src="lib/simple/services/network-service.js"></script>
+    <script src="lib/simple/services/network-manager.js"></script>
+    <script src="lib/simple/services/configuration.js"></script>
+    <script src="lib/simple/services/alert-service.js"></script>
+    <script src="lib/simple/services/analytics-service.js"></script>
+    <!-- Filters -->
+    <script src="lib/simple/filters/localize.js"></script>
+    <script src="lib/simple/filters/skip.js"></script>
+    <script src="lib/simple/filters/gps-location.js"></script>
+    <script src="lib/simple/filters/entity-description.js"></script>
+    <!-- Directives -->
+    <script src="lib/simple/directives/simple-nav.js"></script>
+    <script src="lib/simple/directives/local-cache.js"></script>
+
+    <script src="lib/simple/simple-module.js"></script>
+
+
+    <script src="app/js/wallashops.js"></script>
+    <!-- Services -->
+    <script src="app/js/services/config.js"></script>
+    <script src="app/js/services/category-service.js"></script>
+    <script src="app/js/services/promotions-service.js"></script>
+    <script src="app/js/services/product-service.js"></script>
+    <script src="app/js/services/daily-cache-service.js"></script>
+    <script src="app/js/services/walla-shops-api.js"></script>
+    <script src="app/js/services/external-browser.js"></script>
+    <script src="app/js/services/product-details-presenter.js"></script>
+
+
+
+
+    <!-- Filters -->
+    <!-- Directives -->
+    <script src="app/js/directives/app-header/app-header.js"></script>
+    <script src="app/js/directives/product-pane/product-pane.js"></script>
+    <script src="app/js/directives/products-list/products-list.js"></script>
+    <script src="app/js/directives/products-list-navigation/products-list-navigation.js"></script>
+    <script src="app/js/directives/products-list-items/products-list-items.js"></script>
+    <!-- Controllers -->
+    <script src="app/js/controllers/app.js"></script>
+    <script src="app/js/controllers/home.js"></script>
+    <script src="app/js/controllers/search.js"></script>
+    <script src="app/js/controllers/comparison.js"></script>
+    <script src="app/js/directives/categories-menu/filter.js"></script>
+    <script src="app/js/directives/categories-menu/categories.js"></script>
+    <script src="app/js/directives/categories-menu/categories-menu-trigger.js"></script>
+    <script src="app/js/directives/categories-menu/categories-menu.js"></script>
+
+
+
+    <script src="app/js/app.js"></script>
+    <script src="app/js/routes.js"></script>
+    <script src="app/js/resources.js"></script>
+
+    <script>
+        function onDeviceReady() {
+            if (typeof StatusBar !== "undefined") {
+                StatusBar.overlaysWebView(false);
+            }
+            angular.element(document).ready(function () {
+                setTimeout(function () {
+                    angular.bootstrap(document, ['WallaShops']);
+                    FastClick.attach(document.body);
+                    if (navigator.splashscreen) {
+                        navigator.splashscreen.hide();
+                    }
+
+                }, 700);
+            });
+        }
+
+        if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
+            document.addEventListener("deviceready", onDeviceReady, false);
+        } else {
+            onDeviceReady(); //this is the browser
+        }
+    </script>
+
+</body>
+
+
+
+</html>

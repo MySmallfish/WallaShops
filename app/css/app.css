@@ -297,7 +297,6 @@ input[type=submit].search-button {
     right: 0;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    -webkit-transform: translate3d(0px,0px,0px);
 }
 
 .main-promotion {
@@ -349,11 +348,6 @@ input[type=submit].search-button {
 .search-page .products-list-container {
     margin-right: 20px;
     margin-left: 20px;
-    /*height: 600px;
-    position: absolute;
-    top: 65px;
-    overflow: hidden;
-        */
 }
 
 .products-list-content {
@@ -393,10 +387,6 @@ input[type=submit].search-button {
     clear: both;
 }
 
-/*.home-page .products-list {
-    margin-right: 2%;
-}*/
-
 .product {
     /*border-left: solid 1px lightgrey;*/
     background-color: white;
@@ -417,9 +407,9 @@ input[type=submit].search-button {
 }
 
 
-    .product:last-child .product-separator {
-        display: none;
-    }
+.product:last-child .product-separator {
+    display: none;
+}
 
 .product {
     position: relative;
