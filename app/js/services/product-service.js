@@ -1,6 +1,6 @@
 ﻿(function (_, S, WS) {
 
-    WS.ProductService = ["$q", "dailyCacheService", "wallaShopsApi", "remoteStorage", "fileManager", "$filter", function ($q, dailyCacheService, wallaShopsApi, remoteStorage, fileManager, $filter) {
+    WS.ProductService = ["$q", "dailyCacheService", "wallaShopsApi", "$filter", function ($q, dailyCacheService, wallaShopsApi, $filter) {
 
         function getOtherInterestedPromotionsCategories() {
 

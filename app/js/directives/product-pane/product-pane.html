@@ -3,8 +3,11 @@
     <div class="comparison-check">
         <div ng-show="comparisonEnabled"
              class="check-box"
-             ng-class="{'checked': checked }"
-             ng-click="check($event)"></div>
+             
+             ng-click="check($event)">
+            <img src="app/img/compair_icon.png" ng-hide="checked"/>
+            <img src="app/img/compair_icon-remove.png" ng-show="checked"/>
+        </div>
     </div>
 
     <div class="product-info">

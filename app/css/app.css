@@ -472,16 +472,7 @@ div, i {
     margin-top: 4px;
 }
 
-.rating .stars {
-    display: inline-block;
-}
 
-.rating .fa {
-    font-size: 12pt;
-    letter-spacing: 1px;
-    color: rgb(6, 181, 240);
-    -webkit-transform: scaleX(-1);
-}
 
 .raters-number {
     color: #aaa;
@@ -983,9 +974,10 @@ border-top: solid 1px #BBB;
     border-top-color: #3f464d;
     border-top: none;
     max-height: 78%;
-    overflow: hidden;
-    overflow-y: auto;
+    overflow: auto;
+    overflow-x: hidden;
     border-radius: 6px 0 0 0;
+    -webkit-overflow-scrolling: touch;
 }
 
 
@@ -1071,16 +1063,6 @@ border-top: solid 1px #BBB;
     z-index: 111;
 }
 
-.product-info .comparison {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    opacity: .5;
-    background-color: #eee;
-    z-index: 1;
-}
 
 .check-box, .check-box-text {
     display: none;
@@ -1104,21 +1086,11 @@ border-top: solid 1px #BBB;
 
 .check-box {
     position: absolute;
-    width: 44px;
-    height: 44px;
+    width: 64px;
+    height: 64px;
     z-index: 10;
     right: 0;
     top: 0;
-    /*
-        right: -30px;
-    top: -30px;border-radius: 40px;
-    border-top-right-radius: 0;
-    background-color: rgb(160, 160, 160);
-    background-color: #BBB;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.9;
-    line-height: normal;*/
     background-image: url(../img/compair_icon.png);
     background-position: right top;
     background-repeat: no-repeat;

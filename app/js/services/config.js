@@ -1,5 +1,5 @@
 (function(S, WS) {
-    WS.Configuration = function(utils){
+    WS.Configuration = function(){
         function getValue(name) {
             return document.querySelector("head meta[name='" + name + "']").getAttribute("content");
         }
