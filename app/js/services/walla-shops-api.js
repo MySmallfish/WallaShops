@@ -170,10 +170,10 @@
                 icons: _.map(product.CubeIconTypes, mapIcon)
             };
 
-            //if (mappedProduct.cachedImageUrl) {
-            //    var img = new Image();
-            //    img.src = mappedProduct.cachedImageUrl;
-            //}
+            if (mappedProduct.cachedImageUrl) {
+                var img = new Image();
+                img.src = mappedProduct.cachedImageUrl;
+            }
             if (index < 8) {
                 mappedProduct.imageUrl = mappedProduct.cachedImageUrl;
             }
