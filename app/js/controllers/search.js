@@ -57,6 +57,7 @@
 
                     $scope.currentProductsPage2 = products2;
                     $scope.currentProductsPage1 = products1;
+                    $scope.currentProductsPage = _.union(products1, products2);
                 }, 250);
             }
         };
