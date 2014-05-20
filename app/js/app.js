@@ -5,9 +5,9 @@
     }
 
     var app = angular.module("WallaShops", ["ngRoute", "ngTouch", "$strap"]);
-    app.run(function () {
-        FastClick.attach(document.body);
-    });
+    //app.run(function () {
+    //    FastClick.attach(document.body);
+    //});
     app.service("network", S.NetworkService);
     app.service("networkManager", S.NetworkManager);
 
