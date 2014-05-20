@@ -1,7 +1,6 @@
 ﻿(function (_, S, WS) {
 
     WS.SearchController = ["$timeout", "$q", "$scope", "$filter", "$location", "productService", "dailyCacheService", function ($timeout, $q, $scope, $filter, $location, productService, dailyCacheService) {
-        $scope.hideNavigators = true;
         var storage = dailyCacheService.get("ComparisonProduct-Cache");
 
         function resetStorage() {
@@ -13,7 +12,6 @@
 
         resetStorage();
 
-        $scope.navigationInfo = {};
         $scope.step = 4;
         $scope.maxSelection = 4;
 
@@ -44,29 +42,6 @@
             }
         });
 
-        function updateProductPage() {
-            if ($scope.navigationInfo && $scope.productsLine1 && $scope.productsLine2) {
-                //var visibleProducts1 = $filter("skip")($scope.productsLine1, $scope.navigationInfo.startIndex);
-                var products1 = $scope.productsLine1; // $filter("limitTo")(visibleProducts1, $scope.step + 1);
-                $scope.currentProductsPage1 = _.first(products1, 4);
-                var products2 = $scope.productsLine2; //$filter("limitTo")(visibleProducts2, $scope.step + 1);
-                $scope.currentProductsPage2 = _.first(products2, 4);
-                $timeout(function () {
-                    $scope.loadImages(products1);
-                    $scope.loadImages(products2);
-
-                    $scope.currentProductsPage2 = products2;
-                    $scope.currentProductsPage1 = products1;
-                    $scope.currentProductsPage = _.union(products1, products2);
-                }, 250);
-            }
-        };
-
-        $scope.$watch("navigationInfo", function (newValue) {
-            $scope.navigationInfo = newValue;
-
-            updateProductPage();
-        });
 
         function isFilterValueNotEmpty(filterValue) {
             return filterValue;
@@ -110,21 +85,15 @@
             });
         }
 
-        function resetNavigation(context) {
-            $scope.navigationInfo = { startIndex: 0 };
-            return context;
-        }
+
 
         function load(items) {
             var products = items.items;
             if (products && products.length) {
-                $scope.productsLine1 = _.filter(products, function (product, index) { return index % 2 == 0; });
-                $scope.productsLine2 = _.filter(products, function (product, index) { return index % 2 != 0; });
-                $scope.productsListLength = $scope.productsLine1.length;
+                $scope.currentProductsPage = products;
+                $scope.loadImages(products);
             } else {
-                $scope.productsLine1 = [];
-                $scope.productsLine2 = [];
-                $scope.productsListLength = 0;
+                $scope.currentProductsPage = [];
             }
 
             return products;
@@ -172,14 +141,14 @@
             $scope.fatalError = error;
         }
         function refresh() {
-            $scope.notifyProgress()
-                .then(extractCategoryParameters)
-                .then(buildSearchParameters)
-                .then(fetch)
-                .then(load)
-                .then(resetNavigation)
-                .catch(displayError)
-                .finally($scope.stopProgress);
+            $scope.currentProductsPage = [{}];
+            //$scope.notifyProgress()
+            //    .then(extractCategoryParameters)
+            //    .then(buildSearchParameters)
+            //    .then(fetch)
+            //    .then(load)
+            //    .catch(displayError)
+            //    .finally($scope.stopProgress);
 
         }
 

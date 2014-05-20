@@ -3,7 +3,6 @@
     <div class="comparison-check">
         <div ng-show="comparisonEnabled"
              class="check-box"
-             
              ng-click="check($event)">
             <img src="app/img/compair_icon.png" ng-hide="checked"/>
             <img src="app/img/compair_icon-remove.png" ng-show="checked"/>
@@ -36,9 +35,9 @@
 
         <div class="price" ng-if="product.viewOptions.showPrice">
             <span>רק </span>
-            <b>{{product.price|number:0}} ₪</b>
+            <b data-field="price">{{product.price|number:0}} ₪</b>
         </div>
-        <div class="price average-price" ng-if="product.viewOptions.displayAveragePrice">
+        <div class="price average-price" ng-if="product.viewOptions.displayAveragePrice" data-field="average-price">
             {{product.averagePrice|number:0}} ₪
         </div>
         <span class="details-text">{{product.detailsText}}</span>

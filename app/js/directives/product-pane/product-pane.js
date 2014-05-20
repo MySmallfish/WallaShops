@@ -1,6 +1,6 @@
 ﻿(function (S, WS) {
 
-    WS.ProductPaneDirective = ["productDetailsPresenter", function (productDetailsPresenter) {
+    WS.ProductPaneDirective = ["productDetailsPresenter","$filter", function (productDetailsPresenter, $filter) {
         return {
             restrict: 'E',
             templateUrl: 'app/js/directives/product-pane/product-pane.html',
@@ -32,7 +32,6 @@
                 }
 
                 scope.$on("WallaShops.ProductDeleted", onProductDeleted);
-
             }
         }
     }];
