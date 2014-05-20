@@ -128,12 +128,6 @@
                 mappedIcon.imageUrl = wsBaseUrl + "/images/Auctions/CubeIcons/PaymentsSaleIcon.png";
                 mappedIcon.imageAlt = "36 תשלומים ללא ריבית";
             }
-            mappedIcon.cachedImageUrl = mappedIcon.imageUrl;
-            mappedIcon.cachedImageUrl1 = mappedIcon.imageUrl1;
-            mappedIcon.cachedImageUrl2 = mappedIcon.imageUrl2;
-            delete mappedIcon.imageUrl;
-            delete mappedIcon.imageUrl1;
-            delete mappedIcon.imageUrl2;
             return mappedIcon;
         }
 
@@ -143,7 +137,7 @@
                 title: product.TitleLine1,
                 subTitle: product.TitleLine2,
                 saleType: product.AuctionType,
-                cachedImageUrl: product.SmallPicPath,// product.AuctionType == "DiscountAuction" || product.AuctionType == "GroupDeal" ? product.SmallPicPathGroupDeal : product.SmallPicPath,
+                imageUrl: product.SmallPicPath,// product.AuctionType == "DiscountAuction" || product.AuctionType == "GroupDeal" ? product.SmallPicPathGroupDeal : product.SmallPicPath,
                 rating: product.ReviewsScore,
                 ratersNumber: product.ReviewsCount,
                 paymentsNum: product.PaymentsNum,
@@ -169,15 +163,6 @@
                 saleSquareIcons:product.SaleSquareIcons,
                 icons: _.map(product.CubeIconTypes, mapIcon)
             };
-
-            if (mappedProduct.cachedImageUrl) {
-                var img = new Image();
-                img.src = mappedProduct.cachedImageUrl;
-            }
-            if (index < 8) {
-                mappedProduct.imageUrl = mappedProduct.cachedImageUrl;
-            }
-            
             
             return mappedProduct;
         }

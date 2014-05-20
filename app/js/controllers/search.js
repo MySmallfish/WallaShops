@@ -91,7 +91,6 @@
             var products = items.items;
             if (products && products.length) {
                 $scope.currentProductsPage = products;
-                $scope.loadImages(products);
             } else {
                 $scope.currentProductsPage = [];
             }
@@ -129,11 +128,7 @@
             $scope.clear(true);
             refresh();
         });
-        $scope.$watch("currentCategory", function () {
-            cancelInitial = true;
-
-            refresh();
-        });
+        $scope.$watch("currentCategory", refresh);
         $scope.$watch("selectedFilterValues", refresh);
 
 
@@ -141,14 +136,13 @@
             $scope.fatalError = error;
         }
         function refresh() {
-            $scope.currentProductsPage = [{}];
-            //$scope.notifyProgress()
-            //    .then(extractCategoryParameters)
-            //    .then(buildSearchParameters)
-            //    .then(fetch)
-            //    .then(load)
-            //    .catch(displayError)
-            //    .finally($scope.stopProgress);
+            $scope.notifyProgress()
+                .then(extractCategoryParameters)
+                .then(buildSearchParameters)
+                .then(fetch)
+                .then(load)
+                .catch(displayError)
+                .finally($scope.stopProgress);
 
         }
 
@@ -200,15 +194,7 @@
             refresh();
         }
 
-        var cancelInitial = false;
-        $timeout(function () {
-            if (!cancelInitial) {
-                refresh();
-            } else {
-                cancelInitial = true;
-            }
-        }, 300);
-
+        refresh();
 
         _.extend($scope, {
             isFilterValueNotEmpty: isFilterValueNotEmpty,
