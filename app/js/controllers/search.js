@@ -81,18 +81,33 @@
             var products = productService.search(productParameters);
             
             return products.then(function (items) {
-                return { category: category, items: items };
+                return { category: category, items: items, parameters: productParameters };
             });
         }
 
 
 
+        function loadRemainder(items) {
+            var products = items.items;
+            if (products && products.length) {
+                $scope.currentProductsPage2 = _.rest(products, pageSize);
+            } else {
+                $scope.currentProductsPage2 = [];
+            }
+
+            return products;
+        }
+
+        var pageSize = 24;
         function load(items) {
             var products = items.items;
             if (products && products.length) {
-                $scope.currentProductsPage = products;
+                $scope.currentProductsPage1 = _.first(products, pageSize);
+                if (products.length > pageSize) {
+                    fetch(items.parameters).then(loadRemainder);
+                }
             } else {
-                $scope.currentProductsPage = [];
+                $scope.currentProductsPage1 = [];
             }
 
             return products;
