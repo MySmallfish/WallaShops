@@ -34,16 +34,17 @@
         <div class="no-products" ng-show="!loading && !currentProductsPage.length && searchText">לצערנו לא נמצאו תוצאות עבור "{{searchText}}"</div>
         <div class="no-products" ng-show="!loading && !currentProductsPage.length && !searchText">לא נמצאו מוצרים בקטגוריה {{currentCategory.title}}</div>
         <div class="products-list-container clear"
-             ng-hide="loading" ng-show="currentProductsPage.length">
-            <product-pane ng-repeat="product in currentProductsPage1 track by product.id"
+             ng-hide="loading" ng-show="firstProductPage.length">
+            <product-pane ng-repeat="product in firstProductPage track by product.id"
                           product="product"
                           comparison-enabled="currentCategory.level == 2"
                           can-check="canCheck"></product-pane>
-
-            <product-pane ng-repeat="product in currentProductsPage2 track by product.id"
-                          product="product"
-                          comparison-enabled="currentCategory.level == 2"
-                          can-check="canCheck"></product-pane>
+            <div ng-repeat="page in currentProductsPages track by $index">
+                <product-pane ng-repeat="product in page track by product.id"
+                              product="product"
+                              comparison-enabled="currentCategory.level == 2"
+                              can-check="canCheck"></product-pane>
+            </div>
         </div>
 
         <div class="footer" ng-show="!loading && currentProductsPage.length>0 && currentCategory.level == 2 && productsToCompare.length > 0">

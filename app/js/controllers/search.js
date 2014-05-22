@@ -1,6 +1,6 @@
 ﻿(function (_, S, WS) {
 
-    WS.SearchController = ["$timeout", "$q", "$scope", "$filter", "$location", "productService", "dailyCacheService", function ($timeout, $q, $scope, $filter, $location, productService, dailyCacheService) {
+    WS.SearchController = ["$timeout", "$q", "$scope", "$filter", "$location", "productService", "dailyCacheService", "safeApply", function ($timeout, $q, $scope, $filter, $location, productService, dailyCacheService, safeApply) {
         var storage = dailyCacheService.get("ComparisonProduct-Cache");
 
         function resetStorage() {
@@ -77,37 +77,50 @@
 
         function fetch(productParameters) {
             var category = $scope.currentCategory;
-            
+
             var products = productService.search(productParameters);
-            
+
             return products.then(function (items) {
                 return { category: category, items: items, parameters: productParameters };
             });
         }
 
-
-
-        function loadRemainder(items) {
-            var products = items.items;
-            if (products && products.length) {
-                $scope.currentProductsPage2 = _.rest(products, pageSize);
-            } else {
-                $scope.currentProductsPage2 = [];
-            }
-
-            return products;
-        }
-
-        var pageSize = 24;
+        var iterator = function (a, n) {
+            var current = 0,
+                l = a.length;
+            return function () {
+                end = current + n;
+                var part = a.slice(current, end);
+                current = end < l ? end : 0;
+                return part;
+            };
+        };
+        var next;
+        $scope.currentProductsPages = [];
+        var pageSize = 12;
         function load(items) {
             var products = items.items;
             if (products && products.length) {
-                $scope.currentProductsPage1 = _.first(products, pageSize);
-                if (products.length > pageSize) {
-                    fetch(items.parameters).then(loadRemainder);
+                next = iterator(products, pageSize);
+                $scope.firstProductPage = next();
+                var page = next();
+                function loadPage() {
+                    if (page.length == pageSize) {
+                        $scope.currentProductsPages.push(page);
+                        requestAnimationFrame(function() { safeApply($scope); });
+                        page = next();
+                        
+                        setTimeout(loadPage, 320);
+                    } else {
+                        if (page.length > 0) {
+                            $scope.currentProductsPages.push(page);
+                            safeApply($scope);
+                        }
+                    }
                 }
+                $timeout(loadPage, 100);
             } else {
-                $scope.currentProductsPage1 = [];
+                $scope.firstProductPage = [];
             }
 
             return products;
@@ -139,7 +152,7 @@
             return routeParameters;
         }
 
-        $scope.$on("WallaShops.Search", function() {
+        $scope.$on("WallaShops.Search", function () {
             $scope.clear(true);
             refresh();
         });
