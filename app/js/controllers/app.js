@@ -44,7 +44,9 @@
 
 
         $scope.$watch("currentCategory", function (category) {
+
             if (category) {
+                
                 if (category.isNewWindow) {
                     window.open(category.link + category.id, "_blank");
                 } else if (category.parent) {
@@ -80,7 +82,7 @@
             $scope.$root.$broadcast("WallaShops.clearSelectedFilterValues");
         }
 
-        $scope.$on("WallaShops.ProductChecked", function(eventInfo, args) {
+        $scope.$on("WallaShops.ProductChecked", function (eventInfo, args) {
             var index = $scope.productsToCompare.indexOf(args.product);
             if (index >= 0) {
                 $scope.productsToCompare.splice(index, 1);
@@ -102,15 +104,13 @@
         }
 
         function onCategorySelected(eventInfo, args) {
-            _.defer(function() {
-                if (args.category.level === 1 || args.category.level === 0 || $scope.currentCategory.id != args.category.id) {
-                    clearProductsToCompare();
-                    clearSelectedFilterValues();
-                }
+            if (args.category.level === 1 || args.category.level === 0 || $scope.currentCategory.id != args.category.id) {
+                clearProductsToCompare();
+                clearSelectedFilterValues();
+            }
 
-                $scope.searchTerm = null;
-                $scope.currentCategory = args.category;
-            });
+            $scope.searchTerm = null;
+            $scope.currentCategory = args.category;
         }
 
 

@@ -16,6 +16,7 @@
         }
 
         function mapMenuCategory(category, parent) {
+            
             var mappedCategory = {
                 id: category.ID,
                 title: category.MenuName,
@@ -28,9 +29,10 @@
                 level: parent && typeof parent.level == "number" ? parent.level + 1 : 0,
                 parent: parent
             };
-
+            
             var ex = _.clone(mappedCategory);
             mappedCategory.categories = _.map(category.Menus, function (subCategory) {
+                
                 return mapMenuCategory(subCategory, ex);
             });
             return mappedCategory;

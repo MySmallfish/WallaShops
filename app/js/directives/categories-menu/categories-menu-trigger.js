@@ -7,7 +7,10 @@
             scope: false,
             replace: true,
             link: function (scope, element) {
-                
+                //scope.popOverOptions = {
+                //    animation: false,
+
+                //};
                 var autoCloseAtLevel = config.autoCloseAtLevel;
 
                 function hide() {

@@ -115,8 +115,7 @@
                 if ($scope.selectedCategory.level < 2) {
                     loadCategories(lastSelected);
                 }
-
-                publishCategorySelectedEvent(lastSelected);
+                publishCategorySelectedEvent(category);
             }
             
         };
