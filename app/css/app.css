@@ -1059,9 +1059,14 @@ border-top: solid 1px #BBB;
 
 
 .check-box, .check-box-text {
-    display: none;
+    background-image: url("../img/compair_icon.png");
+    background-position: right top;
+    background-repeat: no-repeat;
 }
 
+.check-box.checked {
+    background-image: url("../img/compair_icon-remove.png");
+}
 .search-page .check-box, .search-page .check-box-text {
     display: block;
 }

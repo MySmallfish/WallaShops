@@ -32,10 +32,6 @@
             if (dailyCacheService.get("productsToCompare")) {
                 if (dailyCacheService.get("productsToCompare").length <= $scope.maxSelection) {
                     dailyCacheService.store("productsToCompare", $scope.productsToCompare);
-                    //if (dailyCacheService.get("productsToCompare").length == $scope.maxSelection) {
-                    //    openCamperisonPage();
-                    //}
-
                 }
             } else {
                 dailyCacheService.store("productsToCompare", $scope.productsToCompare);
@@ -75,13 +71,16 @@
             return productParameters;
         }
 
+        var transactionId = 0;
         function fetch(productParameters) {
+            transactionId++;
+            productParameters.transactionId = transactionId;
             var category = $scope.currentCategory;
 
             var products = productService.search(productParameters);
 
-            return products.then(function (items) {
-                return { category: category, items: items, parameters: productParameters };
+            return products.then(function (results) {
+                return { category: category, items: results.items, parameters: results.parameters, transactionId: results.parameters.transactionId };
             });
         }
 
@@ -98,19 +97,41 @@
         var next;
         $scope.currentProductsPages = [];
         var pageSize = 12;
+        var stopLoading, loadTimeout;
+        
+        function shouldStop(tId) {
+            
+            if (stopLoading || tId !== transactionId) {
+                stopLoading = false;
+                if (loadTimeout) {
+                    clearTimeout(loadTimeout);
+                }
+                safeApply($scope);
+                return true;
+            }
+
+        }
+
         function load(items) {
+            
+            if (shouldStop(items.transactionId)) {
+                return;
+            }
             var products = items.items;
             if (products && products.length) {
                 next = iterator(products, pageSize);
                 $scope.firstProductPage = next();
                 var page = next();
                 function loadPage() {
+                    if (shouldStop(items.transactionId)) {
+                       return;
+                    }
                     if (page.length == pageSize) {
                         $scope.currentProductsPages.push(page);
                         requestAnimationFrame(function() { safeApply($scope); });
                         page = next();
                         
-                        setTimeout(loadPage, 320);
+                        loadTimeout = setTimeout(loadPage, 320);
                     } else {
                         if (page.length > 0) {
                             $scope.currentProductsPages.push(page);
@@ -137,16 +158,11 @@
             if (category) {
                 routeParameters = _.extend(routeParameters, {
                     categoryId: category.id,
-                    categoryName:
-                    category.title,
-                    level:
-                    category.level,
-                    mainCategoryId:
-                    category.mainCategoryId,
-                    subCategoryId:
-                    category.subCategoryId,
-                    parent:
-                    category.parent
+                    categoryName: category.title,
+                    level: category.level,
+                    mainCategoryId: category.mainCategoryId,
+                    subCategoryId:category.subCategoryId,
+                    parent: category.parent
                 });
             }
             return routeParameters;
@@ -161,8 +177,10 @@
 
 
         function displayError(error) {
+
             $scope.fatalError = error;
         }
+        
         function refresh() {
             $scope.notifyProgress()
                 .then(extractCategoryParameters)

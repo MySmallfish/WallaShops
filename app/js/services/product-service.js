@@ -14,7 +14,7 @@
 
         function getPromotionsCategories() {
 
-            return wallaShopsApi.getPromotionsCategories().then(function(categories) {
+            return wallaShopsApi.getPromotionsCategories().then(function (categories) {
                 _.each(categories, function (category) {
                     if (category && category.products) {
                         category.products = prepare(category.products);
@@ -25,8 +25,8 @@
         }
 
         WS.RatingLineOptions = {
-            Rating:0,
-            SoldCount:1,
+            Rating: 0,
+            SoldCount: 1,
             Payments: 2
         };
         WS.DetailsLineOptions = {
@@ -51,7 +51,7 @@
             else if ((product.saleType == "DiscountAuction" || product.saleType == "GroupSale") && product.shippingMode !== 2 && product.shippingPrice === 0) {
                 result = WS.DetailsLineOptions.Shipping;
             }
-            return result;            
+            return result;
         }
 
         function parseRating(product) {
@@ -65,22 +65,22 @@
                 }
             }
 
-            return result;            
+            return result;
         }
 
         function detailsText(product) {
             switch (product.viewOptions.details) {
-            case WS.DetailsLineOptions.Details:
-                return "לפרטים";
-            case WS.DetailsLineOptions.Discount:
-                return "במקום " + $filter("number")(product.originalPrice, 0) + " ₪";
-            case WS.DetailsLineOptions.Shipping:
-                return "כולל משלוח";
-            case WS.DetailsLineOptions.GetPrice:
-                return "קבל מחיר";
-            case WS.DetailsLineOptions.PersonalPrice:
-                return "מחיר אישי";
-            default:
+                case WS.DetailsLineOptions.Details:
+                    return "לפרטים";
+                case WS.DetailsLineOptions.Discount:
+                    return "במקום " + $filter("number")(product.originalPrice, 0) + " ₪";
+                case WS.DetailsLineOptions.Shipping:
+                    return "כולל משלוח";
+                case WS.DetailsLineOptions.GetPrice:
+                    return "קבל מחיר";
+                case WS.DetailsLineOptions.PersonalPrice:
+                    return "מחיר אישי";
+                default:
             }
         }
 
@@ -91,8 +91,14 @@
             }
         }
 
-        function prepare(products) {
-            return _.map(products, function(product) {
+
+        function prepare(results) {
+            var isArray = _.isArray(results);
+            var products = results;
+            if (!isArray) {
+                products = results.items;
+            }
+            products = _.map(products, function (product) {
                 product.viewOptions = {
                     rating: parseRating(product),
                     showPrice: product.saleType !== 'Personal',
@@ -106,6 +112,12 @@
                 }
                 return product;
             });
+            if (isArray) {
+                return products;
+            } else {
+                results.items = products;
+                return results;
+            }
         }
 
 
@@ -126,7 +138,9 @@
             }
 
 
-            return result.then(prepare);
+            return result.then(function (items) {
+                return { items: items, parameters: parameters };
+            }).then(prepare);
         }
 
 

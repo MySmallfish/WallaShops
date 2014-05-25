@@ -1,26 +1,10 @@
-﻿<div class="product" ng-click="showProduct()">
+﻿<div class="product">
 
-    <div class="comparison-check">
-        <div ng-show="comparisonEnabled"
-             class="check-box"
-             ng-click="check($event)">
-            <img src="app/img/compair_icon.png" ng-hide="checked"/>
-            <img src="app/img/compair_icon-remove.png" ng-show="checked"/>
-        </div>
-    </div>
-
+    <div class="check-box"></div>
     <div class="product-info">
         <img class="productImg"  />
 
-        <div class="icons">
-            <div class="image-icon" ng-repeat="icon in product.icons">
-                <div class="discount-icon" ng-if="!icon.id">
-                    <div class="icon-text">{{ product.discountAmount }}<span>%</span>  הנחה </div>
-                </div>
-                
-                <img ng-src="{{icon.imageUrl}}" />
-            </div>
-        </div>
+        <div class="icons"></div>
 
         <div class="title"></div>
         <div class="subtitle"></div>

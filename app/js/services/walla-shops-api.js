@@ -134,6 +134,7 @@
         }
 
         function mapProduct(product, index) {
+            
             var mappedProduct = {
                 id: product.ProductID,
                 title: product.TitleLine1,

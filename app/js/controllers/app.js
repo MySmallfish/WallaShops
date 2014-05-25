@@ -84,11 +84,13 @@
 
         $scope.$on("WallaShops.ProductChecked", function (eventInfo, args) {
             var index = $scope.productsToCompare.indexOf(args.product);
+            
             if (index >= 0) {
                 $scope.productsToCompare.splice(index, 1);
             } else {
                 $scope.productsToCompare.push(args.product);
             }
+            
             $scope.canCheck = $scope.productsToCompare.length < 4;
         });
 

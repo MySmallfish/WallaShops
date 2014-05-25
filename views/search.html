@@ -31,8 +31,8 @@
         </div>
 
         <ws-loading ng-show="loading"></ws-loading>
-        <div class="no-products" ng-show="!loading && !currentProductsPage.length && searchText">לצערנו לא נמצאו תוצאות עבור "{{searchText}}"</div>
-        <div class="no-products" ng-show="!loading && !currentProductsPage.length && !searchText">לא נמצאו מוצרים בקטגוריה {{currentCategory.title}}</div>
+        <div class="no-products" ng-show="!loading && !firstProductPage.length && searchText">לצערנו לא נמצאו תוצאות עבור "{{searchText}}"</div>
+        <div class="no-products" ng-show="!loading && !firstProductPage.length && !searchText">לא נמצאו מוצרים בקטגוריה {{currentCategory.title}}</div>
         <div class="products-list-container clear"
              ng-hide="loading" ng-show="firstProductPage.length">
             <product-pane ng-repeat="product in firstProductPage track by product.id"
