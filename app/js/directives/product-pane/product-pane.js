@@ -22,7 +22,6 @@
                         event.stopPropagation();
                     }
                     var target = $(this);
-                    console.log(target, scope.canCheck , target.is(".checked"));
                     if (scope.canCheck || target.is(".checked")) {
                         target[(target.is(".checked") ? "remove" : "add") + "Class"]("checked");
                         scope.$emit("WallaShops.ProductChecked", { product: scope.product });
@@ -59,15 +58,34 @@
                     for (var i = 0; i < product.icons.length; i++) {
                         if (!iconDiv) {
                             iconDiv = $("<div/>").addClass("image-icon").appendTo(iconsContainer);
-                            $("<div/>").addClass("icon-text").hide().text(product.icons[i].discountAmount || "").appendTo( $("<div/>").addClass("discount-icon").appendTo(iconDiv));
                             $("<img/>").appendTo(iconDiv);
                         } else {
                             iconDiv = iconDiv.clone();
+                            $("div.discount-icon", iconDiv).hide();
                             iconDiv.appendTo(iconsContainer);
                         }
 
-                        $("img", iconDiv).attr("src", product.icons[i].imageUrl);
-                        $("div.discount-icon", iconDiv)[product.icons[i].id ? "hide" : "show"]();
+                        if (product.icons[i].imageUrl) {
+                            $("img", iconDiv).attr("src", product.icons[i].imageUrl);
+                        } else {
+                            $("img", iconDiv).remove();
+                        }
+
+                        var discountIcon = $("div.discount-icon", iconDiv),
+                            iconText = $("div.icon-text", discountIcon);
+                        if (product.discountAmount && product.icons[i].id) {
+                            if (discountIcon.length == 0) {
+                                discountIcon = $("<div/>").addClass("discount-icon").appendTo(iconDiv);
+                                iconText = $("<div/>").addClass("icon-text").text(product.discountAmount || "").appendTo(discountIcon);
+                            }
+                            iconText.text(product.discountAmount || "");
+                        } else {
+                            discountIcon.remove();
+                        }
+
+                        if (iconDiv.children().length == 0) {
+                            iconDiv.remove();
+                        }
                     }
 
                     $("span.details-text", element).text(product.detailsText);
