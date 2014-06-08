@@ -88,7 +88,7 @@
             var current = 0,
                 l = a.length;
             return function () {
-                end = current + n;
+                var end = current + n;
                 var part = a.slice(current, end);
                 current = end < l ? end : 0;
                 return part;
@@ -182,6 +182,8 @@
         }
         
         function refresh() {
+            $scope.currentProductsPages = [];
+            $scope.firstProductPage = [];
             $scope.notifyProgress()
                 .then(extractCategoryParameters)
                 .then(buildSearchParameters)
