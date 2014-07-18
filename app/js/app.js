@@ -2,6 +2,8 @@
 
     if (navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i)) {
         $('html').addClass('ipad ios7');
+    } else if (/Android/.test(navigator.userAgent)) {
+        $("html").addClass("android");
     }
 
     var app = angular.module("WallaShops", ["ngRoute", "ngTouch", "$strap"]);
@@ -21,20 +23,24 @@
     app.service("productDetailsPresenter", WS.ProductDetailsPresenter);
     app.service("safeApply", function ($rootScope) {
         return function ($scope, fn) {
-            var phase = $scope.$root.$$phase;
-            if (phase == '$apply' || phase == '$digest') {
-                if (fn) {
-                    $scope.$eval(fn);
-                }
-            } else {
-                if (fn) {
-                    $scope.$apply(fn);
+            if ($scope) {
+                var phase = $scope.$root.$$phase;
+                if (phase == '$apply' || phase == '$digest') {
+                    if (fn) {
+                        $scope.$eval(fn);
+                    }
                 } else {
-                    $scope.$apply();
+                    if (fn) {
+                        $scope.$apply(fn);
+                    } else {
+                        $scope.$apply();
+                    }
                 }
             }
         }
     });
+
+
 
     GoogleAnalyticsService = function (key) {
         ga_storage._setAccount(key);
@@ -135,8 +141,13 @@
     app.controller("HomeCtrl", WS.HomeController);
     app.controller("CatMenuCtrl", WS.CategoriesMenuController);
     app.controller("SearchCtrl", WS.SearchController);
+    app.controller("CategoryCtrl", WS.CategoryController);
     app.controller("ComparisonCtrl", WS.ComparisonController);
     app.controller("AppCtrl", WS.AppController);
+
+    app.directive("appMenu", WS.AppMenuDirective);
+    app.directive("menu", WS.MenuDirective);
+    app.directive("filtersMenu", WS.FiltersMenuDirective);
 
 
 })(_, Simple, WallaShops);

@@ -8,7 +8,56 @@
         "categoryService",
         "$timeout",
         "$q",
-    function ($scope, $location, $window, productDetailsPresenter, categoryService, $timeout, $q) {
+        "safeApply",
+    function ($scope, $location, $window, productDetailsPresenter, categoryService, $timeout, $q, safeApply) {
+        $scope.categoryMenuSelected = true;
+        $scope.toggleMenu = function () {
+            event.stopPropagation();
+
+            $scope.menuVisible = !$scope.menuVisible;
+        };
+        $scope.hideMenu = function () {
+            $scope.menuVisible = false;
+            safeApply($scope);
+        };
+
+        $(".content-container").click(function () {
+            $scope.menuVisible = false;
+        });
+
+        $scope.selectCategoriesMenu = function (event) {
+
+            event.stopPropagation();
+            if (!$scope.categoryMenuSelected) {
+                $scope.categoryMenuSelected = true;
+                $scope.filtersSelected = false;
+            }
+        };
+        $scope.selectFiltersMenu = function (event) {
+
+            event.stopPropagation();
+            if (!$scope.filtersSelected) {
+                $scope.categoryMenuSelected = false;
+                $scope.filtersSelected = true;
+            }
+
+        };
+
+
+
+        categoryService.getCategories().then(function (categories) {
+
+            $scope.menuItems = categories;
+        });
+
+        function loadFilters(category) {
+            $scope.filters = [];
+            return categoryService.getFilters(category).then(function (filters) {
+                $scope.filters = filters;
+            });
+        }
+
+
         $scope.stopProgress = function () {
             $scope.loading = false;
         };
@@ -26,7 +75,7 @@
         };
 
         $scope.goBack = function () {
-
+            clearProductsToCompare();
             $window.history.back();
         };
 
@@ -41,24 +90,27 @@
             productDetailsPresenter.showProduct(product);
         };
 
-
-
         $scope.$watch("currentCategory", function (category) {
+            $scope.clear(false, category);
 
             if (category) {
-                
-                if (category.isNewWindow) {
+                if (category.isNewWindow && category.type == 2) {
                     window.open(category.link + category.id, "_blank");
-                } else if (category.parent) {
-                    $location.path("/Search");
+                } else if (category.level > 0 && (category.type == 3 || category.type == 4)) {
+                    if (category.level == 2) {
+                        loadFilters(category);
+                    }
+                    $location.path("Category");
                 }
-            } else {
-                $location.path("/");
             }
         });
 
-        $scope.clear = function (leaveSearch) {
-            $scope.$root.$broadcast("WallaShops.ClearCategoriesRequested");
+        $scope.clear = function (leaveSearch, leaveCategory) {
+            if (!leaveCategory) {
+                $scope.$root.$broadcast("WallaShops.ClearCategoriesRequested");
+            }
+            $scope.categoryMenuSelected = true;
+            $scope.filtersSelected = false;
             if (!leaveSearch) {
                 $scope.searchText = "";
                 $scope.searchTerm = "";
@@ -67,8 +119,8 @@
             clearSelectedFilterValues();
             selectCategoriesTab();
         }
-        $scope.home = function () {
 
+        $scope.home = function () {
             $location.path("/");
             return false;
         }
@@ -76,70 +128,58 @@
         function clearProductsToCompare() {
             $scope.productsToCompare = [];
             $scope.canCheck = true;
+            
         }
 
+        $scope.$on("WallaShops.clearSelectedFilterValues", clearSelectedFilterValues);
+        $scope.$watch("selectedFilterValues", function(value) {
+            $scope.$root.isFiltered = value && value.length;
+        }, true);
         function clearSelectedFilterValues() {
-            $scope.$root.$broadcast("WallaShops.clearSelectedFilterValues");
+            $scope.$root.selectedFilterValues = null;
+            
         }
 
         $scope.$on("WallaShops.ProductChecked", function (eventInfo, args) {
             var index = $scope.productsToCompare.indexOf(args.product);
-            
+
             if (index >= 0) {
                 $scope.productsToCompare.splice(index, 1);
             } else {
                 $scope.productsToCompare.push(args.product);
             }
-            
+
             $scope.canCheck = $scope.productsToCompare.length < 4;
+            $scope.hideMenu();
         });
 
-        $scope.loadImages = function (items) {
-            for (var i = 0; i < items.length; i++) {
-                items[i].imageUrl = items[i].cachedImageUrl;
-                for (var j = 0; j < items[i].icons.length; j++) {
-                    items[i].icons[j].imageUrl = items[i].icons[j].cachedImageUrl;
-                    items[i].icons[j].imageUrl1 = items[i].icons[j].cachedImageUrl1;
-                    items[i].icons[j].imageUrl2 = items[i].icons[j].cachedImageUrl2;
-                }
-            }
-        }
-
-        function onCategorySelected(eventInfo, args) {
-            if (args.category.level === 1 || args.category.level === 0 || $scope.currentCategory.id != args.category.id) {
-                clearProductsToCompare();
-                clearSelectedFilterValues();
-            }
-
-            $scope.searchTerm = null;
-            $scope.currentCategory = args.category;
-        }
-
-
-
-        $scope.$on("WallaShops.SelectCategoryRequested", onCategorySelected);
-        $scope.$on("WallaShops.CategorySelected", onCategorySelected);
-
-        $scope.$on("WallaShops.FilterValueSelected", function (eventInfo, args) {
-            $scope.$root.selectedFilterValues = args;
+        $scope.$watch("currentFilter", function (filter) {
             clearProductsToCompare();
+            if (filter) {
+                var filterValues = $scope.$root.selectedFilterValues || [];
+
+                var sameGroupFilter = _.find(filterValues, function(filterValue) {
+                    return filterValue.key == filter.parent;
+                });
+
+                if (sameGroupFilter) {
+                    filterValues.splice(_.indexOf(filterValues, sameGroupFilter), 1);
+                }
+                if (!sameGroupFilter || sameGroupFilter.id != filter.id) {
+                    filterValues.push({ key: filter.parent, text: filter.title, value: filter.id });
+                }
+                $scope.$root.selectedFilterValues = filterValues;
+            }
         });
-
-        $scope.loadCategories = function () {
-            return categoryService.getCategories();
-        };
-
-        $scope.loadFilters = function () {
-            return categoryService.getFilters($scope.currentCategory);
-
-        };
 
         $scope.search = function () {
+
             if ($location.path() != "/Search") {
                 $location.path("/Search");
             } else {
                 $scope.$broadcast("WallaShops.Search");
             }
+
         };
         $scope.isCategories = true;
 
@@ -147,6 +187,10 @@
             $scope.$root.$broadcast("WallaShops.MenuTabSelected", { tab: "Category" });
         }
 
+        $scope.$on("WallaShops.ClearAll", function (eventInfo, args) {
+            $scope.clear();
+            $scope.home();
+        });
         $scope.$on("WallaShops.MenuTabSelected", function (eventInfo, args) {
             $scope.isCategories = args.tab == "Category";
         });

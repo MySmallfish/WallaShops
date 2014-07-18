@@ -71,7 +71,7 @@
             var result = $q.when([]);
 
             var categories = dailyCacheService.get(MenuCategoriesCacheKey);
-
+            
             if (category && categories) {
 
                 if (typeof category.filters !== "undefined") {
@@ -80,14 +80,13 @@
 
                     var mainCategoryId = category.mainCategoryId, subCategoryId = category.subCategoryId;
 
-
-
                     if (mainCategoryId) {
                         result = getCategoryDetails(mainCategoryId, subCategoryId).then(function(fullApiCategory) {
 
                             if (fullApiCategory.ShowFilter) {
                                 if (fullApiCategory.Filters && fullApiCategory.Filters.length) {
                                     category.filters = wallaShopsApi.mapCategoryFilters(fullApiCategory.Filters);
+                                    
                                 }
                             } else {
                                 if (category.subCategoryId &&

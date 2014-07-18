@@ -1,0 +1,22 @@
+﻿<div class="menu-popup" ng-class="{'visible':menuVisible}">
+    <div class="menu-popup-content">
+        <div class="switchable"
+             ng-class="{'first':categoryMenuSelected, 'last':filtersSelected}">
+            
+            <ul class="nav nav-tabs">
+                <li class="category-tab first" id="categoryTab">
+                    <a data-select="selectCategoriesMenu" href="#">קטגוריות</a>
+                </li>
+                <li class="category-tab last" id="filterTab">
+                    <a data-select="selectFiltersMenu" href="#">סינון</a>
+                </li>
+            </ul>
+            <div class="pane first">
+                <menu items="menuItems" all="כל הקטגוריות" hide="hideMenu()" selected-item="currentCategory"></menu>
+            </div>
+            <div class="pane last">
+                <filters-menu items="filters" markable all="נקה" hide="hideMenu()" selected-item="currentFilter" ></filters-menu>
+            </div>
+        </div>
+    </div>
+</div>

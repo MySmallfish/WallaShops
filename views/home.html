@@ -1,4 +1,7 @@
-﻿<div class="home-page">
+﻿
+<div class="home-page">
+    
+    
     <ws-loading ng-show="loading"></ws-loading>
     <div class="fatal-error" ng-show="!isOnline || fatalError" s-online>
         <div class="alert alert-danger" ng-show="fatalError">לא ניתן להתחבר לשרת, אירעה שגיאה בלתי צפויה. נא להפעיל את האפליקציה מחדש.</div>
@@ -51,12 +54,18 @@
             <img ng-src="{{ secondPromotion.image.url}}" alt="{{ secondPromotion.title.text }}" ng-click="openPromotion(secondPromotion.link.url)" />
         </div>
     </div>
-
-    <div class="products-list-container" ng-repeat="category in promotionsCategories">
-        <products-list category="category"></products-list>
+    <div class="products-list-container">
+        <products-list category="otherInterested"></products-list>
+    </div>
+    <div class="products-list-container">
+        <products-list category="bestSellers"></products-list>
+    </div>
+        
+        
+        <div class="products-list-container" ng-repeat="category in promotionsCategories">
+            <products-list category="category"></products-list>
+        </div>
 
     </div>
-
-</div>
 
 

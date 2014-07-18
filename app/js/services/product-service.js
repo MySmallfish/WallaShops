@@ -128,7 +128,7 @@
             if (parameters.searchTerm) {
                 result = wallaShopsApi.getSearchProducts(parameters.searchTerm);
             } else {
-                if (parameters.mainCategoryId) {
+                if (parameters.mainCategoryId && !parameters.subCategoryId) {
                     result = wallaShopsApi.getMainCategoryProducts(parameters);
                 } else if (parameters.subCategoryId) {
                     result = wallaShopsApi.getSubCategoryProducts(parameters);

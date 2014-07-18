@@ -37,9 +37,24 @@
             });
             return mappedCategory;
         }
+        function mapItem(item, level) {
+            return {
+                id: item.ID,
+                title: item.MenuName,
+                level: level,
+                isNewWindow: item.IsNewWindow,
+                link: item.MenuLink,
+                mainCategoryId: item.MainCategoryID,
+                subCategoryId: item.SubCategoryID,
+                type: item.MenuType,
+                items: _.map(item.Menus, function (subItem) { return mapItem(subItem, level + 1); })
+            };
+        }
 
+        
         function mapMenuCategories(menuCategories) {
-            return _.map(menuCategories, function (item, index) { return mapMenuCategory(item); });
+            return _.map(menuCategories, function (item) { return mapItem(item, 0); });
+            //return _.map(menuCategories, function (item, index) { return mapMenuCategory(item); });
         }
 
         function getCategoryDetails(mainCategoryId, subCategoryId) {
@@ -50,19 +65,7 @@
             return run("menu/GetMenus", { menuType: 2 }).then(mapMenuCategories);
         }
 
-        function mapFilter(filter) {
-            var mappedFilter = {
-                title: filter.GroupName,
-                location: filter.FilterLocation,
-                type: filter.FilterType,
-                additionalName: filter.AdditionalGroupName,
-                values: _.map(filter.FilterItems, mapFilterItem)
-            };
-
-            return mappedFilter;
-        }
-
-        function mapFilterItem(filterItem) {
+        function mapCategoryFilterItem(filterItem, groupName) {
             var mappedFilterItem = {
                 id: filterItem.FilterId,
                 title: filterItem.FilterName,
@@ -70,14 +73,53 @@
                 location: filterItem.Location,
                 nameForUrl: filterItem.FilterVirtualName,
                 parent: filterItem.ParentFilterKey,
+                groupName: groupName,
                 link: filterItem.FilterLink
             };
             return mappedFilterItem;
         }
 
+        function mapCategoryFilter(filter) {
+            var mappedFilter = {
+                title: filter.GroupName,
+                location: filter.FilterLocation,
+                type: filter.FilterType,
+                additionalName: filter.AdditionalGroupName,
+                items: _.map(filter.FilterItems, function (item) { return mapCategoryFilterItem(item, filter.GroupName); })
+            };
+
+            return mappedFilter;
+
+        }
+
+        //function mapFilter(filter) {
+        //    var mappedFilter = {
+        //        title: filter.GroupName,
+        //        location: filter.FilterLocation,
+        //        type: filter.FilterType,
+        //        additionalName: filter.AdditionalGroupName,
+        //        values: _.map(filter.FilterItems, function(item) { return mapFilterItem(item, filter.GroupName); })
+        //    };
+
+        //    return mappedFilter;
+        //}
+
+        //function mapFilterItem(filterItem) {
+        //    var mappedFilterItem = {
+        //        id: filterItem.FilterId,
+        //        title: filterItem.FilterName,
+        //        image: filterItem.Media,
+        //        location: filterItem.Location,
+        //        nameForUrl: filterItem.FilterVirtualName,
+        //        parent: filterItem.ParentFilterKey,
+        //        link: filterItem.FilterLink
+        //    };
+        //    return mappedFilterItem;
+        //}
+
         function mapCategoryFilters(filters) {
 
-            var mappedfilters = _.map(filters, mapFilter);
+            var mappedfilters = _.map(filters, mapCategoryFilter);
 
             return mappedfilters;
         }

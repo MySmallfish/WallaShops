@@ -73,10 +73,11 @@
 
                         var discountIcon = $("div.discount-icon", iconDiv),
                             iconText = $("div.icon-text", discountIcon);
-                        if (product.discountAmount && product.icons[i].id) {
+                        if (product.discountAmount ) {
                             if (discountIcon.length == 0) {
                                 discountIcon = $("<div/>").addClass("discount-icon").appendTo(iconDiv);
-                                iconText = $("<div/>").addClass("icon-text").text(product.discountAmount || "").appendTo(discountIcon);
+                                iconText = $("<div/>").addClass("discount-icon-text").text(product.discountAmount || "").appendTo(discountIcon);
+                                $("<div/>").text("הנחה").appendTo(discountIcon);
                             }
                             iconText.text(product.discountAmount || "");
                         } else {
@@ -97,11 +98,11 @@
                     if (product.viewOptions.rating == 0) {
                         $(".stars", ratingDiv).show();
                         $("img", ratingDiv).attr("src", product.viewOptions.ratingImageUrl);
-                        $("span.raters-number", ratingDiv).text(product.ratersNumber);
+                        $("span.raters-number", ratingDiv).text("(" + product.ratersNumber + ")");
                     }
                     if (product.viewOptions.rating) {
                         var text = "";
-                        if (product.viewOptions.rating == 1) {
+                        if (product.viewOptions.rating == 1 && product.buyersCount >0) {
                             text = "נרכשו: " + String(product.buyersCount);
                         } else if (product.viewOptions.rating == 2) {
                             text = "מס' תשלומים: " + String(product.paymentsNum);
@@ -115,14 +116,17 @@
 
                     var priceDiv = $("div.price", element);
                     if (product.viewOptions.showPrice || product.viewOptions.displayAveragePrice) {
-                        priceDiv.show();
+                        priceDiv.empty().show();
+                        
                         if (product.viewOptions.showPrice) {
                             $("<span/>").text("רק ").css("font-weight", "normal").appendTo(priceDiv);
-                            priceDiv.css("font-weight", "bold");
+                            priceDiv.css("font-weight", "bold").show();
                         } else {
                             priceDiv.addClass("average-price");
                         }
-                        priceDiv.text($filter("number")(product.viewOptions.displayAveragePrice ? product.averagePrice : product.price) + " ₪");
+                        $("<span/>").text($filter("number")(product.viewOptions.displayAveragePrice ? product.averagePrice : product.price) + " ₪").appendTo(priceDiv);
+                    } else {
+                        priceDiv.hide();
                     }
 
                 }

@@ -10,11 +10,11 @@
         replace: true,
         link: function (scope, element) {
             var productPaneWidth = 238;
-            scope.$watch("category.products", function(categoryProducts) {
-                if (categoryProducts) {
-                    var newWidth = categoryProducts.length * productPaneWidth;
-                    $("div.products-list", element).width(newWidth);
-                    
+            
+            scope.$watch("category", function(category) {
+                if (category && category.products && category.products.length) {
+                    var newWidth = category.products.length * productPaneWidth;
+                    $("div.products-list-content", element).width(newWidth);
                 }
             });
         }

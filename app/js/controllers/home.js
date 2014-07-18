@@ -15,6 +15,7 @@
 
         function select(promotion) {
             $scope.selectedPromotion = promotion;
+            $scope.currentIndex = _.indexOf($scope.main_promotions, $scope.selectedPromotion);
         }
 
         $scope.direction = 'left';
@@ -29,21 +30,11 @@
             $scope.direction = 'right';
             setCurrentSlideIndex(($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.main_promotions.length - 1);
 
-            //var nextIndex = ($scope.main_promotions.indexOf($scope.selectedPromotion) + 1);
-            //if (nextIndex >= $scope.main_promotions.length) {
-            //    nextIndex -= $scope.main_promotions.length;
-            //}
-            //$scope.selectedPromotion = $scope.main_promotions[nextIndex];
         }
         function back() {
             $scope.direction = 'left';
             setCurrentSlideIndex(($scope.currentIndex < $scope.main_promotions.length - 1) ? ++$scope.currentIndex : 0);
 
-            //var backIndex = ($scope.main_promotions.indexOf($scope.selectedPromotion) - 1);
-            //if (backIndex < 0) {
-            //    backIndex += $scope.main_promotions.length;
-            //}
-            //$scope.selectedPromotion = $scope.main_promotions[backIndex];
         }
 
 
@@ -68,10 +59,7 @@
             select: select,
             isSelected: isSelected,
             next: next,
-            back: back,
-            write: function () {
-                console.log("WWW");
-            }
+            back: back
         });
 
         $scope.firstPromotion = null;
@@ -94,34 +82,21 @@
         }
 
         function loadCategoryPromotions() {
-            return $q.all([
-                productService.getOtherInterestedPromotionsCategories().then(function (items) {
-                    return [{
-                        name: "במה מתעניינים עכשיו גולשים אחרים",
-                        products: items
-                    }];
-                }),
-                productService.getBestSellersPromotionsCategories().then(function (items) {
-                    return [{
+            productService.getOtherInterestedPromotionsCategories().then(function(items) {
+                $scope.otherInterested = {
+                    name: "במה מתעניינים עכשיו גולשים אחרים",
+                    products: items
+                };
+            });
+            productService.getBestSellersPromotionsCategories().then(function(items) {
+                $scope.bestSellers = {
                         name: "הנמכרים ביותר",
                         products: items
-                    }];
-                }),
-                productService.getPromotionsCategories()
-            ]).then(function (items) {
-                var promotions = _.union($scope.promotionsCategories, items[0], items[1], items[2]);
-                $scope.promotionsCategories = promotions;
-                $timeout(function () {
-                    _.each(promotions, function (promotion) {
-                        $scope.loadImages(promotion.products);
-
-                    });
-                    $scope.promotionsCategories = promotions;
-                }, 200);
-                return promotions;
+                    };
             });
-
-
+            productService.getPromotionsCategories().then(function(promotions) {
+                $scope.promotionsCategories = promotions;
+            });
         }
 
         function displayError(error) {
@@ -129,21 +104,14 @@
         }
         $scope.reload = function () {
             $scope.notifyProgress()
-                .then(function () {
-                    return $q.all([
-                        loadMainPromotions(),
-                        loadSidePromotions(),
-                        loadCategoryPromotions()
-                    ]);
-                })
-                //.then( loadMainPromotions)
-                //.then(loadSidePromotions)
-                //.then(loadCategoryPromotions)
+                .then( loadMainPromotions)
+                .then(loadSidePromotions)
+                .then(loadCategoryPromotions)
                 .catch(displayError)
                 .finally($scope.stopProgress);
         }
 
-
+        
         $scope.reload();
 
     }];

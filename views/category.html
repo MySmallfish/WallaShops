@@ -1,0 +1,74 @@
+﻿<div class="search-page">
+
+    <div ng-hide="fatalError || !isOnline" s-online>
+        <div class="titles">
+            <div class="search-header">
+                <h4 class="title">
+
+                    <span class="ancestor" ng-if="currentCategory.parent.parent" ng-hide="true">{{currentCategory.parent.parent.title}} <span>&gt;</span> </span>
+                    <span class="parent" ng-click="selectCategoryById(currentCategory.parent.id)" ng-if="currentCategory.parent" ng-hide="true">{{currentCategory.parent.title}} <span>&gt;</span> </span>
+                    <span class="current-category">מוצרים <span ng-if="limit">נבחרים</span> בקטגוריה {{currentCategory.title}}</span>
+
+                </h4>
+                <ul class="filter-path">
+                    <li class="filters-on-path" ng-repeat="filter in selectedFilterValues" ng-show="isFilterValueNotEmpty(filter.value)">
+                        {{filter.text}} <span>|</span>
+                    </li>
+
+                    <li class="clear-filter-path" ng-show="isFilterValueNotEmpty(selectedFilterValues)">
+                        <div class="clear-filter" ng-click="clearSelectedFilterValues()">נקה סינון</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="back-button"><button type="button" class="btn btn-default" ng-click="goBack()">חזור</button></div>
+        </div>
+        
+    </div>
+
+    <ws-loading ng-show="loading"></ws-loading>
+    <div class="no-products" ng-show="!loading && !firstProductPage.length">לא נמצאו מוצרים בקטגוריה {{currentCategory.title}}</div>
+    <div class="products-list-container clear"
+         ng-hide="loading" ng-show="firstProductPage.length">
+        <product-pane ng-repeat="product in firstProductPage track by product.id"
+                      product="product"
+                      comparison-enabled="currentCategory.level == 2"
+                      can-check="canCheck"></product-pane>
+        <div ng-repeat="page in currentProductsPages track by $index">
+            <product-pane ng-repeat="product in page track by product.id"
+                          product="product"
+                          comparison-enabled="currentCategory.level == 2"
+                          can-check="canCheck"></product-pane>
+        </div>
+    </div>
+
+
+    <div class="footer" ng-show="!loading && firstProductPage.length>0 && currentCategory.level == 2 && productsToCompare.length > 0">
+        <div class="products-comparison-wrapper">
+            <div class="comparison-products">
+                <div class="compare-hint" ng-show="!productsToCompare || productsToCompare.length == 0">סמנו מוצרים להשוואה</div>
+                <div class="comparison-products-container" ng-repeat="product in productsToCompare">
+                    <div class="remove-product" ng-click="publishRemoveProduct(product, $event)">
+                        <i class="fa fa-times"></i>
+                    </div>
+                    <img ng-src="{{product.imageUrl}}" />
+
+                </div>
+                <div class="go-to-comparison" ng-show="areProductsSelected()" ng-click="openCamperisonPage()">להשוואה</div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<div class="fatal-error" ng-show="!isOnline || fatalError" s-online>
+    <div class="alert alert-danger" ng-show="fatalError">לא ניתן להתחבר לשרת, אירעה שגיאה בלתי צפויה. נא להפעיל את האפליקציה מחדש.</div>
+    <div class="alert alert-warning" ng-hide="isOnline" s-online>האפליקציה דורשת חיבור רשת פעיל. יש להתחבר לרשת ולנסות שוב.</div>
+    <br />
+    <a href="#" ng-click="refresh()">נסה שנית</a>
+</div>
+
+
+
+
+
+

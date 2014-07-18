@@ -30,6 +30,8 @@
             }
         };
 
+        
+
         $scope.getFeatures = function () {
             return wallaShopsApi.getFeaturesToComparison(_.pluck($scope.productsToCompare, "id")).then(function(features) {
                 $scope.features = features;
