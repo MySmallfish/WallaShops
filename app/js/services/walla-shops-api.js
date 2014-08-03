@@ -176,7 +176,6 @@
         }
 
         function mapProduct(product, index) {
-            
             var mappedProduct = {
                 id: product.ProductID,
                 title: product.TitleLine1,
@@ -205,7 +204,8 @@
                 isDirectPrice: product.IsPersonalAuctionDirectPrice,
                 showAvgPrice: product.ShowApproxAvgZap,
                 averagePrice: product.ApproxAvgPrice / 100,
-                saleSquareIcons:product.SaleSquareIcons,
+                saleSquareIcons: product.SaleSquareIcons,
+                startPrice: product.StartPrice / 100,
                 icons: _.map(product.CubeIconTypes, mapIcon)
             };
             
@@ -214,7 +214,11 @@
 
         function mapSearchProducts(products, innerObject) {
 
-            var mappedproducts = _.map(products, function(product) {
+            var actualProducts = innerObject ?  _.filter(products, function(p) {
+                return p[innerObject] != null;
+            }) : products;
+
+            var mappedproducts = _.map(actualProducts, function (product) {
                 if (innerObject) {
                     return mapProduct(product[innerObject]);
                 } else {
@@ -229,11 +233,11 @@
         }
 
         function getSubCategoryProducts(parameters) {
-            return getSearchPageProducts("cat", parameters.subCategoryId, parameters.filters);
+            return getSearchPageProducts("cat", parameters.subCategoryId, parameters.filters, parameters.mainCategoryId);
         }
 
         function getSubSubCategoryProducts(parameters) {
-            return getSearchPageProducts("cat", parameters.subSubCategoryId, parameters.filters);
+            return getSearchPageProducts("cat", parameters.subSubCategoryId, parameters.filters, parameters.mainCategoryId);
         }
 
         function getBrandProducts(parameters) {
@@ -247,13 +251,22 @@
             }).then(mapSearchProducts);
         }
 
-        function getSearchPageProducts(type, categoryId, filters) {
+        function getSearchPageProducts(type, categoryId, filters, mainCategoryId) {
+            
             var parameters = { catid: categoryId };
             if (filters) {
+                parameters.pageSize = defaultPageSize;
+                parameters.mainCategoryId = mainCategoryId;
+                parameters.categoryId = categoryId;
+                delete parameters.catid;
                 parameters.filterOptions = 1;
-                parameters.filters = filters.join(",");
+                parameters.customFilters = filters.join(",");
+                return run("auctions/GetCategoryAuctionsByID", parameters).then(function(results) {
+                    return results.Items;
+                }).then(mapSearchProducts);
+            } else {
+                return run("auctions/" + type, parameters).then(mapSearchProducts);
             }
-            return run("auctions/" + type, parameters).then(mapSearchProducts);
         }
 
 
@@ -312,6 +325,7 @@
 
             var promises = _.map(categories, function (category) {
                 function mapResult(arr) {
+                    
                     if (arr[0].length) {
                         return {
                             name: arr[0][0].Values[0].Text,

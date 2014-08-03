@@ -160,9 +160,10 @@
                             thisUl.addClass("root");
                             li.clone().addClass("menu-all").appendTo(thisUl).click(function () {
                                 event.stopPropagation();
+                                clearSelection();
                                 renderMenu(scope.items);
-                                element.removeClass("selected");
                                 scope.$emit("WallaShops.ClearAll");
+                                scope.hide();
                             }).append(textDiv.clone().text(scope.all || "All"));
                         };
 

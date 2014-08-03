@@ -1,7 +1,7 @@
 ﻿
 <div class="home-page">
-    
-    
+
+
     <ws-loading ng-show="loading"></ws-loading>
     <div class="fatal-error" ng-show="!isOnline || fatalError" s-online>
         <div class="alert alert-danger" ng-show="fatalError">לא ניתן להתחבר לשרת, אירעה שגיאה בלתי צפויה. נא להפעיל את האפליקציה מחדש.</div>
@@ -10,14 +10,14 @@
         <a href="#" ng-click="reload()">נסה שנית</a>
     </div>
     <!-- cache rating stars -->
-    <img ng-repeat="star in stars" ng-src="app/img/star{{star}}.png" ng-hide="true"/>
-    <img src="app/img/compair_icon.png" ng-hide="true"/>
+    <img ng-repeat="star in stars" ng-src="app/img/star{{star}}.png" ng-hide="true" />
+    <img src="app/img/compair_icon.png" ng-hide="true" />
     <img src="app/img/compair_icon-remove.png" ng-hide="true" />
     <div class="promotions" ng-hide="!isOnline || fatalError" s-online>
-        
+
         <div class="promotions-container"
              ng-swipe-left="next()" ng-swipe-right="back()">
-            
+
             <div class="main-promotion">
                 <div>
                     <ul class="nav nav-tabs" id="promotion-tabs">
@@ -25,7 +25,7 @@
                         <li ng-repeat="promotion in main_promotions"
                             ng-class="{'active': isSelected(promotion)}" ng-click="select(promotion)">
                             <a href="#" ng-href="#Promotion_{{promotion.id}}" data-toggle="tab">{{promotion.title.text}}</a>
-                            
+
                             <div class="promotion-arrow" ng-show="isSelected(promotion)"><i class="fa fa-caret-up"></i></div>
                         </li>
 
@@ -60,12 +60,12 @@
     <div class="products-list-container">
         <products-list category="bestSellers"></products-list>
     </div>
-        
-        
-        <div class="products-list-container" ng-repeat="category in promotionsCategories">
-            <products-list category="category"></products-list>
-        </div>
 
+
+    <div class="products-list-container" ng-repeat="category in promotionsCategories">
+        <products-list category="category"></products-list>
     </div>
+
+</div>
 
 

@@ -28,12 +28,13 @@
                         safeApply(scope);
                     }
 
-
                 };
 
                 function onProductDeleted(eventInfo, args) {
                     if (scope.product.id === args.product.id) {
-                        check();
+                        var checkbox = $(".check-box", element);
+                        check.call(checkbox);
+                        safeApply(scope);
                     }
                 }
 
@@ -45,7 +46,8 @@
                     element.click(function() {
                         showProduct(product);
                     });
-                    var checkBox = $(".check-box", element),
+                    
+                    var checkBox = $(".check-box", element).attr("data-id", product.id),
                         iconsContainer = $("div.icons", element), iconDiv;
                     if (scope.comparisonEnabled) {
                         checkBox.show();

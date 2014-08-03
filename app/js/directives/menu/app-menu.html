@@ -1,10 +1,10 @@
 ﻿<div class="menu-popup" ng-class="{'visible':menuVisible}">
-    <div class="menu-popup-content">
+    <div class="menu-popup-content" ng-class="{'has-selected': currentCategory}">
         <div class="switchable"
              ng-class="{'first':categoryMenuSelected, 'last':filtersSelected}">
-            
+
             <ul class="nav nav-tabs">
-                <li class="category-tab first" id="categoryTab">
+                <li class="category-tab first" id="categoryTab" ng-class="{'has-selected': currentCategory}">
                     <a data-select="selectCategoriesMenu" href="#">קטגוריות</a>
                 </li>
                 <li class="category-tab last" id="filterTab">
@@ -15,7 +15,7 @@
                 <menu items="menuItems" all="כל הקטגוריות" hide="hideMenu()" selected-item="currentCategory"></menu>
             </div>
             <div class="pane last">
-                <filters-menu items="filters" markable all="נקה" hide="hideMenu()" selected-item="currentFilter" ></filters-menu>
+                <filters-menu items="filters" markable all="נקה" hide="hideMenu()" selected-item="currentFilter"></filters-menu>
             </div>
         </div>
     </div>

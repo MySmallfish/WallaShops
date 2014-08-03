@@ -8,6 +8,14 @@
             return result;
         }
 
+        function onProductDeleted(eventInfo, args) {
+            var indexOfProduct = $scope.productsToCompare.indexOf(args.product);
+            $scope.productsToCompare = $scope.productsToCompare.splice(indexOfProduct, 1);
+        }
+
+        $scope.$on("WallaShops.ProductDeleted", onProductDeleted);
+
+
         $scope.isFull = function() {
             var result = false;
             if ($scope.productsToCompare.length >= maxProducts) {

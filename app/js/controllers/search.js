@@ -12,6 +12,7 @@
             return productParameters;
         }
 
+        
         $scope.$on("WallaShops.Search", refresh);
 
         var transactionId = 0;
@@ -142,8 +143,8 @@
             return category;
         }
 
-        refresh();
-
+        //refresh();
+        $scope.$root.$broadcast("WallaShops.Search");
 
     }];
 

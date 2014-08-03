@@ -94,7 +94,7 @@
                         products: items
                     };
             });
-            productService.getPromotionsCategories().then(function(promotions) {
+            productService.getPromotionsCategories().then(function (promotions) {
                 $scope.promotionsCategories = promotions;
             });
         }

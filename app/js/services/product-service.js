@@ -79,6 +79,7 @@
                 case WS.DetailsLineOptions.GetPrice:
                     return "קבל מחיר";
                 case WS.DetailsLineOptions.PersonalPrice:
+                    return "הצעות מ- " + $filter("number")(product.startPrice, 0) + " ₪";
                     return "מחיר אישי";
                 default:
             }

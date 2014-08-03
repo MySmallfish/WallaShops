@@ -71,6 +71,7 @@
 
         $scope.publishRemoveProduct = function (product, $event) {
             $event.stopPropagation();
+            
             $scope.$root.$broadcast("WallaShops.ProductDeleted", { product: product });
         };
 
@@ -80,8 +81,10 @@
         };
 
         function onProductDeleted(eventInfo, args) {
-            $scope.productsToCompare.splice($scope.productsToCompare.indexOf(args.product), 1);
-
+            if ($scope.$root.productsToCompare) {
+                var indexOfProduct = $scope.$root.productsToCompare.indexOf(args.product);
+                $scope.$root.productsToCompare = $scope.$root.productsToCompare.splice(indexOfProduct, 1);
+            }
         };
 
         $scope.$on("WallaShops.ProductDeleted", onProductDeleted);
@@ -95,7 +98,7 @@
 
             if (category) {
                 if (category.isNewWindow && category.type == 2) {
-                    window.open(category.link + category.id, "_blank");
+                    window.open(category.link, "_blank");
                 } else if (category.level > 0 && (category.type == 3 || category.type == 4)) {
                     if (category.level == 2) {
                         loadFilters(category);
@@ -171,7 +174,7 @@
                 $scope.$root.selectedFilterValues = filterValues;
             }
         });
-
+        
         $scope.search = function () {
 
             if ($location.path() != "/Search") {

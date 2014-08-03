@@ -23,7 +23,7 @@
 
                     <tr ng-repeat="product in productsToCompare" ng-show="!isEmpty()">
                         <td class="headcol" ng-click="showProduct(product)">
-                            <div ng-if="productsToCompare.length>1" class="remove-product" ng-click="publishRemoveProduct(null,$event)">
+                            <div ng-if="productsToCompare.length>1" class="remove-product" ng-click="publishRemoveProduct(product,$event)">
                                 <i class="fa fa-times"></i>
                             </div>
                             <div class="inner">
